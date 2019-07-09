@@ -13,7 +13,7 @@ show_wiki_posts: false
 # (integer) Maximum number of wiki posts to shown in sidebar
 show_wiki_posts_limit: 1
 # from jekyll (read jekyll doc)
-paginate: 5
+paginate: 1
 paginate_path: "/blog/page:num"
 permalink: /blog/posts/:year/:month/:day/:title:output_ext
 # (boolean) Enable/disable download buttons in sidebar
@@ -59,7 +59,7 @@ markdown: kramdown
 highlighter: rouge
 kramdown:
   input: GFM
-  syntax_highlighter: rouge
+  syntax_highlighter: blue
 
 defaults:
  - 
