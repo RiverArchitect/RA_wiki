@@ -77,10 +77,10 @@ The punctual placing of boulders and comprehensive rock cover is referred to as 
 
 The minimum required grain sizes are determined in a two-way analysis (i.e., two minimum angular boulders (rocks) size maps are produced based on the highest discharge where hydraulic data is available):
 
-1.  `ds_grains_Dcr` is a derivative of the Gauckler-Manning-Strickler formula using [Manning\'s *n*][manningsn]:\
+1.  `ds_grains_Dcr` is a derivative of the Gauckler-Manning-Strickler formula using [Manning\'s *n*][manningsn]:<br/>
     *D<sub>cr</sub>* =  *SF* *· u<sup>2</sup> · n<sup>2</sup>* / *\[(s - 1) · h<sup>1/3</sup> · &tau;<sub>\*,cr</sub> \]*
 
-2.  `ds_grains_Dcr` is a derivative of the Chézy formula using the energy slope:\
+2.  `ds_grains_Dcr` is a derivative of the Chézy formula using the energy slope:<br/>
     *D<sub>cr</sub>* = *SF* *· h · S<sub>e</sub>* / *\[(s - 1) · &tau;<sub>\*,cr</sub> ]*
 
 where:
@@ -146,10 +146,10 @@ Lifespan maps and design maps are created for streamwood placement and engineere
 
 -   `h` is used to computed the minimum required log diameter to avoid motion for an *n*-years flood (sample case: *n* = 10).
 
-Regarding morphological units, riffle-pool and plane bed morphologies are favorable for streamwood placement, where side channel and tributary systems are not convenient for wood placement. Streamwood inclusive list is defined as\
-`mu_good = ["riffle", "riffle transition", "pool", "floodplain", "island floodplain", "lateral bar", "medial bar", "run"]`\
-and the exclusive list is defined as `mu_bad = ["tributary channel", "tributary delta"]`.\
-For streamwood, the exclusive approach based on `mu_bad` applies (see [parameters](LifespanDesign-parameters)).\
+Regarding morphological units, riffle-pool and plane bed morphologies are favorable for streamwood placement, where side channel and tributary systems are not convenient for wood placement. Streamwood inclusive list is defined as<br/>
+`mu_good = ["riffle", "riffle transition", "pool", "floodplain", "island floodplain", "lateral bar", "medial bar", "run"]`<br/>
+and the exclusive list is defined as `mu_bad = ["tributary channel", "tributary delta"]`.<br/>
+For streamwood, the exclusive approach based on `mu_bad` applies (see [parameters](LifespanDesign-parameters)).<br/>
 The design maps for the minimum required log diameter *D<sub>w</sub>* results from [Ruiz-Villanueva et al. (2016)][ruiz16b]'s interpolation curve as a function of the flow depth. The module applies on the single-thread formula because it returns larger values for the log diameter than the multi-thread formula when the probability of motion is set to zero: `Dw` = 0.32 / 0.18·`h`. The output map limits to regions where `Dw` is smaller than 7.6 m (300 in).
 
 ## Fine sediment<a name="finesed"></a>
@@ -167,9 +167,9 @@ Artificially introduced fine sediment facilitates root growth of new plantings b
 
 **Design Maps**
 
--   `filter` criteria resulting in a design map according to the [USACE (2000)][usace00]:\
-    *D<sub>15, fine</sub> > D<sub>15, coarse</sub>* / 20;\
-    *D<sub>85, fine</sub> > D<sub>15, coarse</sub>* / 5;\
+-   `filter` criteria resulting in a design map according to the [USACE (2000)][usace00]:<br/>
+    *D<sub>15, fine</sub> > D<sub>15, coarse</sub>* / 20;<br/>
+    *D<sub>85, fine</sub> > D<sub>15, coarse</sub>* / 5;<br/>
     *D<sub>max, fine</sub>* must be finer than sand (i.e., *<* 2 mm or 0.08 in), to satisfy its *fine* character.
 
 The topographic change and depth to water table thresholds correspond to the largest values that any plantings type (cf.
@@ -185,10 +185,8 @@ Grading aims at the reconnection of high floodplains and isolated islands by mea
 
 Further aspects may be considered in addition to the implemented parameters:
 
--   Depth to groundwater\
-	 	Enable new [Vegetation Plantings](#plants) in Mediterranean climates to achieve depths to groundwater between 2.1 m (7 ft) and 3.0 m (10 ft).
--   Morphological Units\
-    *Not applied in the sample case, but can be optionally enabled.*
+-   **Depth to groundwater** enables new [Vegetation Plantings](#plants) in Mediterranean climates to achieve depths to groundwater between 2.1 m (7 ft) and 3.0 m (10 ft).
+-   **Morphological Units** are *not applied in the sample case, but can be optionally enabled.*
 
 ## Plantings<a name="plants"></a>
 
@@ -198,7 +196,7 @@ The survival analysis of plantings assumes a general cutting length of min. 2.1 
 	+  `h` (exclude all submerged regions for more than *Q<sub>sub</sub>*, which persists for more than 85 consecutive days according to [Friedman and Auble 1999][friedman99])
 	+  `taux` with threshold value of 0.047 ([Friedman and Auble 1999][friedman99])
 	+  `tcd` is *none* because Box Elder is reported to survive burial ([Kui and Stella 2016][kui16a])
-	+  `d2w`  with lower and upper thresholds of 0.6 m (2 ft) to 2.0 m (6 ft), respectively.\
+	+  `d2w`  with lower and upper thresholds of 0.6 m (2 ft) to 2.0 m (6 ft), respectively.<br/>
 	   *Full source ranges: 0.6 m to 4.6 m ([Stella et al. 2003][stella03])*   
       	+  *Note:* the maximum submergence duration supported by Box Elder cuttings is 85 days per year. Therefore, the *LifespanDesign* module uses the discharge that is exceeded during 85 days per year (*Q<sub>sub</sub>*) to limit Box Elder plantings to regions that are not inundated at that discharge 85-days submergence criterion.
 
@@ -207,7 +205,7 @@ The survival analysis of plantings assumes a general cutting length of min. 2.1 
 	+  `tcd` with 
 	   * `scour` >= 0.1 *times root depth* ([Polzin and Rood 2006][polzin06]), or >= 0.2 *times root depth* ([Kui and Stella 2016][kui16a]), or >= 0.5 *times root depth* ([Bywater-Reyes 2015][bywater15])
 	   * `fill` >= 0.8 *times seedling length* ([Kui and Stella 2016][kui16a], [Polzin and Rood 2006][polzin06])
-	+  `d2w` with a lower threshold of 5 ft (1.5 m) and an upper threshold of 10 ft (3 m)\
+	+  `d2w` with a lower threshold of 5 ft (1.5 m) and an upper threshold of 10 ft (3 m)<br/>
 	   *Full source ranges: 0.6 m to 4.6 m ([Stella et al. 2003][stella03]), 0.6 m to 2.7 m ([SYRCL 2013][syrcl13]), 0.6 m to 2.8 m above baseflow level for the closely-related black cottonwood (*Populus trichocarpa*, extracted from [Polzin and Rood 2006][polzin06]), 0.23±0.08 m to 1.58±0.14 m for establishment of woody riparian species and up to 2.9 m for existing plants ([Shafroth et al. 1998][shafroth98], [2000][shafroth00]), up to 2.0 m ([Stromberg et al. 1996][stromberg96]), up to 1.0 m, [Stromberg et al. 1991][stromberg91]), up to 4.5 m for adult lifestages ([Busch and Smith 1995][busch95]), up to 3.5 m for adult lifestages ([Lite and Stromberg 2005][lite05]), up to 4-5 m for salicae in general ([Politti et al. 2018][politti18])*
 	+  The base case applies sample values of a minimum cutting length of 7 ft (2.1 m), a topographic change observation period length of 3 years and a planting depth of 80\% (0.8) of the cutting length.
 
@@ -219,15 +217,15 @@ The survival analysis of plantings assumes a general cutting length of min. 2.1 
 -   Willows
 	+  (Goodding\'s) Black willow (*Salix nigra* including *Salix Gooddingii*)
 	   * `h` >= 1.0-1.5 *times the shrub height* ([Stromberg et al. 1993][stromberg93])
-	   * `d2w` with a lower threshold of 0.3 m (1.0 ft) and an upper threshold of 1.5 m  (4.9 ft) \
+	   * `d2w` with a lower threshold of 0.3 m (1.0 ft) and an upper threshold of 1.5 m  (4.9 ft) <br/>
          *Full source ranges: 0.6 m to 2.7 m ([SYRCL 2013][syrcl13]), 0.9 m to 1.5 m ([Stillwater Sciences 2006][stillwater06]), up to 2.0 m ([Shafroth et al. 1998][shafroth98]), 0.21±0.05 m to 1.44±0.22 m for establishment of woody riparian species, up to 2.0 m for existing plants([Stromberg et al. 1996][stromberg96]), up to 3.2 m for adult lifestages, [Stromberg et al. 1996][stromberg96]), up to 4-5 m for salicae in general ([Politti et al. 2018][politti18]), up to 2.6 m for native plants ([Lite and Stromberg 2005][lite05])*
 	+  Red willow (*Salix laevigata*)
-	   * `d2w` with a lower threshold of 0.3 m (1.0 ft) and an upper threshold of 1.5 m  (4.9 ft) \
+	   * `d2w` with a lower threshold of 0.3 m (1.0 ft) and an upper threshold of 1.5 m  (4.9 ft) <br/>
 	     *Full source ranges: 0.6 m to 2.7 m ([SYRCL 2013][syrcl13]), 0.9 m to 1.5 m ([Stillwater Sciences 2006][stillwater06]), up to 3.0 m ([USACE, YWA and 2017][usace17], [2019][usace19])*
 	+  Arroyo willow (*Salix lasiolepis*)
-	   * `d2w` with a lower threshold of 0.3 m (1.0 ft) and an upper threshold of 1.5 m  (4.9 ft) \
+	   * `d2w` with a lower threshold of 0.3 m (1.0 ft) and an upper threshold of 1.5 m  (4.9 ft) <br/>
 	     *Full source ranges: 0.6 m to 2.7 m ([SYRCL 2013][syrcl13])*
-	+  Willows (*Salix alba*)\
+	+  Willows (*Salix alba*)<br/>
 	   *All *Salix alba* parameters are extracted from [Pasquale et al. (2011)][pasquale11], [(2012)][pasquale12], and [(2014)][pasquale14].*
 	   * `h` *>=* 0.2 m (0.7 ft)
 	   * `taux` with a threshold value of 0.1 (if the root depth is larger than 0.5 m and the stem height is larger than 1.0 m)
@@ -318,7 +316,7 @@ From a parametric point of view, side cavities make sense at channel banks to cr
 
 ## Side channels / anabranches<a name="sidechnl"></a>
 
-Any discrete parameters exist for assessing design or lifespan maps for side channels, anabranches, anastomosed or multithread channels. The identification of splays and bank rigidity requires manual and visual proof.\
+Any discrete parameters exist for assessing design or lifespan maps for side channels, anabranches, anastomosed or multithread channels. The identification of splays and bank rigidity requires manual and visual proof.<br/>
 An initial decision support on the basis of design maps was contemplated by comparing the minimum energy slope *S<sub>e,min</sub>* with the terrain slope*S<sub>0</sub>*. In the 1D-theory, the minimum energy slope results from the
 *H*-*h* diagram ([Glenn 2015][glenn15]), based on the assumption that the minimum energy per unit force and pixel *H<sub>min</sub>* corresponds to the Froude number *Fr* = 1 with the critical flow velocity *u<sub>c</sub>* and flow
 depth *h<sub>c</sub>*. The pixel unitary discharge results from *q* = *u \* h*, where *u* and *h* are pixel values from the `u` and `h` rasters. Thus, the following set of equations can be used:
@@ -347,7 +345,7 @@ for h.ras in h.rasters and u.ras in u.rasters:
 ```
 
 This sample function uses `arcpy.sa`'s `Slope` function with the arguments `PERCENTRISE` for obtaining percent values instead of degrees and `zFactor` = 1.0 because the x-y-grid units are the same as in z-direction. `g` denotes gravity acceleration (SI metric: 9.81 m/s<sup>2</sup> or U.S. customary: 32.2 ft/s*<sup>2</sup>*).\
-However, the underlying 2D numerical model uses the critical flow depth as an iteration criterion for stability, which causes that *S<sub>e,min</sub>* approximately equals *S<sub>0</sub>*. Thus, the *S<sub>e,min</sub>* / *S<sub>0</sub>* ratio is approximately unity and not meaningful. Otherwise, the ratio *S<sub>e,min</sub>* / *S<sub>0</sub>* indicates pixels with excess energy (*S<sub>e,min</sub>* / *S <sub>0</sub> >* 1) allegedly cause erosion. Pixels with energy shortage  (*S<sub>e,min</sub>* / *S <sub>0</sub> <* 1) allegedly result in sediment deposition. Minor topographic change would be expected where the *S<sub>e,min</sub>* / *S <sub>0</sub>*-ratio is close to unity.\
+However, the underlying 2D numerical model uses the critical flow depth as an iteration criterion for stability, which causes that *S<sub>e,min</sub>* approximately equals *S<sub>0</sub>*. Thus, the *S<sub>e,min</sub>* / *S<sub>0</sub>* ratio is approximately unity and not meaningful. Otherwise, the ratio *S<sub>e,min</sub>* / *S<sub>0</sub>* indicates pixels with excess energy (*S<sub>e,min</sub>* / *S <sub>0</sub> >* 1) allegedly cause erosion. Pixels with energy shortage  (*S<sub>e,min</sub>* / *S <sub>0</sub> <* 1) allegedly result in sediment deposition. Minor topographic change would be expected where the *S<sub>e,min</sub>* / *S <sub>0</sub>*-ratio is close to unity.<br/>
 Unless this problem is not solved, the package indicates the adequacy of side channel construction on lifespan maps using the following criteria:
 
 -   `tcd` - `fill`, where the fill rate does not exceed the threshold value defined in the [thresholds workbook](#introduction-and-feature-groups).
@@ -360,9 +358,9 @@ Unless this problem is not solved, the package indicates the adequacy of side ch
 
 
 # Define new and modify existing features<a name="modfeat"></a>
-The workbook `RiverArchitect/LifespanDesign/.templates/threshold_values.xlsx` contains pre-defined features and defines feature names as well as features IDs, which can be modified if needed. The workbook can be accessed either by clicking on the [*LifespanDesign*][3] GUI's "Modify survival threshold values" button (or directly from the above directory).\
+The workbook `RiverArchitect/LifespanDesign/.templates/threshold_values.xlsx` contains pre-defined features and defines feature names as well as features IDs, which can be modified if needed. The workbook can be accessed either by clicking on the [*LifespanDesign*][3] GUI's "Modify survival threshold values" button (or directly from the above directory).<br/>
 Modifications of feature IDs and names require careful consideration because the packages apply analysis routines as a function of the features *Python* classes. Changing feature names and parameters and IDs only provides the possibility of renaming features and modifying threshold values, as well as the unit system. The feature IDs are internal abbreviations, which also determine the names of output Rasters, shapefiles, and maps. Editing feature evaluations (e.g., adding
-analysis routines) requires changes in the *Python* code as explained on the [*LifespanDesign*][3] pages.\
+analysis routines) requires changes in the *Python* code as explained on the [*LifespanDesign*][3] pages.<br/>
 The workbook enables changing vegetation plantings species in columns `J` to `M`. The following columns are associated with distinct feature layers (cf. definitions in the [feature overview section](#featoverview)) in the workbook:
 
 -   Terraforming features: Columns `"E"`, `"F"`, `"G"`, `"H"`, `"I"`.
@@ -370,7 +368,7 @@ The workbook enables changing vegetation plantings species in columns `J` to `M`
 -   Other Bioengineering features: Columns `"N"`, `"O"`, `"P"`.
 -   Connectivity features: Columns `"Q"`, `"R"`, `"S"`.
 
-Detailed instructions for the usage of `threshold_values.xlsx` is provided in the [*LifespanDesign*](LifespanDesign#interface-and-choice-of-features) module, where also more information on threshold values is provided. If the spreadsheet is accidentally deleted or irreparable, incorrect modifications were made, there is an offline backup copy available:\
+Detailed instructions for the usage of `threshold_values.xlsx` is provided in the [*LifespanDesign*](LifespanDesign#interface-and-choice-of-features) module, where also more information on threshold values is provided. If the spreadsheet is accidentally deleted or irreparable, incorrect modifications were made, there is an offline backup copy available:<br/>
 `RiverArchitect/LifespanDesign/.templates/threshold_values - Copy.xlsx`
 
 

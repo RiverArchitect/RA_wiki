@@ -22,43 +22,43 @@ The code can be extended with new parameters (e.g., direct shear stress output f
 
 ## Conventions
 
-The Rasters creation results from and functions that are stored in `cLifespanDesignAnalysis.py`. functions create Rasters with lifespan data (0 to 20 years in the sample case) and functions create Rasters with design parameters such as the required stables grain size of angular boulders (rocks).\
-Class names start with an upper case letter and do not contain any special characters, also excluding dash or underscore signs. Instantiations of classes are all lower case letters. Features, Parameters, and Analysis classes are stored in separate files called `cFeatureLifespan.py`, `cParameters.py` and `cLifespanDesignAnalysis.py`, respectively. In addition, Feature classes may inherit subfeature classes from files names `cSubfeature.py`, for example, `cPlants.py`.\
-Function names consist of lower case letters only and the underscore sign "\_" separates words.\
+The Rasters creation results from and functions that are stored in `cLifespanDesignAnalysis.py`. functions create Rasters with lifespan data (0 to 20 years in the sample case) and functions create Rasters with design parameters such as the required stables grain size of angular boulders (rocks).<br/>
+Class names start with an upper case letter and do not contain any special characters, also excluding dash or underscore signs. Instantiations of classes are all lower case letters. Features, Parameters, and Analysis classes are stored in separate files called `cFeatureLifespan.py`, `cParameters.py` and `cLifespanDesignAnalysis.py`, respectively. In addition, Feature classes may inherit subfeature classes from files names `cSubfeature.py`, for example, `cPlants.py`.<br/>
+Function names consist of lower case letters only and the underscore sign "\_" separates words.<br/>
 All class names, variable names, and function names are in alphabetic order (a = up, z = down), except the s, which determine the [parameter run hierarchy](#order).
 
 ## Order of analysis (hierarchy) and temp (.cache) Raster names<a name="order"></a>
 
 The best position of restoration features and their lifespans depend on multiple parameters in most cases. The output Rasters (lifespan maps) are computed in by batch-processing every parameter (i.e., one parameter map is processed after another). This batch processing strictly follows the below-listed hierarchy:
 
-1.  Flow depth Rasters (dimensional) starting with the lowest discharge to the highest discharge\
+1.  Flow depth Rasters (dimensional) starting with the lowest discharge to the highest discharge<br/>
     Internal Raster name: `ras_hQQQQQQ`
 
-2.  Flow velocity Rasters (dimensional) starting with the lowest discharge to the highest discharge\
+2.  Flow velocity Rasters (dimensional) starting with the lowest discharge to the highest discharge<br/>
     Internal Raster name: `ras_uQQQQQQ`
 
-3.  Hydraulic Rasters (dimensionless)\
+3.  Hydraulic Rasters (dimensionless)<br/>
     Internal Raster name: `ras_taux` (dimensionless bed shear stress) or `ras_Fr` (Froude number); if needed: the hierarchy among the dimensionless hydraulic numbers is not important
 
-4.  Mobile bed, fine sediment, and stable grain size Raster analysis\
+4.  Mobile bed, fine sediment, and stable grain size Raster analysis<br/>
     Internal Raster name: `ras_Dcr` (mobile or stable grain size)
 
-5.  Topographic change Rasters\
+5.  Topographic change Rasters<br/>
     Internal Raster names: `ras_fill` (fill Raster only), `ras_scour` (scour only) or `ras_tcd` (combined fill and scour)
 
-6.  Detrended DEM Raster analysis\
+6.  Detrended DEM Raster analysis<br/>
     Internal Raster name: `ras_det` (relevant, e.g., for berm setback)
 
-7.  Morphological Unit Rasters\
+7.  Morphological Unit Rasters<br/>
     Internal Raster name: `ras_mu`
 
-8.  Side channel delineation\
+8.  Side channel delineation<br/>
     Internal Raster name: `ras_sch`
 
-9.  Depth to water table\
+9.  Depth to water table<br/>
     Internal Raster name: `ras_d2w` (relevant, e.g., for plantings and terrain grading)
 
-The dimensional hydraulic maps need to be invoked before any other analysis is performed because the *u* and *h* maps are the only ones that entirely cover the area of interest, without "`noData`" pixels.\
+The dimensional hydraulic maps need to be invoked before any other analysis is performed because the *u* and *h* maps are the only ones that entirely cover the area of interest, without "`noData`" pixels.<br/>
 Every `feature` has a `feature.parameter_list` attribute containing a list of parameters that determine the feature lifespan and applicability space. The parameters are ordered in the `feature.parameter_list` according to the hierarchy. Once the last element of `feature.parameter_list` is processed and stored in the cache folder, the code exits the loop and copies the last `ras_parameter` to the `Output/Rasters/condition/` folder. This copy is renamed `lf_shortname`, where the usage of [shortnames](River-design-features#introduction-and-feature-groups) is necessary because `arcpy` cannot save or copy Raster with names exceeding 13 characters when GRID Rasters are used (even though the primary Raster type if *GeoTIFF*).
 
 ## Add parameters<a name="addpar"></a>
@@ -93,11 +93,11 @@ class PARAMETERNAME():
  
 ## Add analysis<a name="addana"></a>
 
-The analysis routines are differentiated between and -functions, which are contained in the file `cLifespanDesignAnalysis.py`.\
-`analyse_`-functions return Rasters containing estimated survival times (in years) or on/off values (1/0). An `analyse_`-function will always try to find existing Rasters produced from previous analysis functions according to the [analysis hierarchy](#order) unless a dimensional hydraulic analysis (`u`, `h` or their combination) is performed. For this reason, `analyse_`-functions use the `verify_raster_info`-function to look up for previous analyses that are stored in `raster_dict_lf`. At the end of an `analyse_`-function,  `raster_dict_lf` is updated using `raster_dict_lf.update("ras_current")`. This serial Raster analysis produces lifespan Rasters, which can be regardlessly converted to design Rasters by the `save_manager`-function when the feature properties are set to `self.ds = True` while `self.lf = False` (read more about [adding features](#addfeat)).\
-`design_`-functions produce Rasters containing specific parameter values, such as the critical grain size in inches. A `design_`-function will update the `raster_dict_ds`-dictionary which is passed to the `save_manager`-function when the feature variable `self.ds = True`.\
+The analysis routines are differentiated between and -functions, which are contained in the file `cLifespanDesignAnalysis.py`.<br/>
+`analyse_`-functions return Rasters containing estimated survival times (in years) or on/off values (1/0). An `analyse_`-function will always try to find existing Rasters produced from previous analysis functions according to the [analysis hierarchy](#order) unless a dimensional hydraulic analysis (`u`, `h` or their combination) is performed. For this reason, `analyse_`-functions use the `verify_raster_info`-function to look up for previous analyses that are stored in `raster_dict_lf`. At the end of an `analyse_`-function,  `raster_dict_lf` is updated using `raster_dict_lf.update("ras_current")`. This serial Raster analysis produces lifespan Rasters, which can be regardlessly converted to design Rasters by the `save_manager`-function when the feature properties are set to `self.ds = True` while `self.lf = False` (read more about [adding features](#addfeat)).<br/>
+`design_`-functions produce Rasters containing specific parameter values, such as the critical grain size in inches. A `design_`-function will update the `raster_dict_ds`-dictionary which is passed to the `save_manager`-function when the feature variable `self.ds = True`.<br/>
 The major difference between the `raster_dict_lf` and `raster_dict_ds`-dictionaries is that the `save_manager()` saves only the last hierarchy-based entry of to produced lifespan Rasters but all entries of `raster_dict_ds` to produced design Rasters. The combination of multiple parameters into one design Raster can be achieved anyway by setting `self.ds = True` while `self.lf = False` (see [add features](#addfeat) section). The latter settings convert lifespan Rasters to design
-Rasters.\
+Rasters.<br/>
 Use the following workflow to implement a new parameter in the code:
 
 1.  Ensure that all required parameters are available (see the [parameter list](LifespanDesign-parameters) and [Add parameters section](#addpar)).
@@ -215,9 +215,9 @@ The currently implemented features are listed in the [Features](River-design-fea
 4.  In `cFeatureLifespan.py` modify the `class RestorationFeature`:
     -   Implement the new feature instantiation when called by adding the following code to `def __init__(self, feature_name, ∗sub_feature )`:
 
-	`if feature_name == "NewFeature" and not(sub_feature):`\
-	`     self.feature = NewFeature()`\
-	`     self.sub = False`\
+	`if feature_name == "NewFeature" and not(sub_feature):`<br/>
+	`     self.feature = NewFeature()`<br/>
+	`     self.sub = False`<br/>
 	`     self.name = feature_name`
 
 

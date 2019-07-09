@@ -41,7 +41,7 @@ For terrain modifications, the module requires an input topo (DEM), which it loo
 # Threshold value-based terraforming: Widening and Grading options<a name="mtdemmod"></a>
 
 ## Introduction
-The ["Widen"](River-design-features#berms) and ["Grading"](River-design-features#grading) features use the maximum required distance to the groundwater table, which is admissible for plantings. These threshold values are defined in the [*LifespanDesign*][3] module's workbook `RiverArchitect/LifespanDesign/Input/.templates/threshold_values.xlsx`. The prior run of the [*MaxLifespan*][4] module is required to enable *ModifyTerrain* reading Rasters containing the keywords `grade` or `widen` from the folder `RiverArchitect/MaxLifespan/Output/Rasters/CONDITION/`. Moreover, a depth to groundwater table Raster (*GeoTIFF* format) with the name [`d2w.tif`](Signposts#make-depth-to-groundwater-rasters) is required in the directory `RiverArchitect/01_Conditions/CONDITION/` (use the [Get Started](Signposts#getstarted)'s [`Populate Condition`](Signposts#pop-condition) function to create a depth to the groundwater Raster).\
+The ["Widen"](River-design-features#berms) and ["Grading"](River-design-features#grading) features use the maximum required distance to the groundwater table, which is admissible for plantings. These threshold values are defined in the [*LifespanDesign*][3] module's workbook `RiverArchitect/LifespanDesign/Input/.templates/threshold_values.xlsx`. The prior run of the [*MaxLifespan*][4] module is required to enable *ModifyTerrain* reading Rasters containing the keywords `grade` or `widen` from the folder `RiverArchitect/MaxLifespan/Output/Rasters/CONDITION/`. Moreover, a depth to groundwater table Raster (*GeoTIFF* format) with the name [`d2w.tif`](Signposts#make-depth-to-groundwater-rasters) is required in the directory `RiverArchitect/01_Conditions/CONDITION/` (use the [Get Started](Signposts#getstarted)'s [`Populate Condition`](Signposts#pop-condition) function to create a depth to the groundwater Raster).<br/>
 The directory of maximum lifespan and depth to groundwater Rasters can be modified by clicking on the `Change feature max. lifespan Raster directory (optional)` button. This directory needs to contain *GeoTIFF*-Rasters, which have the keywords `grade` or `widen` in their filename.
 
 
@@ -52,23 +52,23 @@ All run options in the `Run` dropdown menu enables the `Threshold-based DEM modi
 ## Alternative run options<a name="mtaltrun"></a>
 The *ModifyTerrain* module has no standalone statement and it is recommended to use the GUI for launching the modules routines. If needed, the module can alternatively be imported and used as python package as follows:
 
-1.  Go to *ArcPro*s Python folder and double-click one of the following:\
-    `C:\Program Files\ArcGIS\Pro\bin\Python\scripts\propy.bat` or\
+1.  Go to *ArcPro*s Python folder and double-click one of the following:<br/>
+    `C:\Program Files\ArcGIS\Pro\bin\Python\scripts\propy.bat` or<br/>
     `C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\python.exe`
 
 1.  Enter `import os`
 
-1.  Navigate to Script direction using the command `os.chdir("ScriptDirectory")`\
+1.  Navigate to Script direction using the command `os.chdir("ScriptDirectory")`<br/>
     Example: `os.chdir("D:/Python/RiverArchitect/ModifyTerrain/")`
 
 1.  Import the module: `import cModifyTerrain as cmt`
 
-1.  Instantiate a *ModifyTerrain* object:\
-	`mt = cmt.ModifyTerrain(condition , unit_system, feature_ids , topo_in_dir , feat_in_dir , reach_ids)`\
-    `unit_system` must be either "us" or "si"\
-    `feature_ids` is a list of [features shortnames](https://github.com/RiverArchitect/RA_wiki/River-design-features#introduction-and-feature-groups)\
-    `topo_in_dir` is an input directory for DEM and depth to groundwater table Rasters\
-    `feat_in_dir` is an input directory for feature max. lifespan Rasters; for custom DEMs `feat_in_dir` can be a dummy directory\
+1.  Instantiate a *ModifyTerrain* object:<br/>
+	`mt = cmt.ModifyTerrain(condition , unit_system, feature_ids , topo_in_dir , feat_in_dir , reach_ids)`<br/>
+    `unit_system` must be either "us" or "si"<br/>
+    `feature_ids` is a list of [features shortnames](https://github.com/RiverArchitect/RA_wiki/River-design-features#introduction-and-feature-groups)<br/>
+    `topo_in_dir` is an input directory for DEM and depth to groundwater table Rasters<br/>
+    `feat_in_dir` is an input directory for feature max. lifespan Rasters; for custom DEMs `feat_in_dir` can be a dummy directory<br/>
     `reach_ids` is a list of reach names to limit the analysis
 
 7.  The DEM Modification is launched by calling the *ModifyTerrain* object that outputs the calculation logfile with volume change information: `logfile = mt()`
@@ -89,9 +89,9 @@ Please note that automated mapping is currently deactivated for the *ModifyTerra
 ## Working principles<a name="mtprin"></a>
 
 The module can lower the terrain for grading and/or widen features to make relevant areas adequate for plantings. It looks up the maximum possible depth to groundwater for the considered planting types in `RiverArchitect/LifespanDesign/Input/.templates/threshold_values.xlsx`, cells `J6:M6`. The required lowering *dz* results from the minimum depth
-to groundwater value of the latter cells:\
-`required_d2w = min([plant1.threshold_d2w_up, plant2.threshold_d2w_up, plant3.threshold_d2w_up, plant4.threshold_d2w_up])`\
-The `condition` DEM (`act_dem`) is lowered using the `arcpy`'s spatial analyst:\
+to groundwater value of the latter cells:<br/>
+`required_d2w = min([plant1.threshold_d2w_up, plant2.threshold_d2w_up, plant3.threshold_d2w_up, plant4.threshold_d2w_up])`<br/>
+The `condition` DEM (`act_dem`) is lowered using the `arcpy`'s spatial analyst:<br/>
 `new_dem = Con((d2w > required_d2w), Float(act_dem - (d2w - required_d2w)), act_dem)`
 
 
@@ -185,7 +185,7 @@ Note:
 
 3.  Save edits
 
-4.  The adapted code can now be executed using the [alternative run options](#mtaltrun), where `feature_ids = ["shortname of new feature"]`.\
+4.  The adapted code can now be executed using the [alternative run options](#mtaltrun), where `feature_ids = ["shortname of new feature"]`.<br/>
     *Hint:* The new method can also be implemented in the GUI by adding `self.featmenu.add_command(label="New Feature", command=lambda: self.define_feature("new ID")` to `def __init__(...)` of the `FaGui()` class in the file `modify_terrain_gui.py`. This requires adding an `if not(feature_id == "new ID"): ... else: ...` statement in the `self.define_feature` function according to the function environment.
     
 # River Builder

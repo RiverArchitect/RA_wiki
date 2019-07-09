@@ -82,15 +82,15 @@ The volumetric differences in m<sup>3</sup> or cubic yards are reach-wise or Ras
 
 # Working principles<a name="vaprin"></a>
 
-The modified DEM (`PSEUDO_CONDITION`) is subtracted from the input DEM to obtain difference DEMs indicating the *dz* differences in elevation. The module uses a level of change detection `lod` of 0.99 ft (or 0.305 m) to avoid the consideration of DEM imprecision because of pixel size-averaging (excavation): `diff_dem_neg = Con(Abs(input_dem - mod_dem)>= lod, Abs(input_dem - mod_dem), 0.0)` (and vice versa for fill).\
-The excavation and fill volumes result from `arcpy`'s `SurfaceVolume_3d` function, which requires an *ArcGIS* `3D` extension:\
-`volume_excavation = arcpy.SurfaceVolume_3d(diff_dem_neg, "", "ABOVE", 0.0, 1.0)`\
-`volume_fill = arcpy.SurfaceVolume_3d(diff_dem_pos, "", "ABOVE", 0.0, 1.0)`\
+The modified DEM (`PSEUDO_CONDITION`) is subtracted from the input DEM to obtain difference DEMs indicating the *dz* differences in elevation. The module uses a level of change detection `lod` of 0.99 ft (or 0.305 m) to avoid the consideration of DEM imprecision because of pixel size-averaging (excavation): `diff_dem_neg = Con(Abs(input_dem - mod_dem)>= lod, Abs(input_dem - mod_dem), 0.0)` (and vice versa for fill).<br/>
+The excavation and fill volumes result from `arcpy`'s `SurfaceVolume_3d` function, which requires an *ArcGIS* `3D` extension:<br/>
+`volume_excavation = arcpy.SurfaceVolume_3d(diff_dem_neg, "", "ABOVE", 0.0, 1.0)`<br/>
+`volume_fill = arcpy.SurfaceVolume_3d(diff_dem_pos, "", "ABOVE", 0.0, 1.0)`<br/>
 The `volume_...` variables are stored in a list that is finally written to the [output workbook](#vaoutspread).
 
 # Code modification: Change sensitivity threshold (lod) for terrain modification detection<a name="vacode"></a>
 
-The `lod` variable serves for the elimination of virtual terrain differences that may result from pixel sizes and / or Raster transformations (see [above explanations](#vaprin)). The internal variable name for `lod` is `self.volume_threshold` and it is defined in the initiator of the `VolumeAssessment` class (`VolumeAssessment/cVolumeAssessment`). The assigned values of 0.99 ft (U.S. customary) or 0.305 m (SI metric) can be changed in  `class VolumeAssessment()` -> `def __init__(self, ...):` -> `# set unit system` paragraph`:\
+The `lod` variable serves for the elimination of virtual terrain differences that may result from pixel sizes and / or Raster transformations (see [above explanations](#vaprin)). The internal variable name for `lod` is `self.volume_threshold` and it is defined in the initiator of the `VolumeAssessment` class (`VolumeAssessment/cVolumeAssessment`). The assigned values of 0.99 ft (U.S. customary) or 0.305 m (SI metric) can be changed in  `class VolumeAssessment()` -> `def __init__(self, ...):` -> `# set unit system` paragraph`:<br/>
 
 ```python
   if self.units == "us":

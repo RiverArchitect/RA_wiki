@@ -173,7 +173,7 @@ The procedure of project design following the flowchart involves the following s
 
 10. If the soils are too coarse (i.e., the capillarity is not high enough to enable plant root growth), apply the connectivity feature ["incorporate fine sediment in soils"](River-design-features#finesed).
 
-11. If gravel augmentation methods are applicable: Consecutively apply the [*LifespanDesign*][3] and [*MaxLifespan*][4] modules to [connectivity features](River-design-features#featoverview) to foster self-sustaining, artificially created ecomorphological patterns within the terraforming process.\
+11. If gravel augmentation methods are applicable: Consecutively apply the [*LifespanDesign*][3] and [*MaxLifespan*][4] modules to [connectivity features](River-design-features#featoverview) to foster self-sustaining, artificially created ecomorphological patterns within the terraforming process.<br/>
     If gravel is added in-stream, re-run the numerical model for the assessment of [gravel stability](River-design-features#rocks) with the [*LifespanDesign*][3] module and the combined habitat suitability with the [*SHArC*][6] module to compare the [**S**easonal **H**abitat **Area** (**SHArea**)](SHArC#herunSHArea) before and after enhancement of [Aquatic Ambiances for target fish species (lifestages)](SHArC#hefish).
 
 12. Use the [*SHArC*][6] to assess the *"existing"* (pre-project) and *"with implementation"* (post-project) habitat suitability in terms of annually usable habitat area (SHArea).

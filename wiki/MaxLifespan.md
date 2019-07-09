@@ -1,6 +1,8 @@
 Maximum Lifespan Assessment (MaxLifespan)
 =========================================
 
+***
+
 - [Introduction to maxium (best) lifespan mapping](#actintro)
 - [Quick GUIde to maximum lifespan maps](#actquick)
   * [Main window set-up and run](#actgui)
@@ -35,9 +37,9 @@ The *MaxLifespan* module requires lifespan and design maps (i.e., the prior run 
 First, the module requires the choice of a feature set from the dropdown menu. Second, a [`CONDITION`](Signposts#conditions) needs to be defined analog to the [*LifespanDesign*][3] module.
 
 By default, the *MaxLifespan* will look up lifespan and design maps which are stored in the folder `RiverArchitect/LifespanDesign/Output/Rasters/CONDITION/`. This input directory can be modified by clicking on the `Change input directory` button. 
-The *MaxLifespan* will automatically look for Raster files beginning with "`lf`" or `ds` and containing the shortname of the considered features (see shortname list in the [feature group overview](River-design-features)). Please note that Raster names that do not start with either `lf` or `ds` and/or that do not contain the complete shortname of the considered features are not recognized by *MaxLifespan*. The background image of the maximum lifespan maps also refers to lifespan and design maps and corresponds to the Raster `RiverArchitect/01_Conditions/CONDITION/back.tif`.\
+The *MaxLifespan* will automatically look for Raster files beginning with "`lf`" or `ds` and containing the shortname of the considered features (see shortname list in the [feature group overview](River-design-features)). Please note that Raster names that do not start with either `lf` or `ds` and/or that do not contain the complete shortname of the considered features are not recognized by *MaxLifespan*. The background image of the maximum lifespan maps also refers to lifespan and design maps and corresponds to the Raster `RiverArchitect/01_Conditions/CONDITION/back.tif`.<br/>
 The mapping check box provides the optional creation of maps with the creation of geofiles (Rasters and shapefiles). If the check box is selected, running the Geofile Maker also includes the successive runs of the Layout Maker and Map Maker. It is recommended to keep this box checked (default) because maximum lifespan mapping is fully automated and the procedure is fast.\
-Once all inputs are defined, click on "Run" and "Verify settings" to ensure the consistency of the chosen settings. After successful verification, the selected feature list and the verified condition change to green font.\
+Once all inputs are defined, click on "Run" and "Verify settings" to ensure the consistency of the chosen settings. After successful verification, the selected feature list and the verified condition change to green font.<br/>
 Three "Run" options exist in the drop-down menu:
 
 -  `Run: Geofile Maker` prepares the optimum lifespan Raster and associated feature polygons (shapefiles) in the directories `RiverArchitect/MaxLifespan/Output/Rasters/CONDITION/` and `.../Output /Shapefiles/CONDITION/`
@@ -55,19 +57,19 @@ The principal run options of the GUI call the following methods:
 
 For batch-processing of multiple scenarios, it can be useful to run the `geo_file_maker` function in a standalone script as follows:
 
-1.  Go to *ArcPro*s Python folder and double-click one of the following:\
-    `C:\Program Files\ArcGIS\Pro\bin\Python\scripts\propy.bat` or\
+1.  Go to *ArcPro*s Python folder and double-click one of the following:<br/>
+    `C:\Program Files\ArcGIS\Pro\bin\Python\scripts\propy.bat` or<br/>
     `C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\python.exe`
 
 1.  Enter `import os`
 
-1.  Navigate to script directory using the command `os.chdir("ScriptDirectory")`\
+1.  Navigate to script directory using the command `os.chdir("ScriptDirectory")`<br/>
     Example: `os.chdir("D:/Python/RiverArchitect/MaxLifespan/")`
 
 1.  Import the *MaxLifespan* module: `import action_planner as ap`
 
-1.  Launch Geofile Maker: `ap.geo_file_maker(condition , feature type , ∗args)`, where `args[0]` is a boolean value for activating or deactivation of integrated PDF-mapping (default = `False`), `args[1]` is a string that indicates the unit system (either "us" or "si"; default = "us") and `args[2]` can be an alternative input path of lifespan maps than the default directory (see above)\
-    Example: ` ap.geo_file_maker(2008, "framework", True, "us", "D:/temp/")`\
+1.  Launch Geofile Maker: `ap.geo_file_maker(condition , feature type , ∗args)`, where `args[0]` is a boolean value for activating or deactivation of integrated PDF-mapping (default = `False`), `args[1]` is a string that indicates the unit system (either "us" or "si"; default = "us") and `args[2]` can be an alternative input path of lifespan maps than the default directory (see above)<br/>
+    Example: ` ap.geo_file_maker(2008, "framework", True, "us", "D:/temp/")`<br/>
     This command calls the Geofile Maker for the condition "2008" for framework features, with activated mapping, U.S. customary units and it sets the Raster input path to `D:/temp/`.
     
 
@@ -97,7 +99,7 @@ The GUI can be closed via the `Close` dropdown menu if no background processes a
 
 # Working principle<a name="actprin"></a>
 
-The Geofile Maker uses the `CellStatistics` (with "Max" argument) command of `arcpy`'s Spatial Analyst toolbox to identify the best lifespans of features. In the case of features where only design Rasters are available (i.e., Raster units are either on/off (1/0) or dimensional indicators, for example minimum grain sizes), the Geofile Maker converts any non-zero value of the design Raster to 0.8. The value of 0.8 is an arbitrarily chosen identifier with the hypothetical unit of years, where the only importance is that this identifier is larger than zero and smaller than 0.9. Thus, the identifier is smaller than any lifespan value and the `CellStatistics`'s "Max" corresponds to the lifespan value when lifespan Rasters are compared with design Rasters. In other words, the Geofile Maker prioritizes lifespan Rasters over design Rasters. This choice was made because the data quality of lifespan Rasters is better (higher data abundance) than the quality of design Rasters, considering that the data quality is a function of available layers (DEM, morphological unit, grain size, hydraulic Rasters, etc.). Therefore, pixels where no lifespan value but a design value is available to get assigned a value of 0.8. Finally, the 0.8-pixels are converted to the highest defined lifespan (see [*LifespanDesign*][3] module) based on the assumption that if the feature is constructed corresponding to the design criteria, its lifespan will be high. Note the difference: lifespan values are prioritized because of the better data quality and the *max*-years-value of design Raster-only pixels applies to a chain of safe constructive assumptions potentially resulting in high costs.\
+The Geofile Maker uses the `CellStatistics` (with "Max" argument) command of `arcpy`'s Spatial Analyst toolbox to identify the best lifespans of features. In the case of features where only design Rasters are available (i.e., Raster units are either on/off (1/0) or dimensional indicators, for example minimum grain sizes), the Geofile Maker converts any non-zero value of the design Raster to 0.8. The value of 0.8 is an arbitrarily chosen identifier with the hypothetical unit of years, where the only importance is that this identifier is larger than zero and smaller than 0.9. Thus, the identifier is smaller than any lifespan value and the `CellStatistics`'s "Max" corresponds to the lifespan value when lifespan Rasters are compared with design Rasters. In other words, the Geofile Maker prioritizes lifespan Rasters over design Rasters. This choice was made because the data quality of lifespan Rasters is better (higher data abundance) than the quality of design Rasters, considering that the data quality is a function of available layers (DEM, morphological unit, grain size, hydraulic Rasters, etc.). Therefore, pixels where no lifespan value but a design value is available to get assigned a value of 0.8. Finally, the 0.8-pixels are converted to the highest defined lifespan (see [*LifespanDesign*][3] module) based on the assumption that if the feature is constructed corresponding to the design criteria, its lifespan will be high. Note the difference: lifespan values are prioritized because of the better data quality and the *max*-years-value of design Raster-only pixels applies to a chain of safe constructive assumptions potentially resulting in high costs.<br/>
 Recall that [`Other bioengineering` features](River-design-features#bioeng) can take three values: (1) `max` years, if the terrain slope is greater than defined in the thresholds workbook and the depth to groundwater is lower than defined in the thresholds workbook (cf. [*LifespanDesign*][3]); (2) `1.0` year, if the terrain slope is greater than defined in the thresholds workbook and the depth to groundwater is greater than defined in the thresholds workbook; (3) `NoData`, if the terrain slope is lower than defined in the thresholds workbook. Thus, where maximum lifespan maps indicate a 1.0-year lifespan, bioengineering features that are independent of the depth to the groundwater table are required. Such features typically imply the placement of angular boulders.
 
 # Code modification: Add feature sets for maximum lifespan maps<a name="actcode"></a>
@@ -166,13 +168,13 @@ Moreover, the `choose_ref_map(self, feature_type)` function of the `Mapper` clas
 
 This also requires the creation of the layout and layer in `RiverArchitect/02_Maps/templates/river_template.aprx` and/or `RiverArchitect/02_Maps/CONDITION/map_CONDITION_design.aprx`.
 
-[1]: https://github.com/RiverArchitect/RA_wiki/wiki/Installation
-[2]: https://github.com/RiverArchitect/RA_wiki/wiki/Signposts
-[3]: https://github.com/RiverArchitect/RA_wiki/wiki/LifespanDesign
-[4]: https://github.com/RiverArchitect/RA_wiki/wiki/MaxLifespan
-[5]: https://github.com/RiverArchitect/RA_wiki/wiki/ModifyTerrain
-[6]: https://github.com/RiverArchitect/RA_wiki/wiki/SHArC
-[7]: https://github.com/RiverArchitect/RA_wiki/wiki/ProjectMaker
-[8]: https://github.com/RiverArchitect/RA_wiki/wiki/Tools
-[9]: https://github.com/RiverArchitect/RA_wiki/wiki/FAQ
-[10]: https://github.com/RiverArchitect/RA_wiki/wiki/Troubleshooting
+[1]: https://github.com/RiverArchitect/RA_wiki/Installation
+[2]: https://github.com/RiverArchitect/RA_wiki/Signposts
+[3]: https://github.com/RiverArchitect/RA_wiki/LifespanDesign
+[4]: https://github.com/RiverArchitect/RA_wiki/MaxLifespan
+[5]: https://github.com/RiverArchitect/RA_wiki/ModifyTerrain
+[6]: https://github.com/RiverArchitect/RA_wiki/SHArC
+[7]: https://github.com/RiverArchitect/RA_wiki/ProjectMaker
+[8]: https://github.com/RiverArchitect/RA_wiki/Tools
+[9]: https://github.com/RiverArchitect/RA_wiki/FAQ
+[10]: https://github.com/RiverArchitect/RA_wiki/Troubleshooting

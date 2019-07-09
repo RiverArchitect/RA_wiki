@@ -397,7 +397,7 @@ Error messages
     - *Remedy:*  Ensure the correct setup of `ModifyTerrain/.templates/computation_extents.xlsx` ([reach preparation within the *ModifyTerrain* module](RiverReaches)).
 
  - **`ERROR: Failed to access / Failed to load [...]`**
-    - *Cause:*   (1) Error raised by the `open_wb(self)` and `make_condition_xlsx(self, fish_sn)` functions of the `MakeTable()` class in `.site_packages/riverpy/cMakeTable.py`) when the template workbook contains errors.\
+    - *Cause:*   (1) Error raised by the `open_wb(self)` and `make_condition_xlsx(self, fish_sn)` functions of the `MakeTable()` class in `.site_packages/riverpy/cMakeTable.py`) when the template workbook contains errors.<br/>
                  (2) Error raised by the *GetStarted* module's `ConditionCreator` (`cConditionCreator.py`).
     - *Remedy:*
         + Ensure the correct usage of `.site_packages/templates/Fish.xlsx` ([SHArC Fish section](SHArC#hefish)) and the completeness of `SHArC/.templates/Q_sharea_template_si.xlsx` and `SHArC/.templates/Q_sharea_template_us.xlsx`. If either template workbook is corrupted or does not exist, re-install missing files.
@@ -679,16 +679,16 @@ Error messages
     - *Cause:*   [*MaxLifespan*][4] failed to create a zero Raster covering the computation area.
     - *Remedy:*  The Raster creation needs to be manually made in *ArcPro*'s Python interpreter (the external interpreter could not do the job and only the cuckoo from California knows why). Thus, manually create the zeros Raster as follows:
 	  + Launch *ArcPro* and its implemented Python window (`Geoprocessing` dropdown menu: `Python`).
-	  + Enter the following sequences (replace `REPLACE_...` according to the local environment):\
-		`import os`\
-		`from arcpy.sa import *`\
-		`zero_ras_str = os.getcwd() + ".templates\Rasters\zeros.tif"`\
-		`condition = "REPLACE_CONDITION"`\
-		`base_dem = arcpy.Raster("REPLACE_PATHRiverArchitectLifespanDesignInput" + condition + "dem.tif")\
-		`arcpy.gp.overwriteOutput = True`\
-		`arcpy.env.extent = base_dem.extent`\
-		`arcpy.env.workspace = "D:\PythonRiver\Architect\LifespanDesign\Input\" + condition + ""`\
-		`zero_ras = Con(IsNull(base_dem), 0, 0)`\
+	  + Enter the following sequences (replace `REPLACE_...` according to the local environment):<br/>
+		`import os`<br/>
+		`from arcpy.sa import *`<br/>
+		`zero_ras_str = os.getcwd() + ".templates\Rasters\zeros.tif"`<br/>
+		`condition = "REPLACE_CONDITION"`<br/>
+		`base_dem = arcpy.Raster("REPLACE_PATHRiverArchitectLifespanDesignInput" + condition + "dem.tif")<br/>
+		`arcpy.gp.overwriteOutput = True`<br/>
+		`arcpy.env.extent = base_dem.extent`<br/>
+		`arcpy.env.workspace = "D:\PythonRiver\Architect\LifespanDesign\Input\" + condition + ""`<br/>
+		`zero_ras = Con(IsNull(base_dem), 0, 0)`<br/>
 		`zero_ras.save(zero_ras_str)`
 		
 	  + Close *ArcPro*
@@ -772,7 +772,7 @@ Warning messages
     - *Cause:*   Raised by the `ArcPyAnalysis` class (`LifespanDesign/cLifespanDesignAnalysis.py`) when it failed to crop lifespan maps (Rasters) to the extents of the depth Raster associated with the highest discharge analyzed.
     - *Remedy:*
         + Manually / visually verify the provided flow depth Rasters and make corrections / overwrite it if necessary.
-        + If cropping the lifespan Raster to the wetted area of the highest discharge is not desired, apply the following Raster calculation to the highest discharge's flow depth Raster to eliminate `NoData` values (otherwise, all `NoData` pixels are excluded from the lifespan Raster):\
+        + If cropping the lifespan Raster to the wetted area of the highest discharge is not desired, apply the following Raster calculation to the highest discharge's flow depth Raster to eliminate `NoData` values (otherwise, all `NoData` pixels are excluded from the lifespan Raster):<br/>
         `Con((IsNull(hQQQQQQ) == 1), (IsNull(hQQQQQQ) * 0), Float(hQQQQQQ))`
 
 
