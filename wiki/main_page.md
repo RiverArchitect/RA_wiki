@@ -1,4 +1,6 @@
+---
 redirect_from: "/"
+---
 
 
 Welcome to the River Architect ![logo](https://github.com/RiverArchitect/Welcome/raw/master/images/logo_small.ico) Wiki
