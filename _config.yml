@@ -43,9 +43,9 @@ use_prose_io: false
 search_engine : "js"
 # Setting google custom search engine for google
 # cse search bar (https://cse.google.it/cse/)
-google_cse_token: 
+google_cse_token: "https://www.google.com"
 
-inc_after_header: "_sidebar.md"
+inc_after_header: "https://github.com/RiverArchitect/RA_wiki/tree/master/wiki/_Sidebar.md"
 #
 # Jekyll configurations
 #
