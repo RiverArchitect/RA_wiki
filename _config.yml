@@ -1,7 +1,7 @@
 # (string) Title of your wiki
-title: River Architect WIKI
+title: RA WIKI
 # (string) Description of your wiki
-description: Building Rivers
+description: River Architect
 # (boolean) Enable/disable wiki page list in sidebar
 show_wiki_pages: true
 # (integer) Maximum number of wiki page to shown in sidebar
