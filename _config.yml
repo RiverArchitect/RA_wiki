@@ -45,7 +45,6 @@ search_engine : "js"
 # cse search bar (https://cse.google.it/cse/)
 google_cse_token: "https://www.google.com"
 
-inc_after_header: "https://github.com/RiverArchitect/RA_wiki/tree/master/wiki/_Sidebar.md"
 #
 # Jekyll configurations
 #
@@ -129,7 +128,7 @@ inc_after_tail :
 inc_before_tools : 
 inc_after_tools : 
 
-inc_before_page_list :
+inc_before_page_list : "own/sidebar.html"
 inc_after_page_list :
 inc_before_post_list :
 inc_after_post_list :
