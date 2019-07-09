@@ -3,76 +3,106 @@ redirect_from: "/"
 ---
 
 
-Welcome to the River Architect ![logo](https://github.com/RiverArchitect/Welcome/raw/master/images/logo_small.ico) Wiki
+Welcome to the River Architect Wiki
 ======================================================
 <details><summary> Table of Contents </summary><p>
-	
-	<ul>
-	  <li><a href="Installation#started">Install <em>River Architect</em></a></li>
-	  <li><a href="Installation#structure">Program file structure</a></li>
-	  <li><a href="Installation#req">Requirements</a></li>
-	  <li><a href="Installation#logs">Logfiles</a></li>
-	</ul>
+  <ol>
+  <li><a href="Installation">Installation</a>
+    <ul>
+      <li><a href="Installation#started">Install <em>River Architect</em></a></li>
+      <li><a href="Installation#structure">Program file structure</a></li>
+      <li><a href="Installation#req">Requirements</a></li>
+      <li><a href="Installation#logs">Logfiles</a></li>
+    </ul></li>
+  <li><a href="Signposts">Get started, terminology and signposts</a>
+    <ul>
+      <li><a href="Signposts#getstarted">Welcome and <em>Condition</em> creation</a></li>
+      <ul>
+        <li><a href="Signposts#new-condition">Create <em>Condition</em>s</a></li>
+        <li><a href="Signposts#ana-flows">Analyze Flows</a></li>
+        <li><a href="Signposts#inpfile">Input definition files</a></li>
+        <li><a href="Signposts#inmaps">Map extent definition files</a></li>
+      </ul>
+      </li>
+      <li><a href="Signposts#terms">Geofile conventions</a></li>
+      <li><a href="Signposts#inputs">Prepare input Rasters</a></li>
+    </ul></li>
+  <li>Modules
+  <ul>
+  <li>Lifespans
+  <ul>	  
+  <li>The <a href="LifespanDesign">Lifespan Design</a> module maps sustainable <a href="River-design-features">features</a>
+  <ul>
+    <li><a href="LifespanDesign-parameters">Parameter hypothesis</a></li>
+    <li><a href="River-design-features">River design and restoration <strong>features</strong></a></li>
+    <li><a href="Signposts#inpfile">Input definition files</a></li>
+    <li><a href="LifespanDesign-code">Code extension and modification</a></li>
+  </ul></li>
+  <li>The <a href="MaxLifespan">MaxLifespan</a> module identifies best-performing <a href="River-design-features">features</a>
+  <ul>
+    <li><a href="MaxLifespan#actgui">Quick GUIde</a></li>
+    <li><a href="MaxLifespan#actprin">Working principles</a></li>
+    <li><a href="MaxLifespan#actcode">Code extension and modification</a></li>
+  </ul></li>
+  </ul></li>
+  <li>Morphology (Terraforming)
+  <ul>
+    <li><a href="RiverReaches">River <strong>Reach</strong> definitions</a></li>
+    <li><a href="ModifyTerrain">Modify Terrain</a>
+    <ul>
+      <li><a href="ModifyTerrain#mtgui">Quick GUIde</a></li>
+      <li><a href="ModifyTerrain#mtdemmod">Threshold-based Grading or Widening (Broaden)</a></li>
+      <li><a href="RiverBuilder">River Builder</a></li>
+      <li><a href="ModifyTerrain#mtprin">Working principle</a></li>
+      <li><a href="ModifyTerrain#mtcode">Code extension and modification</a></li>
+    </ul></li>
+    <li><a href="VolumeAssessment">Volume Assessment</a>
+    <ul>
+      <li><a href="VolumeAssessment#gui">Quick GUIde</a></li>
+      <li><a href="VolumeAssessment#vaprin">Working principle</a></li>
+      <li><a href="VolumeAssessment#vacode">Set level of detection</a></li>
+    </ul></li>
+  </ul></li>
+  <li>Ecohydraulics
+  <ul>
+    <li>Assess habitat area with the <a href="SHArC">SHArC</a> module
+    <ul>
+      <li><a href="SHArC#hegui">Quick GUIde</a></li>
+      <li><a href="SHArC#hefish">Define <strong>Aquatic Ambiances</strong> for <strong>Fish</strong></a></li>
+      <li><a href="SHArC#herunSHArea"><strong>SHArea</strong> calculation</a></li>
+      <li><a href="SHArC-working-principles#heprin">Working principles</a></li>
+    <ul></li>
+    <li><a href="SHArC#hefish">Predefined <strong>Fish</strong> (Aquatic Ambiances)</a></li>
+    <li><a href="aqua-modification#hecode">Edit Fish (Aquatic Ambiances) template</a></li>
+    <li><a href="Connectivity">Habitat Connectivity</a>
+    <ul>
+      <li><a href="Connectivity#intro">Introduction</a></li>
+      <li><a href="Connectivity#guide">Quick GUIde</a></li>
+    </ul></li>
+  </ul></li>
 
-	1. [Setup River Architect][1]
-	   - [Installation](Installation#started)
-	   - [Program file structure](Installation#structure)
-	   - [Requirements](Installation#req)
-	   - [Logfiles](Installation#logs)
-	1. [Get started, terminology and signposts][2]
-	   - [Welcome and **Condition** creation](Signposts#getstarted)
-	       + [Create *Condition*s](Signposts#new-condition)
-		   + [Analyze Flows](Signposts#ana-flows)
-		   + [Input definition files](Signposts#inpfile)
-		   + [Map extent definition files](Signposts#inmaps)
-	   - [Geofile conventions](Signposts#terms)
-	   - [Prepare input Rasters](Signposts#inputs)
-	1. Modules
-	   - Lifespans
-	       * The [`LifespanDesign` module][3] maps sustainable [features](River-design-features)
-		 + [Parameter hypothesis](LifespanDesign-parameters)
-		 + [River design and restoration **features**](River-design-features)
-		 + [Input definition files](Signposts#inpfile)
-		 + [Code extension and modification](LifespanDesign-code)
-	       * Identification of best-performing [features](River-design-features) with the [`MaxLifespan` module][4]
-		 + [Quick GUIde](MaxLifespan#actgui)
-		 + [Working principles](MaxLifespan#actprin)
-		 + [Code extension and modification](MaxLifespan#actcode)
-	   - Morphology (Terraforming)
-	       * [River **Reach** definitions](RiverReaches)
-	       * [[ModifyTerrain]]
-		   + [Quick GUIde](ModifyTerrain#mtgui)
-		   + [Threshold-based Grading or Widening (Broaden)](ModifyTerrain#mtdemmod)
-		   + [River Builder](RiverBuilder)
-		   + [Working principle](ModifyTerrain#mtprin)
-		   + [Code extension and modification](ModifyTerrain#mtcode)
-	       * [[VolumeAssessment]]
-		   + [Quick GUIde](VolumeAssessment#gui)
-		   + [Working principle](VolumeAssessment#vaprin)
-		   + [Set level of detection](VolumeAssessment#vacode)
-	   - Ecohydraulics
-	       * Assess habitat area with the [`SHArC` module][6]
-		   + [Quick GUIde](SHArC#hegui)
-		   + [Define **Aquatic Ambiances** for **Fish**](SHArC#hefish)
-		   + [**SHArea** calculation](SHArC#herunSHArea)
-		   + [Working principles](SHArC-working-principles#heprin)
-		   + [Predefined **Fish** species](SHArC#hefish)
-		   + [Edit Fish template](aqua-modification#hecode)
-	       * [Habitat Connectivity](Connectivity)
-		   + Wiki pending.
-	       * Make eco-morphological assessments of river conditions with the [`EcoMorphology` module][60]
-		   + Implementation pending.
-	   - [`ProjektMaker`][7] generates cost-benefit plans and tables of river designs
-	     * [Quick GUIde](ProjectMaker#pmquick)
-	     * [**Cost** quantity assessment](ProjectMaker#pmcq)
-	     * [Ecological (habitat) benefit assessment (Calculate **SHArea**)](ProjectMaker#pmSHArea)
-	   - [`Tools`][8] contain beta-version routines (under development)
-	1. [FAQ][9]
-	1. [Troubleshooting and Error message handling][10]
-	     * [Known issues](Troubleshooting#issues)
-	     * [How to troubleshoot](Troubleshooting#howto)
-	     * [Error messages](Troubleshooting#error-messages)
-	     * [Warning messages](Troubleshooting#warning-messages)
+  <li>The <a href="ProjectMaker">Projekt Maker</a> module generates cost-benefit plans and tables of river designs
+  <ul>
+    <li><a href="ProjectMaker#pmquick">Quick GUIde</a></li>
+    <li><a href="ProjectMaker#pmcq"><strong>Cost</strong> quantity assessment</a></li>
+    <li><a href="ProjectMaker#pmSHArea">Ecological (habitat) benefit assessment (Calculate <strong>SHArea</strong>)</a></li>
+  </ul></li>
+  </ul></li>  
+
+  <li><a href="Tools">Tools</a> contain beta-version routines (under development)</li>
+  
+  <li><a href="FAQ">FAQ</a></li>
+  
+  <li><a href="Troubleshooting">Troubleshooting and Error message handling</a>
+  <ul>
+    <li><a href="Troubleshooting#issues">Known issues</a></li>
+    <li><a href="Troubleshooting#howto">How to troubleshoot</a></li>
+    <li><a href="Troubleshooting#error-messages">Error messages</a></li>
+    <li><a href="Troubleshooting#warning-messages">Warning messages</a></li>
+  </ul></li>
+  
+  </ol>
+
 </p></details>
 
 ***
