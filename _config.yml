@@ -1,7 +1,7 @@
 # (string) Title of your wiki
-title: River Architect Wiki
+title: River Architect
 # (string) Description of your wiki
-description: Using and exploring River Architect
+description: WIKI
 # (boolean) Enable/disable wiki page list in sidebar
 show_wiki_pages: true
 # (integer) Maximum number of wiki page to shown in sidebar
@@ -45,6 +45,7 @@ search_engine : "js"
 # cse search bar (https://cse.google.it/cse/)
 google_cse_token: 
 
+inc_after_header: "_sidebar.md"
 #
 # Jekyll configurations
 #
