@@ -1,5 +1,7 @@
 Seasonal Habitat Area Calculator (SHArC)
-==================
+========================================
+
+***
 
 - [Introduction to Habitat Suitability evaluation](#heintro)
 - [Quick GUIde to habitat suitability evaluation](#hequick)
@@ -110,11 +112,11 @@ As before, at least one aquatic ambiance for fish species/lifestage needs to be 
 Relevant cover types can be selected by checking the according checkboxes, where geofiles are required to be stored in
 `RiverArchitect/01_Conditions/CONDITION/` apply the cover types: 
 
--   Substrate: A `dmean` (S.I. /metric units) or `dmean_ft` (U.S. customary units) Raster is required (see [Signposts](https://github.com/RiverArchitect/RA_wiki/wiki/Signposts#input-file-preparation)).
+-   Substrate: A `dmean` (S.I. /metric units) or `dmean_ft` (U.S. customary units) Raster is required (see [Signposts](https://github.com/RiverArchitect/RA_wiki/Signposts#input-file-preparation)).
 
 -   Boulders: A `boulders.shp` polygon shapefile is required; the polygons delineating boulders need to have an `Short Integer`-type  field called `cover` in the (`Attributes table`) and the `cover` field value of polygons is `1`.
 
--   Cobbles: A `dmean` (S.I. /metric units) or `dmean_ft` (U.S. customary units) Raster is required (see [Signposts](https://github.com/RiverArchitect/RA_wiki/wiki/Signposts#input-file-preparation)). Cobble is defined, where the `dmean...` Raster indicates grain sizes between 0.064 m and 0.256 m.
+-   Cobbles: A `dmean` (S.I. /metric units) or `dmean_ft` (U.S. customary units) Raster is required (see [Signposts](https://github.com/RiverArchitect/RA_wiki/Signposts#input-file-preparation)). Cobble is defined, where the `dmean...` Raster indicates grain sizes between 0.064 m and 0.256 m.
 
 -   Plants: A `plants.shp` polygon shapefile is required; the polygons delineating boulders need to have an `Short Integer`-type field called `cover` in the (`Attributes table`) and the `cover` field value of polygons is `1`.
 
@@ -197,16 +199,16 @@ Another relevant question may be "How much did terraforming increase *SHArea*?".
 The best option to quit the module is the `Close` dropdown menu if no background processes are going on (see terminal messages), where also the processing `logfile.log` can (should) be opened and reviewed for any error messages.
 
 
-[1]: https://github.com/RiverArchitect/RA_wiki/wiki/Installation
-[2]: https://github.com/RiverArchitect/RA_wiki/wiki/Signposts
-[3]: https://github.com/RiverArchitect/RA_wiki/wiki/LifespanDesign
-[4]: https://github.com/RiverArchitect/RA_wiki/wiki/MaxLifespan
-[5]: https://github.com/RiverArchitect/RA_wiki/wiki/ModifyTerrain
-[6]: https://github.com/RiverArchitect/RA_wiki/wiki/SHArC
-[7]: https://github.com/RiverArchitect/RA_wiki/wiki/ProjectMaker
-[8]: https://github.com/RiverArchitect/RA_wiki/wiki/Tools
-[9]: https://github.com/RiverArchitect/RA_wiki/wiki/FAQ
-[10]: https://github.com/RiverArchitect/RA_wiki/wiki/Troubleshooting
+[1]: https://github.com/RiverArchitect/RA_wiki/Installation
+[2]: https://github.com/RiverArchitect/RA_wiki/Signposts
+[3]: https://github.com/RiverArchitect/RA_wiki/LifespanDesign
+[4]: https://github.com/RiverArchitect/RA_wiki/MaxLifespan
+[5]: https://github.com/RiverArchitect/RA_wiki/ModifyTerrain
+[6]: https://github.com/RiverArchitect/RA_wiki/SHArC
+[7]: https://github.com/RiverArchitect/RA_wiki/ProjectMaker
+[8]: https://github.com/RiverArchitect/RA_wiki/Tools
+[9]: https://github.com/RiverArchitect/RA_wiki/FAQ
+[10]: https://github.com/RiverArchitect/RA_wiki/Troubleshooting
 
 [bovee86]: https://pubs.er.usgs.gov/publication/70121265
 [bywater15]: http://dx.doi.org/10.1002/2014WR016641

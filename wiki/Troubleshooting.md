@@ -16,7 +16,7 @@ Otherwise, the *WARNING* and *ERROR* messages are listed in alphabetic order (st
 ***
 
 
-# Details on Error and Warning message generation
+# Error and Warning message generation
 
 Most errors occur when the wrong python interpreter is used or when Rasters or layouts have bad formats or when the information stated in the [input files](Signposts#inpfile) is erroneous.
 The *River Architect* writes process errors and descriptions to logfiles. When the GUI encounters problems, it directly provides causes and remedies in pop-up infoboxes. The common error and warning messages, which can be particularly raised by the package (alphabetical order) are listed in the following with detailed descriptions of causes and remedies. Most error messages are written to the logfiles, but some exception errors are only printed to the terminal because they occur before logging could even be started. Such non-logged `ExceptionErrors` are listed at the bottom of the Error messages.
@@ -24,7 +24,7 @@ Some non-identifiable errors raised by the `arcpy` package disappear after reboo
 
 
 Error messages
-================
+==============
 
 
  - **`arcpy ERROR 130051: Input feature class is not registered as versioned.`**
@@ -339,7 +339,7 @@ Error messages
 
  - **`ERROR: Could not set arcpy environment (permissions and licenses?).`**
     - *Cause:*   A script using `arcpy` and / or `arcpy.sa` could not set up the work environment.
-    - *Remedy:*  Either the wrong *Python* interpreter was used or `arcpy` and / or a *Spatial Analyst* extension are not available. [Read more on setting up the Python environment.](https://github.com/RiverArchitect/RA_wiki/wiki/Installation#started)
+    - *Remedy:*  Either the wrong *Python* interpreter was used or `arcpy` and / or a *Spatial Analyst* extension are not available. [Read more on setting up the Python environment.](https://github.com/RiverArchitect/RA_wiki/Installation#started)
 	
  - **`ERROR: Could not transfer net SHArea gain.`**
     - *Cause:*   The `main()` function in `ProjectMaker/s40_compare_wua.py` raises this error message when it could not copy the calculated SHArea from `SHArea_evaluation_unit.xlsx` to **`REACH_stn_costs_vii.xlsx`**.
@@ -503,7 +503,7 @@ Error messages
         + Consider replacing corrupted threshold workbooks with the original file.
 
  - **`ERROR: Invalid file name or data.`**
-    - *Cause:*   Error raised by the `save_close_wb(self, *args)` function of the `MakeTable()` or `Write()` class in `.site_packages/riverpy/cMakeTable.py`) or `RiverArchitect/.site_packages/riverpy/cInputOutput.py`), respectively, when it cannot save a workbook (typically `RiverArchitect/SHArC/SHArea/CONDITION_fil.xlsx` or a copy of the [cost master workbook](https://github.com/RiverArchitect/RA_wiki/wiki/ProjectMaker#pmcq)).
+    - *Cause:*   Error raised by the `save_close_wb(self, *args)` function of the `MakeTable()` or `Write()` class in `.site_packages/riverpy/cMakeTable.py`) or `RiverArchitect/.site_packages/riverpy/cInputOutput.py`), respectively, when it cannot save a workbook (typically `RiverArchitect/SHArC/SHArea/CONDITION_fil.xlsx` or a copy of the [cost master workbook](https://github.com/RiverArchitect/RA_wiki/ProjectMaker#pmcq)).
     - *Remedy:*
         + [*SHArC*][6]: Close all applications that may use `CONDITION_fil.xlsx` and ensure that its template exists. Detailed information on [*SHArC*][6] workbook outputs are available in the [HHSI input preparation](SHArC#hemakehsi).
         + [*ProjectMaker*][7]:  Close all applications that may use the cost master workbook (`REACH_stn_costs_VERSION.xlsx`) and ensure that it exists. Detailed information are available in [ProjectMaker Cost quantity section](ProjectMaker#pmcq).
@@ -546,7 +546,7 @@ Error messages
 
  - **`ERROR: Mapping failed.`**
     - *Cause:*   The `make_pdf_maps(self, ...)` function of the `Mapper()` class (`.site_packages/riverpy/cMapper.py`) raises this error when it could not create `PDF` maps. 
-    - *Remedy:* Ensure that all layouts ([see module-specific layout names](Mapping#standard-layouts)) are consistently defined in `RiverArchitect/02_Maps/templates/river_template.aprx` and/or `RiverArchitect/02_Maps/CONDITION/map_CONDITION_design.aprx`. Note that modifying layout and/or layer names may cause this error. Therefore, the template layer and layout names must not be changed. Read more about modifications of the smybology, legend, map extents, or code modifications in the [[Mapping]] wiki.
+    - *Remedy:* Ensure that all layouts ([see module-specific layout names](Mapping#standard-layouts)) are consistently defined in `RiverArchitect/02_Maps/templates/river_template.aprx` and/or `RiverArchitect/02_Maps/CONDITION/map_CONDITION_design.aprx`. Note that modifying layout and/or layer names may cause this error. Therefore, the template layer and layout names must not be changed. Read more about modifications of the smybology, legend, map extents, or code modifications in the <a href="Mapping">Mapping</a> wiki.
 
  - **`ERROR: Map layout preparation failed.`**
     - *Cause:*   The `prepare_layout(self, ...)` function of the `Mapper()` class (`.site_packages/riverpy/cMapper.py`) raises this error when it encounters problems with either the provided Rasters or the layouts in the *ArcGIS* project file (`.aprx`).
@@ -892,15 +892,15 @@ Warning messages
     - *Remedy:*  Trace back earlier error and warning messages. Ensure that no other program uses `VolumeAssessment/Output/CONDITION_volumes.xlsx` or `VolumeAssessment/.templates/volume_template.xlsx` and that both workbooks have not been accidentally deleted.
 
 
-[1]: https://github.com/RiverArchitect/RA_wiki/wiki/Installation
-[2]: https://github.com/RiverArchitect/RA_wiki/wiki/Signposts
-[3]: https://github.com/RiverArchitect/RA_wiki/wiki/LifespanDesign
-[4]: https://github.com/RiverArchitect/RA_wiki/wiki/MaxLifespan
-[5]: https://github.com/RiverArchitect/RA_wiki/wiki/ModifyTerrain
-[6]: https://github.com/RiverArchitect/RA_wiki/wiki/SHArC
-[7]: https://github.com/RiverArchitect/RA_wiki/wiki/ProjectMaker
-[8]: https://github.com/RiverArchitect/RA_wiki/wiki/Tools
-[9]: https://github.com/RiverArchitect/RA_wiki/wiki/FAQ
-[10]: https://github.com/RiverArchitect/RA_wiki/wiki/Troubleshooting
+[1]: https://github.com/RiverArchitect/RA_wiki/Installation
+[2]: https://github.com/RiverArchitect/RA_wiki/Signposts
+[3]: https://github.com/RiverArchitect/RA_wiki/LifespanDesign
+[4]: https://github.com/RiverArchitect/RA_wiki/MaxLifespan
+[5]: https://github.com/RiverArchitect/RA_wiki/ModifyTerrain
+[6]: https://github.com/RiverArchitect/RA_wiki/SHArC
+[7]: https://github.com/RiverArchitect/RA_wiki/ProjectMaker
+[8]: https://github.com/RiverArchitect/RA_wiki/Tools
+[9]: https://github.com/RiverArchitect/RA_wiki/FAQ
+[10]: https://github.com/RiverArchitect/RA_wiki/Troubleshooting
 [sourcecode]: https://github.com/sschwindt/RiverArchitect_development/archive/master.zip
 [wyrick14]: https://www.sciencedirect.com/science/article/pii/S0169555X14000099

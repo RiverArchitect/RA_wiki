@@ -1,3 +1,6 @@
+Get Started and Signposts
+=========================
+
 ***
 
 - [Get Started and Create Conditions](#getstarted)
@@ -10,8 +13,8 @@
 - [Input file preparation](Signposts#inputs)
 
 ***
-# Get Started<a name="getstarted"></a><a name="conditions"></a>
 
+# Get Started<a name="getstarted"></a><a name="conditions"></a>
 
 *River Architect*'s first tab invites the user for the creation of *Conditions*.
 
@@ -96,7 +99,7 @@ For making changes in the workbook, choose either one of the pre-defined river c
 
 
 ### Make Depth to Groundwater Rasters<a name="d2w"></a>
-The depth to the groundwater is primarily required for identifying relevant regions for target indigenous [plant species](https://github.com/RiverArchitect/RA_wiki/wiki/River-design-features#plants). For this purpose, the following input Rasters are required.
+The depth to the groundwater is primarily required for identifying relevant regions for target indigenous [plant species](https://github.com/RiverArchitect/RA_wiki/River-design-features#plants). For this purpose, the following input Rasters are required.
 
  -  A terrain DEM (or DTM) is automatically assigned from the selected *Condition* folder.
  -  A low-level flow depth Raster (in arid regions) based on the assumption that the groundwater table in the vicinity of the river corresponds to at least this water level, which marks the moment of highest water stress for plants.
@@ -240,15 +243,15 @@ Some parameters, such as the dimensionless bed shear stress or the mobile grain 
 
 
 
-[1]: https://github.com/RiverArchitect/RA_wiki/wiki/Installation
-[2]: https://github.com/RiverArchitect/RA_wiki/wiki/Signposts
-[3]: https://github.com/RiverArchitect/RA_wiki/wiki/LifespanDesign
-[4]: https://github.com/RiverArchitect/RA_wiki/wiki/MaxLifespan
-[5]: https://github.com/RiverArchitect/RA_wiki/wiki/ModifyTerrain
-[6]: https://github.com/RiverArchitect/RA_wiki/wiki/SHArC
-[7]: https://github.com/RiverArchitect/RA_wiki/wiki/ProjectMaker
-[8]: https://github.com/RiverArchitect/RA_wiki/wiki/Tools
-[9]: https://github.com/RiverArchitect/RA_wiki/wiki/FAQ
-[10]: https://github.com/RiverArchitect/RA_wiki/wiki/Troubleshooting
+[1]: https://github.com/RiverArchitect/RA_wiki/Installation
+[2]: https://github.com/RiverArchitect/RA_wiki/Signposts
+[3]: https://github.com/RiverArchitect/RA_wiki/LifespanDesign
+[4]: https://github.com/RiverArchitect/RA_wiki/MaxLifespan
+[5]: https://github.com/RiverArchitect/RA_wiki/ModifyTerrain
+[6]: https://github.com/RiverArchitect/RA_wiki/SHArC
+[7]: https://github.com/RiverArchitect/RA_wiki/ProjectMaker
+[8]: https://github.com/RiverArchitect/RA_wiki/Tools
+[9]: https://github.com/RiverArchitect/RA_wiki/FAQ
+[10]: https://github.com/RiverArchitect/RA_wiki/Troubleshooting
 [carley12]: https://www.sciencedirect.com/science/article/pii/S0169555X12003819
 [wyrick14]: https://www.sciencedirect.com/science/article/pii/S0169555X14000099

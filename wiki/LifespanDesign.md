@@ -12,7 +12,7 @@ Feature lifespan and design assessment
   * [Output](#output)
 - [Parameter hypotheses](LifespanDesign-parameters)
 - [River design and restoration features](River-design-features)
-- [Code extension and modification](LifespaDesign-code)
+- [Code extension and modification](LifespanDesign-code)
 
 ***
 

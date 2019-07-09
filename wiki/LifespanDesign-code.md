@@ -1,6 +1,8 @@
-***
-[Feature lifespan and design assessment module][3]
+
+[Feature lifespan and design assessment][3]
 ======================================
+
+***
 
 - [Quick GUIde to lifespan and design mapping][3]
 - [Parameter hypotheses](LifespanDesign-parameters)
@@ -313,16 +315,16 @@ class NewSubFeature_i():
       pass
 ```  
 
-[1]: https://github.com/RiverArchitect/RA_wiki/wiki/Installation
-[2]: https://github.com/RiverArchitect/RA_wiki/wiki/Signposts
-[3]: https://github.com/RiverArchitect/RA_wiki/wiki/LifespanDesign
-[4]: https://github.com/RiverArchitect/RA_wiki/wiki/MaxLifespan
-[5]: https://github.com/RiverArchitect/RA_wiki/wiki/ModifyTerrain
-[6]: https://github.com/RiverArchitect/RA_wiki/wiki/SHArC
-[7]: https://github.com/RiverArchitect/RA_wiki/wiki/ProjectMaker
-[8]: https://github.com/RiverArchitect/RA_wiki/wiki/Tools
-[9]: https://github.com/RiverArchitect/RA_wiki/wiki/FAQ
-[10]: https://github.com/RiverArchitect/RA_wiki/wiki/Troubleshooting
+[1]: https://github.com/RiverArchitect/RA_wiki/Installation
+[2]: https://github.com/RiverArchitect/RA_wiki/Signposts
+[3]: https://github.com/RiverArchitect/RA_wiki/LifespanDesign
+[4]: https://github.com/RiverArchitect/RA_wiki/MaxLifespan
+[5]: https://github.com/RiverArchitect/RA_wiki/ModifyTerrain
+[6]: https://github.com/RiverArchitect/RA_wiki/SHArC
+[7]: https://github.com/RiverArchitect/RA_wiki/ProjectMaker
+[8]: https://github.com/RiverArchitect/RA_wiki/Tools
+[9]: https://github.com/RiverArchitect/RA_wiki/FAQ
+[10]: https://github.com/RiverArchitect/RA_wiki/Troubleshooting
 
 [bywater15]: http://dx.doi.org/10.1002/2014WR016641
 [carley12]: https://www.sciencedirect.com/science/article/pii/S0169555X12003819

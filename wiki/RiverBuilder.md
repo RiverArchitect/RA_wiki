@@ -1,5 +1,8 @@
 River Builder
 =============
+
+***
+
 - [Introduction](#rbintro)
 - [Create Input Files](#cinp)
 - [Select Input Files](#sinp)

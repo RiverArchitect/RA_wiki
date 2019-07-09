@@ -1,6 +1,8 @@
 SHArC - Working Principles
 ==========================
 
+***
+
 - [Introduction to Habitat Suitability evaluation](SHArC#heintro)
 - [Quick GUIde to habitat suitability evaluation](SHArC#hequick)
   * [Main window set-up and run](SHArC#main-window-set-up-and-run)

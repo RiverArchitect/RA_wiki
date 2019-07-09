@@ -184,17 +184,17 @@ The working principles of the [*LifespanDesign*][3], [*MaxLifespan*][4], [*Modif
 
 ***
 
-[1]: https://github.com/RiverArchitect/RA_wiki/wiki/Installation
-[2]: https://github.com/RiverArchitect/RA_wiki/wiki/Signposts
-[3]: https://github.com/RiverArchitect/RA_wiki/wiki/LifespanDesign
-[4]: https://github.com/RiverArchitect/RA_wiki/wiki/MaxLifespan
-[5]: https://github.com/RiverArchitect/RA_wiki/wiki/ModifyTerrain
-[6]: https://github.com/RiverArchitect/RA_wiki/wiki/SHArC
-[60]: https://github.com/RiverArchitect/RA_wiki/wiki/EcoMorphology
-[7]: https://github.com/RiverArchitect/RA_wiki/wiki/ProjectMaker
-[8]: https://github.com/RiverArchitect/RA_wiki/wiki/Tools
-[9]: https://github.com/RiverArchitect/RA_wiki/wiki/FAQ
-[10]: https://github.com/RiverArchitect/RA_wiki/wiki/Troubleshooting
+[1]: https://github.com/RiverArchitect/RA_wiki/Installation
+[2]: https://github.com/RiverArchitect/RA_wiki/Signposts
+[3]: https://github.com/RiverArchitect/RA_wiki/LifespanDesign
+[4]: https://github.com/RiverArchitect/RA_wiki/MaxLifespan
+[5]: https://github.com/RiverArchitect/RA_wiki/ModifyTerrain
+[6]: https://github.com/RiverArchitect/RA_wiki/SHArC
+[60]: https://github.com/RiverArchitect/RA_wiki/EcoMorphology
+[7]: https://github.com/RiverArchitect/RA_wiki/ProjectMaker
+[8]: https://github.com/RiverArchitect/RA_wiki/Tools
+[9]: https://github.com/RiverArchitect/RA_wiki/FAQ
+[10]: https://github.com/RiverArchitect/RA_wiki/Troubleshooting
 [11]: https://www.sciencedirect.com/science/article/pii/S0301479718312751
 [12]: http://www.sciencedirect.com/science/article/pii/S1001627918300350
 [13]: https://ascelibrary.org/doi/abs/10.1061/%28ASCE%29HY.1943-7900.0001286

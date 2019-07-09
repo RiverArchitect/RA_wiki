@@ -1,5 +1,7 @@
-Connectivity
-==================
+Habitat Connectivity
+====================
+
+***
 
 - [Introduction to Connectivity Module](#intro)
 - [Quick GUIde to Connectivity Assessment](#guide)

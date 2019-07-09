@@ -1,6 +1,8 @@
 Volume Change Assessment
 ========================
 
+***
+
 - [Introduction](#vaintro)
 - [Quick GUIde to terrain assessment](#vaquick)
   * [Main window set-up and run](#vagui)
@@ -53,7 +55,7 @@ The Run: `Map Maker` uses layout files stored in the *ArcPro* project file `Rive
  - `volumes_cust_neg` for mapping required excavation (or scour / erosion) of the input DEM to achieve the modified DEM.
  - `volumes_cust_pos` for mapping required fill (or deposition) in the input DEM to achieve the modified DEM.
 
-The *VolumeAssessment* module produces maps with the extents of the input raster by default. Refer to the [[Mapping]] wiki for more information on map extents, symbology, and legend modifications.
+The *VolumeAssessment* module produces maps with the extents of the input raster by default. Refer to the <a href="Mapping">Mapping</a> wiki for more information on map extents, symbology, and legend modifications.
 
 ## Run<a name="varun"></a>
 
@@ -103,12 +105,12 @@ The `lod` variable serves for the elimination of virtual terrain differences tha
 ```
 
 
-[1]: https://github.com/RiverArchitect/RA_wiki/wiki/Installation
-[2]: https://github.com/RiverArchitect/RA_wiki/wiki/Signposts
-[3]: https://github.com/RiverArchitect/RA_wiki/wiki/LifespanDesign
-[4]: https://github.com/RiverArchitect/RA_wiki/wiki/MaxLifespan
-[5]: https://github.com/RiverArchitect/RA_wiki/wiki/VolumeAssessment
-[6]: https://github.com/RiverArchitect/RA_wiki/wiki/SHArC
-[7]: https://github.com/RiverArchitect/RA_wiki/wiki/ProjectMaker
-[8]: https://github.com/RiverArchitect/RA_wiki/wiki/Tools
-[9]: https://github.com/RiverArchitect/RA_wiki/wiki/FAQ
+[1]: https://github.com/RiverArchitect/RA_wiki/Installation
+[2]: https://github.com/RiverArchitect/RA_wiki/Signposts
+[3]: https://github.com/RiverArchitect/RA_wiki/LifespanDesign
+[4]: https://github.com/RiverArchitect/RA_wiki/MaxLifespan
+[5]: https://github.com/RiverArchitect/RA_wiki/VolumeAssessment
+[6]: https://github.com/RiverArchitect/RA_wiki/SHArC
+[7]: https://github.com/RiverArchitect/RA_wiki/ProjectMaker
+[8]: https://github.com/RiverArchitect/RA_wiki/Tools
+[9]: https://github.com/RiverArchitect/RA_wiki/FAQ

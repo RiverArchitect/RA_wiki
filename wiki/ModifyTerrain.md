@@ -1,5 +1,8 @@
 Modify Terrain (terraforming) 
 ======================================
+
+***
+
 - [Introduction to the ModifyTerrain module](#mtintro)
 - [Quick GUIde to terrain modifications](#mtquick)
 - [Threshold value-based terraforming (widening and grading)](#mtdemmod)
@@ -15,7 +18,7 @@ Modify Terrain (terraforming)
 # Introduction<a name="mtintro"></a>
 
 The *ModifyTerrain* module can (re)model existing terrain DEMs based on threshold values or using the [River Builder](RiverBuilder) [R](https://www.r-project.org/) package.
-Threshold value-based terraforming uses DEMs of existing rivers and applies either  [widening (berm setback)](https://github.com/RiverArchitect/RA_wiki/wiki/River-design-features#berms) or [grading](https://github.com/RiverArchitect/RA_wiki/wiki/River-design-features#grading), primarily to enable plant survival (for [phreatophytes](https://en.wikipedia.org/wiki/Phreatophyte)). While the input DEMs are not necessarily required to be part of a *River Architect* [*Condition*](Signposts#conditions), the definition of [*Condition*](Signposts#conditions)s is still required because the module uses maximum lifespan maps and depth to groundwater Rasters to identify candidate pixels for terraforming.
+Threshold value-based terraforming uses DEMs of existing rivers and applies either  [widening (berm setback)](https://github.com/RiverArchitect/RA_wiki/River-design-features#berms) or [grading](https://github.com/RiverArchitect/RA_wiki/River-design-features#grading), primarily to enable plant survival (for [phreatophytes](https://en.wikipedia.org/wiki/Phreatophyte)). While the input DEMs are not necessarily required to be part of a *River Architect* [*Condition*](Signposts#conditions), the definition of [*Condition*](Signposts#conditions)s is still required because the module uses maximum lifespan maps and depth to groundwater Rasters to identify candidate pixels for terraforming.
 
 
 # Quick GUIde to terrain modifications<a name="mtquick"></a>
@@ -63,7 +66,7 @@ The *ModifyTerrain* module has no standalone statement and it is recommended to 
 1.  Instantiate a *ModifyTerrain* object:\
 	`mt = cmt.ModifyTerrain(condition , unit_system, feature_ids , topo_in_dir , feat_in_dir , reach_ids)`\
     `unit_system` must be either "us" or "si"\
-    `feature_ids` is a list of [features shortnames](https://github.com/RiverArchitect/RA_wiki/wiki/River-design-features#introduction-and-feature-groups)\
+    `feature_ids` is a list of [features shortnames](https://github.com/RiverArchitect/RA_wiki/River-design-features#introduction-and-feature-groups)\
     `topo_in_dir` is an input directory for DEM and depth to groundwater table Rasters\
     `feat_in_dir` is an input directory for feature max. lifespan Rasters; for custom DEMs `feat_in_dir` can be a dummy directory\
     `reach_ids` is a list of reach names to limit the analysis
@@ -80,8 +83,8 @@ The module creates Rasters of modified DEMs and terrain difference Rasters for g
 
 Please note that automated mapping is currently deactivated for the *ModifyTerrain* module. For mapping graded or widened terrain, use the <a href="VolumeAssessment">VolumeAssessment</a> module and link the *ModifyTerrain* output Rasters to the *ArcPro* project file `RiverArchitect/02_Maps/CONDITION/map_CONDITION_design.aprx`. The relevant layout names for the *ModifyTerrain* module are:
 
- - `volumes_grade_neg` for mapping the terrain differences of parametrically (threshold-based) floodplain [grading](https://github.com/RiverArchitect/RA_wiki/wiki/River-design-features#grading) within the <a href="ModifyTerrain">Modify Terrain</a> module (only excavation `neg` is meaningful)
- - `volumes_widen_neg` for mapping the terrain differences of parametrically (threshold-based) river [widening](https://github.com/RiverArchitect/RA_wiki/wiki/River-design-features#berms) within the <a href="ModifyTerrain">Modify Terrain</a> module (only excavation `neg` is meaningful)
+ - `volumes_grade_neg` for mapping the terrain differences of parametrically (threshold-based) floodplain [grading](https://github.com/RiverArchitect/RA_wiki/River-design-features#grading) within the <a href="ModifyTerrain">Modify Terrain</a> module (only excavation `neg` is meaningful)
+ - `volumes_widen_neg` for mapping the terrain differences of parametrically (threshold-based) river [widening](https://github.com/RiverArchitect/RA_wiki/River-design-features#berms) within the <a href="ModifyTerrain">Modify Terrain</a> module (only excavation `neg` is meaningful)
 
 ## Working principles<a name="mtprin"></a>
 
@@ -188,12 +191,12 @@ Note:
 # River Builder
 [Continue reading on *River Builder*'s own Wiki page](RiverBuilder).
 
-[1]: https://github.com/RiverArchitect/RA_wiki/wiki/Installation
-[2]: https://github.com/RiverArchitect/RA_wiki/wiki/Signposts
-[3]: https://github.com/RiverArchitect/RA_wiki/wiki/LifespanDesign
-[4]: https://github.com/RiverArchitect/RA_wiki/wiki/MaxLifespan
-[5]: https://github.com/RiverArchitect/RA_wiki/wiki/ModifyTerrain
-[6]: https://github.com/RiverArchitect/RA_wiki/wiki/SHArC
-[7]: https://github.com/RiverArchitect/RA_wiki/wiki/ProjectMaker
-[8]: https://github.com/RiverArchitect/RA_wiki/wiki/Tools
-[9]: https://github.com/RiverArchitect/RA_wiki/wiki/FAQ
+[1]: https://github.com/RiverArchitect/RA_wiki/Installation
+[2]: https://github.com/RiverArchitect/RA_wiki/Signposts
+[3]: https://github.com/RiverArchitect/RA_wiki/LifespanDesign
+[4]: https://github.com/RiverArchitect/RA_wiki/MaxLifespan
+[5]: https://github.com/RiverArchitect/RA_wiki/ModifyTerrain
+[6]: https://github.com/RiverArchitect/RA_wiki/SHArC
+[7]: https://github.com/RiverArchitect/RA_wiki/ProjectMaker
+[8]: https://github.com/RiverArchitect/RA_wiki/Tools
+[9]: https://github.com/RiverArchitect/RA_wiki/FAQ
