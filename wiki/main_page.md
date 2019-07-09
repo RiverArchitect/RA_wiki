@@ -71,7 +71,7 @@ Welcome to the River Architect Wiki
       <li><a href="SHArC#hefish">Define <strong>Aquatic Ambiances</strong> for <strong>Fish</strong></a></li>
       <li><a href="SHArC#herunSHArea"><strong>SHArea</strong> calculation</a></li>
       <li><a href="SHArC-working-principles#heprin">Working principles</a></li>
-    <ul></li>
+    </ul></li>
     <li><a href="SHArC#hefish">Predefined <strong>Fish</strong> (Aquatic Ambiances)</a></li>
     <li><a href="aqua-modification#hecode">Edit Fish (Aquatic Ambiances) template</a></li>
     <li><a href="Connectivity">Habitat Connectivity</a>
