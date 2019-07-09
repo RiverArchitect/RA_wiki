@@ -47,13 +47,13 @@ Preferably omit non-relevant lifestages (do not put any number). Otherwise, chan
 Currently, the following lifestages can be recognized: `self.ls_col_add = {"spawning": 1, "fry": 3, "ammocoetes": 3, "juvenile": 5, "adult": 7, "hydrologic year": 1, "season": 3, "depth > x": 5, "velocity > x": 7}`.
 *The hard-coded lifestage identification represents a [known issue](Troubleshooting#issues) and we are working on improving the freedom in naming lifestages.*
 
-[1]: https://github.com/RiverArchitect/Welcome/wiki/Installation
-[2]: https://github.com/RiverArchitect/Welcome/wiki/Signposts
-[3]: https://github.com/RiverArchitect/Welcome/wiki/LifespanDesign
-[4]: https://github.com/RiverArchitect/Welcome/wiki/MaxLifespan
-[5]: https://github.com/RiverArchitect/Welcome/wiki/ModifyTerrain
-[6]: https://github.com/RiverArchitect/Welcome/wiki/SHArC
-[7]: https://github.com/RiverArchitect/Welcome/wiki/ProjectMaker
-[8]: https://github.com/RiverArchitect/Welcome/wiki/Tools
-[9]: https://github.com/RiverArchitect/Welcome/wiki/FAQ
-[10]: https://github.com/RiverArchitect/Welcome/wiki/Troubleshooting
+[1]: https://github.com/RiverArchitect/RA_wiki/wiki/Installation
+[2]: https://github.com/RiverArchitect/RA_wiki/wiki/Signposts
+[3]: https://github.com/RiverArchitect/RA_wiki/wiki/LifespanDesign
+[4]: https://github.com/RiverArchitect/RA_wiki/wiki/MaxLifespan
+[5]: https://github.com/RiverArchitect/RA_wiki/wiki/ModifyTerrain
+[6]: https://github.com/RiverArchitect/RA_wiki/wiki/SHArC
+[7]: https://github.com/RiverArchitect/RA_wiki/wiki/ProjectMaker
+[8]: https://github.com/RiverArchitect/RA_wiki/wiki/Tools
+[9]: https://github.com/RiverArchitect/RA_wiki/wiki/FAQ
+[10]: https://github.com/RiverArchitect/RA_wiki/wiki/Troubleshooting

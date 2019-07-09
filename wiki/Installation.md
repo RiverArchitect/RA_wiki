@@ -168,7 +168,7 @@ The main directory (`/RiverArchitect/`) contains the  program launcher named `St
     -   `cPoolRiffle.py` provides routines for designing self-sustaining pool-riffle channels.
     -   `fTools.py` is a set of functions used by other Python applications within this folder.
     -   `make_annual_peak.py` prepares required input data for statistic flow analyses and with the U.S. Army Corps of Engineers' [*HEC-SPP*][hecspp] software.
-    -   `make_annual_flow_duration.py` - *deprecated (will be removed)* creates flow duration curves (annual averages) for the assessment of SHArea (deprecated). *A more sophisticated version of this function is integrated in the [[SHArC]] module with options to limit flow duration assessments to fish-lifestage seasons.*
+    -   `make_annual_flow_duration.py` - *deprecated (will be removed)* creates flow duration curves (annual averages) for the assessment of SHArea (deprecated). *A more sophisticated version of this function is integrated in the <a href="SHArC">SHArC</a> module with options to limit flow duration assessments to fish-lifestage seasons.*
     -   `morphology_designer.py` creates design tables for self-sustaining pool-riffle channels (uses `cHydraulic.py` and `cPoolRiffle.py`).
     -   `run_make_….bat` are a batchfiles that run `make_….py` on Windows.
     -   `run_morphology_designer.bat` is a batchfiles that runs `morphology_designer.py`.
@@ -230,18 +230,18 @@ For the visualization of geodata (`.shp` and `.tif` files), and mapping with pro
 
 Logfiles `logfile.log` are created in the module directories during every run task. These files contain time-stamped terminal messages of program activities, warnings and error messages. Thus, logfiles enable the user to review process duration and to trace back problems. The handling of potential errors and warning messages are listed in the [Troubleshooting Wiki][10]  with descriptions of problem sources (cause) and solutions (remedy).
 
-[1]: https://github.com/RiverArchitect/Welcome/wiki/Installation
-[2]: https://github.com/RiverArchitect/Welcome/wiki/Signposts
-[3]: https://github.com/RiverArchitect/Welcome/wiki/LifespanDesign
-[4]: https://github.com/RiverArchitect/Welcome/wiki/MaxLifespan
-[5]: https://github.com/RiverArchitect/Welcome/wiki/ModifyTerrain
-[6]: https://github.com/RiverArchitect/Welcome/wiki/SHArC
-[7]: https://github.com/RiverArchitect/Welcome/wiki/ProjectMaker
-[8]: https://github.com/RiverArchitect/Welcome/wiki/Tools
-[9]: https://github.com/RiverArchitect/Welcome/wiki/FAQ
-[10]: https://github.com/RiverArchitect/Welcome/wiki/Troubleshooting
-[11]: https://github.com/RiverArchitect/Welcome/wiki/VolumeAssessment
-[12]: https://github.com/RiverArchitect/Welcome/wiki/RiverBuilder
+[1]: https://github.com/RiverArchitect/RA_wiki/wiki/Installation
+[2]: https://github.com/RiverArchitect/RA_wiki/wiki/Signposts
+[3]: https://github.com/RiverArchitect/RA_wiki/wiki/LifespanDesign
+[4]: https://github.com/RiverArchitect/RA_wiki/wiki/MaxLifespan
+[5]: https://github.com/RiverArchitect/RA_wiki/wiki/ModifyTerrain
+[6]: https://github.com/RiverArchitect/RA_wiki/wiki/SHArC
+[7]: https://github.com/RiverArchitect/RA_wiki/wiki/ProjectMaker
+[8]: https://github.com/RiverArchitect/RA_wiki/wiki/Tools
+[9]: https://github.com/RiverArchitect/RA_wiki/wiki/FAQ
+[10]: https://github.com/RiverArchitect/RA_wiki/wiki/Troubleshooting
+[11]: https://github.com/RiverArchitect/RA_wiki/wiki/VolumeAssessment
+[12]: https://github.com/RiverArchitect/RA_wiki/wiki/RiverBuilder
 
 [wyrick14]: https://www.sciencedirect.com/science/article/pii/S0169555X14000099
 [hecspp]: https://www.hec.usace.army.mil/software/hec-ssp/

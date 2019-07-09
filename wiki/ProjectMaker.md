@@ -251,15 +251,15 @@ The discharge-related **shapefiles** with polygons of usable habitat area were s
 The cells *G3* and *I2/3* in `ProjectName_assessment_vii_FILI.xlsx` state the net gain in SHArea and the project return in units of US\$ per acre (or m<sup>2</sup> per EUR or any other currency defined) net gain in SHArea (comparison of pre-and post-project condition), respectively.
 
 
-[1]: https://github.com/RiverArchitect/Welcome/wiki/Installation
-[2]: https://github.com/RiverArchitect/Welcome/wiki/Signposts
-[3]: https://github.com/RiverArchitect/Welcome/wiki/LifespanDesign
-[4]: https://github.com/RiverArchitect/Welcome/wiki/MaxLifespan
-[5]: https://github.com/RiverArchitect/Welcome/wiki/ModifyTerrain
-[6]: https://github.com/RiverArchitect/Welcome/wiki/SHArC
-[7]: https://github.com/RiverArchitect/Welcome/wiki/ProjectMaker
-[8]: https://github.com/RiverArchitect/Welcome/wiki/Tools
-[9]: https://github.com/RiverArchitect/Welcome/wiki/FAQ
-[10]: https://github.com/RiverArchitect/Welcome/wiki/Troubleshooting
+[1]: https://github.com/RiverArchitect/RA_wiki/wiki/Installation
+[2]: https://github.com/RiverArchitect/RA_wiki/wiki/Signposts
+[3]: https://github.com/RiverArchitect/RA_wiki/wiki/LifespanDesign
+[4]: https://github.com/RiverArchitect/RA_wiki/wiki/MaxLifespan
+[5]: https://github.com/RiverArchitect/RA_wiki/wiki/ModifyTerrain
+[6]: https://github.com/RiverArchitect/RA_wiki/wiki/SHArC
+[7]: https://github.com/RiverArchitect/RA_wiki/wiki/ProjectMaker
+[8]: https://github.com/RiverArchitect/RA_wiki/wiki/Tools
+[9]: https://github.com/RiverArchitect/RA_wiki/wiki/FAQ
+[10]: https://github.com/RiverArchitect/RA_wiki/wiki/Troubleshooting
 
 [manningsn]: https://en.wikipedia.org/wiki/Manning_formula#Manning_coefficient_of_roughness

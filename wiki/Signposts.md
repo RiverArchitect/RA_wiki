@@ -45,19 +45,19 @@ A new popup window inquires following inputs for generating a new *Condition* fr
 
 Once the input is defined, clicking on the `CREATE CONDITION` button will create the new *Condition* as `RiverArchitect/01_Conditions/`*NEW\_CONDITION* with the following contents:
 
-- `back.tif` is a background Raster that may be used for limiting lifespan analyses ([[LifespanDesign]]) extents and all subsequent analyses. Moreover, the background Raster enables consistent mapping.
+- `back.tif` is a background Raster that may be used for limiting lifespan analyses (<a href="LifespanDesign">LifespanDesign</a>) extents and all subsequent analyses. Moreover, the background Raster enables consistent mapping.
 
-- `dem.tif` is a DEM Raster indirectly required by the [[LifespanDesign]], [[ModifyTerrain]], [[Connectivity]], [[ProjectMaker]] and [[MaxLifespan]] modules.
+- `dem.tif` is a DEM Raster indirectly required by the <a href="LifespanDesign">LifespanDesign</a>, <a href="ModifyTerrain">Modify Terrain</a>, <a href="Connectivity">Habitat Connectivity</a>, <a href="ProjectMaker">ProjectMaker</a> and <a href="MaxLifespan">Max Lifespan</a> modules.
 
-- `dmean.tif` is a grain size Raster indirectly required by the [[LifespanDesign]], [[SHArC]], [[Connectivity]], [[ProjectMaker]] and [[MaxLifespan]] modules.
+- `dmean.tif` is a grain size Raster indirectly required by the <a href="LifespanDesign">LifespanDesign</a>, <a href="SHArC">SHArC</a>, <a href="Connectivity">Habitat Connectivity</a>, <a href="ProjectMaker">ProjectMaker</a> and <a href="MaxLifespan">Max Lifespan</a> modules.
 
-- `fill.tif` is topographic change Raster indicating annual sediment deposition rates, which are required by the [[LifespanDesign]], and indirectly, the [[MaxLifespan]] and [[ProjectMaker]] modules.
+- `fill.tif` is topographic change Raster indicating annual sediment deposition rates, which are required by the <a href="LifespanDesign">LifespanDesign</a>, and indirectly, the <a href="MaxLifespan">Max Lifespan</a> and <a href="ProjectMaker">ProjectMaker</a> modules.
 
-- `hQQQQQQ.tif` are flow depth rasters required by the [[LifespanDesign]], [[SHArC]], [[Connectivity]], and (indirectly) the [[ProjectMaker]] and [[MaxLifespan]] modules. [Read more about file name conventions.](#terms)
+- `hQQQQQQ.tif` are flow depth rasters required by the <a href="LifespanDesign">LifespanDesign</a>, <a href="SHArC">SHArC</a>, <a href="Connectivity">Habitat Connectivity</a>, and (indirectly) the <a href="ProjectMaker">ProjectMaker</a> and <a href="MaxLifespan">Max Lifespan</a> modules. [Read more about file name conventions.](#terms)
 
-- `uQQQQQQ.tif` are flow velocity rasters required by the [[LifespanDesign]], [[SHArC]], [[Connectivity]], and (indirectly) the [[ProjectMaker]] and [[MaxLifespan]] modules. [Read more about file name conventions.](#terms)
+- `uQQQQQQ.tif` are flow velocity rasters required by the <a href="LifespanDesign">LifespanDesign</a>, <a href="SHArC">SHArC</a>, <a href="Connectivity">Habitat Connectivity</a>, and (indirectly) the <a href="ProjectMaker">ProjectMaker</a> and <a href="MaxLifespan">Max Lifespan</a> modules. [Read more about file name conventions.](#terms)
 
-- `scour.tif` is topographic change Raster indicating annual terrain erosion rates, which are required by the [[LifespanDesign]], and indirectly, the [[MaxLifespan]] and [[ProjectMaker]] modules.
+- `scour.tif` is topographic change Raster indicating annual terrain erosion rates, which are required by the <a href="LifespanDesign">LifespanDesign</a>, and indirectly, the <a href="MaxLifespan">Max Lifespan</a> and <a href="ProjectMaker">ProjectMaker</a> modules.
 
 - `vaQQQQQQ.tif` are flow velocity direction rasters required by the [Habitat Connectivity](Connectivity) module. [Read more about file name conventions.](#terms)
 
@@ -96,7 +96,7 @@ For making changes in the workbook, choose either one of the pre-defined river c
 
 
 ### Make Depth to Groundwater Rasters<a name="d2w"></a>
-The depth to the groundwater is primarily required for identifying relevant regions for target indigenous [plant species](https://github.com/RiverArchitect/Welcome/wiki/River-design-features#plants). For this purpose, the following input Rasters are required.
+The depth to the groundwater is primarily required for identifying relevant regions for target indigenous [plant species](https://github.com/RiverArchitect/RA_wiki/wiki/River-design-features#plants). For this purpose, the following input Rasters are required.
 
  -  A terrain DEM (or DTM) is automatically assigned from the selected *Condition* folder.
  -  A low-level flow depth Raster (in arid regions) based on the assumption that the groundwater table in the vicinity of the river corresponds to at least this water level, which marks the moment of highest water stress for plants.
@@ -122,7 +122,7 @@ If a shapefile is selected:
 If a Raster is selected:
  - Ensure that the Raster contains On-Off Integers only, where 0=Outside and 1=Inside boundary.
 
-The boundary files are of particular interest within the [[ProjectMaker]] and [[SHArC]] modules.
+The boundary files are of particular interest within the <a href="ProjectMaker">ProjectMaker</a> and <a href="SHArC">SHArC</a> modules.
 
 ## Analyze Flows<a name="ana-flows"></a>
 The sustainability (lifespan) and ecohydraulic analyses require hydraulic data related to discharges (flows) and the return period. The *Analyze Discharge* pop-up window guides through the creation of flow-metadata files that link hydraulic Raster names with flows and return periods for a *Condition*. *Analyze Discharge* looks for flow depth and velocity Rasters in a selected *Condition*, extracts the flow quantity, and creates a template workbook in the *Condition* folder. For this purpose, hydraulic (flow depth and velocity) Rasters must be named according to the [Geofile name convetions](#terms) (i.e., flow depth Rasters = "hQQQQQQ.tif" and flow velocity Rasters = "uQQQQQQ.tif").
@@ -178,7 +178,7 @@ The resulting `input_definitions.inp` is stored on the directory `RiverArchitect
 | Line 17 | `sidech` | One raster name delineating appropriate sites for side channels|
 | Line 18 | `wild` | One raster name for the spatial confinement of the feature analysis of 0/nodata (= off) and 1 (= on) values for any purpose (wildcard raster)|
 
-The [[LifespanDesign]] module produces results based on the available information only, where any raster name can be substituted with double quotation marks. However, this lack of information reduces the accuracy of final lifespan and design maps. No results are produced for a feature where the information is insufficient for the analysis. The required information for every feature corresponds to the definitions in the input file.
+The <a href="LifespanDesign">LifespanDesign</a> module produces results based on the available information only, where any raster name can be substituted with double quotation marks. However, this lack of information reduces the accuracy of final lifespan and design maps. No results are produced for a feature where the information is insufficient for the analysis. The required information for every feature corresponds to the definitions in the input file.
 
 ## Map extent input definition files <a name="inmaps"></a>
 The file `RiverArchitect/LifespanDesign/.templates/mapping.inp` defines map center points, extents (*dx* and *dy* in ft or m) and scales (scale has no effect currently).\
@@ -218,7 +218,7 @@ The below listed Rasters are available in GeoTIFF format in `01_Conditions/2100_
 | **Depth to groundwater** | **(in ft or m)** |
 | d2w          | referring to a baseflow of 15 m³/s (530 cfs) |
 | **Background**                    | (black and white) |
-| back | here: determines [[LifespanDesign]]'s calculation extents |
+| back | here: determines <a href="LifespanDesign">LifespanDesign</a>'s calculation extents |
 | **Morphological Units **  | **Float / Int** |
 | mu         | generated with `Populate Condition` |
 | **D mean**     | **(in ft or m)** |
@@ -240,15 +240,15 @@ Some parameters, such as the dimensionless bed shear stress or the mobile grain 
 
 
 
-[1]: https://github.com/RiverArchitect/Welcome/wiki/Installation
-[2]: https://github.com/RiverArchitect/Welcome/wiki/Signposts
-[3]: https://github.com/RiverArchitect/Welcome/wiki/LifespanDesign
-[4]: https://github.com/RiverArchitect/Welcome/wiki/MaxLifespan
-[5]: https://github.com/RiverArchitect/Welcome/wiki/ModifyTerrain
-[6]: https://github.com/RiverArchitect/Welcome/wiki/SHArC
-[7]: https://github.com/RiverArchitect/Welcome/wiki/ProjectMaker
-[8]: https://github.com/RiverArchitect/Welcome/wiki/Tools
-[9]: https://github.com/RiverArchitect/Welcome/wiki/FAQ
-[10]: https://github.com/RiverArchitect/Welcome/wiki/Troubleshooting
+[1]: https://github.com/RiverArchitect/RA_wiki/wiki/Installation
+[2]: https://github.com/RiverArchitect/RA_wiki/wiki/Signposts
+[3]: https://github.com/RiverArchitect/RA_wiki/wiki/LifespanDesign
+[4]: https://github.com/RiverArchitect/RA_wiki/wiki/MaxLifespan
+[5]: https://github.com/RiverArchitect/RA_wiki/wiki/ModifyTerrain
+[6]: https://github.com/RiverArchitect/RA_wiki/wiki/SHArC
+[7]: https://github.com/RiverArchitect/RA_wiki/wiki/ProjectMaker
+[8]: https://github.com/RiverArchitect/RA_wiki/wiki/Tools
+[9]: https://github.com/RiverArchitect/RA_wiki/wiki/FAQ
+[10]: https://github.com/RiverArchitect/RA_wiki/wiki/Troubleshooting
 [carley12]: https://www.sciencedirect.com/science/article/pii/S0169555X12003819
 [wyrick14]: https://www.sciencedirect.com/science/article/pii/S0169555X14000099

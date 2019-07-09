@@ -4,7 +4,7 @@ Error messages and Troubleshooting
 # Known issues<a name="issues"></a>
 We do our very best to program *River Architect* as robust and flexible as possible. *River Architect*'s stepwise development nevertheless led to a few restrictions in its freedom of use, which are caused by a couple of hard-code sequences. The following limitations because of hard-coding are known and will be fixed in future versions:
 
- - [[SHArC]]: Aquatic ambiances / fish lifestages must be named either `spawning, fry, ammocoetes, juvenile, adult, hydrologic year, season, depth > x, ` or `velocity > x`. The [lifestage names](SHArC#hefish) are currently hard-coded in the `Fish` class (`RiverArchitect/.site_packages/riverpy/cFish.py`) dictionary `self.ls_col_add = {"spawning": 1, "fry": 3, "ammocoetes": 3, "juvenile": 5, "adult": 7, "hydrologic year": 1, "season": 3, "depth > x": 5, "velocity > x": 7}`. This dictionary can be changed for using other lifestage names and we are working on an improvement in later versions. *Note: This dictionary defines the relative column numbers that is added to the column where a fish name is defined.*
+ - <a href="SHArC">SHArC</a>: Aquatic ambiances / fish lifestages must be named either `spawning, fry, ammocoetes, juvenile, adult, hydrologic year, season, depth > x, ` or `velocity > x`. The [lifestage names](SHArC#hefish) are currently hard-coded in the `Fish` class (`RiverArchitect/.site_packages/riverpy/cFish.py`) dictionary `self.ls_col_add = {"spawning": 1, "fry": 3, "ammocoetes": 3, "juvenile": 5, "adult": 7, "hydrologic year": 1, "season": 3, "depth > x": 5, "velocity > x": 7}`. This dictionary can be changed for using other lifestage names and we are working on an improvement in later versions. *Note: This dictionary defines the relative column numbers that is added to the column where a fish name is defined.*
 
 # How to trace Error and Warning messages<a name="howto"></a>
 If *River Architect* encounters problems, the code writes *WARNING* and *ERROR* messages to the *Python* command line and to the same logfile where all other computation progress information is logged. The *WARNING* and *ERROR* messages provide information on the error cause and this Wiki contains all possible *WARNING* and *ERROR* messages of *River Architect*.
@@ -32,7 +32,7 @@ Error messages
     - *Remedy:*
         + Make sure that the dataset exists (read error message information).
         + [GetStarted](Signposts): When creating *Condition*s, ensure to restart River Architect after every single creation of a *Condition* or *Condition* subset. This issue is related to `arcpy`, which will not [register datasets](https://pro.arcgis.com/en/pro-app/help/data/geodatabases/overview/a-quick-tour-of-registering-and-unregistering-data-as-versioned.htm) unless *River Architect* is completely closed. We are developing work-arounds.
-        + [[ProjectMaker]]: Ensure that the project polygon and the selected habitat condition (from [[SHArC]]) overlap (otherwise, the intersecting dataset is empty).
+        + <a href="ProjectMaker">ProjectMaker</a>: Ensure that the project polygon and the selected habitat condition (from <a href="SHArC">SHArC</a>) overlap (otherwise, the intersecting dataset is empty).
 
 - **`ERROR 000641: Too few records for analysis.`**
     - *Cause:*   This  `arcpy` error message occurs here when `arcpy.CalculateGeometryAttributes_management` tries to compute the area of an empty shapefile.
@@ -153,8 +153,8 @@ Error messages
  - **`ERROR: Could not append PDF page XX to map assembly.`**
     - *Cause:*   The `make_pdf_maps(self, ...)` function of the `Mapper()` class (`.site_packages/riverpy/cMapper.py`) raises this error when it failed to map the current page (extent).
     - *Remedy:*
-	    + [[LifespanDesign]] / [[MaxLifespan]]: Ensure that the definitions in [`LifespanDesign/.templates/mapping.inp`](Signposts#inpfile) are correct.
-	    + [[VolumeAssessment]]: Verify the definitions in the [reach coordinates workbook](RiverReaches) and also refer to error message `ERROR: Could not create new project`.
+	    + <a href="LifespanDesign">LifespanDesign</a> / <a href="MaxLifespan">Max Lifespan</a>: Ensure that the definitions in [`LifespanDesign/.templates/mapping.inp`](Signposts#inpfile) are correct.
+	    + <a href="VolumeAssessment">VolumeAssessment</a>: Verify the definitions in the [reach coordinates workbook](RiverReaches) and also refer to error message `ERROR: Could not create new project`.
 	    + General: Ensure that no other program accesses the `LifespanDesign/.cache/`, `MaxLifespan/.cache/`, `MaxLifespan/Output/`, `VolumeAssessment/Output/`, or `02_Maps/*` directories or their contents (close *ArcPro*).
 
  - **`ERROR: Could not calculate CellStatistics (Raster comparison).`**
@@ -218,7 +218,7 @@ Error messages
 
  - **`ERROR: Could not find Lifespan Raster (...).`**
     - *Cause:*   Error raised by the `ProjectMaker/s30_terrain_stabilization/`'s `main()` function when it cannot find lifespan Rasters.
-    - *Remedy:*  Ensure to run the [[LifespanDesign]] module for the select *Condition* first. The program absolutely requires `Grains / Boulders` (`lf_grains.tif`), and optionally requires `Streamwood` (`lf_wood.tif`) and `Bioengineering (other)` (`lf_bio.tif`).
+    - *Remedy:*  Ensure to run the <a href="LifespanDesign">LifespanDesign</a> module for the select *Condition* first. The program absolutely requires `Grains / Boulders` (`lf_grains.tif`), and optionally requires `Streamwood` (`lf_wood.tif`) and `Bioengineering (other)` (`lf_bio.tif`).
 
  - **`ERROR: Could not find sheet "extents" in computation_extents.xlsx.`**
     - *Cause:*   Error raised by the `get_reach_coordinates(self, internal_reach_id)` function of the `Read()` class in `RiverArchitect/.site_packages/riverpy/cReachManager.py`) when the `extents` sheet in the reach coordinate workbook (`ModifyTerrain/.templates/computation_extents.xlsx`) could not be read.
@@ -249,11 +249,11 @@ Error messages
  - **`ERROR: Could not open workbook (...).`**
     - *Cause:*   Error raised by the `__init__(self)` function of the `Read()` class in `riverpy/cInputOutput.py` or the `write_flow_duration2xlsx(self, ...)` function of the `SeasonalFlowProcessor()` class (`riverpy/cFlows.py`) when the concerned workbook contains errors or cannot be opened for other reasons.
     - *Remedy:* 
-	    +  [[ProjectMaker]]: Ensure the correct usage of the concerned workbook ([*ProjectMaker* Wiki][7]).
+	    +  <a href="ProjectMaker">ProjectMaker</a>: Ensure the correct usage of the concerned workbook ([*ProjectMaker* Wiki][7]).
 	    +  Flow generator: Ensure that the template workbook in the parentheses is not opened in any other program and that the template workbook was not modified.
 
  - **`ERROR: Could not load newly created Raster of the project area.`**
-    - *Cause:*   Raised by `set_project_area(self)` of the *[[ProjectMaker]]*'s `SHArC()` class in `ProjectMaker/cSHArC.py` when the converted the project area shapefile is corrupted.
+    - *Cause:*   Raised by `set_project_area(self)` of the *<a href="ProjectMaker">ProjectMaker</a>*'s `SHArC()` class in `ProjectMaker/cSHArC.py` when the converted the project area shapefile is corrupted.
     - *Remedy:*  Ensure that the project was correctly delineated ([Project Area Polygon preparation](ProjectMaker#pminp2)).
 
  - **`ERROR: Could not perform spatial radius operations [...].`**
@@ -339,7 +339,7 @@ Error messages
 
  - **`ERROR: Could not set arcpy environment (permissions and licenses?).`**
     - *Cause:*   A script using `arcpy` and / or `arcpy.sa` could not set up the work environment.
-    - *Remedy:*  Either the wrong *Python* interpreter was used or `arcpy` and / or a *Spatial Analyst* extension are not available. [Read more on setting up the Python environment.](https://github.com/RiverArchitect/Welcome/wiki/Installation#started)
+    - *Remedy:*  Either the wrong *Python* interpreter was used or `arcpy` and / or a *Spatial Analyst* extension are not available. [Read more on setting up the Python environment.](https://github.com/RiverArchitect/RA_wiki/wiki/Installation#started)
 	
  - **`ERROR: Could not transfer net SHArea gain.`**
     - *Cause:*   The `main()` function in `ProjectMaker/s40_compare_wua.py` raises this error message when it could not copy the calculated SHArea from `SHArea_evaluation_unit.xlsx` to **`REACH_stn_costs_vii.xlsx`**.
@@ -503,7 +503,7 @@ Error messages
         + Consider replacing corrupted threshold workbooks with the original file.
 
  - **`ERROR: Invalid file name or data.`**
-    - *Cause:*   Error raised by the `save_close_wb(self, *args)` function of the `MakeTable()` or `Write()` class in `.site_packages/riverpy/cMakeTable.py`) or `RiverArchitect/.site_packages/riverpy/cInputOutput.py`), respectively, when it cannot save a workbook (typically `RiverArchitect/SHArC/SHArea/CONDITION_fil.xlsx` or a copy of the [cost master workbook](https://github.com/RiverArchitect/Welcome/wiki/ProjectMaker#pmcq)).
+    - *Cause:*   Error raised by the `save_close_wb(self, *args)` function of the `MakeTable()` or `Write()` class in `.site_packages/riverpy/cMakeTable.py`) or `RiverArchitect/.site_packages/riverpy/cInputOutput.py`), respectively, when it cannot save a workbook (typically `RiverArchitect/SHArC/SHArea/CONDITION_fil.xlsx` or a copy of the [cost master workbook](https://github.com/RiverArchitect/RA_wiki/wiki/ProjectMaker#pmcq)).
     - *Remedy:*
         + [*SHArC*][6]: Close all applications that may use `CONDITION_fil.xlsx` and ensure that its template exists. Detailed information on [*SHArC*][6] workbook outputs are available in the [HHSI input preparation](SHArC#hemakehsi).
         + [*ProjectMaker*][7]:  Close all applications that may use the cost master workbook (`REACH_stn_costs_VERSION.xlsx`) and ensure that it exists. Detailed information are available in [ProjectMaker Cost quantity section](ProjectMaker#pmcq).
@@ -553,7 +553,7 @@ Error messages
     - *Remedy:*
         + [*LifespanDesign*][3]: If a layout was modified ([see default list](Mapping#standard-layouts)), ensure that links to databases and datasets are correct.
         + [*MaxLifespan*][4]: Ensure that all relevant layouts ([see default list](Mapping#standard-layouts)) are contained in the *ArcGIS* project file (see [mapping descriptions](Mapping#about-mapping-with-river-architect)). If needed, add new layouts after code modifications (the [MaxLifespan module code modification possibilities](MaxLifespan#actcode)).
-	    + [[VolumeAssessment]]: Ensure that all relevant layouts ([see default list](VolumeAssessment#vamap)) are contained in the *ArcGIS* project file (see [mapping descriptions](Mapping#about-mapping-with-river-architect)).
+	    + <a href="VolumeAssessment">VolumeAssessment</a>: Ensure that all relevant layouts ([see default list](VolumeAssessment#vamap)) are contained in the *ArcGIS* project file (see [mapping descriptions](Mapping#about-mapping-with-river-architect)).
 
 
  - **`ERROR: Missing (or wrong format of) Raster input definitions.`**
@@ -705,7 +705,7 @@ Error messages
 
 - **`OSError: ....`**
     - *Cause:*   `arcpy` raises this error for various reasons; in particular, if code was modified or the code environment is not set up properly.
-    - *Remedy:*  Check the correct installation of *River Architect* and input files (refer to the [[Installation]]  and [[Signposts]] pages and use the [correct Python environment](Installation#install-and-get-started)). Make sure that no other program uses files required by *River Architect*.
+    - *Remedy:*  Check the correct installation of *River Architect* and input files (refer to the <a href="Installation">Installation</a>  and <a href="Signposts">Signposts</a> pages and use the [correct Python environment](Installation#install-and-get-started)). Make sure that no other program uses files required by *River Architect*.
 
 - **`WindowsError: [Error 32] The process cannot access the file because ...`**
     - *Cause:*   Files in the `.cache` folder or the `Output` folder are used by another program.
@@ -743,7 +743,7 @@ Warning messages
     - *Cause:*   Raised by the `zoom2map(...)` function of the `Mapper()` class (`.site_packages/riverpy/cMapper.py`) when it cannot interprete the provided coordinates.
     - *Remedy:*
 	    + All modules: Ensure that the [`mapping.inp`](Signposts#inpfile) and the [`reach definitions`](RiverReaches) files contain valid data.
-    	+ [[LifespanDesign]]: Ensure that either a correct background Raster dataset was defined prior to mapping.
+    	+ <a href="LifespanDesign">LifespanDesign</a>: Ensure that either a correct background Raster dataset was defined prior to mapping.
 
 
  - **`WARNING: computation_extents.xls contains too many reach names.`**
@@ -892,15 +892,15 @@ Warning messages
     - *Remedy:*  Trace back earlier error and warning messages. Ensure that no other program uses `VolumeAssessment/Output/CONDITION_volumes.xlsx` or `VolumeAssessment/.templates/volume_template.xlsx` and that both workbooks have not been accidentally deleted.
 
 
-[1]: https://github.com/RiverArchitect/Welcome/wiki/Installation
-[2]: https://github.com/RiverArchitect/Welcome/wiki/Signposts
-[3]: https://github.com/RiverArchitect/Welcome/wiki/LifespanDesign
-[4]: https://github.com/RiverArchitect/Welcome/wiki/MaxLifespan
-[5]: https://github.com/RiverArchitect/Welcome/wiki/ModifyTerrain
-[6]: https://github.com/RiverArchitect/Welcome/wiki/SHArC
-[7]: https://github.com/RiverArchitect/Welcome/wiki/ProjectMaker
-[8]: https://github.com/RiverArchitect/Welcome/wiki/Tools
-[9]: https://github.com/RiverArchitect/Welcome/wiki/FAQ
-[10]: https://github.com/RiverArchitect/Welcome/wiki/Troubleshooting
+[1]: https://github.com/RiverArchitect/RA_wiki/wiki/Installation
+[2]: https://github.com/RiverArchitect/RA_wiki/wiki/Signposts
+[3]: https://github.com/RiverArchitect/RA_wiki/wiki/LifespanDesign
+[4]: https://github.com/RiverArchitect/RA_wiki/wiki/MaxLifespan
+[5]: https://github.com/RiverArchitect/RA_wiki/wiki/ModifyTerrain
+[6]: https://github.com/RiverArchitect/RA_wiki/wiki/SHArC
+[7]: https://github.com/RiverArchitect/RA_wiki/wiki/ProjectMaker
+[8]: https://github.com/RiverArchitect/RA_wiki/wiki/Tools
+[9]: https://github.com/RiverArchitect/RA_wiki/wiki/FAQ
+[10]: https://github.com/RiverArchitect/RA_wiki/wiki/Troubleshooting
 [sourcecode]: https://github.com/sschwindt/RiverArchitect_development/archive/master.zip
 [wyrick14]: https://www.sciencedirect.com/science/article/pii/S0169555X14000099

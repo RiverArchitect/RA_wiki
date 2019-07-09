@@ -3,8 +3,8 @@ redirect_from: "/"
 ---
 
 
-Welcome to the River Architect Wiki
-======================================================
+River Architect Wiki
+====================
 <details><summary> Table of Contents </summary><p>
   <ol>
   <li><a href="Installation">Installation</a>
@@ -16,14 +16,13 @@ Welcome to the River Architect Wiki
     </ul></li>
   <li><a href="Signposts">Get started, terminology and signposts</a>
     <ul>
-      <li><a href="Signposts#getstarted">Welcome and <em>Condition</em> creation</a></li>
+      <li><a href="Signposts#getstarted">Welcome and <em>Condition</em> creation</a>
       <ul>
         <li><a href="Signposts#new-condition">Create <em>Condition</em>s</a></li>
         <li><a href="Signposts#ana-flows">Analyze Flows</a></li>
         <li><a href="Signposts#inpfile">Input definition files</a></li>
         <li><a href="Signposts#inmaps">Map extent definition files</a></li>
-      </ul>
-      </li>
+      </ul></li>
       <li><a href="Signposts#terms">Geofile conventions</a></li>
       <li><a href="Signposts#inputs">Prepare input Rasters</a></li>
     </ul></li>
@@ -164,9 +163,9 @@ The procedure of project design following the flowchart involves the following s
 
     -   Re-compile the flow depth and velocity maps (re-run 2D model) with the modified DEM.
 
-    -   Verify the suitability of the modified DEM (e.g., barrier height to ensure flood safety and habitat suitability with the [[SHArC]] module); if the verification show weaknesses adapt the terraforming and re-compile the flow depth and velocity maps until terraforming is satisfactory.
+    -   Verify the suitability of the modified DEM (e.g., barrier height to ensure flood safety and habitat suitability with the <a href="SHArC">SHArC</a> module); if the verification show weaknesses adapt the terraforming and re-compile the flow depth and velocity maps until terraforming is satisfactory.
 
-    -   Use the *[[VolumeAssessment]]* module (Morphology tab) to compare pre- (initial) and post-project (modified) DEMs for determining required excavation and fill volumes.
+    -   Use the *<a href="VolumeAssessment">VolumeAssessment</a>* module (Morphology tab) to compare pre- (initial) and post-project (modified) DEMs for determining required excavation and fill volumes.
 
 8.  Apply the [*LifespanDesign*][3] module to [vegetation plantings](River-design-features#plants) and [(other) bioengineering features](River-design-features#bioeng) based on the terraformed DEM (or the original / initial DEM if no terraforming applies).
 
@@ -179,23 +178,23 @@ The procedure of project design following the flowchart involves the following s
 
 12. Use the [*SHArC*][6] to assess the *"existing"* (pre-project) and *"with implementation"* (post-project) habitat suitability in terms of annually usable habitat area (SHArea).
 
-13. Use the *[[ProjectMaker]]* to calculate costs, the net gain in SHArea, and their ratio as a metric defining the project trade-off.
+13. Use the *<a href="ProjectMaker">ProjectMaker</a>* to calculate costs, the net gain in SHArea, and their ratio as a metric defining the project trade-off.
 
-The working principles of the [*LifespanDesign*][3], [*MaxLifespan*][4], [*ModifyTerrain*][5], *[[VolumeAssessment]]*, [*SHArC*][6], and [*ProjectMaker*][7] modules are explained on their own Wiki pages. The differentiation between [terraforming (framework)](River-design-features#featoverview), [vegetation plantings and other bioengineering](River-design-features#featoverview), and [connectivity features](River-design-features#featoverview) is described within the [LifespanDesign Wiki](River-design-features). The [[Installation]] Wiki pages describe the propper installation, file organization and environment of *River Architect*.
+The working principles of the [*LifespanDesign*][3], [*MaxLifespan*][4], [*ModifyTerrain*][5], *<a href="VolumeAssessment">VolumeAssessment</a>*, [*SHArC*][6], and [*ProjectMaker*][7] modules are explained on their own Wiki pages. The differentiation between [terraforming (framework)](River-design-features#featoverview), [vegetation plantings and other bioengineering](River-design-features#featoverview), and [connectivity features](River-design-features#featoverview) is described within the [LifespanDesign Wiki](River-design-features). The <a href="Installation">Installation</a> Wiki pages describe the propper installation, file organization and environment of *River Architect*.
 
 ***
 
-[1]: https://github.com/RiverArchitect/Welcome/wiki/Installation
-[2]: https://github.com/RiverArchitect/Welcome/wiki/Signposts
-[3]: https://github.com/RiverArchitect/Welcome/wiki/LifespanDesign
-[4]: https://github.com/RiverArchitect/Welcome/wiki/MaxLifespan
-[5]: https://github.com/RiverArchitect/Welcome/wiki/ModifyTerrain
-[6]: https://github.com/RiverArchitect/Welcome/wiki/SHArC
-[60]: https://github.com/RiverArchitect/Welcome/wiki/EcoMorphology
-[7]: https://github.com/RiverArchitect/Welcome/wiki/ProjectMaker
-[8]: https://github.com/RiverArchitect/Welcome/wiki/Tools
-[9]: https://github.com/RiverArchitect/Welcome/wiki/FAQ
-[10]: https://github.com/RiverArchitect/Welcome/wiki/Troubleshooting
+[1]: https://github.com/RiverArchitect/RA_wiki/wiki/Installation
+[2]: https://github.com/RiverArchitect/RA_wiki/wiki/Signposts
+[3]: https://github.com/RiverArchitect/RA_wiki/wiki/LifespanDesign
+[4]: https://github.com/RiverArchitect/RA_wiki/wiki/MaxLifespan
+[5]: https://github.com/RiverArchitect/RA_wiki/wiki/ModifyTerrain
+[6]: https://github.com/RiverArchitect/RA_wiki/wiki/SHArC
+[60]: https://github.com/RiverArchitect/RA_wiki/wiki/EcoMorphology
+[7]: https://github.com/RiverArchitect/RA_wiki/wiki/ProjectMaker
+[8]: https://github.com/RiverArchitect/RA_wiki/wiki/Tools
+[9]: https://github.com/RiverArchitect/RA_wiki/wiki/FAQ
+[10]: https://github.com/RiverArchitect/RA_wiki/wiki/Troubleshooting
 [11]: https://www.sciencedirect.com/science/article/pii/S0301479718312751
 [12]: http://www.sciencedirect.com/science/article/pii/S1001627918300350
 [13]: https://ascelibrary.org/doi/abs/10.1061/%28ASCE%29HY.1943-7900.0001286

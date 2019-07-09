@@ -26,7 +26,7 @@ More to come...
 
 # Defining Travel Thresholds
 
-Whether or not areas are considered to be connected/navigable for a given fish species/lifestage is dependent upon travel thresholds that are defined in the `Fish.xlsx` workbook (see [[ShArC]] for more details). These include a minimum swimming depth and maximum swimming speed.
+Whether or not areas are considered to be connected/navigable for a given fish species/lifestage is dependent upon travel thresholds that are defined in the `Fish.xlsx` workbook (see <a href="SHArC">SHArC</a> for more details). These include a minimum swimming depth and maximum swimming speed.
 
 # References
 

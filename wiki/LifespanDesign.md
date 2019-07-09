@@ -22,7 +22,7 @@ Survival thresholds applied to a sequence of habitat enhancement features can be
 
 -   **Lifespan maps** qualitatively indicate areas where features make sense and the associated feature lifetime estimate in years.
 
--   **Design maps** indicate dimensional requirements for achieving the success of a feature (e.g., the minimum required [log diameter for the stability of wood / LWM](https://github.com/RiverArchitect/Welcome/wiki/River-design-features#elj)).
+-   **Design maps** indicate dimensional requirements for achieving the success of a feature (e.g., the minimum required [log diameter for the stability of wood / LWM](https://github.com/RiverArchitect/RA_wiki/wiki/River-design-features#elj)).
 
 This Wiki page explains the usage of the *LifespanDesign* module and it is structured as follows:
 
@@ -238,16 +238,16 @@ The GUI can be closed via the `Close` dropdown menu if no background processes a
 
 
 
-[1]: https://github.com/RiverArchitect/Welcome/wiki/Installation
-[2]: https://github.com/RiverArchitect/Welcome/wiki/Signposts
-[3]: https://github.com/RiverArchitect/Welcome/wiki/LifespanDesign
-[4]: https://github.com/RiverArchitect/Welcome/wiki/MaxLifespan
-[5]: https://github.com/RiverArchitect/Welcome/wiki/ModifyTerrain
-[6]: https://github.com/RiverArchitect/Welcome/wiki/SHArC
-[7]: https://github.com/RiverArchitect/Welcome/wiki/ProjectMaker
-[8]: https://github.com/RiverArchitect/Welcome/wiki/Tools
-[9]: https://github.com/RiverArchitect/Welcome/wiki/FAQ
-[10]: https://github.com/RiverArchitect/Welcome/wiki/Troubleshooting
+[1]: https://github.com/RiverArchitect/RA_wiki/wiki/Installation
+[2]: https://github.com/RiverArchitect/RA_wiki/wiki/Signposts
+[3]: https://github.com/RiverArchitect/RA_wiki/wiki/LifespanDesign
+[4]: https://github.com/RiverArchitect/RA_wiki/wiki/MaxLifespan
+[5]: https://github.com/RiverArchitect/RA_wiki/wiki/ModifyTerrain
+[6]: https://github.com/RiverArchitect/RA_wiki/wiki/SHArC
+[7]: https://github.com/RiverArchitect/RA_wiki/wiki/ProjectMaker
+[8]: https://github.com/RiverArchitect/RA_wiki/wiki/Tools
+[9]: https://github.com/RiverArchitect/RA_wiki/wiki/FAQ
+[10]: https://github.com/RiverArchitect/RA_wiki/wiki/Troubleshooting
 
 [bywater15]: http://dx.doi.org/10.1002/2014WR016641
 [carley12]: https://www.sciencedirect.com/science/article/pii/S0169555X12003819

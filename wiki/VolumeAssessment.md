@@ -39,7 +39,7 @@ Second, select an input DEM Raster (*GeoTIFF*).  Third, select a modified DEM Ra
 
 
 ## Input: Set Reaches<a name="vasetreaches"></a>
-For changing [reach definitions](RiverReaches), please refer to the [reach wiki pages](RiverReaches). Keep in mind that changing [reach definitions](RiverReaches) also affects the [[LifespanDesign]] and the [[ModifyTerrain]] modules.
+For changing [reach definitions](RiverReaches), please refer to the [reach wiki pages](RiverReaches). Keep in mind that changing [reach definitions](RiverReaches) also affects the <a href="LifespanDesign">LifespanDesign</a> and the <a href="ModifyTerrain">Modify Terrain</a> modules.
 A particularity of this module is that it enables running analysis for specific river reaches, which can be renamed and the reach extents can be modified. By default, the module analyzes all reaches which are defined in a spreadsheet stored in
 `/VolumeAssessment/.templates/computation_extents.xlsx`.
 
@@ -103,12 +103,12 @@ The `lod` variable serves for the elimination of virtual terrain differences tha
 ```
 
 
-[1]: https://github.com/RiverArchitect/Welcome/wiki/Installation
-[2]: https://github.com/RiverArchitect/Welcome/wiki/Signposts
-[3]: https://github.com/RiverArchitect/Welcome/wiki/LifespanDesign
-[4]: https://github.com/RiverArchitect/Welcome/wiki/MaxLifespan
-[5]: https://github.com/RiverArchitect/Welcome/wiki/VolumeAssessment
-[6]: https://github.com/RiverArchitect/Welcome/wiki/SHArC
-[7]: https://github.com/RiverArchitect/Welcome/wiki/ProjectMaker
-[8]: https://github.com/RiverArchitect/Welcome/wiki/Tools
-[9]: https://github.com/RiverArchitect/Welcome/wiki/FAQ
+[1]: https://github.com/RiverArchitect/RA_wiki/wiki/Installation
+[2]: https://github.com/RiverArchitect/RA_wiki/wiki/Signposts
+[3]: https://github.com/RiverArchitect/RA_wiki/wiki/LifespanDesign
+[4]: https://github.com/RiverArchitect/RA_wiki/wiki/MaxLifespan
+[5]: https://github.com/RiverArchitect/RA_wiki/wiki/VolumeAssessment
+[6]: https://github.com/RiverArchitect/RA_wiki/wiki/SHArC
+[7]: https://github.com/RiverArchitect/RA_wiki/wiki/ProjectMaker
+[8]: https://github.com/RiverArchitect/RA_wiki/wiki/Tools
+[9]: https://github.com/RiverArchitect/RA_wiki/wiki/FAQ

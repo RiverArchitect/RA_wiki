@@ -191,7 +191,7 @@ Further aspects may be considered in addition to the implemented parameters:
 
 ## Plantings<a name="plants"></a>
 
-The survival analysis of plantings assumes a general cutting length of min. 2.1 m (7 ft), where approximately 80*\%* of the cuttings are planted in the ground and 20*\%* protrude above the ground. The *[[LifespanDesign]]* module enables the differentiation between up to four indigenous plant species that are relevant for habitat enhancement. The installation contains threshold parameters for **lifespan maps** for the following plant species native to Northern California (referred to as "sample case"). The depth to the groundwater `d2w` thresholds correspond to naturally observed occurrences. **No design maps** are created because the lifespan maps already contain all relevant information.
+The survival analysis of plantings assumes a general cutting length of min. 2.1 m (7 ft), where approximately 80*\%* of the cuttings are planted in the ground and 20*\%* protrude above the ground. The *<a href="LifespanDesign">LifespanDesign</a>* module enables the differentiation between up to four indigenous plant species that are relevant for habitat enhancement. The installation contains threshold parameters for **lifespan maps** for the following plant species native to Northern California (referred to as "sample case"). The depth to the groundwater `d2w` thresholds correspond to naturally observed occurrences. **No design maps** are created because the lifespan maps already contain all relevant information.
 
 -   Box Elder (*Acer Negundo*)
 	+  `h` (exclude all submerged regions for more than *Q<sub>sub</sub>*, which persists for more than 85 consecutive days according to [Friedman and Auble 1999][friedman99])
@@ -373,16 +373,16 @@ Detailed instructions for the usage of `threshold_values.xlsx` is provided in th
 `RiverArchitect/LifespanDesign/.templates/threshold_values - Copy.xlsx`
 
 
-[1]: https://github.com/RiverArchitect/Welcome/wiki/Installation
-[2]: https://github.com/RiverArchitect/Welcome/wiki/Signposts
-[3]: https://github.com/RiverArchitect/Welcome/wiki/LifespanDesign
-[4]: https://github.com/RiverArchitect/Welcome/wiki/MaxLifespan
-[5]: https://github.com/RiverArchitect/Welcome/wiki/ModifyTerrain
-[6]: https://github.com/RiverArchitect/Welcome/wiki/SHArC
-[7]: https://github.com/RiverArchitect/Welcome/wiki/ProjectMaker
-[8]: https://github.com/RiverArchitect/Welcome/wiki/Tools
-[9]: https://github.com/RiverArchitect/Welcome/wiki/FAQ
-[10]: https://github.com/RiverArchitect/Welcome/wiki/Troubleshooting
+[1]: https://github.com/RiverArchitect/RA_wiki/wiki/Installation
+[2]: https://github.com/RiverArchitect/RA_wiki/wiki/Signposts
+[3]: https://github.com/RiverArchitect/RA_wiki/wiki/LifespanDesign
+[4]: https://github.com/RiverArchitect/RA_wiki/wiki/MaxLifespan
+[5]: https://github.com/RiverArchitect/RA_wiki/wiki/ModifyTerrain
+[6]: https://github.com/RiverArchitect/RA_wiki/wiki/SHArC
+[7]: https://github.com/RiverArchitect/RA_wiki/wiki/ProjectMaker
+[8]: https://github.com/RiverArchitect/RA_wiki/wiki/Tools
+[9]: https://github.com/RiverArchitect/RA_wiki/wiki/FAQ
+[10]: https://github.com/RiverArchitect/RA_wiki/wiki/Troubleshooting
 
 [busch95]: https://doi.org/10.2307/2937064
 [bywater15]: http://dx.doi.org/10.1002/2014WR016641
