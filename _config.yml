@@ -1,7 +1,7 @@
 # (string) Title of your wiki
 title: River Architect
 # (string) Description of your wiki
-description: Wiki \& User Guide
+description: Wiki & User Guide
 # (boolean) Enable/disable wiki page list in sidebar
 show_wiki_pages: true
 # (integer) Maximum number of wiki page to shown in sidebar
