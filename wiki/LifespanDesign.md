@@ -43,8 +43,8 @@ After successful [Installation][1] and the creation of at least one [*Condition*
 To begin with lifespan/design mapping, click on the drop-down menu "Add Features" and select relevant features. Multiple selection is possible and will extend the "Selected features" list. The *LifespanDesign* module enables the selection of the feature groups of ["terraforming" (framework)](River-design-features#featoverview), ["vegetation plantings"](River-design-features#plants), ["other (soil) bioengineering"](River-design-features#bioeng) and ["connectivity / maintenance"](#featoverview). 
 
 ## Input: Condition and preparation of Rasters<a name="inpras"></a>
-The names of input Raster files are defined in a proper file format (*.inp*), which can be changed directly from the GUI button "Modify Raster input". The *.inp* files indicate after the `#` if it requires a single Raster name only (`STRING`) or a list of Rasters (min. two Rasters, `LIST`). _The extension **.tif** is not required for in the Raster names._\
-The maximum number of hydraulic Rasters is unlimited. The lifespans related to the hydraulic Rasters are also defined in the [separate *.inp* file](Signposts#inpfile). The [Get Started](Signposts#inpfile) module provides routines for setting up input files that must be stored as `RiverArchitect/01_Conditions/CONDITION/input_definitions.inp` for every [*Condition*](Signposts#conditions).\
+The names of input Raster files are defined in a proper file format (*.inp*), which can be changed directly from the GUI button "Modify Raster input". The *.inp* files indicate after the `#` if it requires a single Raster name only (`STRING`) or a list of Rasters (min. two Rasters, `LIST`). _The extension **.tif** is not required for in the Raster names._<br/>
+The maximum number of hydraulic Rasters is unlimited. The lifespans related to the hydraulic Rasters are also defined in the [separate *.inp* file](Signposts#inpfile). The [Get Started](Signposts#inpfile) module provides routines for setting up input files that must be stored as `RiverArchitect/01_Conditions/CONDITION/input_definitions.inp` for every [*Condition*](Signposts#conditions).<br/>
 Modifications of [map extents](Signposts#inpmaps) can be made by clicking on the "Modify map extent" button or (un-)check the `Limit computation extent to background (back.tif) Raster` box.
 
 
@@ -62,18 +62,18 @@ When defining threshold values in *threshold\_values.xlsx* carefully study the f
 	1. **Flow depth** starting with the lowest discharge to the highest discharge Raster (`hQQQQQQ.tif`). A threshold value for the flow depth above which a feature will fail can be defined in row 11 in *threshold\_values.xlsx*.
 	1. **Flow velocity** starting with the lowest discharge to the highest discharge Raster (`uQQQQQQ.tif`). A threshold value for the velocity above which a feature will fail can be defined in row 12 in *threshold\_values.xlsx*.
 1. **Dimensionless hydraulic parameter** analysis:
-	1. **Dimensionless bed shear stress**  &tau;<sub>\*</sub> calculated as\
-	   `ras_taux` = \{&rho;<sub>w</sub> · \[`uQQQQQQ` / (5.75 * Log<sub>10</sub>(12.2 · `hQQQQQQ` / (2 · 2.2 · `dmean`)))\]<sup>2</sup>\} / \[&rho;<sub>w</sub> · *g* (*s* - 1) · `dmean`\] \
+	1. **Dimensionless bed shear stress**  &tau;<sub>\*</sub> calculated as<br/>
+	   `ras_taux` = \{&rho;<sub>w</sub> · \[`uQQQQQQ` / (5.75 * Log<sub>10</sub>(12.2 · `hQQQQQQ` / (2 · 2.2 · `dmean`)))\]<sup>2</sup>\} / \[&rho;<sub>w</sub> · *g* (*s* - 1) · `dmean`\] <br/>
 	   where
 	   + A threshold value for mobility according to the critical dimensionless bed shear stress &tau;<sub>\*, cr</sub> can be defined in row 6 of *threshold\_values.xlsx* (read more for example in [Lamb et al. 2008](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2007JF000831))
 	   + &rho;<sub>w</sub> = water density (1000 kg / m<sup>3</sup>) 
 	   + `uQQQQQQ` (m/s or fps), `hQQQQQQ` (m or ft), and `d84` = 2.2 · `dmean` (m or ft) are `arcpy.Raster()`s considering that the grain diameter *D<sub>84</sub>* can be approximated by *D<sub>84</sub>* = 2.2 · *D<sub>50</sub>* ([Rickenmann and Recking 2011](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2010WR009793))
 	   + *g* = gravitational acceleration (9.81 m/s<sup>2</sup>)
 	   + *s* = ratio of sediment grain and water density (2.68)
-	1. **Froude number** *Fr* as\
+	1. **Froude number** *Fr* as<br/>
 	   `ras_Fr` = `uQQQQQQ` / (*g* · `hQQQQQQ`)<sup>1/2</sup>
 	   + A threshold value for mobility according to the Froude number can be defined in row 13 of *threshold\_values.xlsx*
-	1. **Mobile grains** (bed mobility) `ras_Dcr`, fine sediment `ras_Dcf` size Rasters as:\
+	1. **Mobile grains** (bed mobility) `ras_Dcr`, fine sediment `ras_Dcf` size Rasters as:<br/>
 	   `ras_Dcx` =  =  *SF* · `uQQQQQQ`<sup>2</sup> · *n*<sup>2</sup> / \[(*s* - 1) · `hQQQQQQ`<sup>1/3</sup> · &tau;<sub>\*, cr</sub> \]
 	   where
 	   + &tau;<sub>\*, cr</sub> is the critical dimensionless bed shear stress (i.e., threshold value) above which sediment is mobile (read more for example in [Lamb et al. 2008](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2007JF000831)). &tau;<sub>\*, cr</sub> can be defined in row 6 of *threshold\_values.xlsx*.
@@ -113,25 +113,25 @@ More information on threshold values is provided in the [Feature](River-design-f
 
 ## Input: Optional arguments<a name="lfinpopt"></a>
 
-The checkbox "Include mapping after Raster preparation" provides the optional automated [mapping of results](#outmaps).\
-The checkbox "Apply wildcard Raster to spatially confine analysis" can be checked to use a *Condition*'s `wild.tif` Raster for spatial limitation of the results. This application makes sense for example if the wildcard Raster contains particular land parcels, where the owner wants to foster habitat enhancement.\
-The checkbox "Apply habitat matching" provides the option of habitat matching to regions where the habitat suitability index is low (<0.5, see explanations in the [SHArC][6] module.\
-Switching between unit systems (U.S. customary or SI - metric) is possible via the drop-down menu "Units"; please note that the unit system needs to be consistent with all input Raster files.\
+The checkbox "Include mapping after Raster preparation" provides the optional automated [mapping of results](#outmaps).<br/>
+The checkbox "Apply wildcard Raster to spatially confine analysis" can be checked to use a *Condition*'s `wild.tif` Raster for spatial limitation of the results. This application makes sense for example if the wildcard Raster contains particular land parcels, where the owner wants to foster habitat enhancement.<br/>
+The checkbox "Apply habitat matching" provides the option of habitat matching to regions where the habitat suitability index is low (<0.5, see explanations in the [SHArC][6] module.<br/>
+Switching between unit systems (U.S. customary or SI - metric) is possible via the drop-down menu "Units"; please note that the unit system needs to be consistent with all input Raster files.<br/>
 [Manning\'s *n*][manningsn] (in s/m<sup>1/3</sup>) is used in the grain mobility analysis ([Angular boulder feature descriptions](River-design-features)) to determine shear velocity that acts on grains. The default value is 0.0473934 s/m<sup>1/3</sup> (the GUI only shows the first three decimal places), which corresponds to a global optimum in the sample case (gravel-cobble bed river). Even if the unit system is set to U.S. customary, Manning's *n* is defined in the GUI in SI-metric units (an internal conversion factor of *k* = 1.49 (i.e., *n* / *k* is automatically applied for U.S. customary unit settings). The logfiles (produced during the program execution) will state the applied Manning's *n* value if used.
 
 ## Run<a name="lfrungui"></a>
 
-Once all inputs are defined, click on "Run" (drop-down menu) and "Verify settings" to ensure the consistency of the settings (the window will freeze for some seconds). After successful verification, the selected options change to green font.\
+Once all inputs are defined, click on "Run" (drop-down menu) and "Verify settings" to ensure the consistency of the settings (the window will freeze for some seconds). After successful verification, the selected options change to green font.<br/>
 The "Run" drop-down menu provides the following functions:
 
 -   `Raster Maker` prepares lifespan and design Rasters in the directory `RiverArchitect/LifespanDesign/Output/Rasters/CONDITION/`
 
--   `Map Maker` prepares project maps and *PDF* assemblies in the directory `RiverArchitect/02_Maps/CONDITION/`;\
-	Before running `Map Maker`, ensure that the correct background image (`01_Conditions/CONDITION/back.tif`) is linked in the project template file `RiverArchitect/02_Maps/templates/river_template.aprx`.\
+-   `Map Maker` prepares project maps and *PDF* assemblies in the directory `RiverArchitect/02_Maps/CONDITION/`;<br/>
+	Before running `Map Maker`, ensure that the correct background image (`01_Conditions/CONDITION/back.tif`) is linked in the project template file `RiverArchitect/02_Maps/templates/river_template.aprx`.<br/>
 	 	The mapping extents can be modified using the [`mapping.inp` input file](Signposts#inpmap) and the [[Mapping]] Wiki explains how the symbology, layouts and other extent settings may be modified.
 
-Either "Run" option causes a run confirmation window popping up and clicking "OK" calls the analysis, which will run in the background Python window and it freezes the GUI windows. Running the `Raster Maker` may take 0.1 to 10 hours, depending on the input Raster size, feature set and habitat matching options.\
-After the analysis, the GUI unfreezes and a new button invites to read the logfiles with run information, as well as error and warning messages that may have occurred during the analysis.\
+Either "Run" option causes a run confirmation window popping up and clicking "OK" calls the analysis, which will run in the background Python window and it freezes the GUI windows. Running the `Raster Maker` may take 0.1 to 10 hours, depending on the input Raster size, feature set and habitat matching options.<br/>
+After the analysis, the GUI unfreezes and a new button invites to read the logfiles with run information, as well as error and warning messages that may have occurred during the analysis.<br/>
 Alternatively, the lifespan mapping functions can be imported in other *Python* applications (without the GUI) as described in the following [Alternative Run options](#lfrun).
 
 ## Alternative run options<a name="lfrun"></a>
@@ -146,13 +146,13 @@ The alternative run options are relevant for example to batch process several [*
 
 1.  Prepare input data in `.../01_Conditions/CONDITION/` and adapt the background layer image datasets in `RiverArchitect/02_Maps/templates/river_template.aprx`
 
-1.  Go to *ArcPro*s Python folder and double-click one of the following:\
-    `C:\Program Files\ArcGIS\Pro\bin\Python\scripts\propy.bat` or\
+1.  Go to *ArcPro*s Python folder and double-click one of the following:<br/>
+    `C:\Program Files\ArcGIS\Pro\bin\Python\scripts\propy.bat` or<br/>
     `C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\python.exe`
 
 1.  Enter `import os`
 
-1.  Navigate to the script direction using the command `os.chdir("ScriptDirectory")`\
+1.  Navigate to the script direction using the command `os.chdir("ScriptDirectory")`<br/>
     Example: `os.chdir("D:/Python/RiverArchitect/LifespanDesign/")`
 
 1.  Import the module: `import feature_analysis as fa`
@@ -169,12 +169,12 @@ The following steps illustrate the application for creating Rasters.
 
 -   The code is now running (this takes two to four hours) and it will prompt its activities.
 
--   Alternatively, the analysis can be limited to some features only (count 2 to 60 minutes per feature for input Raster sizes of 5MB and 1GB, respectively). `fa.raster_maker("condition", ∗args)` accepts optional arguments that are `feature_list`, which enables the analysis of any feature listed in the [Features](#features) section. Some examples for particular applications:\
-    -> Example 1: `fa.raster_maker("condition", ["Plantings"])` analyzes plantings only.\
-    -> Example 2: `fa.raster_maker("condition", ["Plantings", "Boulders/rocks"], True)`analyses plantings and angular boulders (rocks / riprap) only with an optional argument that activates the creation of layouts for plantings and angular boulders (rocks).\
+-   Alternatively, the analysis can be limited to some features only (count 2 to 60 minutes per feature for input Raster sizes of 5MB and 1GB, respectively). `fa.raster_maker("condition", ∗args)` accepts optional arguments that are `feature_list`, which enables the analysis of any feature listed in the [Features](#features) section. Some examples for particular applications:<br/>
+    -> Example 1: `fa.raster_maker("condition", ["Plantings"])` analyzes plantings only.<br/>
+    -> Example 2: `fa.raster_maker("condition", ["Plantings", "Boulders/rocks"], True)`analyses plantings and angular boulders (rocks / riprap) only with an optional argument that activates the creation of layouts for plantings and angular boulders (rocks).<br/>
     -> Example 3: `fa.raster_maker("2008_rrr")`analyses all available [features](#features).
 
--   The complete list of optional arguments of is as follows:\
+-   The complete list of optional arguments of is as follows:<br/>
     *Hint: Respecting the order of optional arguments is crucial to ensure proper application of the desired analysis options.*
 
     - `args[0] = feature_list` as above described.
@@ -203,12 +203,12 @@ The second alternative run option for the *LifespanDesign* module is to run it a
 
 1.  Launch terminal (Start -> type `cmd`)
 
-2.  Navigate to the place where *ArcGIS* `python.exe` is stored:\
+2.  Navigate to the place where *ArcGIS* `python.exe` is stored:<br/>
     For example: `C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\`
 
 3.  Run as script: `python.exe DriveLetter:\...\LifespanDesign\feature_analysis("condition", ["Featurename"])` 
 
-4.  The code asks for a condition, which needs to be typed case-sensitive and without any apostrophes:\
+4.  The code asks for a condition, which needs to be typed case-sensitive and without any apostrophes:<br/>
     For example: `Enter the condition (shape: >> XXXX (e.g., >> 2008))>> 2008`
 
 5.  Next, the code asks for a `feature_list`, which is and optional argument (simply hitting enter works though); the feature list must be typed as list (in brackets): `Enter the condition (no mandatory; do not forget brackets − example: >> ["Featurename1", "Featurename2"] >> ["Sidecavity", "Bermsetback"]`
