@@ -18,6 +18,7 @@ River Builder
 The geometric parameters consitute synthetic river valleys, which represent nature-like alluvial channel beds and floodplains. The conceptual approach for designing synthetic river valleys with *River Builder* is described by [Brown and Pasternack (2019)][brown19] and [Brown et al. (2014)][brown14].
 
 ![rbillu](http://pasternack.ucdavis.edu/application/files/thumbnails/large/6315/5940/6557/S5tweak_v2.jpg)
+<br/>
 *Synthetic river valley created with [River Builder][rb] (credits: Gregory B. Pasternack).*
 
 The synthetic river valley concept produces geodata that can be imported in GIS software (see above illustration), but without reference to real world coordinates and hydraulic boundary conditions.
