@@ -24,6 +24,8 @@ SHArC - Code modification
   * [Cover HSI combination methods](SHArC-working-principles#hecombinecov)
   * [Usable habitat area calculation](SHArC-working-principles#hewuamethods)
 - **More about Aquatic Ambiances and Modifying `Fish.xlsx`**
+
+
 ***
 
 # Fish species and lifestages

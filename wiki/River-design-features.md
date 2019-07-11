@@ -57,6 +57,7 @@ Changes in this workbook should limit to cells with `INPUT`-type formatting and 
 
 In addition, the *River Architect* provides the option of limiting restoration feature maps to zones of low habitat suitability (see details in the descriptions of the [*SHArC*][6] module).
 
+***
 
 # Predefined features and hypotheses<a name="feat"></a>
 
@@ -355,7 +356,7 @@ Unless this problem is not solved, the package indicates the adequacy of side ch
     +   A side channel should be longer than the main channel to avoid cutting off the main channel
     +   Structures should be placed in the side channel to control the flow re-partitioning and to avoid flow separation in the main channel.
 
-
+***
 
 # Define new and modify existing features<a name="modfeat"></a>
 The workbook `RiverArchitect/LifespanDesign/.templates/threshold_values.xlsx` contains pre-defined features and defines feature names as well as features IDs, which can be modified if needed. The workbook can be accessed either by clicking on the [*LifespanDesign*][3] GUI's "Modify survival threshold values" button (or directly from the above directory).<br/>

@@ -1,6 +1,8 @@
 Error messages and Troubleshooting
 ==================================
 
+***
+
 # Known issues<a name="issues"></a>
 We do our very best to program *River Architect* as robust and flexible as possible. *River Architect*'s stepwise development nevertheless led to a few restrictions in its freedom of use, which are caused by a couple of hard-code sequences. The following limitations because of hard-coding are known and will be fixed in future versions:
 
@@ -13,8 +15,6 @@ Thus, for troubleshooting, press the `CTRL` + `F` key, enter (part of) the *WARN
 
 Otherwise, the *WARNING* and *ERROR* messages are listed in alphabetic order (starting with **E**rror messages, then **E**xceptionalError message, then **W**arning messages ...).
 
-***
-
 
 # Error and Warning message generation
 
@@ -22,10 +22,10 @@ Most errors occur when the wrong python interpreter is used or when Rasters or l
 The *River Architect* writes process errors and descriptions to logfiles. When the GUI encounters problems, it directly provides causes and remedies in pop-up infoboxes. The common error and warning messages, which can be particularly raised by the package (alphabetical order) are listed in the following with detailed descriptions of causes and remedies. Most error messages are written to the logfiles, but some exception errors are only printed to the terminal because they occur before logging could even be started. Such non-logged `ExceptionErrors` are listed at the bottom of the Error messages.
 Some non-identifiable errors raised by the `arcpy` package disappear after rebooting the system.
 
+***
 
 Error messages
 ==============
-
 
  - **`arcpy ERROR 130051: Input feature class is not registered as versioned.`**
     - *Cause:*   `arcpy` failed to register datasets, which basically means that the dataset does not exist. Moreover, this arbitrary error may occur if, for example, multiple [subsets of a *Condition*](Signposts#sub-condition) were created without closing *River Architect* between each creation.
@@ -111,7 +111,7 @@ Error messages
     - *Cause:*   Raised by `identify_best_features(self)` of [*MaxLifespan*][4]'s `ArcpyContainer()` class in `MaxLifespan/cActionAssessment.py` when `arcpy.sa.CellStatistics()` could not be executed.
     - *Remedy:*
         + The latest feature added to the internal best lifespan Raster may contain inconsistent data. Manually load the last feature Raster (the logfile tells the feature name) into *ArcPro* and trace back the error. If needed, re-run lifespan/design Raster Maker.
-        +In the case that the error occurs already with the first feature added, the [*MaxLifespan*][4]'s `zero` Raster may be corrupted. The remedy described for the error message `ExceptionERROR: Unable to create ZERO Raster. Manual intervention required* can be used to manually re-create the `zero` Raster.
+        + In the case that the error occurs already with the first feature added, the [*MaxLifespan*][4]'s `zero` Raster may be corrupted. The remedy described for the error message `ExceptionERROR: Unable to create ZERO Raster. Manual intervention required* can be used to manually re-create the `zero` Raster.
 
  - **`ERROR: Calculation of volume from RASTER failed.`**
     - *Cause:*   The `volume_computation(self)` function of the `VolumeAssessment()` class in `VolumeAssessment/cVolumeAssessment.py` raises this error when the command `arcpy.SurfaceVolume_3d(RASTER, "", "ABOVE", 0.0, 1.0)` failed.
@@ -209,7 +209,7 @@ Error messages
     - *Cause:*   Error raised by the `open_wb(self)` function of the `Read()` class in `RiverArchitect/.site_packages/riverpy/cInputOutput.py` or the `MakeFlowTable` class (`RiverArchitect/.site_packages/riverpy/cMakeTable.py`) when the concerned workbook contains errors.
     - *Remedy:*
         + Ensure the correct usage of `.site_packages/templates/Fish.xlsx` ([SHArC Fish section](SHArC#hefish)).
-        + Ensure the correct adaptation of `ProjectMaker/.../REACH_stn_assessment_vii.xlsx` ([ProjectMaker's Cost quantity workbook](ProjectMaker#pmcq)).
+        + Ensure the correct adaptation of `ProjectMaker/.../Project_assessment_vii.xlsx` ([ProjectMaker's Cost quantity workbook](ProjectMaker#pmcq)).
         + Open `SHArC/SHArea/CONDITION_sharea_FILI.xlsx`, verify the data contents and make sure that the file is not opened in any other program.
 
  - **`ERROR: Could not find hydraulic Rasters for CONDITION.`**
@@ -306,7 +306,7 @@ Error messages
     - *Cause:*   Raised by `identify_best_features(self)` of [*MaxLifespan*][4]'s `ArcpyContainer()` class in `MaxLifespan/cActionAssessment.py` when the calculated internal best lifespan Raster is corrupted.
     - *Remedy:*
         + Check prior WARNING and ERROR messages.
-	        + Ensure that neither the directory `MaxLifespan/.cache/` nor the directory `MaxLifespan/Output/` or their contents are in use by other programs.
+	    + Ensure that neither the directory `MaxLifespan/.cache/` nor the directory `MaxLifespan/Output/` or their contents are in use by other programs.
 
  - **`ERROR: Could not save CSI Raster associated with ...`**
     - *Cause:*   Raised by `make_chsi_hydraulic(self, fish)` of [*SHArC*][6]'s `CHSI()` class in `SHArC/cHSI.py` when the calculated cHSI Raster is empty or corrupted.
@@ -350,16 +350,16 @@ Error messages
     - *Remedy:*  Open `SHArea_evaluation_TEMPLATE_UNIT.xlsx` and verify the calculated values. Trace back potential error sources in the CHSI Rasters `/SHArC/` folder and other error messages.
 
  - **`ERROR: Could not write flow data set.`**
-    - *Cause:*   Error raised by the `write_flow_duration2xlsx(self, ...)` function of the `SeasonalFlowProcessor()` class (`riverpy/cFlows.py`) when it could not write flow duration data set to `RiverArchitect/00_Flows/CONDITION/flow_duration_fil.xlsx`.
-    - *Remedy:*  Close all applications that may use `00_Flows/CONDITION/flow_duration_fil.xlsx` and trace back earlier warning and error messages.
+    - *Cause:*   Error raised by the `write_flow_duration2xlsx(self, ...)` function of the `SeasonalFlowProcessor()` class (`riverpy/cFlows.py`) when it could not write flow duration data set to `RiverArchitect/00_Flows/CONDITION/flow_duration_FILI.xlsx`.
+    - *Remedy:*  Close all applications that may use `00_Flows/CONDITION/flow_duration_FILI.xlsx` and trace back earlier warning and error messages.
 	
  - **`ERROR: Could not write flow duration curve data (...).`**
-    - *Cause:*   Error raised by the `make_flow_duration(self, ...)` or `make_condition_flow_duration(self, ...)` functions (`SeasonalFlowProcessor()` in `RiverArchitect/.site_packages/riverpy/cFlows.py`) when it could not write flow duration curve data to `RiverArchitect/00_Flows/CONDITION/flow_duration_fil.xlsx`.
-    - *Remedy:*  Close all applications that may use `00_Flows/CONDITION/flow_duration_fil.xlsx`.
+    - *Cause:*   Error raised by the `make_flow_duration(self, ...)` or `make_condition_flow_duration(self, ...)` functions (`SeasonalFlowProcessor()` in `RiverArchitect/.site_packages/riverpy/cFlows.py`) when it could not write flow duration curve data to `RiverArchitect/00_Flows/CONDITION/flow_duration_FILI.xlsx`.
+    - *Remedy:*  Close all applications that may use `00_Flows/CONDITION/flow_duration_FILI.xlsx`.
     
  - **`ERROR: Could not write value to CELL [...]`**
-    - *Cause:*   Error raised by the `save_close_wb(self, ...)` (`Write()` in `RiverArchitect/.site_packages/riverpy/cInputOutput.py`) or `write_data_cell(self, column, row, value)` (`MakeTable` in `.site_packages/riverpy/cMakeTable.py`) when it cannot write a value to `RiverArchitect/SHArC/SHArea/`condition_fil.xlsx`.
-    - *Remedy:*  Close all applications that may use `RiverArchitect/SHArC/SHArea/CONDITION_fil.xlsx`. Detailed information on [*SHArC*][6] workbook outputs are available in the [HHSI input preparation](SHArC#hemakehsi) section.
+    - *Cause:*   Error raised by the `save_close_wb(self, ...)` (`Write()` in `RiverArchitect/.site_packages/riverpy/cInputOutput.py`) or `write_data_cell(self, column, row, value)` (`MakeTable` in `.site_packages/riverpy/cMakeTable.py`) when it cannot write a value to `RiverArchitect/SHArC/SHArea/`condition_FILI.xlsx`.
+    - *Remedy:*  Close all applications that may use `RiverArchitect/SHArC/SHArea/CONDITION_FILI.xlsx`. Detailed information on [*SHArC*][6] workbook outputs are available in the [HHSI input preparation](SHArC#hemakehsi) section.
 
  - **`ERROR: Could not write SHArea data for [FISH].`**
     - *Cause:*   The `main()` function in `ProjectMaker/s40_compare_wua.py` raises this error message when it could not write the calculated SHArea to when it cannot write a value to `SHArea_evaluation_template_unit.xlsx`.
@@ -380,17 +380,16 @@ Error messages
  - **`ERROR: Failed checking *PAR* of *FEATURE*.`**
     - *Cause:*   Special case of **`ERROR: Function analysis`**, which may occur after code modifications.
     - *Remedy:*
-        + Make sure that The `self.parameter_list`s of features ([Code Extension / Extend Features within the *LifespanDesign* module](LifespanDesign-code)) has valid entries that also occur in `analysis_call(*args)` (`LifespanDesign/feature_analysis.py`).
-	        + Make sure that valid function names exist in `LifespanDesign/cLifespanDesignAnalysis.py` ([Add analysis within the *LifespanDesign* module](LifespanDesign-code#addana)).
-	        
+        + Make sure that the `self.parameter_list`s of features ([Code Extension / Extend Features within the *LifespanDesign* module](LifespanDesign-code)) has valid entries that also occur in `analysis_call(*args)` (`LifespanDesign/feature_analysis.py`).
+	    + Make sure that valid function names exist in `LifespanDesign/cLifespanDesignAnalysis.py` ([Add analysis within the *LifespanDesign* module](LifespanDesign-code#addana)).
 
  - **`ERROR: Failed to access [...].`**
     - *Cause:*   Error raised by the `open_wb(self, ...)` function of the `Read()` (or the inheriting `Write()`)class in `RiverArchitect/.site_packages/riverpy/cInputOutput.py` or the `MakeFlowTable` class in `RiverArchitect/.site_packages/riverpy/cMakeTable.py`) when a workbook could not be opened.
     - *Remedy:*
         + Ensure that the listed workbook is not opened in any other program and that the workbook is correctly installed according to the module descriptions.
         + Used within `SHArC`:
-        	+ Ensure that a flow duration curve for all selected *Aquatic Ambiances* and the select hydraulic *Condition* was generated. The flow duration curves are typically saved as `00_Flows/CONDITION/flow_duration_FILI.xlsx`, where `FILI` is a placeholder of the first two letters of the selected species and lifestage (*Aquatic Ambiance*), respectively. For example for *Chinook Salmon - Juvenile*, `FILI` becomes `chju`, or for *All Aquatic - hydrologic year*, `FILI` becomes `alhy`.
-        	+ Open `SHArC/SHArea/CONDITION_sharea_FILI.xlsx`, verify the data contents and make sure that the file is not opened in any other program.
+		   a. Ensure that a flow duration curve for all selected *Aquatic Ambiances* and the select hydraulic *Condition* was generated. The flow duration curves are typically saved as `00_Flows/CONDITION/flow_duration_FILI.xlsx`, where `FILI` is a placeholder of the first two letters of the selected species and lifestage (*Aquatic Ambiance*), respectively. For example for *Chinook Salmon - Juvenile*, `FILI` becomes `chju`, or for *All Aquatic - hydrologic year*, `FILI` becomes `alhy`.
+		   b. Open `SHArC/SHArea/CONDITION_sharea_FILI.xlsx`, verify the data contents and make sure that the file is not opened in any other program.
 
  - **`ERROR: Failed to access computation_extents.xlsx.`**
     - *Cause:*   Error raised by the `get_reach_coordinates(self, internal_reach_id)` function of the `Read()` class in `RiverArchitect/.site_packages/riverpy/cReachManager.py`) when the reach coordinate spreadsheet (`ModifyTerrain/.templates/computation_extents.xlsx`) could not be read.
@@ -438,8 +437,8 @@ Error messages
     - *Remedy:*  Ensure that no other program accesses the `LifespanDesign/.cache/`, `MaxLifespan/.cache/`, `ModifyTerrain/.cache/`, `LifespanDesign/Output/`, `MaxLifespan/Output/`, or `ModifyTerrain/Output/` directories or their contents (close *ArcPro* and verify read/write rights for `RiverArchitect/02_Maps/CONDITION/`).
 
  - **`ERROR: Failed to save WORKBOOK.`**
-    - *Cause:*   Raised by `calculate_sha(self)` of [*SHArC*][6]'s `CHSI()` class in `SHArC/cHSI.py` when it could not save `CONDITION_fil.xlsx`.
-    - *Remedy:*  Ensure that no other software uses `SHArC/SHArea/CONDITION_fil.xlsx`.
+    - *Cause:*   Raised by `calculate_sha(self)` of [*SHArC*][6]'s `CHSI()` class in `SHArC/cHSI.py` when it could not save `CONDITION_FILI.xlsx`.
+    - *Remedy:*  Ensure that no other software uses `SHArC/SHArea/CONDITION_FILI.xlsx`.
 
  - **`ERROR: Failed to set reach extents -- output is corrupted.`**
     - *Cause:*   The automated terrain modification with grading and/or widen features in the `lower_dem_for_plants(self, feat_id, extents)` function of the `ModifyTerrain()` class (`ModifyTerrain/cModifyTerrain.py`) or the creation of volume difference Rasters in the `make_volume_diff_rasters(self)` function of the `VolumeAssessment()` class (`VolumeAssessment/cVolumeAssessment.py`) raise this error when the reach extents defined in `ModifyTerrain/.templates/computation_extents.xlsx` are not readable.
@@ -466,8 +465,8 @@ Error messages
     - *Cause:*   Raised by `get_line_entries(self, line_no)` function of the `Info()` class in `LifespanDesign/cRead InpLifespan.py` when it cannot access input files.
     - *Remedy:*
         + Ensure that the file `01_Conditions/CONDITION/input_definitions.inp` exists in the directory `LifespanDesign/.templates/` corresponding to the definitions in the [Input definitions files of the *LifespanDesign* module](Signposts#inpfile).
-	        + Ensure that the file `mapping.inp` exists in the directory `LifespanDesign/.templates/` corresponding to the definitions in [*LifespanDesign* Output maps](LifespanDesign#outmaps).
-	        + In the case of doubts: Replace `01_Conditions/CONDITION/input_definitions.inp` and `mapping.inp` with the original files and re-apply modifications strictly following the [Conditions / Input Rasters section](Signposts#conditions).
+	    + Ensure that the file `mapping.inp` exists in the directory `LifespanDesign/.templates/` corresponding to the definitions in [*LifespanDesign* Output maps](LifespanDesign#outmaps).
+	    + In the case of doubts: Replace `01_Conditions/CONDITION/input_definitions.inp` and `mapping.inp` with the original files and re-apply modifications strictly following the [Conditions / Input Rasters section](Signposts#conditions).
 	
  - **`ERROR: Input Rasters contain invalid data.`**
     - *Cause:*   Error raised by the `D2W` class (`GetStarted/cDepth2Groundwater.py`) or the `DET` class (`GetStarted/cDetrendedDEM.py`) when the defined DEM or flow depth *GeoTIFF* are not usable.
@@ -484,8 +483,8 @@ Error messages
         + Verify Raster and corresponding lifespan definitions in `01_Conditions/CONDITION/input_definitions.inp` ([Input definitions files of the *LifespanDesign* module](Signposts#inpfile)).
 
  - **`ERROR: Invalid cell assignment for discharge / Rasters.`**
-    - *Cause:*   Error raised by the `make_condition_xlsx(self, fish_sn)` function of the `MakeTable()` class in `.site_packages/riverpy/cMakeTable.py`) when it cannot write discharge values to `RiverArchitect/SHArC/SHArea/CONDITION_fil.xlsx`.
-    - *Remedy:*  Ensure that the flow duration curve is well defined (see the [HHSI input preparation](SHArC#hemakehsi)) and that `RiverArchitect/SHArC/SHArea/CONDITION_fil.xlsx` is not used by any other application.
+    - *Cause:*   Error raised by the `make_condition_xlsx(self, fish_sn)` function of the `MakeTable()` class in `.site_packages/riverpy/cMakeTable.py`) when it cannot write discharge values to `RiverArchitect/SHArC/SHArea/CONDITION_FILI.xlsx`.
+    - *Remedy:*  Ensure that the flow duration curve is well defined (see the [HHSI input preparation](SHArC#hemakehsi)) and that `RiverArchitect/SHArC/SHArea/CONDITION_FILI.xlsx` is not used by any other application.
     - 
 	
  - **`ERROR: Invalid date date and / or flow ranges in discharge series.`**
@@ -503,9 +502,9 @@ Error messages
         + Consider replacing corrupted threshold workbooks with the original file.
 
  - **`ERROR: Invalid file name or data.`**
-    - *Cause:*   Error raised by the `save_close_wb(self, *args)` function of the `MakeTable()` or `Write()` class in `.site_packages/riverpy/cMakeTable.py`) or `RiverArchitect/.site_packages/riverpy/cInputOutput.py`), respectively, when it cannot save a workbook (typically `RiverArchitect/SHArC/SHArea/CONDITION_fil.xlsx` or a copy of the [cost master workbook](https://github.com/RiverArchitect/RA_wiki/ProjectMaker#pmcq)).
+    - *Cause:*   Error raised by the `save_close_wb(self, *args)` function of the `MakeTable()` or `Write()` class in `.site_packages/riverpy/cMakeTable.py`) or `RiverArchitect/.site_packages/riverpy/cInputOutput.py`), respectively, when it cannot save a workbook (typically `RiverArchitect/SHArC/SHArea/CONDITION_FILI.xlsx` or a copy of the [cost master workbook](https://github.com/RiverArchitect/RA_wiki/ProjectMaker#pmcq)).
     - *Remedy:*
-        + [*SHArC*][6]: Close all applications that may use `CONDITION_fil.xlsx` and ensure that its template exists. Detailed information on [*SHArC*][6] workbook outputs are available in the [HHSI input preparation](SHArC#hemakehsi).
+        + [*SHArC*][6]: Close all applications that may use `CONDITION_FILI.xlsx` and ensure that its template exists. Detailed information on [*SHArC*][6] workbook outputs are available in the [HHSI input preparation](SHArC#hemakehsi).
         + [*ProjectMaker*][7]:  Close all applications that may use the cost master workbook (`REACH_stn_costs_VERSION.xlsx`) and ensure that it exists. Detailed information are available in [ProjectMaker Cost quantity section](ProjectMaker#pmcq).
 
  - **`ERROR: Invalid interpolation data type (type(Q flowdur) ==  ...)`**
@@ -567,7 +566,6 @@ Error messages
  - **`ERROR: No HSI assigned for parameter type ...`**
     - *Cause:*   Raised by the `get_hsi_curve(self, species, lifestage, par)` function of the `Fish()` class in `SHArC/cFish.py` when `.site_packages/templates/Fish.xlsx` it expected a habitat suitability curve for `par*, but it could not find values..
     - *Remedy:*  Ensure that the file `.site_packages/templates/Fish.xlsx` has valid contents according to [SHArC Fish section](SHArC#hefish).
-
 
 - **`ERROR: No project/layout available (...).`**
     - *Cause:*   Error raised by mapping routines when map making without project file (*.aprx*) is invoked.
@@ -713,7 +711,7 @@ Error messages
         + Make sure that *ArcPro* is not running.
         + Make sure that no other code copy (*Python*) uses these folders.
 
-
+***
 
 Warning messages
 ================
@@ -757,8 +755,7 @@ Warning messages
 
  - **`WARNING: Could not access hydraulic Raster extents. Using MAXOF instead.`**
     - *Cause:*   Raised by the `D2W` class (`GetStarted/cDepth2Groundwater.py`) when the defined flow depth *GeoTIFF* has no valid extents.
-    - *Remedy:*
-        + Manually / visually verify the provided flow depth Raster and make corrections / overwrite it if necessary.
+    - *Remedy:* Manually / visually verify the provided flow depth Raster and make corrections / overwrite it if necessary.
 
 - **`WARNING: Could not clear/remove .cache.`**
     - *Cause:*   All modules may raise this warning message when the content in the `.cache` folder was accessed and locked by another software.
@@ -774,7 +771,6 @@ Warning messages
         + Manually / visually verify the provided flow depth Rasters and make corrections / overwrite it if necessary.
         + If cropping the lifespan Raster to the wetted area of the highest discharge is not desired, apply the following Raster calculation to the highest discharge's flow depth Raster to eliminate `NoData` values (otherwise, all `NoData` pixels are excluded from the lifespan Raster):<br/>
         `Con((IsNull(hQQQQQQ) == 1), (IsNull(hQQQQQQ) * 0), Float(hQQQQQQ))`
-
 
  - **`WARNING: Could not divide [...] by [...]`**
     - *Cause:*   Raised by `calculate_relative_exceedance(self)` of [*SHArC*][6]'s `FlowAssessment()` class in `SHArC/cFlows.py` when the flow duration curve contains invalid data.
@@ -829,7 +825,6 @@ Warning messages
     - *Remedy:*
         + If the feature is not intended to be applied anyway, ignore the warning message.
         + If the feature is intended to be applied, manual terrain modifications adapting the feature's threshold values may be necessary.
-			
 
  - **`WARNING: Failed to arrange worksheets.`**
     - *Cause:*   Raised by `Write().write_volumes(self, ...)` in `.site_packages/riverpy/cReachManager.py` when it could not bring to front the latest copy of the `template` sheet in the output (template) workbook (`VolumeAssessment/Output/CONDITION_volumes.xlsx` or `VolumeAssessment/.templates/volume_template.xlsx`), which contains the calculation results.

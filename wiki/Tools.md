@@ -1,10 +1,10 @@
-# Additional River Architect Tools
+# River Architect Tools
 
-*Tool* scripts can be considered as beta versions of future functionalities that will be implemented in *River Architect*. Typically, *Tools" are basic commandline scripts for creative design support. Currently, routines for the hydraulic design of pool-riffle sequences or flood analysis are available, where the flood analysis applies to the U.S. Army Corps of Engineers' [`HEC-SPP`][hecspp] software. The *Tools* routines are located in `RiverArchitect/Tools/`. 
+*Tool* scripts can be considered as beta versions of future functionalities that will be implemented in *River Architect*. Typically, *Tools* are basic commandline scripts for creative design support. Currently, routines for the hydraulic design of pool-riffle sequences or flood analysis are available, where the flood analysis applies to the U.S. Army Corps of Engineers' [`HEC-SPP`][hecspp] software. The *Tools* routines are located in `RiverArchitect/Tools/`. 
 
-# Scripts
+***
 
-## Main Tool scripts
+# Main Tool scripts
 
 Run the following scripts with Esri's *Python* environment ([read more](Installation#raenv))
 
@@ -17,9 +17,9 @@ Run the following scripts with Esri's *Python* environment ([read more](Installa
  - `run_make_….bat` are a batchfiles that run `make_….py` on Windows x64.
 
  - `run_morphology_designer.bat` is a batchfiles that runs `morphology_designer.py` on Windows x64.
- 
 
-## Class and Function files
+
+# Class and Function files
 
 The code execution depends on the following folders and scripts:
 
@@ -34,7 +34,7 @@ The code execution depends on the following folders and scripts:
  - `cPoolRiffle.py` provides routines for designing self-sustaining pool-riffle channels.
 
  - `fTools.py` is a set of functions used by other Python applications within this folder.
- 
+
 
 [1]: https://github.com/RiverArchitect/RA_wiki/Installation
 [2]: https://github.com/RiverArchitect/RA_wiki/Signposts

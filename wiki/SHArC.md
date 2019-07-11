@@ -34,6 +34,7 @@ A minimum of three normal discharges within a seasonal flow duration curve shoul
 
 *Note that the SHArC module has no own mapping function. cHSI Rasters may be mapped with the project assessment templates of the ProjectMaker module.*
 
+***
 
 # Quick GUIde to habitat suitability evaluation<a name="hequick"></a>
 
@@ -108,7 +109,7 @@ The resulting depth-*HSI* Rasters are named `dsi_FILIqqqqqq` and velocity-*HSI* 
 
 ## Input: Cover HSI<a name="hemakecovhsi"></a>
 
-As before, at least one aquatic ambiance for fish species/lifestage needs to be selected (multiple selection is possible). The cover HSI Raster generation can be limited to a user-defined flow region by selecting one of the `hxxx` Raster names in the `2) Define flow region` frame. However, the later combination of the cover HSI Rasters with the HHSI (hydraulic HSI) Rasters will automatically limit the usable habitat area to wetted pixels only. Thus, the most pertinent choice here is selecting `all terrain`. Click on `Confirm selection` to do so.<br/>
+As before, at least one aquatic ambiance for fish species/lifestage needs to be selected (multiple selection is possible). The cover HSI Raster generation can be limited to a user-defined flow region by selecting one of the `hQQQQQQ` Raster names in the `2) Define flow region` frame. However, the later combination of the cover HSI Rasters with the HHSI (hydraulic HSI) Rasters will automatically limit the usable habitat area to wetted pixels only. Thus, the most pertinent choice here is selecting `all terrain`. Click on `Confirm selection` to do so.<br/>
 Relevant cover types can be selected by checking the according checkboxes, where geofiles are required to be stored in
 `RiverArchitect/01_Conditions/CONDITION/` apply the cover types: 
 
@@ -142,6 +143,7 @@ Product: *cHSI = DHSI · VHSI · covHSI*
 
 The cover HSI Raster *covHSI* represents the maximum pixel values of applied [cover types](#hecombinecov).
 
+***
 
 ## Combine habitat suitability Rasters<a name="herunchsi"></a>
 
@@ -186,7 +188,7 @@ The resulting *Time series - Aquatic Ambiance Area* will be produced in `SHArC/S
 
 ![hefish](https://github.com/RiverArchitect/Welcome/raw/master/images/RA_QvsA_time.png)
 
-
+***
 
 ## Output and application in riverscape habitat enhancement projects<a name="heoutput"></a>
 

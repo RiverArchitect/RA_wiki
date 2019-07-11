@@ -13,8 +13,7 @@ Volume Change Assessment
 - [Working principle](#vaprin)
 - [Code modification: Change sensitivity threshold (lod) for terrain modification detection](#vacode)
 
-
-  ***
+***
 
 # Introduction<a name="vaintro"></a>
 
@@ -28,6 +27,7 @@ The *VolumeAssessment* module compares two input DEM Rasters and calculates volu
 
 Please note that an *ArcPro* `3D` extension is required for running this module.
 
+***
 
 # Quick GUIde to Volume Assessment<a name="vaquick"></a>
 ## Main window set-up and run<a name="vagui"></a>
@@ -57,10 +57,13 @@ The Run: `Map Maker` uses layout files stored in the *ArcPro* project file `Rive
 
 The *VolumeAssessment* module produces maps with the extents of the input raster by default. Refer to the <a href="Mapping">Mapping</a> wiki for more information on map extents, symbology, and legend modifications.
 
+***
+
 ## Run<a name="varun"></a>
 
 The `Run` drop-down menu includes the `Volume Calculator` and the `Map Maker` options. Please note that the `Map Maker` is activated only after the `Volume Calculator` was executed in the current *River Architect* session. Optionally, the bottom checkbox can be activated for automatically running the map creation with the `Volume Calculator`.
 
+***
 
 ## Output<a name="vaoutput"></a>
 
@@ -79,6 +82,7 @@ The `Map Maker` (or activated checkbox) produces `pdf` maps of volume difference
 
 The volumetric differences in m<sup>3</sup> or cubic yards are reach-wise or Raster-wise written to a workbook in the directory `VolumeAssessment/Output/PSEUDO_CONDITION/`, where also the [output Rasters](#vaoutras) are located. The workbook template (`volumes_template.xlsx`) is located in `VolumeAssessment/.templates/` and must not be modified. When *VolumeAssessment* is run for the first time for a `PSEUDO_CONDITION`, it creates a copy of the workbook template, which is called `PSEUDO_CONDITION_volumes.xlsx`. *VolumeAssessment* makes two copies of the `template` sheet for excavation and fill, respectively. Thus, one of the spreadsheet copies is called `excavate_YYYYMMDDHHhMM` and lists the reach-wise / Raster-wise excavation volumes in the chosen unit system. The other spreadsheet copy is called `fill_YYYYMMDDHHhMM` and lists the reach-wise / Raster-wise fill volumes in the chosen unit system. The strings `YYYYMMDD` and `HHhMM` indicate the date and time of the program execution. Repeting runs of *VolumeAssessment* on the same modified DEM will append two more copies (excavate and fill) of the `template` sheet with the date-time indicator. It is recommended to cut-paste `PSEUDO_CONDITION_volumes.xlsx` in a `VolumeAssessment/Products/` directory after every run to keep results well-arranged and to force the module to create a new `PSEUDO_CONDITION_volumes.xlsx` file for every run.
 
+***
 
 # Working principles<a name="vaprin"></a>
 
@@ -87,6 +91,8 @@ The excavation and fill volumes result from `arcpy`'s `SurfaceVolume_3d` functio
 `volume_excavation = arcpy.SurfaceVolume_3d(diff_dem_neg, "", "ABOVE", 0.0, 1.0)`<br/>
 `volume_fill = arcpy.SurfaceVolume_3d(diff_dem_pos, "", "ABOVE", 0.0, 1.0)`<br/>
 The `volume_...` variables are stored in a list that is finally written to the [output workbook](#vaoutspread).
+
+***
 
 # Code modification: Change sensitivity threshold (lod) for terrain modification detection<a name="vacode"></a>
 

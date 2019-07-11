@@ -34,6 +34,7 @@ The *ProjectMaker* module guides through the half-automated assessment of cost-r
  - [Map final designs](#pmmaps)
  - [Calculate gain in SHArea](#pmSHArea)
 
+***
 
 # Quick GUIde to a project assessment<a name="pmquick"></a>
 
@@ -89,12 +90,12 @@ To determine cost-relevant quantities for a site-related restoration plan, a man
 3.  In the layout's `Contents` tab, right-click on the `ProjectArea` layer, then `Attribute Table`. In the `Attribute Table`, click on the top-left *Field:* `Add` button. Name the field `AreaCode`, select a `Text` in the *Data Type* column and `50` in the *Length* column. Click below the new field to and add another field (*Click here to add a new field* label) with the following properties: *Field Name* = `gridcode`, *Data Type* = `Short` data type, *Number Format* = `Numeric`, *Precision* = 0, and *Scale* = 0 field named `gridcode`. Go to *ArcPro*'s *Fields* ribbon (top of the window) and click `Save`. Close the *Fields: Project area (...)* tab (the one where the fields were previously added).
 
 4.  Delineate project area
-    1.  Optional: Import modified terrain to visualize boundaries of terraforming.
-    2.  In *ArcPro*'s *Edit* ribbon (top of the window), click on `Create` (ensure that the `ProjectArea` layer is selected in the *Contents* tab) > A *Create Features* opens.
-    3.  In the *Create Features* tab, click (highlight) on `ProjectArea`, then on `Polygon`.
-    4.  Draw a polygon around the designated project area (finish with the `F2`-key).
-    5.  Go to the `Attribute Table` tab and type *`Restoration zone`* in the `AreaCode` field and *`1`* in the `gridcode` field.
-    6.  `Save` edits.
+    a.  Optional: Import modified terrain to visualize boundaries of terraforming.
+    b.  In *ArcPro*'s *Edit* ribbon (top of the window), click on `Create` (ensure that the `ProjectArea` layer is selected in the *Contents* tab) > A *Create Features* opens.
+    c.  In the *Create Features* tab, click (highlight) on `ProjectArea`, then on `Polygon`.
+    d.  Draw a polygon around the designated project area (finish with the `F2`-key).
+    e.  Go to the `Attribute Table` tab and type *`Restoration zone`* in the `AreaCode` field and *`1`* in the `gridcode` field.
+    f.  `Save` edits.
 
 ## Input: Plantings shapefile<a name="pminp3"></a>
 
@@ -118,6 +119,8 @@ The [*MaxLifespan*][4] module produces geofiles (i.e., rasters and shapefiles) o
     6.  Once all visible plantings within the terraforming project area are delineated, save the edits.
 
 Save and close `ProjectName/ProjectMaps.aprx`.
+
+***
 
 # Cost quantity assessment and the cost master workbook<a name="pmcq"></a>
 
@@ -205,9 +208,13 @@ The resulting costs need to be manually entered in the costs master workbook's (
 
 The final project costs include site mobilization and demobilization as well as unexpected costs. Moreover, permitting, markups (such as overhead, profit, and insurance) and engineering fees are added as percentages of costs for construction works at the bottom of the cost master workbook's (`ProjectName_assessment_vii`) *costs* spreadsheet. The total costs for the project proposal are summarized at the top of the *costs* spreadsheet (cell *G2*).
 
+***
+
 # Mapping of construction elements<a name="pmmaps"></a>
 
 Open `ProjectName/ProjectMaps.aprx` and go to the `Catalog` tab (typically on the right). Click on `> Layouts` and double-click on `REACH_SiteName_vii`. In the layout's *Contents* tab (typically on the left), select `Layers Map Frame` and double-click on every layer to define the correct dataset source files (`Source` tab) that result from the above described cost assessment. *Note: Layer groups do not have a `Source` tab*. Relevant shapefiles are stored in `ProjectName/Geodata/Shapefiles/` and relevant rasters are stored in `ProjectName/Geodata/Rasters/`. Export the map (*ArcPro*s `Catalog` -> right-click on `Layouts/REACH_SiteName_vii` -> select `Export to File...` ) to the project folder and name it `REACH_SiteName_vii_lyr2x.pdf` (proposition for consistent file naming).
+
+***
 
 # Ecological benefit asessment (Calculate SHArea)<a name="pmSHArea"></a>
 
@@ -242,6 +249,8 @@ When the above requirements are fulfilled, the *Project Proposal* GUI can assess
 -   Click on the *Calculate Net gain in SHArea* button to start the assessment.
 
 The program will run in the background and prompts the calculation progress in the console window.
+
+***
 
 ## Output<a name="pmiout"></a>
 
