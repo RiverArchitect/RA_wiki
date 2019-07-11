@@ -81,6 +81,7 @@ When defining threshold values in *threshold\_values.xlsx* carefully study the f
 	   + *SF* is a dimensionless safety factor that can be defined within *threshold_values.xlsx*; the [angular boulders](River-design-features#rocks) threshold definitions indicate the application of a safety factor of 1.3.
 	   + *Note that a Mobile Grain analysis will only work if a safety factor is defined in row 19 of threshold\_values.xlsx.*
 1. **Topographic change Rasters** `tcd` are applied to limit lifespan Rasters to regions where the `fill` and `scour` threshold values defined in rows 22 and 23 of *threshold\_values.xlsx*, respectively, are exceeded. The "Topographic change: inverse relevance" threshold applies when the feature relevance refers to regions where the scour and fill rates below the specific threshold values are relevant. By default, features such as angular boulders (rocks or riprap) are relevant where the topographic change rate (scour) exceeds the angular boulder's threshold value for scour. However, features such as grading or side cavities, are relevant where the scour or fill rates do not exceed the threshold rates because these areas are presumably disconnected from the river. Thus, "Topographic change: inverse relevance" is `TRUE` for the grading, side cavity, and side channel features.
+
 1. A **Morphological Unit** Raster as produced with the [GetStarted](Signposts#getstarted) module according to [Wyrick and Pasternack 2014][wyrick14] can be used to limit lifespan mapping to morphologically reasonable regions. For example, [grading](River-design-features#grading) of bedrock units is not reasonable and the default *threshold\_values.xlsx* excludes `bedrock` in row 16. *River Architect* enables to limit morphological unit limitation with an exclusive and an inclusive method.
 	   + If the exclusive method is chosen (set row 18 in *threshold\_values.xlsx* to `0`), *River Architect* will look for morphological units listed in row 16 and it will set pixels with these morphological units to `NoData` in lifespan maps.
 	   + If the inclusive method is chosen (set row 18 in *threshold\_values.xlsx* to `1`), *River Architect* will look for morphological units listed in row 17 and it will set pixels that are not within these morphological units to `NoData` in lifespan maps.
@@ -128,7 +129,7 @@ The "Run" drop-down menu provides the following functions:
 
 -   `Map Maker` prepares project maps and *PDF* assemblies in the directory `RiverArchitect/02_Maps/CONDITION/`;<br/>
 	Before running `Map Maker`, ensure that the correct background image (`01_Conditions/CONDITION/back.tif`) is linked in the project template file `RiverArchitect/02_Maps/templates/river_template.aprx`.<br/>
-	 	The mapping extents can be modified using the [`mapping.inp` input file](Signposts#inpmap) and the [[Mapping]] Wiki explains how the symbology, layouts and other extent settings may be modified.
+	 	The mapping extents can be modified using the [`mapping.inp` input file](Signposts#inpmap) and the [Mapping](Mapping) Wiki explains how the symbology, layouts and other extent settings may be modified.
 
 Either "Run" option causes a run confirmation window popping up and clicking "OK" calls the analysis, which will run in the background Python window and it freezes the GUI windows. Running the `Raster Maker` may take 0.1 to 10 hours, depending on the input Raster size, feature set and habitat matching options.<br/>
 After the analysis, the GUI unfreezes and a new button invites to read the logfiles with run information, as well as error and warning messages that may have occurred during the analysis.<br/>
@@ -225,7 +226,7 @@ The output Rasters are either of the types lifespan (`lf_shortname`) or design (
 
 ### Mapping<a name="outmaps"></a>
 
-The module produces an *ArcPro* project file (`.aprx`) and `.pdf`s in `RiverArchitect/02_Maps/CONDITION/map_CONDITION_design.aprx`. The map extents can be modified in the [`mapping.inp` input file](Signposts#inpmaps). For map modifications, read the [above](#lfrungui) descriptions or the [[Mapping]] Wiki.
+The module produces an *ArcPro* project file (`.aprx`) and `.pdf`s in `RiverArchitect/02_Maps/CONDITION/map_CONDITION_design.aprx`. The map extents can be modified in the [`mapping.inp` input file](Signposts#inpmaps). For map modifications, read the [above](#lfrungui) descriptions or the [Mapping](Mapping) Wiki.
 
 
 ### Interpretation
