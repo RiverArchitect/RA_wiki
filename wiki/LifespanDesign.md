@@ -1,6 +1,8 @@
 Feature lifespan and design assessment
 ======================================
 
+***
+
 - [**Introduction to lifespan and design mapping**](#lfintro)
 - [**Quick GUIde to lifespan and design maps**](#lfgui)
   * [Interface and choice of features](#interface-and-choice-of-features)
@@ -59,10 +61,11 @@ Any threshold value can be changed or defined for any feature, but the workbook 
 When defining threshold values in *threshold\_values.xlsx* carefully study the following **hierarchy** and parameter application of *River Architect*:
 
 1. **Dimensional hydraulic parameter** analysis:
-	1. **Flow depth** starting with the lowest discharge to the highest discharge Raster (`hQQQQQQ.tif`). A threshold value for the flow depth above which a feature will fail can be defined in row 11 in *threshold\_values.xlsx*.
-	1. **Flow velocity** starting with the lowest discharge to the highest discharge Raster (`uQQQQQQ.tif`). A threshold value for the velocity above which a feature will fail can be defined in row 12 in *threshold\_values.xlsx*.
+	a. **Flow depth** starting with the lowest discharge to the highest discharge Raster (`hQQQQQQ.tif`). A threshold value for the flow depth above which a feature will fail can be defined in row 11 in *threshold\_values.xlsx*.
+	b. **Flow velocity** starting with the lowest discharge to the highest discharge Raster (`uQQQQQQ.tif`). A threshold value for the velocity above which a feature will fail can be defined in row 12 in *threshold\_values.xlsx*.
+
 1. **Dimensionless hydraulic parameter** analysis:
-	1. **Dimensionless bed shear stress**  &tau;<sub>\*</sub> calculated as<br/>
+	a. **Dimensionless bed shear stress**  &tau;<sub>\*</sub> calculated as<br/>
 	   `ras_taux` = \{&rho;<sub>w</sub> · \[`uQQQQQQ` / (5.75 * Log<sub>10</sub>(12.2 · `hQQQQQQ` / (2 · 2.2 · `dmean`)))\]<sup>2</sup>\} / \[&rho;<sub>w</sub> · *g* (*s* - 1) · `dmean`\] <br/>
 	   where
 	   + A threshold value for mobility according to the critical dimensionless bed shear stress &tau;<sub>\*, cr</sub> can be defined in row 6 of *threshold\_values.xlsx* (read more for example in [Lamb et al. 2008](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2007JF000831))
@@ -70,22 +73,23 @@ When defining threshold values in *threshold\_values.xlsx* carefully study the f
 	   + `uQQQQQQ` (m/s or fps), `hQQQQQQ` (m or ft), and `d84` = 2.2 · `dmean` (m or ft) are `arcpy.Raster()`s considering that the grain diameter *D<sub>84</sub>* can be approximated by *D<sub>84</sub>* = 2.2 · *D<sub>50</sub>* ([Rickenmann and Recking 2011](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2010WR009793))
 	   + *g* = gravitational acceleration (9.81 m/s<sup>2</sup>)
 	   + *s* = ratio of sediment grain and water density (2.68)
-	1. **Froude number** *Fr* as<br/>
+	b. **Froude number** *Fr* as<br/>
 	   `ras_Fr` = `uQQQQQQ` / (*g* · `hQQQQQQ`)<sup>1/2</sup>
 	   + A threshold value for mobility according to the Froude number can be defined in row 13 of *threshold\_values.xlsx*
-	1. **Mobile grains** (bed mobility) `ras_Dcr`, fine sediment `ras_Dcf` size Rasters as:<br/>
+	c. **Mobile grains** (bed mobility) `ras_Dcr`, fine sediment `ras_Dcf` size Rasters as:<br/>
 	   `ras_Dcx` =  =  *SF* · `uQQQQQQ`<sup>2</sup> · *n*<sup>2</sup> / \[(*s* - 1) · `hQQQQQQ`<sup>1/3</sup> · &tau;<sub>\*, cr</sub> \]
 	   where
 	   + &tau;<sub>\*, cr</sub> is the critical dimensionless bed shear stress (i.e., threshold value) above which sediment is mobile (read more for example in [Lamb et al. 2008](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2007JF000831)). &tau;<sub>\*, cr</sub> can be defined in row 6 of *threshold\_values.xlsx*.
 	   + *n* is [Manning\'s *n*][manningsn] in s/m<sup>1/3</sup> (or  s/ft<sup>1/3</sup> - an internal conversion factor of k = 1.49 applies), which can be changed in the *LifespanDesign* GUI
 	   + *SF* is a dimensionless safety factor that can be defined within *threshold_values.xlsx*; the [angular boulders](River-design-features#rocks) threshold definitions indicate the application of a safety factor of 1.3.
 	   + *Note that a Mobile Grain analysis will only work if a safety factor is defined in row 19 of threshold\_values.xlsx.*
+
 1. **Topographic change Rasters** `tcd` are applied to limit lifespan Rasters to regions where the `fill` and `scour` threshold values defined in rows 22 and 23 of *threshold\_values.xlsx*, respectively, are exceeded. The "Topographic change: inverse relevance" threshold applies when the feature relevance refers to regions where the scour and fill rates below the specific threshold values are relevant. By default, features such as angular boulders (rocks or riprap) are relevant where the topographic change rate (scour) exceeds the angular boulder's threshold value for scour. However, features such as grading or side cavities, are relevant where the scour or fill rates do not exceed the threshold rates because these areas are presumably disconnected from the river. Thus, "Topographic change: inverse relevance" is `TRUE` for the grading, side cavity, and side channel features.
 
 1. A **Morphological Unit** Raster as produced with the [GetStarted](Signposts#getstarted) module according to [Wyrick and Pasternack 2014][wyrick14] can be used to limit lifespan mapping to morphologically reasonable regions. For example, [grading](River-design-features#grading) of bedrock units is not reasonable and the default *threshold\_values.xlsx* excludes `bedrock` in row 16. *River Architect* enables to limit morphological unit limitation with an exclusive and an inclusive method.
-	   + If the exclusive method is chosen (set row 18 in *threshold\_values.xlsx* to `0`), *River Architect* will look for morphological units listed in row 16 and it will set pixels with these morphological units to `NoData` in lifespan maps.
-	   + If the inclusive method is chosen (set row 18 in *threshold\_values.xlsx* to `1`), *River Architect* will look for morphological units listed in row 17 and it will set pixels that are not within these morphological units to `NoData` in lifespan maps.
-	   + Morphological units that can be entered as a comma-separated list in row 16 and 17 of *threshold\_values.xlsx* should correspond to the settings made during the [morphological unit Raster creation](Signposts#mu) (morphological units are defined in `RiverArchitect/.site_packages/templates/morphological_units.xlsx`.
+	+ If the exclusive method is chosen (set row 18 in *threshold\_values.xlsx* to `0`), *River Architect* will look for morphological units listed in row 16 and it will set pixels with these morphological units to `NoData` in lifespan maps.
+	+ If the inclusive method is chosen (set row 18 in *threshold\_values.xlsx* to `1`), *River Architect* will look for morphological units listed in row 17 and it will set pixels that are not within these morphological units to `NoData` in lifespan maps.
+	+ Morphological units that can be entered as a comma-separated list in row 16 and 17 of *threshold\_values.xlsx* should correspond to the settings made during the [morphological unit Raster creation](Signposts#mu) (morphological units are defined in `RiverArchitect/.site_packages/templates/morphological_units.xlsx`.
 
 1. **Side channel** delineation work similar to morphological unit delineation and will only be executed if the *Condition* folder contains a Raster called `sidech` (or otherwise named according to the [input file](Signposts#inpfile) in line17). The side channel delineation Raster should only contain Integer values of `1` indicating pixels where a side channel may be drawn. There is no side channel threshold value.
 
