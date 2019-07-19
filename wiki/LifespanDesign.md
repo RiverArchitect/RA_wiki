@@ -75,15 +75,16 @@ When defining threshold values in `threshold_values.xlsx` carefully study the fo
 	   + `uQQQQQQ` (m/s or fps), `hQQQQQQ` (m or ft), and `d84` = 2.2 · `dmean` (m or ft) are `arcpy.Raster()`s considering that the grain diameter *D<sub>84</sub>* can be approximated by *D<sub>84</sub>* = 2.2 · *D<sub>50</sub>* ([Rickenmann and Recking 2011](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2010WR009793))
 	   + *g* = gravitational acceleration (9.81 m/s<sup>2</sup>)
 	   + *s* = ratio of sediment grain and water density (2.68)
+	   + Note that the &tau;<sub>\*</sub> analysis is **omitted if *SF* is defined**, which enables to run either a &tau;<sub>\*</sub> analysis OR a mobile grain analysis.
 	b. **Froude number** *Fr* as<br/>
-	   `ras_Fr` = `uQQQQQQ` / (*g* · `hQQQQQQ`)<sup>1/2</sup>
+	      `ras_Fr` = `uQQQQQQ` / (*g* · `hQQQQQQ`)<sup>1/2</sup>
 	   + A threshold value for mobility according to the Froude number can be defined in row 13 of `threshold_values.xlsx`
 	c. **Mobile grains** (bed mobility) `ras_Dcr`, fine sediment `ras_Dcf` size Rasters as:<br/>
-	   `ras_Dcx` =  =  *SF* · `uQQQQQQ`<sup>2</sup> · *n*<sup>2</sup> / \[(*s* - 1) · `hQQQQQQ`<sup>1/3</sup> · &tau;<sub>\*, cr</sub> \]
-	   where
+	      `ras_Dcx` =  =  *SF* · `uQQQQQQ`<sup>2</sup> · *n*<sup>2</sup> / \[(*s* - 1) · `hQQQQQQ`<sup>1/3</sup> · &tau;<sub>\*, cr</sub> \]
+	      where
 	   + &tau;<sub>\*, cr</sub> is the critical dimensionless bed shear stress (i.e., threshold value) above which sediment is mobile (read more for example in [Lamb et al. 2008](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2007JF000831)). &tau;<sub>\*, cr</sub> can be defined in row 6 of `threshold_values.xlsx`.
 	   + *n* is [Manning\'s *n*][manningsn] in s/m<sup>1/3</sup> (or  s/ft<sup>1/3</sup> - an internal conversion factor of k = 1.49 applies), which can be changed in the *LifespanDesign* GUI
-	   + *SF* is a dimensionless safety factor that can be defined within *threshold_values.xlsx*; the [angular boulders](River-design-features#rocks) threshold definitions indicate the application of a safety factor of 1.3.
+	   + *SF* is a dimensionless safety factor that can be defined within *threshold_values.xlsx*; the [angular boulders / grains](River-design-features#rocks) threshold definitions indicate the application of a safety factor of 1.3. The Mobile Grain analysis is **omitted if *SF* is not defined**, which enables to run either a &tau;<sub>\*</sub> analysis OR a mobile grain analysis.
 	   + *Note that a Mobile Grain analysis will only work if a safety factor is defined in row 19 of threshold\_values.xlsx.*
 
 1. **Topographic change Rasters** `tcd` are applied to limit lifespan Rasters to regions where the `fill` and `scour` threshold values defined in rows 22 and 23 of `threshold_values.xlsx`, respectively, are exceeded. The "Topographic change: inverse relevance" threshold applies when the feature relevance refers to regions where the scour and fill rates below the specific threshold values are relevant. By default, features such as angular boulders (rocks or riprap) are relevant where the topographic change rate (scour) exceeds the angular boulder's threshold value for scour. However, features such as grading or side cavities, are relevant where the scour or fill rates do not exceed the threshold rates because these areas are presumably disconnected from the river. Thus, "Topographic change: inverse relevance" is `TRUE` for the grading, side cavity, and side channel features.
