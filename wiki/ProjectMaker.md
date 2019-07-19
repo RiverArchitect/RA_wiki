@@ -34,9 +34,10 @@ The *ProjectMaker* module guides through the half-automated assessment of cost-r
  - [Map final designs](#pmmaps)
  - [Calculate gain in SHArea](#pmSHArea)
 
-***
 
 # Quick GUIde to a project assessment<a name="pmquick"></a>
+
+***
 
 ## Prerequisites<a name="pmprereq"></a>
 

@@ -34,6 +34,9 @@ To start using *River Architect*:
 
 
 # Package structure, requirements and logfiles
+
+***
+
 ## File structure<a name="structure"></a>
 
 The main directory (`/RiverArchitect/`) contains the  program launcher named `Start_River_Architect.bat` and the *Python3* file `master_gui.py`. The *River Architect* modules are located in sub-folders. The master folder (`/RiverArchitect/`) includes the following files and directories:
@@ -191,8 +194,6 @@ The package is designed for an *ArcPro*'s Python3 conda environment. Before laun
 
 There is no standard easy way to import ArcGIS' `arcpy` package in *Python* running on UNIX platforms (Apple or Linux). Future versions of *River Architect* aim at using other packages for geodata processing, which will also run on UNIX platforms (we are currently experimenting with `gdal` and `qgis.core`).\
 After editing the batch files, launch *River Architect* by double-clicking on `Start_River_Architect.bat`.
-
-
 
 ## Requirements<a name="req"></a>
 

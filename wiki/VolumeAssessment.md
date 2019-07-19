@@ -27,9 +27,12 @@ The *VolumeAssessment* module compares two input DEM Rasters and calculates volu
 
 Please note that an *ArcPro* `3D` extension is required for running this module.
 
-***
+
 
 # Quick GUIde to Volume Assessment<a name="vaquick"></a>
+
+***
+
 ## Main window set-up and run<a name="vagui"></a>
 
 The GUI start-up takes a couple of seconds because the module updates reach information from an external workbook.

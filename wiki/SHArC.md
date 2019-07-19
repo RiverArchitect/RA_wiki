@@ -34,9 +34,10 @@ A minimum of three normal discharges within a seasonal flow duration curve shoul
 
 *Note that the SHArC module has no own mapping function. cHSI Rasters may be mapped with the project assessment templates of the ProjectMaker module.*
 
-***
 
 # Quick GUIde to habitat suitability evaluation<a name="hequick"></a>
+
+***
 
 ## Main window set-up and run<a name="hegui"></a>
 

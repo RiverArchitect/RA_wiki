@@ -192,10 +192,13 @@ For retrieving the extent, in *ArcGIS* Desktop, go to the `View` menu, click on 
 The function uses these definitions for zooming to each point defined below Line 8 in `mapping.inp`, cropping the map to the defined extents and exporting each page to a `pdf` map bundle containing as many pages as there are defined in `mapping.inp`.<br/>
 The program uses the reference coordinate system and projection defined in the `.aprx` file's map layout templates or in `mapping.inp`.
 
+***
 
 # Geofile (Raster) conventions<a name="terms"></a>
 The input Rasters need to be in **GeoTIFF** (*.tif*) format, notably, a `raster_name.tif` file. _Note that River Architect is designed to also handle Esri's GRID format, but the primary raster file type should be GeoTIFF_. Depth Raster names must start with `h` and velocity Raster names must start with `u`, followed by a six-digit discharge `QQQQQQ`, which is independent of the unit system. For example, a flow depth Raster associated with a discharge of 55 m³/s needs to be called `h000055.tif` and a velocity Raster associated with a discharge of 11000 m³/s needs to be called `u011000.tif`. Likewise, a flow depth Raster associated with a discharge of 55 cfs needs to be called `h000055.tif`. The Raster names ignore discharge value digits after the decimal point. Moreover, every flow depth Raster requires a matching velocity Raster and vice verse (e.g., `h000055.tif` requires a Raster called `u000055.tif`).<br/>
 **Note the importance of `back.tif` for calculation extents.**
+
+***
 
 # Manual input data preparation<a name="inputs"></a>
 

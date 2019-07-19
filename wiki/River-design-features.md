@@ -59,7 +59,7 @@ In addition, the *River Architect* provides the option of limiting restoration f
 
 ***
 
-# Predefined features and hypotheses<a name="feat"></a>
+# Pre-defined features and hypotheses<a name="feat"></a>
 
 The standard installation of *River Architect* comes with a set of pre-defined river design features (cf. [Schwindt et al. 2019][schwindt19]). For topographic change, scour and fill rates are considered over a 3-year observation period (2008 to 2014, see [Weber and Pasternack 2017][weber17]). The following hypotheses apply to the pre-defined features.
 

@@ -14,6 +14,8 @@ The *Connectivity* module is used to identify wetted areas that are disconnected
 
 # Quick GUIde to Connectivity Assessment<a name="guide"></a>
 
+***
+
 ![mtgui](https://github.com/RiverArchitect/Welcome/raw/master/images/gui_start_connect.PNG)
 
 Select a condition and at least one aquatic ambiance (fish species/lifestage as defined in `Fish.xlsx`. Then click the "Run Analysis" button to begin calculations.

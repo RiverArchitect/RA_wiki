@@ -45,7 +45,6 @@ For terrain modifications, the module requires an input topo (DEM), which it loo
 The ["Widen"](River-design-features#berms) and ["Grading"](River-design-features#grading) features use the maximum required distance to the groundwater table, which is admissible for plantings. These threshold values are defined in the [*LifespanDesign*][3] module's workbook `RiverArchitect/LifespanDesign/Input/.templates/threshold_values.xlsx`. The prior run of the [*MaxLifespan*][4] module is required to enable *ModifyTerrain* reading Rasters containing the keywords `grade` or `widen` from the folder `RiverArchitect/MaxLifespan/Output/Rasters/CONDITION/`. Moreover, a depth to groundwater table Raster (*GeoTIFF* format) with the name [`d2w.tif`](Signposts#make-depth-to-groundwater-rasters) is required in the directory `RiverArchitect/01_Conditions/CONDITION/` (use the [Get Started](Signposts#getstarted)'s [`Populate Condition`](Signposts#pop-condition) function to create a depth to the groundwater Raster).<br/>
 The directory of maximum lifespan and depth to groundwater Rasters can be modified by clicking on the `Change feature max. lifespan Raster directory (optional)` button. This directory needs to contain *GeoTIFF*-Rasters, which have the keywords `grade` or `widen` in their filename.
 
-
 ***
 
 
@@ -100,10 +99,9 @@ The `condition` DEM (`act_dem`) is lowered using the `arcpy`'s spatial analyst:<
 
 ## Code modification: Add routines for automated DEM modification<a name="mtcode"></a>
 
-
 Other routines for the automated generation of modified terrains can be added as follows:
 
-1.  Create new function in the `ModifyTerrain` class (file `ModifyTerrain/cModifyTerrain.py`), which contains routines for creating a new DEM, for example:
+ - Create new function in the `ModifyTerrain` class (file `ModifyTerrain/cModifyTerrain.py`), which contains routines for creating a new DEM, for example:
 
 ```python
   def create_new_dem(self, feat_id, extents):
@@ -159,13 +157,13 @@ Other routines for the automated generation of modified terrains can be added as
 
 Note:
 
- -   The `self , feat_id , extents` arguments are required for the implementation in the call-routine, where is a [features shortnames](River-design-features#introduction-and-feature-groups) `extent` and is an `arcpy.Extent` variable that limits DEM creation to this extent.
+     +  The `self , feat_id , extents` arguments are required for the implementation in the call-routine, where is a [features shortnames](River-design-features#introduction-and-feature-groups) `extent` and is an `arcpy.Extent` variable that limits DEM creation to this extent.
 
- -   `self.logger.info()` sends messages to the logger, which are also printed on the *Python* terminal.
+     +  `self.logger.info()` sends messages to the logger, which are also printed on the *Python* terminal.
 
- -   `dem = self.raster_dict[self.raster_info]` uses the latest DEM version; this is the `condition` DEM if no other terrain modification was applied before. Otherwise, for example if "grading" was used for the automated terrain modification before this function is used, `dem = self.raster_dict[self.raster_info]` points to the terrain DEM after grading.
+     +  `dem = self.raster_dict[self.raster_info]` uses the latest DEM version; this is the `condition` DEM if no other terrain modification was applied before. Otherwise, for example if "grading" was used for the automated terrain modification before this function is used, `dem = self.raster_dict[self.raster_info]` points to the terrain DEM after grading.
 
-2.  Implement the new function in the modification manager:
+ - Implement the new function in the modification manager:
 
 ```python
   def modification_manager(self, feat_id):
@@ -185,8 +183,9 @@ Note:
 
 ```
 
-3.  Save edits
-4.  The adapted code can now be executed using the [alternative run options](#mtaltrun), where `feature_ids = ["shortname of new feature"]`.<br/>
+ - Save edits
+
+ - The adapted code can now be executed using the [alternative run options](#mtaltrun), where `feature_ids = ["shortname of new feature"]`.<br/>
     *Hint:* The new method can also be implemented in the GUI by adding `self.featmenu.add_command(label="New Feature", command=lambda: self.define_feature("new ID")` to `def __init__(...)` of the `FaGui()` class in the file `modify_terrain_gui.py`. This requires adding an `if not(feature_id == "new ID"): ... else: ...` statement in the `self.define_feature` function according to the function environment.
 
 ***

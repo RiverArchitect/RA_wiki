@@ -28,6 +28,8 @@ Maximum lifespan mapping uses lifespan maps produced with the [*LifespanDesign*]
 
 # Quick GUIde to maximum lifespan maps<a name="actquick"></a>
 
+***
+
 ## Main window set-up and run<a name="actgui"></a>
 
 The *MaxLifespan* module requires lifespan and design maps (i.e., the prior run of the [*LifespanDesign*][3] module is required). Then, the *MaxLifespan* module can be launched and the following window opens up.
@@ -74,7 +76,7 @@ For batch-processing of multiple scenarios, it can be useful to run the `geo_fil
     
 
 ## Output<a name="actoutput"></a>
-
+***
 ### Geofiles<a name="actoutgeo"></a>
 
 The principal output of the module's Geofile Maker is one Raster called `max_lf` (stored in `.../MaxLifespan/Output/Rasters/CONDITION/`) and one shapefile per analyzed feature containing polygons of the feature's best performing areas (stored in `.../MaxLifespan/Output/Shapefiles/CONDITION/`). Moreover, the module produces Rasters with names corresponding to the lifespan/design Raster names and feature shortnames, which essentially contain the same information as the feature shapefiles. These Raster files are side products from the production of the feature shapefiles.
@@ -98,10 +100,11 @@ Prior to running `Map Maker`, the layout templates are stored in `RiverArchitect
 The GUI can be closed via the `Close` dropdown menu if no background processes are going on (see terminal messages). The GUI flashes and rings a system bell when it completed a run task. If layout creation and/or mapping were successfully applied, the target folder automatically opens. After execution of either run task, the GUI disables functionalities, which would overwrite the results and it changes button functionality to open logfiles and quit the program. Logfiles are stored in the `RiverArchitect/MaxLifespan/` folder and named `logfile.log`. Logfiles from previous runs are overwritten.
 
 # Working principle<a name="actprin"></a>
-
+***
 The Geofile Maker uses the `CellStatistics` (with "Max" argument) command of `arcpy`'s Spatial Analyst toolbox to identify the best lifespans of features. In the case of features where only design Rasters are available (i.e., Raster units are either on/off (1/0) or dimensional indicators, for example minimum grain sizes), the Geofile Maker converts any non-zero value of the design Raster to 0.8. The value of 0.8 is an arbitrarily chosen identifier with the hypothetical unit of years, where the only importance is that this identifier is larger than zero and smaller than 0.9. Thus, the identifier is smaller than any lifespan value and the `CellStatistics`'s "Max" corresponds to the lifespan value when lifespan Rasters are compared with design Rasters. In other words, the Geofile Maker prioritizes lifespan Rasters over design Rasters. This choice was made because the data quality of lifespan Rasters is better (higher data abundance) than the quality of design Rasters, considering that the data quality is a function of available layers (DEM, morphological unit, grain size, hydraulic Rasters, etc.). Therefore, pixels where no lifespan value but a design value is available to get assigned a value of 0.8. Finally, the 0.8-pixels are converted to the highest defined lifespan (see [*LifespanDesign*][3] module) based on the assumption that if the feature is constructed corresponding to the design criteria, its lifespan will be high. Note the difference: lifespan values are prioritized because of the better data quality and the *max*-years-value of design Raster-only pixels applies to a chain of safe constructive assumptions potentially resulting in high costs.<br/>
 Recall that [`Other bioengineering` features](River-design-features#bioeng) can take three values: (1) `max` years, if the terrain slope is greater than defined in the thresholds workbook and the depth to groundwater is lower than defined in the thresholds workbook (cf. [*LifespanDesign*][3]); (2) `1.0` year, if the terrain slope is greater than defined in the thresholds workbook and the depth to groundwater is greater than defined in the thresholds workbook; (3) `NoData`, if the terrain slope is lower than defined in the thresholds workbook. Thus, where maximum lifespan maps indicate a 1.0-year lifespan, bioengineering features that are independent of the depth to the groundwater table are required. Such features typically imply the placement of angular boulders.
 
+***
 # Code modification: Add feature sets for maximum lifespan maps<a name="actcode"></a>
 
 The comprehensive *MaxLifespan* module provides flexibility regarding input directories, layout modifications and mapping extents without modifications of the code. However, modifications of the [feature sets (framework, toolbox and complementary)](River-design-features) require code modifications. The relevant python classes are in the file `cFeatureActions.py`, notably  `class FrameworkFeatures(Director)`, `class ToolboxFeatures(Director)` and `class ComplementaryFeatures(Director)`. These classes all inherit from the `Director` class which identifies and assigns lifespan and design Rasters in the input folder. The following code example indicates where single features can be added or removed from feature sets. It is a generalized code sample where ["Framework"](River-design-features#featoverview), ["Plants"](River-design-features#plants), ["Other Bioengineering"](River-design-features#bioeng) and ["Longitudinal connectivity"](River-design-features#featoverview) are replaced with "TYPE". The feature `FullName_i` and `shortname_i` must comply with the [feature terminology](River-design-features#featoverview) because also the *MaxLifespan* module uses the centralized feature identifier class that is stored in `RiverArchitect/ModifyTerrain/cDefinitions.py`.
