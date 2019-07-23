@@ -235,8 +235,8 @@ Error messages
     - *Remedy:*  Ensure the correct setup of the used flow duration curve in `00_Flows/CONDITION/flow_duration ... .xlsx`. The file structure must correspond to that of the provided template `flow_duration_template.xlsx` and all discharge values need to be positive floats. Review the [HHSI input preparation](SHArC#hemakehsi) for details.
     
  - **`ERROR: Could not load ... .`**
-    - *Cause:*   Raised by several functions, when they cannot find a built-in template file.
-    - *Remedy:*  Ensure that the stated file exists and that no other program uses the stated file.
+    - *Cause:*   Raised by several functions, when they cannot find a user-defined or built-in template file.
+    - *Remedy:*  Ensure that the stated file exists, can be opened (is not corrupted) and no other program uses the stated file.
     
  - **`ERROR: Could not load boundary Raster: ... .`**
     - *Cause:*   Raised by `make_sub_condition(...)` (`GetStarted/fSubCondition`) when the defined boundary Raster contains invalid data.
@@ -248,15 +248,15 @@ Error messages
         + Ensure that the project was correctly delineated ([Project Area Polygon preparation](ProjectMaker#pminp2)).
         + Manually inspect the project delineation Raster.
 
+ - **`ERROR: Could not load newly created Raster of the project area.`**
+    - *Cause:*   Raised by `set_project_area(self)` of the *<a href="ProjectMaker">ProjectMaker</a>*'s `SHArC()` class in `ProjectMaker/cSHArC.py` when the converted the project area shapefile is corrupted.
+    - *Remedy:*  Ensure that the project was correctly delineated ([Project Area Polygon preparation](ProjectMaker#pminp2)).
+
  - **`ERROR: Could not open workbook (...).`**
     - *Cause:*   Error raised by the `__init__(self)` function of the `Read()` class in `riverpy/cInputOutput.py` or the `write_flow_duration2xlsx(self, ...)` function of the `SeasonalFlowProcessor()` class (`riverpy/cFlows.py`) when the concerned workbook contains errors or cannot be opened for other reasons.
     - *Remedy:* 
 	    +  <a href="ProjectMaker">ProjectMaker</a>: Ensure the correct usage of the concerned workbook ([*ProjectMaker* Wiki][7]).
 	    +  Flow generator: Ensure that the template workbook in the parentheses is not opened in any other program and that the template workbook was not modified.
-
- - **`ERROR: Could not load newly created Raster of the project area.`**
-    - *Cause:*   Raised by `set_project_area(self)` of the *<a href="ProjectMaker">ProjectMaker</a>*'s `SHArC()` class in `ProjectMaker/cSHArC.py` when the converted the project area shapefile is corrupted.
-    - *Remedy:*  Ensure that the project was correctly delineated ([Project Area Polygon preparation](ProjectMaker#pminp2)).
 
  - **`ERROR: Could not perform spatial radius operations [...].`**
     - *Cause:*   The `spatial_join_analysis(self, rater, curve_data)` function of the `CovHSI(HHSI)` class (`SHArC/cHSI.py`) raises this error message when one or several spatial calculations failed, including `arcpy.RasterToPoint_conversion[...]`, `arcpy.SpatialJoin_analysis[...]` and / or  `arcpy.PointToRaster_conversion[...]`.
@@ -867,6 +867,10 @@ Warning messages
  - **`WARNING: Merge operation failed (empty shapefiles?).`**
     - *Cause:*   Error raised by the `ProjectMaker/s30_terrain_stabilization/`'s `main()` function when the Bioengineering and Angular Boulder shaepfiles for stabilizing the terrain failed.
     - *Remedy:*  One or both stabilization shapefiles (`ProjectMaker/ProjectName/Geodata/Shaepfiles/Terrain_stab.shp` or `.../Terrain_boulder_stab.shp`) may be empty. Check source data or consider to change the user-defined requried critical lifespan.
+
+ - **`WARNING: No Lifespan / Design Raster found (...).`**
+    - *Cause:*   Raised by the `MaxLifespan`'s `Director` class (`MaxLifespan/cFeatureActions.py`) when it cannot find any valid lifespan or design Raster for a condition.
+    - *Remedy:*  Make sure to run the [*LifespanDesign*][3] module for at least one feature within the selected group for a condition. If necessary, verify the contents of lifespan Rasters in `LifespanDesign/Output/Rasters/CONDITION/` (e.g., empty Rasters and Raster names must contain `lf` or `ds` to be recognized).
 
  - **`WARNING: Non-numeric values in data.`**
     - *Cause:*   Raised by the interpolation functions of the `Interpolator` class (`.site_packages/riverpy/cInterpolator.py`) when the x data points that should get an interpolated y-value are not numeric.
