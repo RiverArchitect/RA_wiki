@@ -115,14 +115,18 @@ Areas with a 1.0-year lifespan require bioengineering features that are independ
 
 In the context of river engineering, soil-bioengineering applies living materials (plants) to stabilize terrain and enhance habitat. Alas, dry conditions in arid and semi-arid (Mediterranean) climate zones limits the possibilities of application. The *LifespanDesign* module maps potential bioengineering areas, as a function of:
 
--   `d2w` the maximum depth to groundwater distance indicates where [vegetation plantings](#plants)-based bioengineering applies.
+-   `d2w` the minimum and maximum depth to groundwater distance indicates where [vegetation ](#plants)-based bioengineering applies.
 -   `dem` is used to compute the percent-wise terrain slope `S0`, where modified terrain with slopes of more than a certain percentage is considered to require reinforcement (set `S0` threshold in `RiverArchitect/LifespanDesign/.templates/threshold_values.xlsx`, see [threshold modification](LifespanDesign#input-modify-threshold-values))
+
+*River Architect* applies vegetative bioengineering such as fascines or geotextile between the **(min)** value in row 7 and the **(max)** value in row 8 of the [threshold value workbook](LifespanDesign#input-modify-threshold-values). Regions with at terrain slope above the threshold defined in row 20 and above the maximum Depth to the groundwater defined in row 8 get mineral bioengineering (such as rock paving or riprap) assigned. The differentiation is made because vegetative bioengineering features may dry out when the water table is too far away (vertically).
 
 The **lifespan maps** of bioengineering features can take three values:
 
--   `20.0` years (or maximum value as defined in the [input definitions file](Signposts#inpfile), if the terrain slope is greater than defined in the thresholds workbook and the depth to groundwater is lower than defined in the [thresholds workbook](LifespanDesign#input-modify-threshold-values)
+-   `50.0` years (or maximum value as defined in the [input definitions file](Signposts#inpfile), if the terrain slope is greater than defined in the thresholds workbook and the depth to groundwater is lower than defined in the [thresholds workbook](LifespanDesign#input-modify-threshold-values)
 -   `1.0` year, if the terrain slope is greater than defined in the thresholds workbook and the depth to groundwater is greater than defined in the thresholds workbook
 -   `NoData`, if the terrain slope is lower than defined in the thresholds workbook.
+
+The lifespan map for vegetative bioengineering contains the string `"bio_v"` in its filename. The lifespan map for mineral bioengineering contains the string `"bio_m"` in its filename. 
 
 ## Berm Setback / Widen<a name="berms"></a>
 
