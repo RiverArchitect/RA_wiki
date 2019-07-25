@@ -38,7 +38,7 @@ Error messages
 
 - **`ERROR 000641: Too few records for analysis.`**
     - *Cause:*   This  `arcpy` error message occurs here when `arcpy.CalculateGeometryAttributes_management` tries to compute the area of an empty shapefile.
-    - *Remedy:*  If this error occurs within the calculation of SHArea (Seasonal Habitat Area) calculations, it may be ignored because some discharges do not provide any usable habitat area for a target fish species within a defined project area. Otherwise, trace back files and check the shapefile consistency.
+    - *Remedy:*  If this error occurs within the calculation of SHArea (Seasonal Habitat Area) calculations, it may be ignored because some discharges do not provide any usable habitat area for a target fish species within a defined project area. Otherwise, traceback files and check the shapefile consistency.
 
 - **`ERROR 999998: Unexpected Error.`** This is an operating system error and it can indicate different error conditions (i.e., the real reasons may have various error sources). Some of the most probable causes are:
 
@@ -57,7 +57,7 @@ Error messages
     - *Remedy:*  Close the software that blocks `.cache`, including `explorer.exe`, other instances of *Python* or *ArcGIS* and rerun the code. Also re-logging may be required if the folder cannot be unlocked.
 
  - **`ERROR: (arcpy) in *PAR*.`**
-    - *Cause:*   Similar to`ExceptionERROR: (arcpy) ...`. The error is raised by the `analysis_...`,`design_...` and other functions when `arcpy` Raster calculations could not be performed. Missing Rasters, bad Raster assignments, errors in input geodata files, or bad Raster calculation expressions are possible reasons. The error can also occur when the `SpatialAnalyst` license is not available.
+    - *Cause:*   Similar to`ExceptionERROR: (arcpy) ...`. The error is raised by the `analysis_...`, `design_...` and other functions when `arcpy` Raster calculations could not be performed. Missing Rasters, bad Raster assignments, errors in input geodata files, or bad Raster calculation expressions are possible reasons. The error can also occur when the `SpatialAnalyst` license is not available.
     - *Remedy:*  See `ExceptionERROR: (arcpy) ...`
 
 
@@ -73,7 +73,7 @@ Error messages
         + Review the input settings according to the [SHArC Quick GUIde](SHArC#hegui).
         + Follow up earlier error messages.
 
- - **`ERROR: Bad assignment of x/y values in coordinate input file.`**
+ - **`ERROR: Bad assignment of x/y values in the coordinate input file.`**
     - *Cause:*   Raised by the `coordinates_read(self)` function of the `Info()` class in either `LifespanDesign/cRead InpLifespan.py` or `MaxLifespan/cReadActionInput.py` when `mapping.inp` has bad assignments of *x*-*y* coordinates.
     - *Remedy:*  Ensure that the coordinate definitions in `mapping.inp` (`LifespanDesign/.templates/` or `MaxLifespan/.templates/`) correspond to the definitions in [*LifespanDesign* Output maps](LifespanDesign#outmaps).
 
@@ -89,14 +89,14 @@ Error messages
     - *Remedy:*  See `ERROR: Bad call of map centre coordinates [...]`.
     
  - **`ERROR: MU calculation failed.`**
-    - *Cause:*   Error raised by the `MU` class (`GetStarted/cMorphUnits.py`) when the defined flow depth and / or velocity Rasters are not usable.
+    - *Cause:*   Error raised by the `MU` class (`GetStarted/cMorphUnits.py`) when the defined flow depth and/or velocity Rasters are not usable.
     - *Remedy:*
         + Ensure that no other program uses the selected in flow depth and velocity Rasters, and *Condition* folder.
         + Manually / visually verify the consistency of the provided input Rasters (*Float* - type).
         + See also next error message (*Baseflow MU update failed.*)
     
  - **`ERROR: MU update failed.`**
-    - *Cause:*   Error raised by the `MU` class (`GetStarted/cMorphUnits.py`) when processing the provided flow depth and / or velocity Rasters lead to non-meaningful results.
+    - *Cause:*   Error raised by the `MU` class (`GetStarted/cMorphUnits.py`) when processing the provided flow depth and/or velocity Rasters lead to non-meaningful results.
     - *Remedy:*
         + Ensure that the flow depth and velocity Rasters have consistent units.
         + ISSUE: The current code uses U.S. customary units for MU delineation according to [Wyrick and Pasternack (2014)](https://www.sciencedirect.com/science/article/pii/S0169555X14000099). If required, manual changes of the delineation functions can be made in `GetStarted/cMorphUnits.py` (`calculate_mu_baseflow` function approximately from line 75 onward). We are working on improving the Morphological Unit generator.
@@ -112,7 +112,7 @@ Error messages
  - **`ERROR: Calculation of cell statistics failed.`**
     - *Cause:*   Raised by `identify_best_features(self)` of [*MaxLifespan*][4]'s `ArcpyContainer()` class in `MaxLifespan/cActionAssessment.py` when `arcpy.sa.CellStatistics()` could not be executed.
     - *Remedy:*
-        + The latest feature added to the internal best lifespan Raster may contain inconsistent data. Manually load the last feature Raster (the logfile tells the feature name) into *ArcPro* and trace back the error. If needed, re-run lifespan/design Raster Maker.
+        + The latest feature added to the internal best lifespan Raster may contain inconsistent data. Manually load the last feature Raster (the logfile tells the feature name) into *ArcGIS Pro* and trace back the error. If needed, re-run lifespan/design Raster Maker.
         + In the case that the error occurs already with the first feature added, the [*MaxLifespan*][4]'s `zero` Raster may be corrupted. The remedy described for the error message `ExceptionERROR: Unable to create ZERO Raster. Manual intervention required* can be used to manually re-create the `zero` Raster.
 
  - **`ERROR: Calculation of volume from RASTER failed.`**
@@ -133,15 +133,15 @@ Error messages
 
  - **`ERROR: Cannot load modified DEM.`**
     - *Cause:*   The volume difference calculation and mapping of a (CAD-) modified DEM Rasters failed because the `__init__(self, ...)` function of the `VolumeAssessment()` class in `VolumeAssessment/cVolumeAssessment.py` cannot access the Raster.
-    - *Remedy:*  Ensure that the selected (CAD-) modified DEM Raster exists and that it is not opened in any other program (close *ArcPro* / *QGIS*).
+    - *Remedy:*  Ensure that the selected (CAD-) modified DEM Raster exists and that it is not opened in any other program (close *ArcGIS Pro* / *QGIS*).
 
  - **`ERROR: Cannot load original DEM.`**
     - *Cause:*   The volume difference calculation and mapping of the selected DEM Rasters failed because the `__init__(self, ...)` function of the `VolumeAssessment()` class in `VolumeAssessment/cVolumeAssessment.py` cannot access the Raster.
-    - *Remedy:*  Ensure that the selected DEM Raster exists and that it is not opened in any other program (close *ArcPro* / *QGIS*).
+    - *Remedy:*  Ensure that the selected DEM Raster exists and that it is not opened in any other program (close *ArcGIS Pro* / *QGIS*).
     
 - **`ERROR: Cannot open project: DIR/module_name.aprx.`**
     - *Cause:*   Mapping of `module_name` raises this error message when the stated project file (*.aprx*) cannot be opened.
-    - *Remedy:*  Ensure that the stated is not opened in any other program (*ArcPro Desktop*) and that the stated project file exists.
+    - *Remedy:*  Ensure that the stated is not opened in any other program (*ArcGIS Pro Desktop*) and that the stated project file exists.
 
 - **`ERROR: Could not access Fish.xlsx (...).`**
     - *Cause:*   The `get_hsi_curve(self, species, lifestage, par)` function of the `Fish()` class (`.site_packages/riverpy/cFish.py`) or the `main()` function in `s40_compare_wua.py` raise this error message when it cannot access `Fish.xlsx` or copy read values from the `/SHArC/SHArea/`condition` directory.
@@ -157,7 +157,7 @@ Error messages
     - *Remedy:*
 	    + <a href="LifespanDesign">LifespanDesign</a> / <a href="MaxLifespan">Max Lifespan</a>: Ensure that the definitions in [`LifespanDesign/.templates/mapping.inp`](Signposts#inpfile) are correct.
 	    + <a href="VolumeAssessment">VolumeAssessment</a>: Verify the definitions in the [reach coordinates workbook](RiverReaches) and also refer to error message `ERROR: Could not create new project`.
-	    + General: Ensure that no other program accesses the `LifespanDesign/.cache/`, `MaxLifespan/.cache/`, `MaxLifespan/Output/`, `VolumeAssessment/Output/`, or `02_Maps/*` directories or their contents (close *ArcPro*).
+	    + General: Ensure that no other program accesses the `LifespanDesign/.cache/`, `MaxLifespan/.cache/`, `MaxLifespan/Output/`, `VolumeAssessment/Output/`, or `02_Maps/*` directories or their contents (close *ArcGIS Pro*).
 
  - **`ERROR: Could not calculate CellStatistics (Raster comparison).`**
     - *Cause:*   Raised by `compare_raster_set(self, ...)` function of the `arcpyAnalysis()` class in `LifespanDesign/cLifespanDesignAnalysis.py` when the provided it failed to combine the lifespan according to the provided input Rasters (hydraulic or scour fill or morphological units).
@@ -165,17 +165,17 @@ Error messages
 
  - **`ERROR: Could not calculate stable grain size Raster for ... .`**
     - *Cause:*   Error raised by the `ProjectMaker/s30_terrain_stabilization/`'s `main()` function when it cannot calculate the stable grain size for a user-defined minimum (critical) lifespan and *Condition*.
-    - *Remedy:*  Open `RiverArchitect/logfile.log` and verify that the stated source data exist and are not empty (if necessary, open geofiles in *ArcPro* and verify contents).
+    - *Remedy:*  Open `RiverArchitect/logfile.log` and verify that the stated source data exist and are not empty (if necessary, open geofiles in *ArcGIS Pro* and verify contents).
     
 - **`ERROR: Could not create new project (...)`**
     - *Cause:*   A module cannot find a project for mapping when it tries to open `aprx_origin = arcpy.mp.ArcGISProject(self.ref_lyt_dir + "module_name.aprx")` or when it tries to save a copy of the source project (`aprx_origin.saveACopy(self.output_mxd_dir + "module_name.aprx")`).
-    - *Remedy:*  Ensure that the source project `aprx_origin` exists (quoted in ERROR-message brackets) and that the target directory (`to:`) can be accessed (writing rights / close *ArcPro*). If the source project is missing, re-download it from the [source code][sourcecode].
+    - *Remedy:*  Ensure that the source project `aprx_origin` exists (quoted in ERROR-message brackets) and that the target directory (`to:`) can be accessed (writing rights / close *ArcGIS Pro*). If the source project is missing, re-download it from the [source code][sourcecode].
 
  - **`ERROR: Could not create Raster of the project area.`**
     - *Cause:*   Raised by `set_project_area(self)` of *ProjectMakers*'s `SHArC()` class in `ProjectMaker/cSHArC.py` or the `main()` function in `ProjectMaker/s20_plantings_delineation.py`) when it failed to convert the project area shapefile to a Raster, which it needs for limiting spatial calculations to the project extent.
     - *Remedy:*
         + Ensure that the project was correctly delineated ([Project Area Polygon preparation](ProjectMaker#pminp2)).
-        + If the Error message occurred within the terrain stabilization process, either restart the Project creation while propperly implementing the [Project Area Polygon preparation](ProjectMaker#pminp2), OR manually create a project area Raster (save as `ProjectMaker/ProjectName_vXX/Geodata/Rasters/ProjectArea.tif`, where in-values=`Int(1)` and out-values=`NoData`).
+        + If the Error message occurred within the terrain stabilization process, either restart the Project creation while properly implementing the [Project Area Polygon preparation](ProjectMaker#pminp2) OR manually create a project area Raster (save as `ProjectMaker/ProjectName_vXX/Geodata/Rasters/ProjectArea.tif`, where in-values=`Int(1)` and out-values=`NoData`).
     
 - **`ERROR: Could not create sub-condition folder: ... .`**
     - *Cause:*   Raised by `make_sub_condition(...)` (`GetStarted/fSubCondition`) when the defined sub-*Condition* name is invalid.
@@ -197,7 +197,7 @@ Error messages
  - **`ERROR: Could not find / access input Rasters.`**
     - *Cause:*   Error raised by the `D2W` class (`GetStarted/cDepth2Groundwater.py`) or the `DET` class (`GetStarted/cDetrendedDEM.py`) or the `MU` class (`GetStarted/cMorphUnits.py`) when the defined DEM, flow depth, or velocity *GeoTIFF*s are not usable.
     - *Remedy:*
-        + Ensure that no other program uses the selected in DEM / flow depth Raster and *Condition* folder.
+        + Ensure that no other program uses the selected in DEM/flow depth Raster and *Condition* folder.
         + Manually / visually verify the consistency of the provided input Rasters.
         + Avoid running `d2w.tif`, `mu.tif` and `det.tif` creation simultaneously and for multiple conditions (the *.cache* folders are locked by individual instantiations).
 
@@ -267,7 +267,7 @@ Error messages
     - *Remedy:*  Ensure that the format of the provided flow series workbook corresponds to the provided example data file (`00_Flows/InputFlowSeries/flow_series_example_data.xlsx`).
 	
  - **`ERROR: Could not process information from [...].`**
-    - *Cause:*   The `main()` function in `ProjectMaker/s40_compare_wua.py` raises this error message when it could not calculate the annually usable habitat area for condition or (set of) discharge(s).
+    - *Cause:*   The `main()` function in `ProjectMaker/s40_compare_wua.py` raises this error message when it could not calculate the annually usable habitat area for a condition or (set of) discharge(s).
     - *Remedy:*  Ensure that the variable (parameters) are properly defined according to [ProjectMaker Quick GUIde](ProjectMaker#pmquick) and that the [*SHArC*][6] module contains the required information.
     
  - **`ERROR: Could not read flow duration curve data.`**
@@ -287,12 +287,12 @@ Error messages
     - *Cause:*   The `Read` class (`RiverArchitect/.site_packages/riverpy/cInputOutput.py`) or `make_sub_condition` (`GetStarted/fSubCondition`) raise this error when the data from the provided workbook or Raster, respectively, cannot be processed.
     - *Remedy:*
         + `riverpy`: Ensure that the provided workbook respects the input requirements described in the instructions of the applied module.
-        + `Gestarted/fSubCondition`: Verify the consistency of the Rasters in the source condition and make sure that no other program is using data from the source condition.
+        + `GetStarted/fSubCondition`: Verify the consistency of the Rasters in the source condition and make sure that no other program is using data from the source condition.
 
 
 - **`ERROR: Could not read source project (...)`**
     - *Cause:*   A module cannot find a project for mapping when it tries to open `aprx_origin = arcpy.mp.ArcGISProject(self.ref_lyt_dir + "module_name.aprx")`.
-    - *Remedy:*  Ensure that the source project `aprx_origin` exists (quoted in ERROR-message brackets) and not opened in any other application (e.g., close *ArcPro*). If the source (origin) project is missing, re-download it from the [source code][sourcecode].
+    - *Remedy:*  Ensure that the source project `aprx_origin` exists (quoted in ERROR-message brackets) and not opened in any other application (e.g., close *ArcGIS Pro*). If the source (origin) project is missing, re-download it from the [source code][sourcecode].
 
  - **`ERROR: Could not retrieve reach coordinates.`**
     - *Cause:*   The automated terrain modification with grading and/or widen features in the `modification_manager(self, feat_id)` function of the `ModifyTerrain()` class (`ModifyTerrain/cModifyTerrain.py`) or the `make_volume_diff_rasters(self)` function of the `VolumeAssessment()` class (`VolumeAssessment/cVolumeAssessment.py`) raise this error when the reach extents defined in `ModifyTerrain/.templates/computation_extents.xlsx` are not readable. In particular, the command `self.reader.get_reach_coordinates(self.reaches.dict_id_int_id[self.current_reach_id])` caused the error.
@@ -302,7 +302,7 @@ Error messages
 
  - **`ERROR: Could not run SHArea analysis.`**
     - *Cause:*   The `main()` function in `ProjectMaker/s40_compare_wua.py` raises this error message when it could not calculate SHArea.
-    - *Remedy:*  Trace back warning and other error messages. Ensure the correct definition of parameters, creation of required geodata, and file naming ([*ProjectMaker* Wiki][7]))
+    - *Remedy:*  Traceback warning and other error messages. Ensure the correct definition of parameters, creation of required geodata, and file naming ([*ProjectMaker* Wiki][7]))
 
  - **`ERROR: Could not save best lifespan Raster.`**
     - *Cause:*   Raised by `identify_best_features(self)` of [*MaxLifespan*][4]'s `ArcpyContainer()` class in `MaxLifespan/cActionAssessment.py` when the calculated internal best lifespan Raster is corrupted.
@@ -330,7 +330,7 @@ Error messages
 	
  - **`ERROR: Could not save WORKBOOK.`**
     - *Cause:*   The `main()` function in `ProjectMaker/s40_compare_wua.py` or the `write_flow_duration2xlsx(self, ...)` function of the `SeasonalFlowProcessor()` class (`riverpy/cFlows.py`) raise this error message when they could not save the `WORKBOOK`.
-    - *Remedy:*  Ensure that the target workbook can be overwritten, has valid contents, and is not opened by another program. Trace back earlier warning and error messages.
+    - *Remedy:*  Ensure that the target workbook can be overwritten, has valid contents, and is not opened by another program. Traceback earlier warning and error messages.
 
  - **`ERROR: Could not save SHArea-CHSI Raster.`**
     - *Cause:*   Raised by `calculate_sha(self)` of [*SHArC*][6]'s `CHSI()` class in `SHArC/cHSI.py` when the calculated cHSI Raster is empty or corrupted.
@@ -340,20 +340,20 @@ Error messages
         + Review the input settings according to [SHArC Quick GUIde](SHArC#hegui).
 
  - **`ERROR: Could not set arcpy environment (permissions and licenses?).`**
-    - *Cause:*   A script using `arcpy` and / or `arcpy.sa` could not set up the work environment.
-    - *Remedy:*  Either the wrong *Python* interpreter was used or `arcpy` and / or a *Spatial Analyst* extension are not available. [Read more on setting up the Python environment.](https://github.com/RiverArchitect/RA_wiki/Installation#started)
+    - *Cause:*   A script using `arcpy` and/or `arcpy.sa` could not set up the work environment.
+    - *Remedy:*  Either the wrong *Python* interpreter was used or `arcpy` and/or a *Spatial Analyst* extension are not available. [Read more on setting up the Python environment.](https://github.com/RiverArchitect/RA_wiki/Installation#started)
 	
  - **`ERROR: Could not transfer net SHArea gain.`**
     - *Cause:*   The `main()` function in `ProjectMaker/s40_compare_wua.py` raises this error message when it could not copy the calculated SHArea from `SHArea_evaluation_unit.xlsx` to **`REACH_stn_costs_vii.xlsx`**.
-    - *Remedy:*  Open `SHArea_evaluation_template_unit.xlsx` and verify the calculated values. Trace back potential error sources in the CHSI Rasters `/SHArC/` folder and other error messages.
+    - *Remedy:*  Open `SHArea_evaluation_template_unit.xlsx` and verify the calculated values. Traceback potential error sources in the CHSI Rasters `/SHArC/` folder and other error messages.
 	
  - **`ERROR: Could not transfer SHArea data for [FISH].`**
     - *Cause:*   The `main()` function in `ProjectMaker/s40_compare_wua.py` raises this error message when it could not retrieve SHArea data from the `/SHArC/SHArea/` module to  `SHArea_evaluation_UNIT.xlsx`.
-    - *Remedy:*  Open `SHArea_evaluation_TEMPLATE_UNIT.xlsx` and verify the calculated values. Trace back potential error sources in the CHSI Rasters `/SHArC/` folder and other error messages.
+    - *Remedy:*  Open `SHArea_evaluation_TEMPLATE_UNIT.xlsx` and verify the calculated values. Traceback potential error sources in the CHSI Rasters `/SHArC/` folder and other error messages.
 
  - **`ERROR: Could not write flow data set.`**
     - *Cause:*   Error raised by the `write_flow_duration2xlsx(self, ...)` function of the `SeasonalFlowProcessor()` class (`riverpy/cFlows.py`) when it could not write flow duration data set to `RiverArchitect/00_Flows/CONDITION/flow_duration_FILI.xlsx`.
-    - *Remedy:*  Close all applications that may use `00_Flows/CONDITION/flow_duration_FILI.xlsx` and trace back earlier warning and error messages.
+    - *Remedy:*  Close all applications that may use `00_Flows/CONDITION/flow_duration_FILI.xlsx` and traceback earlier warning and error messages.
 	
  - **`ERROR: Could not write flow duration curve data (...).`**
     - *Cause:*   Error raised by the `make_flow_duration(self, ...)` or `make_condition_flow_duration(self, ...)` functions (`SeasonalFlowProcessor()` in `RiverArchitect/.site_packages/riverpy/cFlows.py`) when it could not write flow duration curve data to `RiverArchitect/00_Flows/CONDITION/flow_duration_FILI.xlsx`.
@@ -365,7 +365,7 @@ Error messages
 
  - **`ERROR: Could not write SHArea data for [FISH].`**
     - *Cause:*   The `main()` function in `ProjectMaker/s40_compare_wua.py` raises this error message when it could not write the calculated SHArea to when it cannot write a value to `SHArea_evaluation_template_unit.xlsx`.
-    - *Remedy:*  Ensure that the workbook is not opened by another program and / or visually verify that the concerned `CHSI* Rasters contain valid values.
+    - *Remedy:*  Ensure that the workbook is not opened by another program and/or visually verify that the concerned `CHSI* Rasters contain valid values.
 
  - **`ERROR: Cover Raster calculation (check input data).`**
     - *Cause:*   Raised by `call_analysis(self, curve_data)` of [*SHArC*][6]'s`CovHSI(HHSI)` class in `SHArC/cHSI.py` when the cover HSI Raster calculation failed.
@@ -416,7 +416,7 @@ Error messages
 
  - **`ERROR: Failed to create WORKBOOK.`**
  	- *Cause:*   Error raised by the `write_volumes(self, ...)` function of the `Writer()` class in `.site_packages/riverpy/cReachManager.py`) when the `template` it could not add new sheets in `VolumeAssessment/Output/CONDITION_volumes.xlsx` or write to copies of `VolumeAssessment/templates/volume_template.xlsx`.
-    - *Remedy:*  Trace back earlier error messages, ensure that no other program locked `VolumeAssessment/Output/CONDITION_volumes.xlsx` and ensure that `VolumeAssessment/templates/volume_template.xlsx` was not deleted.
+    - *Remedy:*  Traceback earlier error messages, ensure that no other program locked `VolumeAssessment/Output/CONDITION_volumes.xlsx` and ensure that `VolumeAssessment/templates/volume_template.xlsx` was not deleted.
 
  - **`ERROR: Failed to open Fish.xlsx. Ensure that the workbook is not open.`**
     - *Cause:*   Raised by the `edit_xlsx(self)` function of the `Fish()` class in `.site_packages/riverpy/cFish.py` when  `.site_packages/templates/Fish.xlsx` is opened by another program or non-existent.
@@ -436,7 +436,7 @@ Error messages
 
  - **`ERROR: Failed to save PDF map assembly.`**
     - *Cause:*   The `make_pdf_maps(self, ...)` function of the `Mapper()` class (`.site_packages/riverpy/cMapper.py`) raises this error when the map assembly is corrupted.
-    - *Remedy:*  Ensure that no other program accesses the `LifespanDesign/.cache/`, `MaxLifespan/.cache/`, `ModifyTerrain/.cache/`, `LifespanDesign/Output/`, `MaxLifespan/Output/`, or `ModifyTerrain/Output/` directories or their contents (close *ArcPro* and verify read/write rights for `RiverArchitect/02_Maps/CONDITION/`).
+    - *Remedy:*  Ensure that no other program accesses the `LifespanDesign/.cache/`, `MaxLifespan/.cache/`, `ModifyTerrain/.cache/`, `LifespanDesign/Output/`, `MaxLifespan/Output/`, or `ModifyTerrain/Output/` directories or their contents (close *ArcGIS Pro* and verify read/write rights for `RiverArchitect/02_Maps/CONDITION/`).
 
  - **`ERROR: Failed to save WORKBOOK.`**
     - *Cause:*   Raised by `calculate_sha(self)` of [*SHArC*][6]'s `CHSI()` class in `SHArC/cHSI.py` when it could not save `CONDITION_FILI.xlsx`.
@@ -473,7 +473,7 @@ Error messages
  - **`ERROR: Input Rasters contain invalid data.`**
     - *Cause:*   Error raised by the `D2W` class (`GetStarted/cDepth2Groundwater.py`) or the `DET` class (`GetStarted/cDetrendedDEM.py`) when the defined DEM or flow depth *GeoTIFF* are not usable.
     - *Remedy:*
-        + Ensure that no other program uses the selected in DEM / flow depth Raster and *Condition* folder.
+        + Ensure that no other program uses the selected in DEM/flow depth Raster and *Condition* folder.
         + Manually / visually verify the consistency of the provided DEM / flow depth Rasters.
         + Avoid running both routines simultaneously and for multiple *Conditions* (there is only one *.cache* folder that is locked by every process call).
 
@@ -489,7 +489,7 @@ Error messages
     - *Remedy:*  Ensure that the flow duration curve is well defined (see the [HHSI input preparation](SHArC#hemakehsi)) and that `RiverArchitect/SHArC/SHArea/CONDITION_FILI.xlsx` is not used by any other application.
     - 
 	
- - **`ERROR: Invalid date date and / or flow ranges in discharge series.`**
+ - **`ERROR: Invalid date and / or flow ranges in discharge series.`**
     - *Cause:*   Error raised by the `make_flow_season_data(self, ...)` function (`SeasonalFlowProcessor` class in `.site_packages/riverpy/cFlows.py`) when the data provided in the flow series workbook cannot be interpreted.
     - *Remedy:*  Ensure that the provided flow series workbook corresponds to the formats defined in the example data set (`00_Flows/InputFlowSeries/flow_series_example_data.xlsx`). In particular, the date and discharge columns and start rows are hard-coded (we will work on the issue in future ...) and need to correspond those in the sample data set.
     
@@ -507,7 +507,7 @@ Error messages
     - *Cause:*   Error raised by the `save_close_wb(self, *args)` function of the `MakeTable()` or `Write()` class in `.site_packages/riverpy/cMakeTable.py`) or `RiverArchitect/.site_packages/riverpy/cInputOutput.py`), respectively, when it cannot save a workbook (typically `RiverArchitect/SHArC/SHArea/CONDITION_FILI.xlsx` or a copy of the [cost master workbook](https://github.com/RiverArchitect/RA_wiki/ProjectMaker#pmcq)).
     - *Remedy:*
         + [*SHArC*][6]: Close all applications that may use `CONDITION_FILI.xlsx` and ensure that its template exists. Detailed information on [*SHArC*][6] workbook outputs are available in the [HHSI input preparation](SHArC#hemakehsi).
-        + [*ProjectMaker*][7]:  Close all applications that may use the cost master workbook (`REACH_stn_costs_VERSION.xlsx`) and ensure that it exists. Detailed information are available in [ProjectMaker Cost quantity section](ProjectMaker#pmcq).
+        + [*ProjectMaker*][7]:  Close all applications that may use the cost master workbook (`REACH_stn_costs_VERSION.xlsx`) and ensure that it exists. Detailed information is available in [ProjectMaker Cost quantity section](ProjectMaker#pmcq).
 
  - **`ERROR: Invalid interpolation data type (type(Q flowdur) ==  ...)`**
     - *Cause:*   Raised by `interpolate_flow_exceedance(self, Q_value)` of [*SHArC*][6]'s `FlowAssessment()` class in `SHArC/cFlows.py` when the flow duration curve contains invalid data.
@@ -530,7 +530,7 @@ Error messages
 
  - **`ERROR: Invalid volume name.`**
     - *Cause:*   Error raised by the `write_volumes(self, ...)` function of the `Writer()` class in `.site_packages/riverpy/cReachManager.py`, when the `template` sheet in the output (or template) workbook (`VolumeAssessment/Output/CONDITION_volumes.xlsx` or `VolumeAssessment/.templates/volume_template.xlsx`) are inaccessible.
-    - *Remedy:*  Ensure that `VolumeAssessment/Output/CONDITION_volumes.xlsx` or `VolumeAssessment/.templates/volume_template.xlsx` are not opend in any other program.
+    - *Remedy:*  Ensure that `VolumeAssessment/Output/CONDITION_volumes.xlsx` or `VolumeAssessment/.templates/volume_template.xlsx` are not opened in any other program.
 
  - **`ERROR: Lifespan data fetch failed.`**
     - *Cause:*   The `get_lifespan_data(self)` or`get_design_data(self)` function of the `ArcpyContainer` class in `MaxLifespan/cActionAssessment.py` raise this error when it could not retrieve lifespan or design maps from the defined lifespan/design input directory.
@@ -584,11 +584,11 @@ Error messages
  - **`ERROR: *PAR* - Raster copy to Output/Rasters folder failed.`**
     - *Cause:*   The `.cache` folder does not exist or does not contain GRID Rasters or the output folder is not accessible. This error is likely to occur when other errors occurred previously. 
     - *Remedy:* 
-        + Follow trouble shooting of other error messages and re-run.
+        + Follow troubleshooting of other error messages and re-run.
         + Avoid modifications of any folder in the code directory while the program is running, in particular, `.cache`, `01_Conditions/`, `LifespanDesign/Output/Rasters/` and `02_Maps/CONDITION/`.
 
  - **`ERROR: Raster copy to Output folder failed.`**
-    - *Cause:*   The `save_Rasters(self)` function of the `ModifyTerrain()` class in `ModifyTerrain/cModifyTerrain.py` raises this error when saving a terrain differences or new DEM Raster failed.
+    - *Cause:*   The `save_Rasters(self)` function of the `ModifyTerrain()` class in `ModifyTerrain/cModifyTerrain.py` raises this error when saving a terrain difference or new DEM Raster failed.
     - *Remedy:*  Refer to the error `ERROR: Raster could not be saved.` message.
 
  - **`ERROR: Raster could not be saved.`**
@@ -639,7 +639,7 @@ Error messages
 
  - **`ERROR: Volume value assignment failed.`**
     - *Cause:*   Error raised by the `write_volumes(self, ...)` function of the `Writer()` class in `.site_packages/riverpy/cReachManager.py`) when it received invalid volume data.
-    - *Remedy:*  Ensure that no other program uses `VolumeAssessment/Output/CONDITION_volume.xlsx` and trace back earlier errors (modified DEM Rasters may be corrupted).
+    - *Remedy:*  Ensure that no other program uses `VolumeAssessment/Output/CONDITION_volume.xlsx` and traceback earlier errors (modified DEM Rasters may be corrupted).
 
  - **`ERROR: Writing failed.`**
     - *Cause:*   Error raised by the `write_volumes(self, ...)` function of the `Writer()` class in `.site_packages/riverpy/cReachManager.py`) when the `template` it could not add new sheets in `VolumeAssessment/Output/CONDITION_volumes.xlsx` or write to copies of `VolumeAssessment/templates/volume_template.xlsx`.
@@ -664,8 +664,8 @@ Error messages
     - *Remedy:*  Check the installation of the package and its file structure according to the [Requirements stated in the *Introduction and Installation*](Installation#req).
 
  - **`ExceptionERROR: Cannot open reference (condition) ...`**
-    - *Cause:*   Raised by the `ModifyTerrain()` class (`__init__(self,condition, feature_type, *args)`) in `ModifyTerrain/cModifyTerrain.py` when it cannot find a *...* Raster in `01_Conditions/CONDITION/` (or other user defined input directory), where *...* is either a `dem.tif` or a `wt_depth_base.tif` Raster. A `wt_depth_base.tif` Raster is required for automated terrain modification after grading and/or widen features. 
-    - *Remedy:*  Ensure that the missing Raster (`dem` or a `wt_depth_base`) exists in `01_Conditions/CONDITION/`, or if applies, the user defined input directory. If no `wt_depth_base.tif` Raster is available, the terrain modification of grading and/or widen features cannot be automated. In this case, consider adding a new DEM automation function (explained in the [Add Routine section in the *ModifyTerrain* module](ModifyTerrain#addmtmod)) or modifying the DEM manually.
+    - *Cause:*   Raised by the `ModifyTerrain()` class (`__init__(self,condition, feature_type, *args)`) in `ModifyTerrain/cModifyTerrain.py` when it cannot find a *...* Raster in `01_Conditions/CONDITION/` (or other user-defined input directory), where *...* is either a `dem.tif` or a `wt_depth_base.tif` Raster. A `wt_depth_base.tif` Raster is required for automated terrain modification after grading and/or widen features. 
+    - *Remedy:*  Ensure that the missing Raster (`dem` or a `wt_depth_base`) exists in `01_Conditions/CONDITION/`, or if applies, the user-defined input directory. If no `wt_depth_base.tif` Raster is available, the terrain modification of grading and/or widen features cannot be automated. In this case, consider adding a new DEM automation function (explained in the [Add Routine section in the *ModifyTerrain* module](ModifyTerrain#addmtmod)) or modifying the DEM manually.
 
  - **`ExceptionERROR: Could not find base Raster for assigning lifespans.`**
     - *Cause:*   Raised by [*MaxLifespan*][4]'s `ArcpyContainer()` class (`__init__(self,condition, feature_type, *args)`) in `MaxLifespan/cActionAssessment.py` when it cannot find its zero Raster template in `MaxLifespan/.templates/Rasters/zeros.tif`.
@@ -677,8 +677,8 @@ Error messages
 
  - **`ExceptionERROR: Unable to create ZERO Raster. Manual intervention required`**
     - *Cause:*   [*MaxLifespan*][4] failed to create a zero Raster covering the computation area.
-    - *Remedy:*  The Raster creation needs to be manually made in *ArcPro*'s Python interpreter (the external interpreter could not do the job and only the cuckoo from California knows why). Thus, manually create the zeros Raster as follows:
-	  + Launch *ArcPro* and its implemented Python window (`Geoprocessing` dropdown menu: `Python`).
+    - *Remedy:*  The Raster creation needs to be manually made in *ArcGIS Pro*'s Python interpreter (the external interpreter could not do the job and only the cuckoo from California knows why). Thus, manually create the zeros Raster as follows:
+	  + Launch *ArcGIS Pro* and its implemented Python window (`Geoprocessing` dropdown menu: `Python`).
 	  + Enter the following sequences (replace `REPLACE_...` according to the local environment):<br/>
 		`import os`<br/>
 		`from arcpy.sa import *`<br/>
@@ -691,7 +691,7 @@ Error messages
 		`zero_ras = Con(IsNull(base_dem), 0, 0)`<br/>
 		`zero_ras.save(zero_ras_str)`
 		
-	  + Close *ArcPro*
+	  + Close *ArcGIS Pro*
 
  - **`ExecuteERROR: (arcpy) [...].`**
     - *Cause:*   Similar to`ExceptionERROR: (arcpy) ...`. The error is raised by `arcpy` applications of all modules; e.g., by the `analysis_...` and `design_...` functions in `LifespanDesign/cLifespanDesignAnalysis.py` or when Raster calculations could not be performed. Missing Rasters, bad Raster assignments or bad Raster calculation expressions are possible reasons. The error can also occur when the `SpatialAnalyst` license is not available.
@@ -710,7 +710,7 @@ Error messages
 - **`WindowsError: [Error 32] The process cannot access the file because ...`**
     - *Cause:*   Files in the `.cache` folder or the `Output` folder are used by another program.
     - *Remedy:*
-        + Make sure that *ArcPro* is not running.
+        + Make sure that *ArcGIS Pro* is not running.
         + Make sure that no other code copy (*Python*) uses these folders.
 
 ***
@@ -740,7 +740,7 @@ Warning messages
     - *Remedy:*  Ensure that `/RiverArchitect/02_Maps/templates/symbology/LifespanRasterSymbology.lyrx` exists and that the layer file is not broken (e.g., by opening the file in *ArcGIS Pro*).
     
  - **`WARNING: Cannot zoom to defined extent.`**
-    - *Cause:*   Raised by the `zoom2map(...)` function of the `Mapper()` class (`.site_packages/riverpy/cMapper.py`) when it cannot interprete the provided coordinates.
+    - *Cause:*   Raised by the `zoom2map(...)` function of the `Mapper()` class (`.site_packages/riverpy/cMapper.py`) when it cannot interpret the provided coordinates.
     - *Remedy:*
 	    + All modules: Ensure that the [`mapping.inp`](Signposts#inpfile) and the [`reach definitions`](RiverReaches) files contain valid data.
     	+ <a href="LifespanDesign">LifespanDesign</a>: Ensure that either a correct background Raster dataset was defined prior to mapping.
@@ -761,11 +761,11 @@ Warning messages
 
 - **`WARNING: Could not clear/remove .cache.`**
     - *Cause:*   All modules may raise this warning message when the content in the `.cache` folder was accessed and locked by another software.
-    - *Remedy:*  Make sure that no other software, including *ArcPro* or `explorer.exe` uses the `MODULE/.cache` folder.
+    - *Remedy:*  Make sure that no other software, including *ArcGIS Pro* or `explorer.exe`, uses the `MODULE/.cache` folder.
 
  - **`WARNING: Could not clean up PDF map temp_pages.`**
     - *Cause:*   The `make_pdf_maps(self, map_name, *args, **kwargs)` functions of the `Mapper()` class (`.site_packages/riverpy/cMapper.py`) creates single `PDF`s of every map image (extents defined in [mapping.inp](Signposts#inpfile) or the [reach coordinates workbook](RiverReaches)). These single-page `PDF`s are finally combined into one `PDF` map assembly and the single-page `PDF`s are deleted afterward. 
-    - *Remedy:*  Ensure that no other program is using the `PDF` files in `RiverArchitect/02_Maps/CONDITION/` while mapping is in progress (close *ArcPro*).
+    - *Remedy:*  Ensure that no other program is using the `PDF` files in `RiverArchitect/02_Maps/CONDITION/` while mapping is in progress (close *ArcGIS Pro*).
 
  - **`WARNING: Could not crop lifespan Raster extents to wetted area.`**
     - *Cause:*   Raised by the `ArcPyAnalysis` class (`LifespanDesign/cLifespanDesignAnalysis.py`) when it failed to crop lifespan maps (Rasters) to the extents of the depth Raster associated with the highest discharge analyzed.
@@ -787,7 +787,7 @@ Warning messages
     - *Remedy:*  Make sure that the defined Fish species / lifestage is assigned a cover value and at least one flow depth value in `Fish.xlsx` according to the definitions in [CoverHSI](SHArC#hemakecovhsi).
     
  - **`WARNING: Could not identify maximum flow in flow duration curve.`**
-    - *Cause:*   The `get_flow_duration_data(self, ...)` function (`riverpy/cFlows.py`) prints this warning message when it could not identify a maximium flow for interpolating flow exceedance probabilities.
+    - *Cause:*   The `get_flow_duration_data(self, ...)` function (`riverpy/cFlows.py`) prints this warning message when it could not identify a maximum flow for interpolating flow exceedance probabilities.
     - *Remedy:*  Open `00_Flows/CONDITION/flow_duration_fili` and verify that the discharges in the first spreadsheet are correct.
 
  - **`WARNING:  Could not load /01_Conditions/CONDITION/back.tif - ...`**
@@ -829,19 +829,19 @@ Warning messages
         + If the feature is intended to be applied, manual terrain modifications adapting the feature's threshold values may be necessary.
 
  - **`WARNING: Failed to arrange worksheets.`**
-    - *Cause:*   Raised by `Write().write_volumes(self, ...)` in `.site_packages/riverpy/cReachManager.py` when it could not bring to front the latest copy of the `template` sheet in the output (template) workbook (`VolumeAssessment/Output/CONDITION_volumes.xlsx` or `VolumeAssessment/.templates/volume_template.xlsx`), which contains the calculation results.
-    - *Remedy:*  Trace back earlier error and warning messages. Ensure that no other program uses `VolumeAssessment/Output/CONDITION_volumes.xlsx` or `VolumeAssessment/.templates/volume_template.xlsx` and that both workbooks have not been accidentally deleted.
+    - *Cause:*   Raised by `Write().write_volumes(self, ...)` in `.site_packages/riverpy/cReachManager.py` when it could not bring to the front the latest copy of the `template` sheet in the output (template) workbook (`VolumeAssessment/Output/CONDITION_volumes.xlsx` or `VolumeAssessment/.templates/volume_template.xlsx`), which contains the calculation results.
+    - *Remedy:*  Traceback earlier error and warning messages. Ensure that no other program uses `VolumeAssessment/Output/CONDITION_volumes.xlsx` or `VolumeAssessment/.templates/volume_template.xlsx` and that both workbooks have not been accidentally deleted.
 
  - **`WARNING: Failed to write unit system to worksheet.`**
     - *Cause:*   Raised by `Write().write_volumes(self, ...)` in `.site_packages/riverpy/cReachManager.py` when it could not write volume (numbers) to a copy of the `template` sheet in the output (template) workbook (`VolumeAssessment/Output/CONDITION_volumes.xlsx` or `VolumeAssessment/.templates/volume_template.xlsx`).
-    - *Remedy:*  Trace back earlier error and warning messages. Ensure that no other program uses `VolumeAssessment/Output/CONDITION_volumes.xlsx` or `VolumeAssessment/.templates/volume_template.xlsx` and that both workbooks have not been accidentally deleted.
+    - *Remedy:*  Traceback earlier error and warning messages. Ensure that no other program uses `VolumeAssessment/Output/CONDITION_volumes.xlsx` or `VolumeAssessment/.templates/volume_template.xlsx` and that both workbooks have not been accidentally deleted.
 	
  - **`WARNING: Flow_duration[...].xlsx has different lengths of [...]"`**
     - *Cause:*   Raised by `get_flow_data(self, *args)` of [*SHArC*][6]'s `FlowAssessment()` class in `SHArC/cFlows.py` when the flow duration curve contains invalid data.
-    - *Remedy:*  Ensure that columns `B` and `C` of the flow duration curve workbook have the same length (in particular the last value / row must be the same) and check for empty cells.
+    - *Remedy:*  Ensure that columns `B` and `C` of the flow duration curve workbook have the same length (in particular the last value/row must be the same) and check for empty cells.
 
  - **`WARNING: Identification failed (FEAT).`**
-    - *Cause:*   Raised by `identify_best_features(self)` in `MaxLifespan/cActionAssessment.py` when the analyzed feature cannot matched with the internal best lifespan Raster.
+    - *Cause:*   Raised by `identify_best_features(self)` in `MaxLifespan/cActionAssessment.py` when the analyzed feature cannot be matched with the internal best lifespan Raster.
     - *Remedy:*  Features with very low lifespan may result in empty Rasters. Consider other terrain modifications or maintenance features to increase the features lifespans and start over planning the feature (set).
     
  - **`WARNING: Invalid curve data (Fish.xlsx): PAR= ... , HSI= ... .`**
@@ -862,7 +862,7 @@ Warning messages
 
  - **`WARNING: Invalid unit_system identifier.`**
     - *Cause:*  Raised by `ModifyTerrain.__init__()` ( `ModifyTerrain/cModifyTerrain.py`) or the `VolumeAssessment.__init__()` ( `VolumeAssessment/cVolumeAssessment.py`) when the unit system identifier is not either `us` or `si`. The program will use the default unit system (*U.S. customary*).
-    - *Remedy:*  This warning message only occurs if the GUI application was changed or when the [*ModifyTerrain*][5] module is externally called with bad argument order. Review the argument order/assignments in the external call`var = mt.ModifyTerrain(condition=..., unit_system=..., ...)`.
+    - *Remedy:*  This warning message only occurs if the GUI application was changed or when the [*ModifyTerrain*][5] module is externally called with bad argument order. Review the argument order/assignments in the external call `var = mt.ModifyTerrain(condition=..., unit_system=..., ...)`.
 
  - **`WARNING: Merge operation failed (empty shapefiles?).`**
     - *Cause:*   Error raised by the `ProjectMaker/s30_terrain_stabilization/`'s `main()` function when the Bioengineering and Angular Boulder shaepfiles for stabilizing the terrain failed.
@@ -874,10 +874,10 @@ Warning messages
 
  - **`WARNING: Non-numeric values in data.`**
     - *Cause:*   Raised by the interpolation functions of the `Interpolator` class (`.site_packages/riverpy/cInterpolator.py`) when the x data points that should get an interpolated y-value are not numeric.
-    - *Remedy:*  Check the condition flow duration and / or time duration curve and remove any non-numeric value from the discharge columns.
+    - *Remedy:*  Check the condition flow duration and/or time duration curve and remove any non-numeric value from the discharge columns.
     
  - **`WARNING: Old logfile is locked [...].`**
-    - *Cause:*   Raised by the `logging_start(logfile_name)` function (multiple classes) when the logfiles are locked by another process. The parenthesis `[...]` indicate the concerned run task.
+    - *Cause:*   Raised by the `logging_start(logfile_name)` function (multiple classes) when the logfiles are locked by another process. The parenthesis `[...]` indicates the concerned run task.
     - *Remedy:*  Ensure that the logfiles of the concerned module are not opened in any other process or program.
 
  - **`WARNING: Substituting user-defined crit. lifespan (...) with ....`**
@@ -890,7 +890,7 @@ Warning messages
 	
  - **`WARNING: Volume value assignment failed.`**
     - *Cause:*   Raised by `Write().write_volumes(self, ...)` in `.site_packages/riverpy/cReachManager.py` when it could not write volume (numbers) to a copy of the `template` sheet in the output (template) workbook (`VolumeAssessment/Output/CONDITION_volumes.xlsx` or `VolumeAssessment/.templates/volume_template.xlsx`).
-    - *Remedy:*  Trace back earlier error and warning messages. Ensure that no other program uses `VolumeAssessment/Output/CONDITION_volumes.xlsx` or `VolumeAssessment/.templates/volume_template.xlsx` and that both workbooks have not been accidentally deleted.
+    - *Remedy:*  Traceback earlier error and warning messages. Ensure that no other program uses `VolumeAssessment/Output/CONDITION_volumes.xlsx` or `VolumeAssessment/.templates/volume_template.xlsx` and that both workbooks have not been accidentally deleted.
 
 
 [1]: https://github.com/RiverArchitect/RA_wiki/Installation

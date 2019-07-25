@@ -13,14 +13,14 @@ Installation
 
 # Install and Launch<a name="started"></a>
 
-*River Architect* applies on *ArcPro*'s `arcpy` package and needs to be executed with *ArcPro*'s conda environment (`C:\Program Files\ArcGIS\Pro\bin\Python\scripts\propy.bat`). The [requirements](#req) section provides more details and installation hints for external packages.
+*River Architect* applies on *ArcGIS Pro*'s `arcpy` package and needs to be executed with *ArcGIS Pro*'s conda environment (`C:\Program Files\ArcGIS\Pro\bin\Python\scripts\propy.bat`). The [requirements](#req) section provides more details and installation hints for external packages.
 *River Architect* is designed as an external application rather than a python package, but its modules can be imported as packages for external use (see the *Alternative Run* sections in the module Wikis).<br/><br/>
 
 To start using *River Architect*:
  1. Clone or [download *River Architect* as zip](https://github.com/sschwindt/RiverArchitect_development/archive/master.zip).
  1. Unpack or copy the downloaded files to produce the below described [file structure](#structure).
  1. Right-click on `DRIVE:\path\to\...\RiverArchitect\Start_River_Architect.bat` and click on `Edit`.
-     - In the `Start_River_Architect.bat`chfile, ensure that the Python path is correctly defined according to the installed version of *ArcGIS*: `call `**EDIT>>`"%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy"`<<**`"%cd%\master_gui.py"`. For more information about running standalone Python scripts in *ArcPro*'s conda environment, read their [descriptions](https://pro.arcgis.com/en/pro-app/arcpy/get-started/using-conda-with-arcgis-pro.htm).
+     - In the `Start_River_Architect.bat`chfile, ensure that the Python path is correctly defined according to the installed version of *ArcGIS*: `call `**EDIT>>`"%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy"`<<**`"%cd%\master_gui.py"`. For more information about running standalone Python scripts in *ArcGIS Pro*'s conda environment, read their [descriptions](https://pro.arcgis.com/en/pro-app/arcpy/get-started/using-conda-with-arcgis-pro.htm).
      - Save and close `Start_River_Architect.bat`.
  1. Double-click on `DRIVE:\path\to\...\RiverArchitect\Start_River_Architect.bat` to start *River Architect*.
  1. Create a [*Condition*](Signposts#getstarted) on the Welcome (*[Get Started](Signposts#getstarted)*) tab.
@@ -39,7 +39,7 @@ To start using *River Architect*:
 
 ## File structure<a name="structure"></a>
 
-The main directory (`/RiverArchitect/`) contains the  program launcher named `Start_River_Architect.bat` and the *Python3* file `master_gui.py`. The *River Architect* modules are located in sub-folders. The master folder (`/RiverArchitect/`) includes the following files and directories:
+The main directory (`/RiverArchitect/`) contains the program launcher named `Start_River_Architect.bat` and the *Python3* file `master_gui.py`. The *River Architect* modules are located in sub-folders. The master folder (`/RiverArchitect/`) includes the following files and directories:
 
 -   **.sitepackages**
 		Contains adapted third-party Python packages and own packages
@@ -72,7 +72,7 @@ The main directory (`/RiverArchitect/`) contains the  program launcher named `St
     
 -   **02\_Maps** contains a map `templates` subfolder that is copied by *River Architect*'s modules for processed conditions (e.g., `02_Maps/CONDITION/`) for <a href="Mapping">Mapping</a> of Rasters and Shapefiles. The following templates and folders may be modified:
     -   `symbology`\ contains a standard symbology layer file (`.lyrx`) for partially logarithmic lifespan classification
-    -   `river_template.aprx` is the standard *ArcPro* project file, where developers recommend to adapt background image (layer) connections.
+    -   `river_template.aprx` is the standard *ArcGIS Pro* project file, where developers recommend to adapt background image (layer) connections.
 
 -   **Module (folder): [`RiverArchitect/Connectivity`](Connectivity)** for [habitat connectivity analyses of restoration efforts](Connectivity).
     - `Output` directory where Connectivity module outputs are saved.
@@ -88,7 +88,7 @@ The main directory (`/RiverArchitect/`) contains the  program launcher named `St
     -   `cMakeInp.py` provides routines for creating input files (*.inp*) for lifespan mapping.
     -   `cMorphUnit.py` provides routines for calculating instream morphological units ([Wyrick and Pasternack 2014][wyrick14]).
     -   `cWaterLevel.py` provides routines for calculating depth to groundwater Rasters.
-    -   `fSubCondition.py` contains routines for creating a spatial sub-set of an existing *Condition*.
+    -   `fSubCondition.py` contains routines for creating a spatial subset of an existing *Condition*.
     -   `popup_ ... .py` contain popup window classes guiding through the creation and population of *Conditions*.
     -   `welcome_gui.py` contains the `Get Started` tab source code.
 
@@ -96,7 +96,7 @@ The main directory (`/RiverArchitect/`) contains the  program launcher named `St
     -   `Output` folder with sub-folders for `Rasters` from individual module runs.
     -   `.cache` folder occurs temporarily when the module is executed.
     -   `.templates` folder should not be modified and contains input (`*.inp`) files; if required, the module includes routines for changing the input files.
-    -   `cLifespanDesignAnalysis.py` contains GIS-based functional core for processing `Raster` files.
+    -   `cLifespanDesignAnalysis.py` contains a GIS-based functional core for processing `Raster` files.
     -   `cParameters.py` contains the parameter input core with pointers to `Raster`s and `Raster` names.
     -   `cReadInpLifespan.py` contains classes that read input data from `*.inp` files.
     -   `feature_analysis.py` coordinates class and function calls.
@@ -125,12 +125,12 @@ The main directory (`/RiverArchitect/`) contains the  program launcher named `St
     -   `sub_gui_rb.py` contains the GUI for creating [River Builder](RiverBuilder) input files.
 
 
--   **Module (folder): [`RiverArchitect/SHArC`][6]** [creates Habitat Suitability Index Rasters / maps and quantifies annually usable habitat area for target fish species and a user-defined ranges of discharges][6].
-    -   `CHSI` contains subfolders with with composite habitat suitability index Rasters for pre- and post-project `conditions`.
-    -   `HSI` contains subfolders with with habitat suitability index `Rasters` for pre- and post-project `conditions`.
+-   **Module (folder): [`RiverArchitect/SHArC`][6]** [creates Habitat Suitability Index Rasters/maps and quantifies annually usable habitat area for target fish species and user-defined ranges of discharges][6].
+    -   `CHSI` contains subfolders with composite habitat suitability index Rasters for pre- and post-project `conditions`.
+    -   `HSI` contains subfolders with habitat suitability index `Rasters` for pre- and post-project `conditions`.
     -   `SHArea` contains result workbooks with SHArea values for examined `conditions`. The `Rasters` subfolder contains the associated composite habitat suitability Rasters.
     -   `.cache` folder occurs temporarily when the module is executed.
-    -   `.templates` folder contains spreadsheet templates for the quantification of annually usable habitat area and the definition of fish species, lifestages and associated habitat suitability curves.
+    -   `.templates` folder contains spreadsheet templates for the quantification of annually usable habitat area and the definition of fish species, lifestages, and associated habitat suitability curves.
     -   `cHSI.py` contains classes to calculate composite habitat suitability Rasters, hydraulic habitat suitability Rasters and interpolating the annual flow duration of considered discharges.
     -   `sharc_gui.py` contains the class of this module.
     -   `sub_gui_covhhsi.py` opens a new GUI window to create cover habitat suitability Rasters.
@@ -141,8 +141,8 @@ The main directory (`/RiverArchitect/`) contains the  program launcher named `St
     -   `.templates` folder contains a template folder tree and template workbooks with unit cost tables, as well as sample application data that illustrate potential results of the module.
     -   `cSHArC.py` applies *SHArC* results, in particular *cHSI* Rasters for calculating [SHArea](SHArC#herunSHArea) in the project area.
     -   `project_maker_gui.py` contains the class of this module.
-    -   `s20_plantings_delineation.py` applies [*LifespanDesign*][3] and [*MaxLifespan*][4] for assessing most suitable vegetation plantings within the project area.
-    -   `s21_plantings_stabilization.py` applies [*LifespanDesign*][3] and [*MaxLifespan*][4] outputs as well as user-defined input parameters for mapping bioengineering futures required in order stabilize vulnerable vegetation plantings.
+    -   `s20_plantings_delineation.py` applies [*LifespanDesign*][3] and [*MaxLifespan*][4] for assessing the most suitable vegetation plantings within the project area.
+    -   `s21_plantings_stabilization.py` applies [*LifespanDesign*][3] and [*MaxLifespan*][4] outputs as well as user-defined input parameters for mapping bioengineering futures required to stabilize vulnerable vegetation plantings.
     -   `s30_terrain_stabilization.py` applies [*LifespanDesign*][3] and [*MaxLifespan*][4] outputs to stabilize terraforming features.
     -   `s40_compare_wua.py` applies on [*SHArC*][6] *cHSI* Rasters used in `cSHArC.py` for assessing the annually usable habitat area for a target fish species and lifestage within the project area.
     -   `LAUNCH_Windows_x64.bat` is a batchfile that runs `project_maker_gui.py` on Windows x64.
@@ -172,20 +172,20 @@ The main directory (`/RiverArchitect/`) contains the  program launcher named `St
 
 ## Program environment setup and batchfile modification<a name="raenv"></a>
 
-The package is designed for an *ArcPro*'s Python3 conda environment. Before launching the *River Architect* package for the first time, the batchfiles may require adaptions for the system environment. On **Windows** only (Linux is not yet available because of `arcpy` issues - we are working on it), set the batch file environment as follows:
+The package is designed for an *ArcGIS Pro*'s Python3 conda environment. Before launching the *River Architect* package for the first time, the batchfiles may require adaptions for the system environment. On **Windows** only (Linux is not yet available because of `arcpy` issues - we are working on it), set the batch file environment as follows:
 
 1.  Right-click on `Start_River_Architect.bat` and choose *Edit* (*with Texteditor*) or *Open with \...* and choose a *Texteditor* software.
 
 2.  Check, and if necessary, replace the path to the good python interpreter:<br/>
 		*Default:* `"%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy"`<br/>
 		*Note:* Future versions of *River Architect*'s will require `gdal` and `rasterio`. Therefore, developers recommend to create a new conda environment and to install these packages to that new environment:
-      - Open "ArcPro" and click on the *Project* pane in the upper left corner
+      - Open "ArcGIS Pro" and click on the *Project* pane in the upper left corner
       - Click on the *Python* tab
       - Click on the *Manage Environments* button and on *Clone default* (or manually copy the default environment) to, for example, `C:\Python\envs\arcgispro-py3-cust`
-      - When cloning was successful, restart *ArcPro* and go back to the *Project* > *Python* tab and click on *Add Packages*
+      - When cloning was successful, restart *ArcGIS Pro* and go back to the *Project* > *Python* tab and click on *Add Packages*
       - Search for, and install `gdal` (`lib-gdal` also works) and `rasterio`
       - For starting *River Architect* from an *IDE*, set the new conda environment as interpreter (e.g., `C:\Python\envs\arcgispro-py3-cust\python.exe`). The new environment may also be used in the batchfiles.
-      - The [ArcPro website](https://pro.arcgis.com/en/pro-app/arcpy/get-started/what-is-conda.htm) provides more information on how to install *Python* packages.
+      - The [ArcGIS Pro website](https://pro.arcgis.com/en/pro-app/arcpy/get-started/what-is-conda.htm) provides more information on how to install *Python* packages.
 
 3.  Save `LAUNCH_River_ArchitectWINx64.bat` and close *Texteditor*.
 
@@ -197,7 +197,7 @@ After editing the batch files, launch *River Architect* by double-clicking on `S
 
 ## Requirements<a name="req"></a>
 
-The execution of *River Architect* requires the following packages, which are part of the standard *ArcPro* - *Python3* distribution: 
+The execution of *River Architect* requires the following packages, which are part of the standard *ArcGIS Pro* - *Python3* distribution: 
 - `arcpy`
 - `argparse`
 - `glob`
@@ -208,17 +208,17 @@ The execution of *River Architect* requires the following packages, which are pa
 - `tkinter`
 
 Additional packages:
-- `rpy2` and the R language: The *[Morphology\ModifyTerrain][5]* module requires [an installation of the R language](https://www.r-project.org/) in order to automate production of river topographic data via the [*RiverBuilder*](http://pasternack.ucdavis.edu/research/model-codes/river-builder/) R package. Note: environmental variables `%R_HOME%` and `%R_USER%` must also be properly defined in order for Python to access the user installation of R.
+- `rpy2` and the R language: The *[Morphology\ModifyTerrain][5]* module requires [an installation of the R language](https://www.r-project.org/) in order to automate the production of river topographic data via the [*RiverBuilder*](http://pasternack.ucdavis.edu/research/model-codes/river-builder/) R package. Note: environmental variables `%R_HOME%` and `%R_USER%` must also be properly defined for Python to access the user installation of R.
 
-*River Architect* incorporates a modified version of [`openpyxl`](https://openpyxl.readthedocs.io/en/stable/), but a more proper way is installing `openpyxl` with *ArcPro*'s [package manager](https://pro.arcgis.com/en/pro-app/arcpy/get-started/what-is-conda.htm). Future versions may additionally require the `gdal` and `rasterio` packages (see [above](#raenv) instructions).\
-Furthermore, *River Architect* requires *ArcPro*'s "Spatial Analyst" and "3D" ([Volume Assessment](VolumeAssessment) only) extensions. Another version of *River Architect* based on open-source geodata processing packages is planned for the future.
+*River Architect* incorporates a modified version of [`openpyxl`](https://openpyxl.readthedocs.io/en/stable/), but a more proper way is installing `openpyxl` with *ArcGIS Pro*'s [package manager](https://pro.arcgis.com/en/pro-app/arcpy/get-started/what-is-conda.htm). Future versions may additionally require the `gdal` and `rasterio` packages (see [above](#raenv) instructions).\
+Furthermore, *River Architect* requires *ArcGIS Pro*'s "Spatial Analyst" and "3D" ([Volume Assessment](VolumeAssessment) only) extensions. Another version of *River Architect* based on open-source geodata processing packages is planned for the future.
 
-Any folder beginning with a "." as for example `.cache` or `.idea` must not be modified or assessed by any other program, in particular during the execution of package methods. Files stored in `.templates` folders are directly called by the GUIs if user definitions are admitted. At the end of an execution, the applied modules have created their output folders, which are indicated in the command prompt.
+Any folder beginning with a "." for example `.cache` or `.idea` must not be modified or assessed by any other program, in particular during the execution of package methods. Files stored in `.templates` folders are directly called by the GUIs if user definitions are admitted. At the end of execution, the applied modules have created their output folders, which are indicated in the command prompt.
 
 ### Other Software
 A workbook editing software such as *Excel* or [*LibreOffice*][libreoffice] is required for modifications of user-defined databases (`.xlsx` files).
 
-For the visualization of geodata (`.shp` and `.tif` files), and mapping with project files (`.aprx`), an installation of *ArcPro* is required. Open-source alternatives are [*QGIS* ](https://www.qgis.org/en/site/forusers/download.html) or [SAGA](http://www.saga-gis.org/en/index.html) (*Please note: There are more GIS alternatives out there.*).
+For the visualization of geodata (`.shp` and `.tif` files), and mapping with project files (`.aprx`), an installation of *ArcGIS Pro* is required. Open-source alternatives are [*QGIS* ](https://www.qgis.org/en/site/forusers/download.html) or [SAGA](http://www.saga-gis.org/en/index.html) (*Please note: There are more GIS alternatives out there.*).
 
 ## Logfiles<a name="logs"></a>
 

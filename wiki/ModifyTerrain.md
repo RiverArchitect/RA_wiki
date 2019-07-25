@@ -57,7 +57,7 @@ All run options in the `Run` dropdown menu enables the `Threshold-based DEM modi
 ## Alternative run options<a name="mtaltrun"></a>
 The *ModifyTerrain* module has no standalone statement and it is recommended to use the GUI for launching the modules routines. If needed, the module can alternatively be imported and used as python package as follows:
 
-1.  Go to *ArcPro*s Python folder and double-click one of the following:<br/>
+1.  Go to *ArcGIS Pro*s Python folder and double-click one of the following:<br/>
     `C:\Program Files\ArcGIS\Pro\bin\Python\scripts\propy.bat` or<br/>
     `C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\python.exe`
 2.  Enter `import os`
@@ -82,7 +82,7 @@ The module creates Rasters of modified DEMs and terrain difference Rasters for g
 
 ## Mapping<a name="mtmap"></a>
 
-Please note that automated mapping is currently deactivated for the *ModifyTerrain* module. For mapping graded or widened terrain, use the <a href="VolumeAssessment">VolumeAssessment</a> module and link the *ModifyTerrain* output Rasters to the *ArcPro* project file `RiverArchitect/02_Maps/CONDITION/map_CONDITION_design.aprx`. The relevant layout names for the *ModifyTerrain* module are:
+Please note that automated mapping is currently deactivated for the *ModifyTerrain* module. For mapping graded or widened terrain, use the <a href="VolumeAssessment">VolumeAssessment</a> module and link the *ModifyTerrain* output Rasters to the *ArcGIS Pro* project file `RiverArchitect/02_Maps/CONDITION/map_CONDITION_design.aprx`. The relevant layout names for the *ModifyTerrain* module are:
 
  - `volumes_grade_neg` for mapping the terrain differences of parametrically (threshold-based) floodplain [grading](https://github.com/RiverArchitect/RA_wiki/River-design-features#grading) within the <a href="ModifyTerrain">Modify Terrain</a> module (only excavation `neg` is meaningful)
  - `volumes_widen_neg` for mapping the terrain differences of parametrically (threshold-based) river [widening](https://github.com/RiverArchitect/RA_wiki/River-design-features#berms) within the <a href="ModifyTerrain">Modify Terrain</a> module (only excavation `neg` is meaningful)

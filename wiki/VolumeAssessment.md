@@ -17,7 +17,7 @@ Volume Change Assessment
 
 # Introduction<a name="vaintro"></a>
 
-The *VolumeAssessment* module compares two input DEM Rasters and calculates volumetric change between both Rasters. The assessment produces workbooks containing reach-wise or project-wise volume differences (excavation and fill), terrain change DEMs, and `pdf`-maps. This chapter explains the module application in the following sections:
+The *VolumeAssessment* module compares two input DEM Rasters and calculates the volumetric change between both Rasters. The assessment produces workbooks containing reach-wise or project-wise volume differences (excavation and fill), terrain change DEMs, and `pdf`-maps. This chapter explains the module application in the following sections:
 
  - [Quick Guide](#vaquick) to the application of the GUI with descriptions of input requirements and output descriptions.
 
@@ -25,7 +25,7 @@ The *VolumeAssessment* module compares two input DEM Rasters and calculates volu
 
  - [Code conventions and extension](#vacode).
 
-Please note that an *ArcPro* `3D` extension is required for running this module.
+Please note that an *ArcGIS Pro* `3D` extension is required for running this module.
 
 
 
@@ -39,7 +39,7 @@ The GUI start-up takes a couple of seconds because the module updates reach info
 
 ![vagui](https://github.com/RiverArchitect/Welcome/raw/master/images/gui_start_vol.PNG)
 
-To start with the *VolumeAssessment* module, first select a [reach](RiverReaches). The subdivision of the subsequently selected Rasters can be omitted by select `IGNORE` from the `Reaches` drop-down menu.
+To start with the *VolumeAssessment* module, first, select a [reach](RiverReaches). The subdivision of the subsequently selected Rasters can be omitted by select `IGNORE` from the `Reaches` drop-down menu.
 Second, select an input DEM Raster (*GeoTIFF*).  Third, select a modified DEM Raster (*GeoTIFF*) that is to be compared with the input DEM Raster.
 
 
@@ -53,7 +53,7 @@ A particularity of this module is that it enables running analysis for specific 
 
 ## Mapping<a name="vamap"></a>
 
-The Run: `Map Maker` uses layout files stored in the *ArcPro* project file `RiverArchitect/02_Maps/templates/river_template.aprx`. Running `Map Maker` for the first time for a `CONDITION ` will produce a copy of the template project file (`.aprx`) that is stored in `RiverArchitect/02_Maps/CONDITION/map_CONDITION_design.aprx`. Before the running `Map Maker` for the first time for a `CONDITION `, ensure that the background layer points at the good background raster (typically this is `RiverArchitect/01_Conditions/CONDITION/back.tif`) The relevant layout names for the *VolumeAssessment* module are:
+The Run: `Map Maker` uses layout files stored in the *ArcGIS Pro* project file `RiverArchitect/02_Maps/templates/river_template.aprx`. Running `Map Maker` for the first time for a `CONDITION ` will produce a copy of the template project file (`.aprx`) that is stored in `RiverArchitect/02_Maps/CONDITION/map_CONDITION_design.aprx`. Before the running `Map Maker` for the first time for a `CONDITION `, ensure that the background layer points at the good background raster (typically this is `RiverArchitect/01_Conditions/CONDITION/back.tif`) The relevant layout names for the *VolumeAssessment* module are:
 
  - `volumes_cust_neg` for mapping required excavation (or scour / erosion) of the input DEM to achieve the modified DEM.
  - `volumes_cust_pos` for mapping required fill (or deposition) in the input DEM to achieve the modified DEM.
@@ -70,11 +70,11 @@ The `Run` drop-down menu includes the `Volume Calculator` and the `Map Maker` op
 
 ## Output<a name="vaoutput"></a>
 
-Because the initial state and modified DEM Rasters may be freely selected and not necessarly correspond to a *River Architect* [*Condition*](Signposts#conditions), the *VolumeAssessment* uses **`PSEUDO_CONDITIONS`** that are derived from the directory and name of the modified DEM Raster.
+Because the initial state and modified DEM Rasters may be freely selected and not necessarily correspond to a *River Architect* [*Condition*](Signposts#conditions), the *VolumeAssessment* uses **`PSEUDO_CONDITIONS`** that are derived from the directory and name of the modified DEM Raster.
 
 ### Rasters<a name="vaoutras"></a>
 
-The module creates terrain change (volume difference) Rasters in the directory `VolumeAssessment/Output/PSEUDO_CONDITION/`). Raster names contain a reach identifier (`r00`, `r01`, \... `r07` corresponding to spreadsheet rows 6--13) when one or severeal [reaches](#vasetreaches) were selected. Otherwise, the Raster names start with a `"ras"` string. Moreover, the Raster names includes an `"exc"` or `"fill"` string to indicate excavation (or scour / erosion) and fill, respectively.
+The module creates terrain change (volume difference) Rasters in the directory `VolumeAssessment/Output/PSEUDO_CONDITION/`). Raster names contain a reach identifier (`r00`, `r01`, \... `r07` corresponding to spreadsheet rows 6--13) when one or several [reaches](#vasetreaches) were selected. Otherwise, the Raster names start with a `"ras"` string. Moreover, the Raster names include an `"exc"` or `"fill"` string to indicate excavation (or scour / erosion) and fill, respectively.
 
 ### Maps<a name="vaoutmaps"></a>
 
@@ -83,7 +83,7 @@ The `Map Maker` (or activated checkbox) produces `pdf` maps of volume difference
 
 ### Workbook (spreadsheets)<a name="vaoutspread"></a>
 
-The volumetric differences in m<sup>3</sup> or cubic yards are reach-wise or Raster-wise written to a workbook in the directory `VolumeAssessment/Output/PSEUDO_CONDITION/`, where also the [output Rasters](#vaoutras) are located. The workbook template (`volumes_template.xlsx`) is located in `VolumeAssessment/.templates/` and must not be modified. When *VolumeAssessment* is run for the first time for a `PSEUDO_CONDITION`, it creates a copy of the workbook template, which is called `PSEUDO_CONDITION_volumes.xlsx`. *VolumeAssessment* makes two copies of the `template` sheet for excavation and fill, respectively. Thus, one of the spreadsheet copies is called `excavate_YYYYMMDDHHhMM` and lists the reach-wise / Raster-wise excavation volumes in the chosen unit system. The other spreadsheet copy is called `fill_YYYYMMDDHHhMM` and lists the reach-wise / Raster-wise fill volumes in the chosen unit system. The strings `YYYYMMDD` and `HHhMM` indicate the date and time of the program execution. Repeting runs of *VolumeAssessment* on the same modified DEM will append two more copies (excavate and fill) of the `template` sheet with the date-time indicator. It is recommended to cut-paste `PSEUDO_CONDITION_volumes.xlsx` in a `VolumeAssessment/Products/` directory after every run to keep results well-arranged and to force the module to create a new `PSEUDO_CONDITION_volumes.xlsx` file for every run.
+The volumetric differences in m<sup>3</sup> or cubic yards are reach-wise or Raster-wise written to a workbook in the directory `VolumeAssessment/Output/PSEUDO_CONDITION/`, where also the [output Rasters](#vaoutras) are located. The workbook template (`volumes_template.xlsx`) is located in `VolumeAssessment/.templates/` and must not be modified. When *VolumeAssessment* is run for the first time for a `PSEUDO_CONDITION`, it creates a copy of the workbook template, which is called `PSEUDO_CONDITION_volumes.xlsx`. *VolumeAssessment* makes two copies of the `template` sheet for excavation and fill, respectively. Thus, one of the spreadsheet copies is called `excavate_YYYYMMDDHHhMM` and lists the reach-wise / Raster-wise excavation volumes in the chosen unit system. The other spreadsheet copy is called `fill_YYYYMMDDHHhMM` and lists the reach-wise / Raster-wise fill volumes in the chosen unit system. The strings `YYYYMMDD` and `HHhMM` indicate the date and time of the program execution. Repeating runs of *VolumeAssessment* on the same modified DEM will append two more copies (excavate and fill) of the `template` sheet with the date-time indicator. It is recommended to cut-paste `PSEUDO_CONDITION_volumes.xlsx` in a `VolumeAssessment/Products/` directory after every run to keep results well-arranged and to force the module to create a new `PSEUDO_CONDITION_volumes.xlsx` file for every run.
 
 ***
 

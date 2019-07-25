@@ -46,7 +46,7 @@ Changes in this workbook should limit to cells with `INPUT`-type formatting and 
 -   **Other bioengineering features** have a direct effect on habitat suitability and stabilize terrain modifications (framework features). These features are considered:
     -   Streamwood, engineered log jams (ELJ) and large woody material (LWM) placement including rootstocks (*shortname: elj*)
     -   Grains / Boulders (angular), representative for coarse material placement (*shortname: grains*)
-    -   Other soil-bioengineering for terrain (slope) stabilization comprises for instance brush layers and / or fascines (*shortname: bio*)
+    -   Other soil-bioengineering for terrain (slope) stabilization comprises for instance brush layers and/or fascines (*shortname: bio*)
 
 -   **Connectivity features** enhance the stability of (artificial) river systems that result from the above feature applications:
     -   Sediment Replenishment for restoring sediment continuity (instream, *shortname: gravin*)
@@ -65,12 +65,12 @@ The standard installation of *River Architect* comes with a set of pre-defined r
 
 ## Grains, Angular boulders and grain mobility<a name="rocks"></a>
 
-The punctual placing of boulders and comprehensive rock cover is referred to as "angular boulders" for stabilizing banks or erosion-prone surfaces (e.g., [Maynord and Neill 2008][maynord08]). The mobility of the present terrain refers to the present grain size and indicates the necessity of boulder placement on the basis of lifespan maps. The required minimum diameter for boulders or mobile grains results from the spatial evaluation of *D<sub>cr</sub>* on mobile grain design maps, where the following parameters apply:
+The punctual placing of boulders and comprehensive rock cover is referred to as "angular boulders" for stabilizing banks or erosion-prone surfaces (e.g., [Maynord and Neill 2008][maynord08]). The mobility of the present terrain refers to the present grain size and indicates the necessity of boulder placement based on lifespan maps. The required minimum diameter for boulders or mobile grains results from the spatial evaluation of *D<sub>cr</sub>* on mobile grain design maps, where the following parameters apply:
 
  **Lifespan Maps**
 
 -   `taux` with mobility threshold of *&tau;<sub>\*,cr</sub>* equal to 0.047.
--   `tcd` - `scour` with a threshold value of 0.3 m (1 ft) multiplied with the number of observation years (if a topographic change raster includes scour / fill observed over multiple years).
+-   `tcd` - `scour` with a threshold value of 0.3 m (1 ft) multiplied with the number of observation years (if a topographic change raster includes scour/fill observed over multiple years).
 
 **Design Maps**
 
@@ -106,7 +106,7 @@ The creation of artificial backwaters and swales, or more generally calm water z
 -   `u` with a threshold of 0.03 m/s (0.1 fps).
 -   `mobile_grains` with a frequency threshold of 5 years (in the sample case) 
 -   `taux` with a threshold of *&tau;<sub>\*,cr</sub>* threshold of 0.047.
--   `tcd` with `scour` and `fill` thresholds of >= 0.03 m (0.1 ft) multiplied with the number of observation years (if a topographic change raster includes scour / fill observed over multiple years).
+-   `tcd` with `scour` and `fill` thresholds of >= 0.03 m (0.1 ft) multiplied with the number of observation years (if a topographic change raster includes scour/fill observed over multiple years).
 -   `mu` using the inclusive method with `mu_good = ["agriplain", "backswamp", "mining pit", "pond", "pool", "slackwater", "swale"].`
 
 ## Bioengineering<a name="bioeng"></a>
@@ -115,7 +115,7 @@ Areas with a 1.0-year lifespan require bioengineering features that are independ
 
 In the context of river engineering, soil-bioengineering applies living materials (plants) to stabilize terrain and enhance habitat. Alas, dry conditions in arid and semi-arid (Mediterranean) climate zones limits the possibilities of application. The *LifespanDesign* module maps potential bioengineering areas, as a function of:
 
--   `d2w` the minimum and maximum depth to groundwater distance indicates where [vegetation ](#plants)-based bioengineering applies.
+-   `d2w` the minimum and maximum depth to groundwater distance indicate where [vegetation ](#plants)-based bioengineering applies.
 -   `dem` is used to compute the percent-wise terrain slope `S0`, where modified terrain with slopes of more than a certain percentage is considered to require reinforcement (set `S0` threshold in `RiverArchitect/LifespanDesign/.templates/threshold_values.xlsx`, see [threshold modification](LifespanDesign#input-modify-threshold-values))
 
 *River Architect* applies vegetative bioengineering such as fascines or geotextile between the **(min)** value in row 7 and the **(max)** value in row 8 of the [threshold value workbook](LifespanDesign#input-modify-threshold-values). Regions with at terrain slope above the threshold defined in row 20 and above the maximum Depth to the groundwater defined in row 8 get mineral bioengineering (such as rock paving or riprap) assigned. The differentiation is made because vegetative bioengineering features may dry out when the water table is too far away (vertically).
@@ -182,7 +182,7 @@ The topographic change and depth to water table thresholds correspond to the lar
 
 ## Grading<a name="grading"></a>
 
-Grading aims at the reconnection of high floodplains and isolated islands by means of floodplain terracing and bar lowering. Grading is from an interest in areas where potential plantings cannot reach the groundwater table or where even high discharges cannot rework the channel. Low dimensionless shear stress, infrequent grain mobilization or low scour rates indicate relevant sites. The following parameter Rasters and hypotheses apply to lifespan maps for grading measures (no design maps).
+Grading aims at the reconnection of high floodplains and isolated islands through floodplain terracing and bar lowering. Grading is from an interest in areas where potential plantings cannot reach the groundwater table or where even high discharges cannot rework the channel. Low dimensionless shear stress, infrequent grain mobilization or low scour rates indicate relevant sites. The following parameter Rasters and hypotheses apply to lifespan maps for grading measures (no design maps).
 
 -   `taux` with mobility threshold of *&tau;<sub>\*,cr</sub>* equal to 0.047.
 -   `tcd` - `scour` with a threshold value of 0.03 m (0.1 ft) multiplied with the number of observation years documented with the `scour` raster, and the `inverse` argument (i.e., areas of interest correspond to regions where the scour threshold is not exceeded).
@@ -365,7 +365,7 @@ Unless this problem is not solved, the package indicates the adequacy of side ch
 # Define new and modify existing features<a name="modfeat"></a>
 The workbook `RiverArchitect/LifespanDesign/.templates/threshold_values.xlsx` contains pre-defined features and defines feature names as well as features IDs, which can be modified if needed. The workbook can be accessed either by clicking on the [*LifespanDesign*][3] GUI's "Modify survival threshold values" button (or directly from the above directory).<br/>
 Modifications of feature IDs and names require careful consideration because the packages apply analysis routines as a function of the features *Python* classes. Changing feature names and parameters and IDs only provides the possibility of renaming features and modifying threshold values, as well as the unit system. The feature IDs are internal abbreviations, which also determine the names of output Rasters, shapefiles, and maps. Editing feature evaluations (e.g., adding
-analysis routines) requires changes in the *Python* code as explained on the [*LifespanDesign*][3] pages.<br/>
+analysis routines) requires changes in the *Python* code as explained in the [*LifespanDesign*][3] pages.<br/>
 The workbook enables changing vegetation plantings species in columns `J` to `M`. The following columns are associated with distinct feature layers (cf. definitions in the [feature overview section](#featoverview)) in the workbook:
 
 -   Terraforming features: Columns `"E"`, `"F"`, `"G"`, `"H"`, `"I"`.

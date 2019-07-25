@@ -62,7 +62,7 @@ Once the input is defined, clicking on the `CREATE CONDITION` button will create
 
 - `scour.tif` is topographic change Raster indicating annual terrain erosion rates, which are required by the <a href="LifespanDesign">LifespanDesign</a>, and indirectly, the <a href="MaxLifespan">Max Lifespan</a> and <a href="ProjectMaker">ProjectMaker</a> modules.
 
-- `vaQQQQQQ.tif` are flow velocity direction rasters required by the [Habitat Connectivity](Connectivity) module. [Read more about file name conventions.](#terms)
+- `vaQQQQQQ.tif` is flow velocity direction rasters required by the [Habitat Connectivity](Connectivity) module. [Read more about file name conventions.](#terms)
 
 The flow depth and velocity Rasters may require manual renaming to adapt to the [Raster name conventions](#terms). Subsequently, populating the created *Condition* is strongly recommended
 
@@ -82,17 +82,17 @@ Instream morphological unit Rasters according to [Wyrick and Pasternack (2014)][
  -  A flow velocity raster (use [baseflow](https://en.wikipedia.org/wiki/Baseflow) according to the [literature][wyrick14]);
  -  A flow depth raster (use [baseflow](https://en.wikipedia.org/wiki/Baseflow) according to the [literature][wyrick14]).
 
-The delineation of morphological units as a function of flow depth and velocity can be modified in the `morphological_units.xlsx` workbook (`RiverArchitect/.site_packages/templates/` folder). A click on the `Populate Condition` GUI's `View / change MU definitions` opens this workbook.
+The delineation of morphological units as a function of flow depth and velocity can be modified in the `morphological_units.xlsx` workbook (`RiverArchitect/.site_packages/templates/` folder). A click on the `Populate Condition` GUI's `View/change MU definitions` opens this workbook.
 
 ![ramus](https://github.com/RiverArchitect/Welcome/raw/master/images/mu_xlsx.PNG)
 
-For making changes in the workbook, choose either one of the pre-defined river classes (`Mountain river` with large roughness elements, `gravel-cobble` bed, or `cobble-boulder` bed), or select `User Defined` from the drop-down menu in cell `E2`. If `User Defined` is selected, morphological units can be defined as a function of upper and lower limits of flow velocity and depth in cells `N6:Q22` (instream) and/or `N24:Q43` (floodplain). Morphological unit names can be modified in cells `M6:M22` (instream) and/or `M24:M43` (floodplain). Please note:
+For making changes in the workbook, choose either one of the pre-defined river classes (`Mountain river` with large roughness elements, `gravel-cobble` bed, or `cobble-boulder` bed) or select `User Defined` from the drop-down menu in cell `E2`. If `User Defined` is selected, morphological units can be defined as a function of upper and lower limits of flow velocity and depth in cells `N6:Q22` (instream) and/or `N24:Q43` (floodplain). Morphological unit names can be modified in cells `M6:M22` (instream) and/or `M24:M43` (floodplain). Please note:
 
-- Do not modify anything outside the green frames, in particular do not make changes within the red frame (cells `B3:J44` and the `.templates` sheet).
-- Use **metric units only**; for conversion of metric units for their application to Rasters in U.S. customary units, select `Units: U.S. customary` (default) from the `Populate Condition` window. The currently selected unit system is shown at the bottom of the `Populate Condition` window.
+- Do not modify anything outside the green frames, in particular, do not make changes within the red frame (cells `B3:J44` and the `.templates` sheet).
+- Use **metric units only**; for the conversion of metric units for their application to Rasters in U.S. customary units, select `Units: U.S. customary` (default) from the `Populate Condition` window. The currently selected unit system is shown at the bottom of the `Populate Condition` window.
 - Instream and floodplain units are currently equally applied (future versions of *River Architect* aim at a more precise approach to delineate floodplain morphological units).
 - The maximum length of morphological units names (`M6:M22` and/or `M24:M43`) is 50 characters per cell.
-- *River Architect* calculates a Raster for each morphological unit defined using the following `arcpy.sa` expression: `Con(h > 0, Con(((u >= u_lower) & (u < u_upper) & (h >= h_lower) & (h < h_upper)), mu_id))`. The final Raster is created by superimposition of all applicable morphological raster and using the maximum `mu_id` value (pre-defined in column `E`). with `arcpy.sa` cell statistics: `CellStatistics(mu_id_raster_list, "MAXIMUM", "DATA")`.
+- *River Architect* calculates a Raster for each morphological unit defined using the following `arcpy.sa` expression: `Con(h > 0, Con(((u >= u_lower) & (u < u_upper) & (h >= h_lower) & (h < h_upper)), mu_id))`. The final Raster is created by the superimposition of all applicable morphological raster and using the maximum `mu_id` value (pre-defined in column `E`). with `arcpy.sa` cell statistics: `CellStatistics(mu_id_raster_list, "MAXIMUM", "DATA")`.
 - The results are
 	+ the morphological unit's `ID` Raster saved as `RiverArchitect/01_Conditions/CONDITION/mu.tif`; and
 	+ the morphological unit's name Raster (uses an intermediated Raster to point conversion) saved as `RiverArchitect/01_Conditions/CONDITION/mu_str.tif`.
@@ -113,14 +113,14 @@ Automation of [grading](River-design-features#grading) or the relevance of [wide
 
 ## Create a spatial subset of a Condition<a name="sub-condition"></a>
 
-The creation of a spatial subest of a *Condition* requires a Boundary shapefile or Raster (if this is a GRID Raster, select the corresponding .aux.xml file). The boundary file needs to contain On-values (Integer 1) and Off-values (Integer 0) values only as speciefied in the [Project Area Polygon preparation](ProjectMaker#pminp2).
+The creation of a spatial subset of a *Condition* requires a Boundary shapefile or Raster (if this is a GRID Raster, select the corresponding .aux.xml file). The boundary file needs to contain On-values (Integer 1) and Off-values (Integer 0) values only as specified in the [Project Area Polygon preparation](ProjectMaker#pminp2).
 
 If a shapefile is selected:
 
  - River Architect automatically uses the `gridcode` Field in the Shapefile\'s Attribute Table.
  - If the `gridcode` Field cannot be found, the third Field or the `FID` Field is used. (in that order). Note that the enforced usage of the `FID` Field may cause errors later on.
  - Ensure that the `gridcode` / third Field contains On-Off Integers only, where 0=Outside and 1=Inside boundary. 
- - **Restart River Architect to create multiple subsets.** This issue is related to `arcpy`, which will not release the new datasets unless *River Architect* is closed ([otherwise there will be an error missage refering to registering datasets](https://pro.arcgis.com/en/pro-app/help/data/geodatabases/overview/a-quick-tour-of-registering-and-unregistering-data-as-versioned.htm)) We are developing work-arounds.
+ - **Restart River Architect to create multiple subsets.** This issue is related to `arcpy`, which will not release the new datasets unless *River Architect* is closed ([otherwise there will be an error message referring to registering datasets](https://pro.arcgis.com/en/pro-app/help/data/geodatabases/overview/a-quick-tour-of-registering-and-unregistering-data-as-versioned.htm)) We are developing workarounds.
 
 If a Raster is selected:
  - Ensure that the Raster contains On-Off Integers only, where 0=Outside and 1=Inside boundary.
@@ -137,7 +137,7 @@ Start with selecting a *Condition* from the upper listbox and click the `Analyze
 ![raq](https://github.com/RiverArchitect/Welcome/raw/master/images/def_return_periods.PNG)
 
 Flow duration curves are required for ecohydraulic analyses and can be generated for specific [aquatic ambiances preferred by target fish species-lifestages](SHArC#hefish).
-Select at least one *Fish Species - Lifestage* from the lower listbox and use the `Add` button (to add multiple *Fish Species - Lifestage*s, select-add one-by-one). A click on the `Modify Source` button opens the `Fish.xlsx` workbook that contains *Fish Species - Lifestage* definitions. At this point, on particular fish names and seasons start / end dates may be modified. Modifications of *Lifestages* should be avoided. For more details, refer to the [SHArC Wiki pages](SHArC#hefish).
+Select at least one *Fish Species - Lifestage* from the lower listbox and use the `Add` button (to add multiple *Fish Species - Lifestage*s, select-add one-by-one). A click on the `Modify Source` button opens the `Fish.xlsx` workbook that contains *Fish Species - Lifestage* definitions. At this point, on particular fish names and seasons start/end dates may be modified. Modifications of *Lifestages* should be avoided. For more details, refer to the [SHArC Wiki pages](SHArC#hefish).
 Before a *Fish Species - Lifestage* flow duration curve can be generated, ensure to `Select input Flow Series` (workbook) with the following characteristics:
 
 - The file ending must be `.xlsx`
@@ -162,7 +162,7 @@ Click on `Make flow duration curve(s)` (plural applies if multiple *Fish Species
 ## Generate Input File(s) (.inp) <a name="inpfile"></a>
 Lifespan mapping uses input files (.inp) to identify relevant Rasters and (flood) return periods. Given that `Analyze Flow` was previously executed for a *Condition*, an input file can be generated with the `Make Input File` tool.
 
-The resulting `input_definitions.inp` is stored on the directory `RiverArchitect/01_Conditions/CONDITION/`. `input_definitions.inp` contains information about lifespan duration and Raster names, which link to Rasters containing spatial information as described on the [Parameters](LifespanDesign-parameters) Wiki page. The order of definitions and lines must not be changed to ensure the proper functioning of the module. Enter or change the information in the corresponding lines, only between the "=" and the "*\#*" signs (the input routines uses these signs as start and end identifiers for relevant information). Verify that every `input_definitions.inp` created contains the following definitions (line by line):
+The resulting `input_definitions.inp` is stored in the directory `RiverArchitect/01_Conditions/CONDITION/`. `input_definitions.inp` contains information about lifespan duration and Raster names, which link to Rasters containing spatial information as described in the [Parameters](LifespanDesign-parameters) Wiki page. The order of definitions and lines must not be changed to ensure the proper functioning of the module. Enter or change the information in the corresponding lines, only between the "=" and the "*\#*" signs (the input routines uses these signs as start and end identifiers for relevant information). Verify that every `input_definitions.inp` created contains the following definitions (line by line):
 
 |Line No.| [Par.](LifespanDesign-parameters) | Description|
 |:-------|:-------------|:-----------|
@@ -187,7 +187,7 @@ The <a href="LifespanDesign">LifespanDesign</a> module produces results based on
 The file `RiverArchitect/LifespanDesign/.templates/mapping.inp` defines map center points, extents (*dx* and *dy* in ft or m) and scales (scale has no effect currently).<br/>
 The extent of the map determines the map scale, where the corresponding *dx* and *dy* values define the map width and height in ft or m, respectively. The layout templates (in the project file `RiverArchitect/02_Maps/templates/river_template.aprx`) define the paper size, which is by default "ANSI E landscape" (width = 44 inches, height = 34 inches).<br/>
 The map focus is defined page-wise in `mapping.inp` from Line 8 onward. Existing pages can be removed by simply deleting the line. Additional pages can be added by inserting or appending a new line below Line 8, which needs to begin with the keyword "`Page`" and *x* and *y* need to be stated in brackets, separated by a comma without any white space.<br/>
-Good practice for changing the map layouts starts with importing the `determine_extents.mxd` layout from `RiverArchitect/ModifyTerrain/templates/` into a map project (`.aprx`). Zoom to new focus point using, for example, using *ArcPro*'s `Go To XY` function or freehand to any convenient extent. Use *ArcGIS* `Info` cursor and click in the center of the reticule to obtain the current center point. Write new center point coordinates for the desired page number in `mapping.inp`.<br/>
+Good practice for changing the map layouts starts with importing the `determine_extents.mxd` layout from `RiverArchitect/ModifyTerrain/templates/` into a map project (`.aprx`). Zoom to new focus point using, for example, using *ArcGIS Pro*'s `Go To XY` function or freehand to any convenient extent. Use *ArcGIS* `Info` cursor and click in the center of the reticule to obtain the current center point. Write new center point coordinates for the desired page number in `mapping.inp`.<br/>
 For retrieving the extent, in *ArcGIS* Desktop, go to the `View` menu, click on `Data Frame Properties...` and go to the `Data Frame` tab. In the `Extent` box, click on the scroll-down menu and choose `Fixed Extent`. Subtracting the `Right` value from the `Left` value defines *dx* (Line 3 in `mapping.inp`) and subtracting the `Top` value from the `Bottom` value defines *dy* (Line 4 in `mapping.inp`).<br/>
 The function uses these definitions for zooming to each point defined below Line 8 in `mapping.inp`, cropping the map to the defined extents and exporting each page to a `pdf` map bundle containing as many pages as there are defined in `mapping.inp`.<br/>
 The program uses the reference coordinate system and projection defined in the `.aprx` file's map layout templates or in `mapping.inp`.
@@ -242,7 +242,7 @@ More Rasters indicating morphological units (e.g., [Wyrick and Pasternack 2014][
 
 Some parameters, such as the dimensionless bed shear stress or the mobile grain size, can be directly computed from the flow velocity, depth, and present grain size. Additional input Rasters could be used for every parameter to shorten calculation duration, but this approach required large storage capacity on the hard disk and it is less flexible regarding computation methods. Therefore, the *River Architect* uses its own routines for calculating parameters such as the dimensionless bed shear stress or mobile grain sizes.
 
-`NoData` handling: *River Architect* does not consider pixels with `noData` values and has its own routines to handle `noData` during the calculation. 
+`NoData` handling: *River Architect* does not consider pixels with `noData` values and has routines to handle `noData` during the calculation. 
 
 
 

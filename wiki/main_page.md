@@ -108,13 +108,13 @@ River Architect Wiki
 
 [*River Architect*](https://github.com/RiverArchitect/Welcome/raw/master/docs/RiverArchitect.pdf) serves for the GIS-based planning of habitat enhancing river design features regarding their lifespans, parametric characteristics, optimum placement in the terrain, and ecological benefit. A main graphical user interface (GUI) provides five modules for generating lifespan and design maps, action (optimum lifespan) maps, terrain modification (terraforming) assessment of digital elevation models (DEM), habitat evaluation, and project cost-benefit analyses.
 
-*River Architect* invites to analyses and modifications of the longevity and ecological quality of riverscapes. Different planning bases ("conditions") can be easily created using an introductory module called **[GetStarted](Signposts#getstarted)**. **Lifespan**, **Morphology (Terraforming)** and **Ecohydraulic** assessments can then be created on the basis of the *Conditions*, including the creation of project plans and cost tables with a **Project Maker** module.
+*River Architect* invites to analyses and modifications of the longevity and ecological quality of riverscapes. Different planning bases ("conditions") can be easily created using an introductory module called **[GetStarted](Signposts#getstarted)**. **Lifespan**, **Morphology (Terraforming)** and **Ecohydraulic** assessments can then be created based on the *Conditions*, including the creation of project plans and cost tables with a **Project Maker** module.
 
 [**Lifespan**][3] maps indicate the expected longevity of restoration features as a function of terrain change, morphological characteristics, and 2D hydrodynamic modeling results. **Design maps** are a side product of [lifespan and design mapping][3] and indicate required feature dimensions for stability, such as the minimum required size of angular boulders to avoid their mobilization during floods (more information in [Schwindt et al.2019][11]). **Best lifespan maps** result from the comparison of lifespan and design maps of multiple restoration features and assign features with the highest longevity to each pixel of a raster. Thus, the [**Max Lifespan**][4] module assess optimum features as a function of highest lifespans among comparable feature groups such as terraforming or vegetation planting species.
 
-**Morphology (Terraforming)** includes routines to [**Modify Terrain**][5] for river restoration purposes. Currently, two terrain modification algorithms are implemented: (1) Threshold value-based terrain modifications in terms of [grading](River-design-features#grading) or [widening / broaden rivers](River-design-features#berms) for riparian forest establishment; and (2) [River Builder](RiverBuilder) for the creation of synthetic river valley. A **[Volume Assessment](VolumeAssessment)** module can compares an original (pre-project or pre-terraforming application) and a modified DEM (\"with implementation\" or post-feature application) to determine required earth movement (terraforming volumes) works.
+**Morphology (Terraforming)** includes routines to [**Modify Terrain**][5] for river restoration purposes. Currently, two terrain modification algorithms are implemented: (1) Threshold value-based terrain modifications in terms of [grading](River-design-features#grading) or [widening / broaden rivers](River-design-features#berms) for riparian forest establishment; and (2) [River Builder](RiverBuilder) for the creation of synthetic river valley. A **[Volume Assessment](VolumeAssessment)** module can compare an original (pre-project or pre-terraforming application) and a modified DEM (\"with implementation\" or post-feature application) to determine required earth movement (terraforming volumes) works.
 
-**Ecohydraulics** assessments include the evaluation of the ecohydraulic state and connectivity of riverscapes. The **[Habitat Area](SHArC)** (Seasonal Habitat Area Calculator) module applies user-defined flows (discharges) for the spatial evaluation of the habitat suitability index (*HSI*) in terms of Seasonal Habitat Area (SHArea). The hydraulic habitat suitability results from 2D hydrodynamic numerical model outputs of flow depth and velocity. In addition, a  \"cover\" option can be used to assess ecohydraulic effects of cobble, boulder, vegetation, and streamwood. The **[Habitat Connectivity](Connectivity)** module provides insights into the connection of wetted areas on floodplains and how these may be improved to enhance the survivorship of fry / juvenile fish.
+**Ecohydraulics** assessments include the evaluation of the ecohydraulic state and connectivity of riverscapes. The **[Habitat Area](SHArC)** (Seasonal Habitat Area Calculator) module applies user-defined flows (discharges) for the spatial evaluation of the habitat suitability index (*HSI*) in terms of Seasonal Habitat Area (SHArea). The hydraulic habitat suitability results from 2D hydrodynamic numerical model outputs of flow depth and velocity. Also, a  \"cover\" option can be used to assess ecohydraulic effects of cobble, boulder, vegetation, and streamwood. The **[Habitat Connectivity](Connectivity)** module provides insights into the connection of wetted areas on floodplains and how these may be improved to enhance the survivorship of fry / juvenile fish.
 
 The [**Project Maker**][7] module creates preliminary construction plans and evaluates the costs for gain in usable habitat for target fish species and lifestages. A unit cost workbook provides relevant costs and the gain in usable habitat area results from the *SHArC* module.
 
@@ -139,19 +139,19 @@ The procedure of project design following the flowchart involves the following s
 
 4.  Create a [Condition](Signposts#conditions) using the [GetStarted](Signposts#getstarted) module. The *Condition* should include *GeoTIFFs* of the initial (existing or pre-project) river state:
 
-    -   A detrended digital elevation model (DEM);
+    -   Detrended digital elevation model (DEM);
 
     -   Flow depth and velocity for multiple discharges Rasters from 2D hydrodynamic modeling (see [Signposts](Signposts#conditions));
 
-    -   A substrate map (`dmean` for metric or `dmean_ft` for U.S. customary units); relevant methods are described in [Detert et al. (2018)][12]; [Stähly et al. (2017)][13]; and [Jackson et al. (2013)][14];
+    -   Substrate map (`dmean` for metric or `dmean_ft` for U.S. customary units); relevant methods are described in [Detert et al. (2018)][12]; [Stähly et al. (2017)][13]; and [Jackson et al. (2013)][14];
 
     -   Datasets that can be used to assess design feature stability, such as [side channel design criteria](River-design-features#sidechnl);
 
     -   Topographic change Rasters (Topographic Change Detection or DEM differencing according to [Wyrick and Pasternack 2016][15]);
 
-    -   A depth to groundwater table Raster (`d2w`);
+    -   Depth to groundwater table Raster (`d2w`);
 
-    -   A morphological unit Raster (see [Wyrick and Pasternack (2014)][16]).
+    -   Morphological unit Raster (see [Wyrick and Pasternack (2014)][16]).
 
 5.  Apply the [*LifespanDesign*][3] module to [framework (terraforming) features](River-design-features#featoverview).
 
@@ -159,7 +159,7 @@ The procedure of project design following the flowchart involves the following s
 
 7.  Iterative terraforming (if relevant):
 
-    -   Use the [*ModifyTerrain*][5] module for creating synthetic river valley with [River Builder](RiverBuilder); or apply threshold value-based terrain [grading](River-design-features#grading) or [broadening of the river bed](River-design-features#berms). *Please note that both routines require post-processing with computer-aided design (translation into real world coordinates and / or edge smoothing).*
+    -   Use the [*ModifyTerrain*][5] module for creating synthetic river valley with [River Builder](RiverBuilder); or apply threshold value-based terrain [grading](River-design-features#grading) or [broadening of the river bed](River-design-features#berms). *Please note that both routines require post-processing with computer-aided design (translation into real-world coordinates and/or edge smoothing).*
 
     -   Re-compile the flow depth and velocity maps (re-run 2D model) with the modified DEM.
 

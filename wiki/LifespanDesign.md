@@ -89,7 +89,7 @@ When defining threshold values in `threshold_values.xlsx` carefully study the fo
 
 1. **Topographic change Rasters** `tcd` are applied to limit lifespan Rasters to regions where the `fill` and `scour` threshold values defined in rows 22 and 23 of `threshold_values.xlsx`, respectively, are exceeded. The "Topographic change: inverse relevance" threshold applies when the feature relevance refers to regions where the scour and fill rates below the specific threshold values are relevant. By default, features such as angular boulders (rocks or riprap) are relevant where the topographic change rate (scour) exceeds the angular boulder's threshold value for scour. However, features such as grading or side cavities, are relevant where the scour or fill rates do not exceed the threshold rates because these areas are presumably disconnected from the river. Thus, "Topographic change: inverse relevance" is `TRUE` for the grading, side cavity, and side channel features.
 
-1. A **Morphological Unit** Raster as produced with the [GetStarted](Signposts#getstarted) module according to [Wyrick and Pasternack 2014][wyrick14] can be used to limit lifespan mapping to morphologically reasonable regions. For example, [grading](River-design-features#grading) of bedrock units is not reasonable and the default `threshold_values.xlsx` excludes `bedrock` in row 16. *River Architect* enables to the application of limit morphological units with an exclusive and an inclusive method:
+1. A **Morphological Unit** Raster as produced with the [GetStarted](Signposts#getstarted) module according to [Wyrick and Pasternack 2014][wyrick14] can be used to limit lifespan mapping to morphologically reasonable regions. For example, [grading](River-design-features#grading) of bedrock units is not reasonable and the default `threshold_values.xlsx` excludes `bedrock` in row 16. *River Architect* enables the application of limit morphological units with an exclusive and an inclusive method:
 	+ If the exclusive method is chosen (set row 18 in `threshold_values.xlsx` to `0`), *River Architect* will look for morphological units listed in row 16 and it will set pixels with these morphological units to `NoData` in lifespan maps.
 	+ If the inclusive method is chosen (set row 18 in `threshold_values.xlsx` to `1`), *River Architect* will look for morphological units listed in row 17 and it will set pixels that are not within these morphological units to `NoData` in lifespan maps.
 	+ Morphological units can be entered as a comma-separated list in row 16 and 17 of `threshold_values.xlsx` corresponding to the settings made during the [morphological unit Raster creation](Signposts#mu) (morphological units are defined in `RiverArchitect/.site_packages/templates/morphological_units.xlsx`.
@@ -137,7 +137,7 @@ The "Run" drop-down menu provides the following functions:
 
 -   `Map Maker` prepares project maps and *PDF* assemblies in the directory `RiverArchitect/02_Maps/CONDITION/`;<br/>
 	Before running `Map Maker`, ensure that the correct background image (`01_Conditions/CONDITION/back.tif`) is linked in the project template file `RiverArchitect/02_Maps/templates/river_template.aprx`.<br/>
-	 	The mapping extents can be modified using the [`mapping.inp` input file](Signposts#inpmap) and the [Mapping](Mapping) Wiki explains how the symbology, layouts and other extent settings may be modified.
+	 	The mapping extents can be modified using the [`mapping.inp` input file](Signposts#inpmap) and the [Mapping](Mapping) Wiki explains how the symbology, layouts, and other extent settings may be modified.
 
 Either "Run" option causes a run confirmation window popping up and clicking "OK" calls the analysis, which will run in the background Python window and it freezes the GUI windows. Running the `Raster Maker` may take 0.1 to 10 hours, depending on the input Raster size, feature set and habitat matching options.<br/>
 After the analysis, the GUI unfreezes and a new button invites to read the logfiles with run information, as well as error and warning messages that may have occurred during the analysis.<br/>
@@ -151,13 +151,13 @@ The three run options of the GUI call the following methods:
 
 1.  `Raster Maker` calls `feature_analysis.raster_maker` for the preparation of Rasters in the directory `Output/Rasters/CONDITION/`
 
-1.  `Map maker` calls `feature_analysis.map_maker` for the preparation of an *ArcPro* project (*aprx*) file and maps assembled in `pdf`s in the directory `RiverArchitect/02_Maps/CONDITION/`; by default the layouts stored in `RiverArchitect/02_Maps/CONDITION/` underlie the `pdf` creation but the method also accepts other input directories as an optional argument. *Please note that directories always need to be **absolute**; relative paths will result in errors.*
+1.  `Map maker` calls `feature_analysis.map_maker` for the preparation of an *ArcGIS Pro* project (*aprx*) file and maps assembled in `pdf`s in the directory `RiverArchitect/02_Maps/CONDITION/`; by default the layouts stored in `RiverArchitect/02_Maps/CONDITION/` underlie the `pdf` creation but the method also accepts other input directories as an optional argument. *Please note that directories always need to be **absolute**; relative paths will result in errors.*
 
-The alternative run options are relevant for example to batch process several [*Conditions*](Signposts#conditions). The first alternative run option is to import the *LifespanDesign* module in the *ArcPro*s Python environment as follows:
+The alternative run options are relevant for example to batch process several [*Conditions*](Signposts#conditions). The first alternative run option is to import the *LifespanDesign* module in the *ArcGIS Pro*s Python environment as follows:
 
 1.  Prepare input data in `.../01_Conditions/CONDITION/` and adapt the background layer image datasets in `RiverArchitect/02_Maps/templates/river_template.aprx`
 
-1.  Go to *ArcPro*s Python folder and double-click one of the following:<br/>
+1.  Go to *ArcGIS Pro*s Python folder and double-click one of the following:<br/>
     `C:\Program Files\ArcGIS\Pro\bin\Python\scripts\propy.bat` or<br/>
     `C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\python.exe`
 
@@ -233,16 +233,16 @@ Calling the module as `.py` script may cause errors because of differences betwe
 
 ### Rasters
 
-The output Rasters are either of the types lifespan (`lf_shortname`) or design (`ds_shortname`) and they are created in `.../Output/Rasters/CONDITION/`. The usage of `shortname`s (see the list on the [Features page](River-design-features#featoverview)) is necessary because `arcpy` cannot handle Rasters with names longer than 13 characters when the GRID format is used (even though the standard Raster type is *GeoTIFF*). The analysis automatically shortens too long Raster names on the basis of shortnames and it creates the condition-output directory if it does not yet exist. Existing files in the `Output/Rasters/CONDITION/` folder are overwritten (the code enforces overwriting and tries to delete any existing content  (i.e., ensure that the output folder does not contain any important files).
+The output Rasters are either of the types lifespan (`lf_shortname`) or design (`ds_shortname`) and they are created in `.../Output/Rasters/CONDITION/`. The usage of `shortname`s (see the list on the [Features page](River-design-features#featoverview)) is necessary because `arcpy` cannot handle Rasters with names longer than 13 characters when the GRID format is used (even though the standard Raster type is *GeoTIFF*). The analysis automatically shortens too long Raster names based on shortnames and it creates the condition-output directory if it does not yet exist. Existing files in the `Output/Rasters/CONDITION/` folder are overwritten (the code enforces overwriting and tries to delete any existing content  (i.e., ensure that the output folder does not contain any important files).
 
 ### Mapping<a name="outmaps"></a>
 
-The module produces an *ArcPro* project file (`.aprx`) and `.pdf`s in `RiverArchitect/02_Maps/CONDITION/map_CONDITION_design.aprx`. The map extents can be modified in the [`mapping.inp` input file](Signposts#inpmaps). For map modifications, read the [above](#lfrungui) descriptions or the [Mapping](Mapping) Wiki.
+The module produces an *ArcGIS Pro* project file (`.aprx`) and `.pdf`s in `RiverArchitect/02_Maps/CONDITION/map_CONDITION_design.aprx`. The map extents can be modified in the [`mapping.inp` input file](Signposts#inpmaps). For map modifications, read the [above](#lfrungui) descriptions or the [Mapping](Mapping) Wiki.
 
 
 ### Interpretation
 
-The success of features corresponds to their ecological sustainability and physical stability, which may positively correlate (i.e., high stability corresponds to high ecological sustainability). However, features such as gravel augmentation or grading have an inverse relationship between ecological sustainability and physical stability. For example, frequently mobile gravel injections create valuable habitat but are, by definition, unstable. In such cases, the lifespan maps need to be considered in the opposite way: Optimum areas for application correspond to regions with low lifespans (see more in [Schwindt et al. 2019][schwindt19]).
+The success of features corresponds to their ecological sustainability and physical stability, which may positively correlate (i.e., high stability corresponds to high ecological sustainability). However, features such as gravel augmentation or grading have an inverse relationship between ecological sustainability and physical stability. For example, frequently mobile gravel injections create valuable habitat but are, by definition, unstable. In such cases, the lifespan maps need to be considered oppositely: Optimum areas for application correspond to regions with low lifespans (see more in [Schwindt et al. 2019][schwindt19]).
 
 ### Quit module and logfiles
 

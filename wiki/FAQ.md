@@ -4,7 +4,7 @@ Frequently Asked Questions (FAQ)
 For any non-answered question or other issues, explore the [Troubleshooting Wiki][10].
 
 -   **How can I change map styles?**<br/>
-    Map styles are controlled by settings made in the ArcPro project files stored in `RiverArchitect/02_Maps/CONDITION/maps_CONDITION_design.aprx`. Developers recommend to adapt the `background` image connections prior to mapping in the template project file `RiverArchitect/02_Maps/templates/maps_CONDITION_design.aprx`.
+    Map styles are controlled by settings made in the ArcGIS Pro project files stored in `RiverArchitect/02_Maps/CONDITION/maps_CONDITION_design.aprx`. Developers recommend to adapt the `background` image connections prior to mapping in the template project file `RiverArchitect/02_Maps/templates/maps_CONDITION_design.aprx`.
 
 
 -   **What is a *condition*?**<br/>
