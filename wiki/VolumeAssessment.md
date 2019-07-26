@@ -37,7 +37,7 @@ Please note that an *ArcGIS Pro* `3D` extension is required for running this mod
 
 The GUI start-up takes a couple of seconds because the module updates reach information from an external workbook.
 
-![vagui](https://github.com/RiverArchitect/Welcome/raw/master/images/gui_start_vol.PNG)
+![vagui](https://github.com/RiverArchitect/Media/raw/master/images/gui_start_vol.PNG)
 
 To start with the *VolumeAssessment* module, first, select a [reach](RiverReaches). The subdivision of the subsequently selected Rasters can be omitted by select `IGNORE` from the `Reaches` drop-down menu.
 Second, select an input DEM Raster (*GeoTIFF*).  Third, select a modified DEM Raster (*GeoTIFF*) that is to be compared with the input DEM Raster.
@@ -48,7 +48,7 @@ For changing [reach definitions](RiverReaches), please refer to the [reach wiki 
 A particularity of this module is that it enables running analysis for specific river reaches, which can be renamed and the reach extents can be modified. By default, the module analyzes all reaches which are defined in a spreadsheet stored in
 `/VolumeAssessment/.templates/computation_extents.xlsx`.
 
-![compextents](https://github.com/RiverArchitect/Welcome/raw/master/images/computation_extents_illu.jpg)
+![compextents](https://github.com/RiverArchitect/Media/raw/master/images/computation_extents_illu.jpg)
 
 
 ## Mapping<a name="vamap"></a>

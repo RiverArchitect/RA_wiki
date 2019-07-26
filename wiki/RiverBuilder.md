@@ -29,13 +29,13 @@ Please note that *River Builder* has an own detailed [user manual][rbman]. This 
 
 To use the `River Builder` interface within *River Architect*, click on the `Morphology` tab and go to the `ModifyTerrain` sub-tab (default). Selecting the `none` *Condition* (confirm with a click on `Select Condition`) enables (unfreezes) the `RIVER BUILDER` frame.
 
-![mtrbgui](https://github.com/RiverArchitect/Welcome/raw/master/images/gui_start_mt_rb.PNG)
+![mtrbgui](https://github.com/RiverArchitect/Media/raw/master/images/gui_start_mt_rb.PNG)
 
 
 # Create Input Files <a name="cinp"></a>
 Click on the `Create RB Input.txt File` button to create a new input file for *River Builder*. The following window will pop up.
 
-![rbinp](https://github.com/RiverArchitect/Welcome/raw/master/images/rb_make_input.PNG)
+![rbinp](https://github.com/RiverArchitect/Media/raw/master/images/rb_make_input.PNG)
 
 Make sure to define an input file name (top of the popup window) without entering a file ending. Define all required parameters (i.e., all parameters without any asterisk<sup>\*</sup> in the left column of the popup window). A click on the `Info` buttons opens the parameter descriptions (adapted from [*River Builder's user manual*][rbman]).
 

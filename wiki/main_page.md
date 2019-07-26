@@ -106,7 +106,7 @@ River Architect Wiki
 
 ***
 
-[*River Architect*](https://github.com/RiverArchitect/Welcome/raw/master/docs/RiverArchitect.pdf) serves for the GIS-based planning of habitat enhancing river design features regarding their lifespans, parametric characteristics, optimum placement in the terrain, and ecological benefit. A main graphical user interface (GUI) provides five modules for generating lifespan and design maps, action (optimum lifespan) maps, terrain modification (terraforming) assessment of digital elevation models (DEM), habitat evaluation, and project cost-benefit analyses.
+[*River Architect*](https://github.com/RiverArchitect/Media/raw/master/docs/RiverArchitect.pdf) serves for the GIS-based planning of habitat enhancing river design features regarding their lifespans, parametric characteristics, optimum placement in the terrain, and ecological benefit. A main graphical user interface (GUI) provides five modules for generating lifespan and design maps, action (optimum lifespan) maps, terrain modification (terraforming) assessment of digital elevation models (DEM), habitat evaluation, and project cost-benefit analyses.
 
 *River Architect* invites to analyses and modifications of the longevity and ecological quality of riverscapes. Different planning bases ("conditions") can be easily created using an introductory module called **[GetStarted](Signposts#getstarted)**. **Lifespan**, **Morphology (Terraforming)** and **Ecohydraulic** assessments can then be created based on the *Conditions*, including the creation of project plans and cost tables with a **Project Maker** module.
 
@@ -123,7 +123,7 @@ A set of [**Tools**][8] provides *Python* console scripts that are under develop
 *River Architect* represents a comprehensive tool for state-of-the-art planning of ecologic river modifications. The integrated application of *River Architect* to habitat enhancing project planning is illustrated in the following flowchart. 
 The modules and tool-scripts can also be individually applied for other purposes than suggested in the flowchart.
 
-![flowchart](https://github.com/RiverArchitect/Welcome/raw/master/images/flowchart.png)
+![flowchart](https://github.com/RiverArchitect/Media/raw/master/images/flowchart.png)
 
 The procedure of project design following the flowchart involves the following steps:
 

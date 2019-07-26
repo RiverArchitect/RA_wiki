@@ -42,7 +42,7 @@ This Wiki page explains the usage of the *LifespanDesign* module and it is struc
 
 After successful [Installation][1] and the creation of at least one [*Condition*](Signposts#new-condition), lifespan and design maps can be created from the *Lifespan* -> *LifespanDesign* tab.
 
-![lfgui](https://github.com/RiverArchitect/Welcome/raw/master/images/gui_start_lf.PNG)
+![lfgui](https://github.com/RiverArchitect/Media/raw/master/images/gui_start_lf.PNG)
 
 To begin with lifespan/design mapping, click on the drop-down menu "Add Features" and select relevant features. Multiple selection is possible and will extend the "Selected features" list. The *LifespanDesign* module enables the selection of the feature groups of ["terraforming" (framework)](River-design-features#featoverview), ["vegetation plantings"](River-design-features#plants), ["other (soil) bioengineering"](River-design-features#bioeng) and ["connectivity / maintenance"](#featoverview). 
 
@@ -55,7 +55,7 @@ Modifications of [map extents](Signposts#inpmaps) can be made by clicking on the
 ## Input: The threshold values workbook `threshold_values.xlsx` and calculation hierarchy<a name="modthresh"></a>
 
 The "Modify survival threshold values" button opens the master workbook containing threshold values and survival identifiers (location: `LifespanDesign/.templates/threshold_values.xlsx`).
-![thresholds](https://github.com/RiverArchitect/Welcome/raw/master/images/threshold_values_illu.png)
+![thresholds](https://github.com/RiverArchitect/Media/raw/master/images/threshold_values_illu.png)
 
 Any threshold value can be changed or defined for any feature, but the workbook structure may not be modified (i.e., cells, columns or rows may not be shifted, moved or deleted). The unit system (U.S. customary or SI metric) in the threshold values spreadsheet are independent of the GUI settings but they need to be coherent with the input Rasters of the [*Condition*](Signposts#new-condition).
 

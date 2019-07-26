@@ -16,7 +16,7 @@ The `RiverArchitect/02_Maps/` folder contains a template structure that is copie
 Before running any of the before-mentioned modules for mapping, open `RiverArchitect/02_Maps/templates/river_template.aprx` (*ArcGIS Pro* project file) and correct the background layer image source (adapt to `CONDITION`) by right-clicking on the `background` layer (see figure below), then click on `Properties` > `Source` > `Set Data Source...`. Navigate to the `CONDITION` folder and select the `CONDITION`'s `background.tif` (the background raster file must have the name `background.tif` - mapping will be inconsistent otherwise).
 
 
-![adaptproject](https://github.com/RiverArchitect/Welcome/raw/master/images/adapt_proj.PNG)
+![adaptproject](https://github.com/RiverArchitect/Media/raw/master/images/adapt_proj.PNG)
 
 The standard symbology for lifespan rasters may be modified and it can be restored by right-clicking on a `lifespan` or `Best Lifespans` raster layer > `Symbology`. The *Symbology* opens up and the standard symbology can be restored from the top-right drop-down menu (`import (...)` > nagivate to `RiverArchitect/02_Maps/templates/symbology/` > select `LifespanRasterSymbology.lyrx`).
 

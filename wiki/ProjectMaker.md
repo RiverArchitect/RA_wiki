@@ -60,7 +60,7 @@ Ensure that the following steps were executed in order to generate the required 
 
 The below figures shows the *ProjectMaker* GUI at startup.
 
-![guipm](https://github.com/RiverArchitect/Welcome/raw/master/images/gui_start_pm.PNG)
+![guipm](https://github.com/RiverArchitect/Media/raw/master/images/gui_start_pm.PNG)
 
 The creation of a cost-benefit assessment requires the step-wise definition of variables and calculation beginning at the top of the GUI and moving forward to the bottom. The following sections provide details regarding input requirements and calculations of every step.
 
@@ -127,7 +127,7 @@ Save and close `ProjectName/ProjectMaps.aprx`.
 
 The `ProjectName_assessment_vii.xlsx` is subsequently referred to as the **cost master workbook**. The workbook is automatically generated as a template-copy and it contains two `cost ...` tabs. **Important:** As a function of the unit system (U.S. Customary or SI metric), **only keep the relevant cost worksheet and delete the other one** (see below figure). **Rename the retained costs tab to `costs`**.
 
-![pmdeltab](https://github.com/RiverArchitect/Welcome/raw/master/images/deltab.PNG)
+![pmdeltab](https://github.com/RiverArchitect/Media/raw/master/images/deltab.PNG)
 
 The prices contained in the cost master workbook are in US\$ and may be adapted to fit local construction costs. The following sections describe steps and requirements for the assessment of cost-relevant quantities with the cost master workbook.
 

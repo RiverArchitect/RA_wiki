@@ -18,7 +18,7 @@ Get Started and Signposts
 
 *River Architect*'s first tab invites the user for the creation of *Conditions*.
 
-![ragui](https://github.com/RiverArchitect/Welcome/raw/master/images/gui_start.PNG)
+![ragui](https://github.com/RiverArchitect/Media/raw/master/images/gui_start.PNG)
 
 A *Condition* is a folder filled with Rasters that represent a temporal snapshot (situation) of a river. *Conditions* are stored in `RiverArchitect/01_Conditions/`. For example, if the goal is to assess feature lifespans based on the situation in the year 2008, the condition folder name may be `2008` and the corresponding folder is `RiverArchitect/01_Conditions/2008/`.
 The *Condition* name may NOT include any SPACE character and good practice is that the first 4 characters represent a 4-digit year.
@@ -84,7 +84,7 @@ Instream morphological unit Rasters according to [Wyrick and Pasternack (2014)][
 
 The delineation of morphological units as a function of flow depth and velocity can be modified in the `morphological_units.xlsx` workbook (`RiverArchitect/.site_packages/templates/` folder). A click on the `Populate Condition` GUI's `View/change MU definitions` opens this workbook.
 
-![ramus](https://github.com/RiverArchitect/Welcome/raw/master/images/mu_xlsx.PNG)
+![ramus](https://github.com/RiverArchitect/Media/raw/master/images/mu_xlsx.PNG)
 
 For making changes in the workbook, choose either one of the pre-defined river classes (`Mountain river` with large roughness elements, `gravel-cobble` bed, or `cobble-boulder` bed) or select `User Defined` from the drop-down menu in cell `E2`. If `User Defined` is selected, morphological units can be defined as a function of upper and lower limits of flow velocity and depth in cells `N6:Q22` (instream) and/or `N24:Q43` (floodplain). Morphological unit names can be modified in cells `M6:M22` (instream) and/or `M24:M43` (floodplain). Please note:
 
@@ -130,11 +130,11 @@ The boundary files are of particular interest within the <a href="ProjectMaker">
 ## Analyze Flows<a name="ana-flows"></a>
 The sustainability (lifespan) and ecohydraulic analyses require hydraulic data related to discharges (flows) and the return period. The *Analyze Discharge* pop-up window guides through the creation of flow-metadata files that link hydraulic Raster names with flows and return periods for a *Condition*. *Analyze Discharge* looks for flow depth and velocity Rasters in a selected *Condition*, extracts the flow quantity, and creates a template workbook in the *Condition* folder. For this purpose, hydraulic (flow depth and velocity) Rasters must be named according to the [Geofile name convetions](#terms) (i.e., flow depth Rasters = "hQQQQQQ.tif" and flow velocity Rasters = "uQQQQQQ.tif").
 
-![raq](https://github.com/RiverArchitect/Welcome/raw/master/images/gui_start_flows.PNG)
+![raq](https://github.com/RiverArchitect/Media/raw/master/images/gui_start_flows.PNG)
 
 Start with selecting a *Condition* from the upper listbox and click the `Analyze` button. This creates a workbook called `RiverArchitect/01_Conditions/flow_definitions.xlsx`, which automatically opens up and asks for the definitions of flow return periods in years. Frequent flows with a return period of one year or less should be assigned `1.0` (column `C`).
 
-![raq](https://github.com/RiverArchitect/Welcome/raw/master/images/def_return_periods.PNG)
+![raq](https://github.com/RiverArchitect/Media/raw/master/images/def_return_periods.PNG)
 
 Flow duration curves are required for ecohydraulic analyses and can be generated for specific [aquatic ambiances preferred by target fish species-lifestages](SHArC#hefish).
 Select at least one *Fish Species - Lifestage* from the lower listbox and use the `Add` button (to add multiple *Fish Species - Lifestage*s, select-add one-by-one). A click on the `Modify Source` button opens the `Fish.xlsx` workbook that contains *Fish Species - Lifestage* definitions. At this point, on particular fish names and seasons start/end dates may be modified. Modifications of *Lifestages* should be avoided. For more details, refer to the [SHArC Wiki pages](SHArC#hefish).
@@ -155,7 +155,7 @@ An example workbook is provided with `RiverArchitect/00_Flows/InputFlowSeries/fl
 
 Click on `Make flow duration curve(s)` (plural applies if multiple *Fish Species - Lifestage*s are selected) to generate an aquatic ambiance workbook for target *Fish Species - Lifestage*s. The workbook containing the last *Fish Species - Lifestage* flow duration curve in the selected list will open up automatically when the flow duration curve generation finishes without error messages. All generated workbooks will be saved as `RiverArchitect/00_Flows/CONDITION/flow_duration_FILI.xlsx`, where `FILI` denotes the first two letters of the selected fish species and lifestage. The workbooks contain two tabs that link all observed mean daily flows from the target *Fish Species - Lifestage*'s season (tab 1) with the available 2D model data (tab 2). The result is a flow duration curve that provides a measure of how well the 2D model data may represent the relevant discharges for a *Fish Species - Lifestage*.
 
-![raq](https://github.com/RiverArchitect/Welcome/raw/master/images/RA_flow_dur.PNG)
+![raq](https://github.com/RiverArchitect/Media/raw/master/images/RA_flow_dur.PNG)
 
 
 

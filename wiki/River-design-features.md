@@ -27,7 +27,7 @@
 
 The *River Architect* differentiates between feature layers that actively modify the terrain (terraforming features), vegetation plantings features as well as (soil-) bioengineering features that provide direct aid for habitat enhancement or stabilize terrain modifications, and features that maintain artificially created habitat or support longitudinal connectivity. Feature attributes can be modified in the thresholds workbook (`RiverArchitect/LifespanDesign/.templates/threshold_values.xlsx`), which can also be open from the GUI:
 
-![thresholds](https://github.com/RiverArchitect/Welcome/raw/master/images/threshold_values_illu.png)
+![thresholds](https://github.com/RiverArchitect/Media/raw/master/images/threshold_values_illu.png)
 
 Changes in this workbook should limit to cells with `INPUT`-type formatting and only `Feature Names` and `FeatureID`s of vegetation plantings should be modified. Other modifications may cause calculation instabilities or program crashes. The following list provides an overview of default features, where *shortname*s occur in output file names of Rasters, layouts, PDF-maps, and spreadsheets and plantings
 

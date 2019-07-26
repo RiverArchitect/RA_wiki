@@ -6,7 +6,7 @@ The concerned modules provide options for reach differentiation and limit calcul
 This subdivision of the computation domain enables the analysis of up to eight reaches per copy of *River Architect*. The below figure illustrates the workbook spreadsheet for reach delineation.
 Changes can be effected by clicking on the `Reaches` dropdown menu and then `DEFINE REACHES`, or directly in the folder `ModifyTerrain/.templates/`. **In order to ignore any reach definitions, select `IGNORE (use Raster extents)`.**
 
-![reache](https://github.com/RiverArchitect/Welcome/raw/master/images/computation_extents_illu.jpg)
+![reache](https://github.com/RiverArchitect/Media/raw/master/images/computation_extents_illu.jpg)
 
 If the workbook is accidentally deleted or irreparable, incorrect modifications were made, there is an offline backup copy available:<br/>
 `ModifyTerrain/.templates/computation_extents - Copy.xlsx`

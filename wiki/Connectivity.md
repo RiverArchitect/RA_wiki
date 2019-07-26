@@ -23,7 +23,7 @@ The *Connectivity* module is used to identify wetted areas that are disconnected
 
 ***
 
-![mtgui](https://github.com/RiverArchitect/Welcome/raw/master/images/gui_start_connect.PNG)
+![mtgui](https://github.com/RiverArchitect/Media/raw/master/images/gui_start_connect.PNG)
 
 To begin using the Connectivity module, first select a hydraulic [Condition](Signposts#conditions). In order to accurately determine where velocity is a barrier to fish passage, the selected condition must include velocity angle input rasters.
 

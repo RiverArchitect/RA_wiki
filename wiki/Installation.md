@@ -30,7 +30,7 @@ To start using *River Architect*:
 
 *River Architect* starts in a GUI that is stored in `master_gui.py`. Alternatively, the modules can be individually launched by double-clicking on the `LAUNCH_Windows_x64.bat` in the module folders (not recommended and may be abandoned in future versions).
 
-![ragui](https://github.com/RiverArchitect/Welcome/raw/master/images/gui_start.PNG)
+![ragui](https://github.com/RiverArchitect/Media/raw/master/images/gui_start.PNG)
 
 
 # Package structure, requirements and logfiles

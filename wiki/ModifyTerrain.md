@@ -28,7 +28,7 @@ Threshold value-based terraforming uses DEMs of existing rivers and applies eith
 
 The GUI start-up takes a couple of seconds because the module updates reach information from a spreadsheet until the following window opens.
 
-![mtgui](https://github.com/RiverArchitect/Welcome/raw/master/images/gui_start_mt.PNG)
+![mtgui](https://github.com/RiverArchitect/Media/raw/master/images/gui_start_mt.PNG)
 
 To start with the *ModifyTerrain* module, first a feature set must be chosen from the drop-down menu, which is currently limited to ["Widen"](River-design-features#berms) and ["Grading"](River-design-features#grading). Second, a [*Condition*](Signposts#conditions) needs to be entered, which requires a click on the `Verify` button to update the GUI. This behavior differs from the [*LifespanDesign*][3] and [*MaxLifespan*][4] modules and an ample revision of the *ModifyTerrain* module will align to the lifespan modules in the future.
 
