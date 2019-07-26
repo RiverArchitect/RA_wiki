@@ -9,7 +9,7 @@ Habitat Connectivity
 - [Methodology](#methodology)
   * [Interpolating Hydraulic Rasters](#interpolating-hydraulic-rasters)
   * [Applying Travel Thresholds and Calculating Disconnected Area](#applying-travel-thresholds-and-calculating-disconnected-area)
-  * [Determining Q<sub>disconnect<sub>](#determining-qdisconnect)
+  * [Determining Q<sub>disconnect</sub>](#determining-qdisconnect)
   * [Escape Route Calculations](#escape-route-calculations)
 - [References](#references)
 
