@@ -701,7 +701,7 @@ Error messages
     - *Cause:*  Internal Error messages are raised when the code communicates erroneous data between class functions.
     - *Remedy:* 
         + If the code was modified, revise or revert changes.
-        + If Internal Errors occur that are not known issues as stated in other error messages, please provide us with feedback (use the [bug report template](https://github.com/sschwindt/RiverArchitect_development/blob/master/.github/ISSUE_TEMPLATE/bug_report.md) or send us an email: river.architect.program [at] gmail.com)
+        + If Internal Errors occur that are not known issues as stated in other error messages, please provide us with feedback (use the [bug report template](https://github.com/riverarchitect/program/blob/master/.github/ISSUE_TEMPLATE/bug_report.md) or send us an email: river.architect.program [at] gmail.com)
 
 - **`OSError: ....`**
     - *Cause:*   `arcpy` raises this error for various reasons; in particular, if code was modified or the code environment is not set up properly.
@@ -903,5 +903,5 @@ Warning messages
 [8]: https://github.com/RiverArchitect/RA_wiki/Tools
 [9]: https://github.com/RiverArchitect/RA_wiki/FAQ
 [10]: https://github.com/RiverArchitect/RA_wiki/Troubleshooting
-[sourcecode]: https://github.com/sschwindt/RiverArchitect_development/archive/master.zip
+[sourcecode]: https://github.com/riverarchitect/program/archive/master.zip
 [wyrick14]: https://www.sciencedirect.com/science/article/pii/S0169555X14000099

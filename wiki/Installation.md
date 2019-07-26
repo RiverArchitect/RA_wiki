@@ -17,7 +17,7 @@ Installation
 *River Architect* is designed as an external application rather than a python package, but its modules can be imported as packages for external use (see the *Alternative Run* sections in the module Wikis).<br/><br/>
 
 To start using *River Architect*:
- 1. Clone or [download *River Architect* as zip](https://github.com/sschwindt/RiverArchitect_development/archive/master.zip).
+ 1. Clone or [download *River Architect* as zip](https://github.com/riverarchitect/program/archive/master.zip).
  1. Unpack or copy the downloaded files to produce the below described [file structure](#structure).
  1. Right-click on `DRIVE:\path\to\...\RiverArchitect\Start_River_Architect.bat` and click on `Edit`.
      - In the `Start_River_Architect.bat`chfile, ensure that the Python path is correctly defined according to the installed version of *ArcGIS*: `call `**EDIT>>`"%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy"`<<**`"%cd%\master_gui.py"`. For more information about running standalone Python scripts in *ArcGIS Pro*'s conda environment, read their [descriptions](https://pro.arcgis.com/en/pro-app/arcpy/get-started/using-conda-with-arcgis-pro.htm).

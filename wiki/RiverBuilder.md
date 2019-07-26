@@ -117,7 +117,7 @@ With an input file selected, a click on the `Run River Builder` button launches 
   Displays the bird’s eye view of the river which consists of the channel meander, channel bank, valley floor, and valley top.
   
   
-For rendering the output into 3D graphs, follow the following instructions from the [*River Builder's user manual*][rbman] (the steps refer to the usage of *ArcMap* and a [Python script](https://github.com/sschwindt/RiverArchitect_development/blob/master/ModifyTerrain/RiverBuilder/RiverBuilderRenderer.py) that is provided along with *River Builder* and included in the *River Architect* standard installation `RiverArchitect/ModifyTerrain/RiverBuilder/RiverBuilderRenderer.py`):
+For rendering the output into 3D graphs, follow the following instructions from the [*River Builder's user manual*][rbman] (the steps refer to the usage of *ArcMap* and a [Python script](https://github.com/riverarchitect/program/blob/master/ModifyTerrain/RiverBuilder/RiverBuilderRenderer.py) that is provided along with *River Builder* and included in the *River Architect* standard installation `RiverArchitect/ModifyTerrain/RiverBuilder/RiverBuilderRenderer.py`):
 
 1.	Open *ArcMap*. Look for the `Catalog` tab on the far right of the interface. If it does not show, go to `Windows` -> `Catalog` from the top menu to have it opened.
 2.	In `Catalog`, locate the directory in which the *River Builder* toolbox is stored. If the directory is not visible, select *Connect to Folder* from the `Catalog` toolbar, and select the desired directory.
