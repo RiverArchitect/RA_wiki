@@ -9,7 +9,7 @@ Habitat Connectivity
 - [Methodology](#methodology)
   * [Interpolating Hydraulic Rasters](#interpolating-hydraulic-rasters)
   * [Applying Travel Thresholds and Calculating Disconnected Area](#applying-travel-thresholds-and-calculating-disconnected-area)
-  * [Determining Q<sub>disconnect](#determining-qdisconnect)
+  * [Determining Q<sub>disconnect<sub>](#determining-qdisconnect)
   * [Escape Route Calculations](#escape-route-calculations)
 - [References](#references)
 
@@ -39,11 +39,19 @@ Outputs are stored in `Connectivity\Output\Condition_name\`. The outputs produce
 
 More to come...
 
+***
+
 # Defining Travel Thresholds
+
+***
 
 Whether or not areas are considered to be connected/navigable for a given fish species/lifestage is dependent upon travel thresholds that are defined in the `Fish.xlsx` workbook (see <a href="SHArC">SHArC</a> for more details). These include a minimum swimming depth and maximum swimming speed.
 
+***
+
 # Methodology
+
+***
 
 ## Interpolating Hydraulic Rasters
 
@@ -89,6 +97,8 @@ The "shortest escape route" output maps (stored in the `shortest_paths\` output 
 This calculation is implemented in a computationally efficient way by first constructing a directed adjacency graph (stored as a dictionary) and then dynamically traversing the graph working outwards from the mainstem to find shortest path lengths.
 
 Currently this method only provides the shortest number of "steps" from pixel to pixel to get to the mainstem. Future developments will include the option to convert these to shortest path lengths or a least-cost path, according to user-selected cost functions.
+
+***
 
 # References
 
