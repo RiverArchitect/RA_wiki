@@ -27,7 +27,7 @@ The *Connectivity* module is used to identify wetted areas that are disconnected
 
 To begin using the Connectivity module, first select a hydraulic [Condition](Signposts#conditions). In order to accurately determine where velocity is a barrier to fish passage, the selected condition must include velocity angle input rasters.
 
-Next, select least one [aquatic ambiance](SHArC#hefish) (fish species/lifestage) from the dropdown menu. The aquatic ambiance contains data specific to the fish species/lifestage. Aquatic ambiance data is used by the Connectivity module to determine if fish are able to traverse wetted areas by accounting for the organism's minimum swimming depth and maximum swimming speed (aquatic ambiance data is also used by (SHArC)[SHArC] to determine habitat suitability). These data can be viewed/edited via the drop-down menu: `Select Aquatic Ambiance `  --> `DEFINE FISH SPECIES` (scroll to the "Travel Thresholds" section of the workbook).
+Next, select least one [aquatic ambiance](SHArC#hefish) (fish species/lifestage) from the dropdown menu. The aquatic ambiance contains data specific to the fish species/lifestage. Aquatic ambiance data is used by the Connectivity module to determine if fish are able to traverse wetted areas by accounting for the organism's minimum swimming depth and maximum swimming speed (aquatic ambiance data is also used by [SHArC](SHArC) to determine habitat suitability). These data can be viewed/edited via the drop-down menu: `Select Aquatic Ambiance `  --> `DEFINE FISH SPECIES` (scroll to the "Travel Thresholds" section of the workbook).
 
 Once the desired condition and aquatic ambiance(s) are selected, the module can be run with the "Run Connectivity Analysis" button. For further explanation of the methodology used in the analysis, see [Methodology](Connectivity#Methodology).
 
@@ -45,7 +45,7 @@ More to come...
 
 ***
 
-Whether or not areas are considered to be connected/navigable for a given fish species/lifestage is dependent upon travel thresholds that are defined in the `Fish.xlsx` workbook (see <a href="SHArC">SHArC</a> for more details). These include a minimum swimming depth and maximum swimming speed.
+Whether or not areas are considered to be connected/navigable for a given fish species/lifestage is dependent upon travel thresholds that are defined in the `Fish.xlsx` workbook (see [SHArC](SHArC) for more details). These include a minimum swimming depth and maximum swimming speed.
 
 ***
 
