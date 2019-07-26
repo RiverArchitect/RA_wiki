@@ -5,6 +5,9 @@ Habitat Connectivity
 
 - [Introduction to Connectivity Module](#intro)
 - [Quick GUIde to Connectivity Assessment](#guide)
+- [Defining Travel Thresholds](#defining-travel-thresholds)
+- [Methodology](#methodology)
+- [References](#references)
 
 ***
 
