@@ -73,7 +73,7 @@ Even if there is wetted area connecting two locations, they may not be considere
 
 For now, this calculation of disconnected areas only applies the depth threshold. The velocity threshold is incorporated into escape route calculations, but will also need to be used to update this calculation in the future.
 
-## Determining Q<sub>disconnect
+## Determining Q<sub>disconnect</sub>
   
 The `Q_disconnect` map outputs provide estimates of the discharges at which wetted areas become disconnected from the mainstem of the river channel. Estimating these discharges is done as follows:
 
