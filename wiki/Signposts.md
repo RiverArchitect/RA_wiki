@@ -103,6 +103,12 @@ The depth to the groundwater is primarily required for identifying relevant regi
 
  -  A terrain DEM (or DTM) is automatically assigned from the selected *Condition* folder.
  -  A low-level flow depth Raster (in arid regions) based on the assumption that the groundwater table in the vicinity of the river corresponds to at least this water level, which marks the moment of highest water stress for plants.
+ 
+RiverArchitect estimates the depth to groundwater by interpolating the given low flow water surface across the DEM extent. There are three options for the interpolation method used to calculate this surface:
+
+- `IDW`: Inverse distance weighted interpolation. Each null cell in the low flow depth raster is assigned a weighted sum of its 12 nearest neighbors. Each weight is inversely proportional to the second power of the distance between the interpolated cell and its neighbor. Thus, the closest neighbors to an interpolated cell receive the largest weights.
+- `Kriging`: Ordinary Kriging interpolation. This method also uses a weighted sum of the 12 nearest neighbors, but weights are calculated using a semi-variogram, which describes the variance of the input data set as a function of the distance between points. A spherical functional form is also assumed for the fitted semi-variogram. Kriging is the most accurate interpolation method if certain assumptions are met regarding normality and stationarity of error terms. However, it is also the most computationally expensive method.
+- `Nearest Neighbor`: The simplest method, which sets the water surface elevation of each null cell to that of the nearest neighboring cell.
 
 ### Make Detrended DEM Rasters<a name="det"></a>
 
