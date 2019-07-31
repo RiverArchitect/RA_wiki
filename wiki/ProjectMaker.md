@@ -212,7 +212,9 @@ The final project costs include site mobilization and demobilization as well as 
 
 ***
 
-**Please note: There is no warranty for the calculated costs. All workkbook-internal cell links must be verified manually.**
+**Please note:**
+ - **There is no warranty for the calculated costs ([see disclaimer](Disclaimer)).**
+ - **All workbook-internal cell links must be verified manually, in particular, the `cost(UNITS)` tab.**
 
 ***
 
