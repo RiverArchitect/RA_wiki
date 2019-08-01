@@ -395,8 +395,9 @@ Error messages
     - *Remedy:*
         + Ensure that the listed workbook is not opened in any other program and that the workbook is correctly installed according to the module descriptions.
         + Used within `SHArC`:
-		   a. Ensure that a flow duration curve for all selected *Aquatic Ambiances* and the select hydraulic *Condition* was generated. The flow duration curves are typically saved as `00_Flows/CONDITION/flow_duration_FILI.xlsx`, where `FILI` is a placeholder of the first two letters of the selected species and lifestage (*Aquatic Ambiance*), respectively. For example for *Chinook Salmon - Juvenile*, `FILI` becomes `chju`, or for *All Aquatic - hydrologic year*, `FILI` becomes `alhy`.
-		   b. Open `SHArC/SHArea/CONDITION_sharea_FILI.xlsx`, verify the data contents and make sure that the file is not opened in any other program.
+		   * Ensure that a flow duration curve for all selected *Aquatic Ambiances* and the select hydraulic *Condition* was generated. The flow duration curves are typically saved as `00_Flows/CONDITION/flow_duration_FILI.xlsx`, where `FILI` is a placeholder of the first two letters of the selected species and lifestage (*Aquatic Ambiance*), respectively. For example for *Chinook Salmon - Juvenile*, `FILI` becomes `chju`, or for *All Aquatic - hydrologic year*, `FILI` becomes `alhy`.
+		   * If the module is executed repeatedly for the same condition and fish species-lifestage, and the workbook (`SHArC/SHArea/CONDITION_sharea_FILI.xlsx`) has been manually deleted, restore it by clicking on the `Make HSI Raster (...)` dropdown menu > Select  "Hydraulic" or "Cover" options to open the popup window > Select a *Condition* > Wait until the green button `View discharge dependency workbook` becomes active > `RETURN to MAIN WINDOW` and repeat habitat raster, raster combination and/or *SHArea* analysis.
+		   * Open `SHArC/SHArea/CONDITION_sharea_FILI.xlsx`, verify the data contents and make sure that the file is not opened in any other program.
 
  - **`ERROR: Failed to access computation_extents.xlsx.`**
     - *Cause:*   Error raised by the `get_reach_coordinates(self, internal_reach_id)` function of the `Read()` class in `RiverArchitect/.site_packages/riverpy/cReachManager.py`) when the reach coordinate spreadsheet (`ModifyTerrain/.templates/computation_extents.xlsx`) could not be read.
