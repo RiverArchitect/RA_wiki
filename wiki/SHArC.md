@@ -72,7 +72,9 @@ All definitions made in this workbook need to respect the default workbook struc
 
 - Cover (vegetative) in row 84 to 85. `Rad.` defines the radius around single `Plants` or `Wood` placements, where habitat improves by an HSI value.
 
-- Fish lifestages must be named either `spawning, fry, ammocoetes, juvenile, adult, hydrologic year, season, depth > x, ` or `velocity > x`. The lifestage names are currently hard-coded in the `Fish` class (`RiverArchitect/.site_packages/riverpy/cFish.py`) dictionary `self.ls_col_add = {"spawning": 1, "fry": 3, "ammocoetes": 3, "juvenile": 5, "adult": 7, "hydrologic year": 1, "season": 3, "depth > x": 5, "velocity > x": 7}` (see [known issues](Troubleshooting#issues)). This dictionary can be changed for using other lifestage names and we are working on an improvement in later versions. Note that this dictionary defines the relative column numbers that are added to the column where the fish name is defined (e.g., for name=*Chinook Salmon*, the start column is "C" and the *spawning*-column is "C+1"="D", while the "fry"-column is "C+3"="F" and so on).
+- Fish lifestages must be named either `spawning, fry, ammocoetes, juvenile, adult, hydrologic year, season, depth > x`, or `velocity > x`. The lifestage names are currently hard-coded in the `Fish` class (`RiverArchitect/.site_packages/riverpy/cFish.py`) dictionary `self.ls_col_add = {"spawning": 1, "fry": 3, "ammocoetes": 3, "juvenile": 5, "adult": 7, "hydrologic year": 1, "season": 3, "depth > x": 5, "velocity > x": 7}` (see [known issues](Troubleshooting#issues)). This dictionary can be changed for using other lifestage names and we are working on an improvement in later versions. Note that this dictionary defines the relative column numbers that are added to the column where the fish name is defined (e.g., for name=*Chinook Salmon*, the start column is "C" and the *spawning*-column is "C+1"="D", while the "fry"-column is "C+3"="F" and so on).
+
+- Habitat Suitability Index curves can be found in the scientific literature with the the following keywords: `Habitat Suitability`, `Index`, `Curve`, *`TARGET SPECIES`* (e.g., [here](https://www.science.gov/topicpages/h/habitat+suitability+curves)).
 
 
 The `Season start` and `Season end` dates are important in the flow duration generation for *HHSI* curves. For the consideration of entire hydrological years (or [water years](https://en.wikipedia.org/wiki/Water_year)), define `Season start` as `1-Oct` and `Season end` as `30-Sep` (in the United States and Switzerland, in Germany from `1-Nov` to `31-Oct` according to the definition of an *Abflussjahr* in the [DIN 4049](https://www.din.de/en/getting-involved/standards-committees/naw/standards/wdc-beuth:din21:1987523)). Hydrological/water years are defined based on the assumption that water resources are smallest in fall. Fish seasons are relevant for habitat assessment because fish grows and a lifestage (e.g., juvenile) may not be relevant for the entire year (that means: possibly not use the entire year).
@@ -81,14 +83,14 @@ Ensure the application of the correct unit system; the drop-down menu in the `Fi
 
 The base scenario provides habitat suitability curves for four sample fish species. More fish species can easily be appended by copy-pasting the template frame (area in thick borders in the `template` sheet) after the last defined fish species. For example, if another fish species is added to the base scenario, cells `C2` to `J85` from the `template` sheet are copied and pasted at cell `AI2` in the `fish` sheet. However, the number of lifestages per fish species and the above-stated rows need
 to be respected when entering piece-wise linear habitat suitability functions. The U.S. Forest Service provides [data](http://www.fsl.orst.edu/geowater/FX3/help/SwimData/swimtable.htm) that may help define additional fish species (especially for [Habitat Connectivity](Connectivity) analysis).<br/>
-The structure of `Fish.xlsx` must not be modified (inserting or deleting rows or columns) unless the module's source code is also changed (not recommended). If the structure is changed anyway, the module needs to be modified as explained in the [code section](Fish-modification#hecode).<br/>
+The structure of `Fish.xlsx` must not be modified (inserting or deleting rows or columns) unless the module's source code is also changed (not recommended). If the structure is changed anyway, the module needs to be modified as explained in the [code section](aqua-modification#hecode).<br/>
 Note that any relevant species-lifestage needs to have at least one entry for the velocity habitat suitability curve, as the module uses this first data cell in every column to verify if it contains data or not. For example, if a substrate habitat suitability curve is given, but the velocity habitat suitability curve is left blank, the concerned lifestage will not be considered relevant.<br/>
 The module uses the piece-wise linear curves of habitat suitability indices to interpolate the HSI value of Raster pixels. For example, if a velocity Raster's pixel has a value of 0.51 (fps or m/s), the module looks up the HSI values related to the next smaller provided value (e.g., 0.5 fps or m/s) and the next higher value (e.g., 0.6 fps or m/s) and linearly interpolates the habitat suitability index for 0.51 (fps or m/s).
 
 
 ## Input: Define computation boundaries<a name="hebound"></a>
 
-A boundary shapefile (polygon) can be selected to limit the calculation extents and assessment of the Annually Usable habitat Area SHArea. Typically, that shapefile should be stored in `RiverArchitect/01_Conditions/CONDITION/boundary.shp/.tif` (or [`RiverArchitect/ProjectMaker/ProjecName/Geodata/Shapefiles/ProjectArea.shp`](ProjectMaker#pminp2)) and it should contain one valid rectangle with an `Id` field value of `1` for that rectangle in the `Attribute table`.
+A boundary shapefile (polygon) can be selected to limit the calculation extents and assessment of the Annually Usable habitat Area SHArea. Typically, that shapefile should be stored in `RiverArchitect/01_Conditions/CONDITION/boundary.shp/.tif` (or [`RiverArchitect/ProjectMaker/ProjectName/Geodata/Shapefiles/ProjectArea.shp`](ProjectMaker#pminp2)) and it should contain one valid rectangle with an `Id` field value of `1` for that rectangle in the `Attribute table`.
 
 ## Input: HHSI<a name="hemakehsi"></a>
 
@@ -114,11 +116,11 @@ As before, at least one aquatic ambiance for fish species/lifestage needs to be 
 Relevant cover types can be selected by checking the according checkboxes, where geofiles are required to be stored in
 `RiverArchitect/01_Conditions/CONDITION/` apply the cover types: 
 
--   Substrate: A `dmean` (S.I. /metric units) or `dmean_ft` (U.S. customary units) Raster is required (see [Signposts](https://github.com/RiverArchitect/RA_wiki/Signposts#input-file-preparation)).
+-   Substrate: A `dmean` (S.I. /metric units) or `dmean_ft` (U.S. customary units) Raster is required (see [Signposts](Signposts#input-file-preparation)).
 
 -   Boulders: A `boulders.shp` polygon shapefile is required; the polygons delineating boulders need to have a `Short Integer`-type field called `cover` in the (`Attributes table`) and the `cover` field value of polygons is `1`.
 
--   Cobbles: A `dmean` (S.I. /metric units) or `dmean_ft` (U.S. customary units) Raster is required (see [Signposts](https://github.com/RiverArchitect/RA_wiki/Signposts#input-file-preparation)). Cobble is defined, where the `dmean...` Raster indicates grain sizes between 0.064 m and 0.256 m.
+-   Cobbles: A `dmean` (S.I. /metric units) or `dmean_ft` (U.S. customary units) Raster is required (see [Signposts](Signposts#input-file-preparation)). Cobble is defined, where the `dmean...` Raster indicates grain sizes between 0.064 m and 0.256 m.
 
 -   Plants: A `plants.shp` polygon shapefile is required; the polygons delineating boulders need to have a `Short Integer`-type field called `cover` in the (`Attributes table`) and the `cover` field value of polygons is `1`.
 
@@ -158,9 +160,9 @@ Two combination buttons are available: (1) `pure hydraulic` and (2) `hydraulic a
 
 The `Run Seasonal Habitat Area Caluclator - SHArC` button launches the [calculation of usable SHArea](#herunchsi) based on the combined habitat suitability index (*cHSI*). Usable (habitat) area is defined as the surface where *cHSI* (or *CSI*) pixel values are larger than the `SHArea threshold` *&theta;*. *SHArea* is defined as the sum of usable habitat areas of *cHSI* of relevant discharges multiplied with the relative presence (*p<sub>Qk</sub>*). Relevant discharges occur every year during the aquatic ambiance (fish-lifestage) presence season that is defined by the [*Season start* and *Season end* tags in *Fish.xlsx*](#hefish). Thus, *SHArea* as the sum of discharge-related usable habitat area is:
 
-*SHArea = &Sigma;p<sub>Qk</sub></sub> \[ &Sigma;<sub>pixels</sub>cHSI > &theta;\] · p<sub>Qk</sub>*
+*SHArea = &Sigma;p<sub>Qk</sub> \[ &Sigma;<sub>pixels</sub>cHSI > &theta;\] · p<sub>Qk</sub>*
 
-By default, this threshold value *&theta;* is 0.5 (i.e., the routine sums up the surface of pixels where the *cHSI* is larger than 0.5). The threshold value can be changed by clicking on the `Set SHArea threshold ...` button. *p<sub>Qk</sub>* denotes the relative seasonal presence of a discretized discharge *Q<sub>k</sub>* that is associated with a set of hydraulic Rasters (flow depth and velocity). The below figure illustrates the SHArea integration scheme based on the application of four discharges (1000, 2000, 3000, and 4000 m<sup>3</sup>/s or cfs) if an aquatic ambiance for a fish-lifestage season.
+By default, this threshold value *&theta;* is 0.5 (i.e., the routine sums up the surface of pixels where the *cHSI* is larger than 0.5). The threshold value can be changed by clicking on the `Set SHArea threshold ...` button. *p<sub>Qk</sub>* denotes the relative seasonal presence of a discretized discharge *Q<sub>k</sub>* that is associated with a set of hydraulic Rasters (flow depth and velocity). The below figure illustrates the SHArea integration scheme based on the application of four discharges (1000, 2000, 3000, and 4000 m<sup>3</sup>/s or cfs) of an aquatic ambiance for a fish-lifestage season.
 
 ![SHAreaint](https://github.com/RiverArchitect/Media/raw/master/images/RA_HE_integration.png)
 
