@@ -111,6 +111,8 @@ RiverArchitect estimates the depth to groundwater by interpolating the given low
 - `Kriging`: Ordinary Kriging interpolation. This method also uses a weighted average of the 12 nearest neighbors, but weights are calculated using a semi-variogram, which describes the variance of the input data set as a function of the distance between points. A spherical functional form is also assumed for the fitted semi-variogram. Kriging is the most accurate interpolation method if certain assumptions are met regarding normality and stationarity of error terms. However, it is also the most computationally expensive method.
 - `Nearest Neighbor`: The simplest method, which sets the water surface elevation of each null cell to that of the nearest neighboring cell.
 
+All interpolated rasters are saved with a corresponding `.info.txt` file which records the interpolation method and input rasters used in its creation.
+
 ### Make Detrended DEM Rasters<a name="det"></a>
 ***
 Automation of [grading](River-design-features#grading) or the relevance of [widening and berm setbacks](River-design-features#berms) build on the relative elevation of the terrain over the river water surface elevation. For this purpose, the following input Rasters are required.
