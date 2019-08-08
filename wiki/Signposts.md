@@ -67,7 +67,7 @@ Once the input is defined, clicking on the `CREATE CONDITION` button will create
 The flow depth and velocity Rasters may require manual renaming to adapt to the [Raster name conventions](#terms). Subsequently, populating the created *Condition* is strongly recommended
 
 ## Populate Condition<a name="pop-condition"></a>
-
+***
 *Condition* - wise Morphological Unit, Depth to Groundwater, and Detrended DEM Rasters add consistency to the analyses of all modules. The `Populate Condition` popup window invites the user to define a *Condition* to be populated, and subsequently to create the following Rasters:
 
 - Morphological Unit, 
@@ -76,7 +76,7 @@ The flow depth and velocity Rasters may require manual renaming to adapt to the 
 
 
 ### Make Morphological Unit Rasters<a name="mu"></a>
-
+***
 Instream morphological unit Rasters according to [Wyrick and Pasternack (2014)][wyrick14] enable the correct allocation of [river design features](River-design-features) as defined in the [thresholds workbook](LifespanDesign#modthresh). For this purpose, the following inputs are needed:
 
  -  A flow velocity raster (use [baseflow](https://en.wikipedia.org/wiki/Baseflow) according to the [literature][wyrick14]);
@@ -98,12 +98,13 @@ For making changes in the workbook, choose either one of the pre-defined river c
 	+ the morphological unit's name Raster (uses an intermediated Raster to point conversion) saved as `RiverArchitect/01_Conditions/CONDITION/mu_str.tif`.
 
 
-### Make Depth to Groundwater Rasters<a name="d2w"></a>
+### Make Depth to Water Table Rasters<a name="d2w"></a>
+***
 The depth to the groundwater is primarily required for identifying relevant regions for target indigenous [plant species](https://github.com/RiverArchitect/RA_wiki/River-design-features#plants). For this purpose, the following input Rasters are required.
 
  -  A terrain DEM (or DTM) is automatically assigned from the selected *Condition* folder.
  -  A low-level flow depth Raster (in arid regions) based on the assumption that the groundwater table in the vicinity of the river corresponds to at least this water level, which marks the moment of highest water stress for plants.
- 
+
 RiverArchitect estimates the depth to groundwater by interpolating the given low flow water surface across the DEM extent. There are three options for the interpolation method used to calculate this surface:
 
 - `IDW`: Inverse distance weighted interpolation. Each null cell in the low flow depth raster is assigned a weighted average of its 12 nearest neighbors. Each weight is inversely proportional to the second power of the distance between the interpolated cell and its neighbor. Thus, the closest neighbors to an interpolated cell receive the largest weights.
@@ -111,14 +112,14 @@ RiverArchitect estimates the depth to groundwater by interpolating the given low
 - `Nearest Neighbor`: The simplest method, which sets the water surface elevation of each null cell to that of the nearest neighboring cell.
 
 ### Make Detrended DEM Rasters<a name="det"></a>
-
+***
 Automation of [grading](River-design-features#grading) or the relevance of [widening and berm setbacks](River-design-features#berms) build on the relative elevation of the terrain over the river water surface elevation. For this purpose, the following input Rasters are required.
 
  -  A terrain DEM (or DTM) is automatically assigned from the selected *Condition* folder.
  -  A flow depth Raster (in arid regions) marks the level for relative elevations. Designers may have different reasons for choosing the relevant flow depth Raster (low flows for habitat enhancement or high flows for flood protection), and therefore, no recommendation is made here.
 
 ## Create a spatial subset of a Condition<a name="sub-condition"></a>
-
+***
 The creation of a spatial subset of a *Condition* requires a Boundary shapefile or Raster (if this is a GRID Raster, select the corresponding .aux.xml file). The boundary file needs to contain On-values (Integer 1) and Off-values (Integer 0) values only as specified in the [Project Area Polygon preparation](ProjectMaker#pminp2).
 
 If a shapefile is selected:
@@ -166,6 +167,7 @@ Click on `Make flow duration curve(s)` (plural applies if multiple *Fish Species
 
 
 ## Generate Input File(s) (.inp) <a name="inpfile"></a>
+***
 Lifespan mapping uses input files (.inp) to identify relevant Rasters and (flood) return periods. Given that `Analyze Flow` was previously executed for a *Condition*, an input file can be generated with the `Make Input File` tool.
 
 The resulting `input_definitions.inp` is stored in the directory `RiverArchitect/01_Conditions/CONDITION/`. `input_definitions.inp` contains information about lifespan duration and Raster names, which link to Rasters containing spatial information as described in the [Parameters](LifespanDesign-parameters) Wiki page. The order of definitions and lines must not be changed to ensure the proper functioning of the module. Enter or change the information in the corresponding lines, only between the "=" and the "*\#*" signs (the input routines uses these signs as start and end identifiers for relevant information). Verify that every `input_definitions.inp` created contains the following definitions (line by line):
@@ -198,16 +200,15 @@ For retrieving the extent, in *ArcGIS* Desktop, go to the `View` menu, click on 
 The function uses these definitions for zooming to each point defined below Line 8 in `mapping.inp`, cropping the map to the defined extents and exporting each page to a `pdf` map bundle containing as many pages as there are defined in `mapping.inp`.<br/>
 The program uses the reference coordinate system and projection defined in the `.aprx` file's map layout templates or in `mapping.inp`.
 
-***
 
 # Geofile (Raster) conventions<a name="terms"></a>
-The input Rasters need to be in **GeoTIFF** (*.tif*) format, notably, a `raster_name.tif` file. _Note that River Architect is designed to also handle Esri's GRID format, but the primary raster file type should be GeoTIFF_. Depth Raster names must start with `h` and velocity Raster names must start with `u`, followed by a six-digit discharge `QQQQQQ`, which is independent of the unit system. For example, a flow depth Raster associated with a discharge of 55 m³/s needs to be called `h000055.tif` and a velocity Raster associated with a discharge of 11000 m³/s needs to be called `u011000.tif`. Likewise, a flow depth Raster associated with a discharge of 55 cfs needs to be called `h000055.tif`. The Raster names ignore discharge value digits after the decimal point. Moreover, every flow depth Raster requires a matching velocity Raster and vice verse (e.g., `h000055.tif` requires a Raster called `u000055.tif`).<br/>
-**Note the importance of `back.tif` for calculation extents.**
-
 ***
+The input Rasters need to be in **GeoTIFF** (*.tif*) format, notably, a `raster_name.tif` file. _Note that River Architect is designed to also handle Esri's GRID format, but the primary raster file type should be GeoTIFF_. Depth Raster names must start with `h` and velocity Raster names must start with `u`, followed by a six-digit discharge `QQQQQQ`, which is independent of the unit system. For example, a flow depth Raster associated with a discharge of 55 m³/s needs to be called `h000055.tif` and a velocity Raster associated with a discharge of 11000 m³/s needs to be called `u011000.tif`. Likewise, a flow depth Raster associated with a discharge of 55 cfs needs to be called `h000055.tif`. The Raster names ignore discharge value digits after the decimal point. Moreover, every flow depth Raster requires a matching velocity Raster and vice verse (e.g., `h000055.tif` requires a Raster called `u000055.tif`).<br/>
+**Note: `back.tif` may be used to limit calculation extents.**
+
 
 # Manual input data preparation<a name="inputs"></a>
-
+***
 Relevant Raster names for calculation are defined in an input file ([`.inp`](#inpfile)) of the [*LifespanDesign*][3] module (input section see for details and definitions). Please note that *.inp* files for lifespan mapping are different from the input (*.txt*) files required for [River Builder](RiverBuilder).
 Sample data representing a patch of a Californian gravel-cobble bed river in 2100 can be downloaded [here](https://github.com/RiverArchitect/SampleData/archive/master.zip). The input file of the sample case is located in `01_Conditions/2100_sample/input_definitions.inp` file. The sample case includes a set of Rasters for flow scenarios corresponding to return periods of < 1.0 (ignored in the input file), 1.0,  ... , 2.0, 5.0, 10.0, 15.0, 20.0, 30.0, 40.0, and 50.0 years, as well as a couple of annual discharges for habitat assessments. The according flows are defined in `01_Conditions/2100_sample/flow_definitions.xlsx`, with pre-compiled flow duration curves for whetted area (`alhy`), Chinook salmon juveniles (`chju`), fry (`chfr`), and spawning (`chju`) lifestages that are stored in `00_Flows/2100_sample/flow_duration_FILI.xlsx` (see above [flow definitions](#ana-flows)).
 
@@ -248,7 +249,7 @@ More Rasters indicating morphological units (e.g., [Wyrick and Pasternack 2014][
 
 Some parameters, such as the dimensionless bed shear stress or the mobile grain size, can be directly computed from the flow velocity, depth, and present grain size. Additional input Rasters could be used for every parameter to shorten calculation duration, but this approach required large storage capacity on the hard disk and it is less flexible regarding computation methods. Therefore, the *River Architect* uses its own routines for calculating parameters such as the dimensionless bed shear stress or mobile grain sizes.
 
-`NoData` handling: *River Architect* does not consider pixels with `noData` values and has routines to handle `noData` during the calculation. 
+`NoData` handling: *River Architect* does not consider pixels with `NoData` values and has routines to handle `NoData` during the calculation. 
 
 
 

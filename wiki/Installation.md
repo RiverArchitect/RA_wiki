@@ -6,7 +6,7 @@ Installation
 - [Install and start *River Architect*](#started)
 - [Prepare file structure](#structure)
 - [Program environment setup and batchfile modification](#raenv)
-- [Requirements](#req)
+- [Requirements and dependencies](#req)
 - [Logfiles](#logs)
 
 ***
@@ -171,7 +171,7 @@ The main directory (`/RiverArchitect/`) contains the program launcher named `Sta
 
 
 ## Program environment setup and batchfile modification<a name="raenv"></a>
-
+***
 The package is designed for an *ArcGIS Pro*'s Python3 conda environment. Before launching the *River Architect* package for the first time, the batchfiles may require adaptions for the system environment. On **Windows** only (Linux is not yet available because of `arcpy` issues - we are working on it), set the batch file environment as follows:
 
 1.  Right-click on `Start_River_Architect.bat` and choose *Edit* (*with Texteditor*) or *Open with \...* and choose a *Texteditor* software.
@@ -195,13 +195,16 @@ The package is designed for an *ArcGIS Pro*'s Python3 conda environment. Before 
 There is no standard easy way to import ArcGIS' `arcpy` package in *Python* running on UNIX platforms (Apple or Linux). Future versions of *River Architect* aim at using other packages for geodata processing, which will also run on UNIX platforms (we are currently experimenting with `gdal` and `qgis.core`).\
 After editing the batch files, launch *River Architect* by double-clicking on `Start_River_Architect.bat`.
 
-## Requirements<a name="req"></a>
+## Requirements and dependencies<a name="req"></a>
+***
 
+### Python packages
 The execution of *River Architect* requires the following packages, which are part of the standard *ArcGIS Pro* - *Python3* distribution: 
 - `arcpy`
 - `argparse`
 - `glob`
 - `logging`
+- `openpyxl`
 - `os`
 - `shutil`
 - `subprocess` (not mandatory, also works without this package)
@@ -215,13 +218,14 @@ Furthermore, *River Architect* requires *ArcGIS Pro*'s "Spatial Analyst" and "3D
 
 Any folder beginning with a "." for example `.cache` or `.idea` must not be modified or assessed by any other program, in particular during the execution of package methods. Files stored in `.templates` folders are directly called by the GUIs if user definitions are admitted. At the end of execution, the applied modules have created their output folders, which are indicated in the command prompt.
 
-### Other Software
+### Other software and dependencies
+***
 A workbook editing software such as *Excel* or [*LibreOffice*][libreoffice] is required for modifications of user-defined databases (`.xlsx` files).
 
 For the visualization of geodata (`.shp` and `.tif` files), and mapping with project files (`.aprx`), an installation of *ArcGIS Pro* is required. Open-source alternatives are [*QGIS* ](https://www.qgis.org/en/site/forusers/download.html) or [SAGA](http://www.saga-gis.org/en/index.html) (*Please note: There are more GIS alternatives out there.*).
 
 ## Logfiles<a name="logs"></a>
-
+***
 Logfiles `logfile.log` are created in the module directories during every run task. These files contain time-stamped terminal messages of program activities, warnings and error messages. Thus, logfiles enable the user to review process duration and to trace back problems. The handling of potential errors and warning messages are listed in the [Troubleshooting Wiki][10]  with descriptions of problem sources (cause) and solutions (remedy).
 
 [1]: https://github.com/RiverArchitect/RA_wiki/Installation
