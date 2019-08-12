@@ -8,9 +8,9 @@ Habitat Connectivity
 - [Defining Travel Thresholds](#defining-travel-thresholds)
 - [Methodology](#methodology)
   * [Interpolating Hydraulic Rasters](#interpolating-hydraulic-rasters)
-  * [Applying Travel Thresholds and Calculating Disconnected Area](#applying-travel-thresholds-and-calculating-disconnected-area)
-  * [Determining Q<sub>disconnect</sub>](#determining-qdisconnect)
   * [Escape Route Calculations](#escape-route-calculations)
+  * [Calculating Disconnected Area](#calculating-disconnected-area)
+  * [Determining Q<sub>disconnect</sub>](#determining-qdisconnect)
 - [References](#references)
 
 ***
@@ -96,7 +96,7 @@ Applying the depth and velocity thresholds at each cell yields a set of neighbor
 
 ## Calculating Disconnected Area
 
-Even if there is wetted area connecting two locations, they may not be considered connected in the context of fish passage. This is because low water depths or high velocities may effectively act as "hydraulic barriers", limiting fish mobility. The applied aquatic ambiance contains threshold values for the minimum swimming depth and maximum swimming speed. After escape route calculations are calculated for a discharge, the resultant path length raster shows which areas are able to reach the river mainstem for the given hydraulic conditions and biological limitations. Wetted areas in the interpolated depth raster for which a least-cost path cannot be calculated are then considered to be disconnected. These disconnected areas are saved to a shapefile for each discharge in the `disc_areas` output directory.
+Even if there is wetted area connecting two locations, they may not be considered connected in the context of fish passage. This is because low water depths or high velocities may effectively act as "hydraulic barriers", limiting fish mobility. The applied aquatic ambiance contains threshold values for the minimum swimming depth and maximum swimming speed. After escape routes are calculated for a discharge, the resultant path length raster shows which areas are able to reach the river mainstem for the given hydraulic conditions and biological limitations. Wetted areas in the interpolated depth raster for which a least-cost path cannot be calculated are then considered to be disconnected. These disconnected areas are saved to a shapefile for each discharge in the `disc_areas` output directory.
 
 
 ## Determining Q<sub>disconnect</sub>
