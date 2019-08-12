@@ -33,11 +33,13 @@ Once the desired condition and aquatic ambiance(s) are selected, the module can 
 
 Outputs are stored in `Connectivity\Output\Condition_name\`. The outputs produced are:
 
-- `Q_disconnect.tif`: a raster showing the highest model discharge for which areas are disconnected from the main river channel. Locations that are not disconnected at any modeled discharge are assigned a value of zero. Thus, this map indicates locations and discharges below which stranding risks may occur.
+- interpolated rasters (`h_interp`, `u_interp`, `va_interp`): interpolated depth, velocity (magnitude), and velocity angle rasters. See [Interpolating Hydraulic Rasters](Connectivity#interpolating-hydraulic-rasters) for more information.
 
 - `shortest_paths\`: folder containing a raster for each model discharge indicating the minimum distance/least cost required to escape to the low flow river mainstem and subject to constraints imposed by the travel thresholds for the selected aquatic ambiance.
 
-More to come...
+- `disc_areas\`: folder containing a shapefile for each model discharge indicating wetted areas which are effectively disconnected at that discharge.
+
+- `Q_disconnect.tif`: a raster showing the highest model discharge for which areas are disconnected from the main river channel. Locations that are not disconnected at any modeled discharge are assigned a value of zero. Thus, this map indicates locations and discharges below which stranding risks may occur.
 
 ***
 
@@ -45,7 +47,7 @@ More to come...
 
 ***
 
-Whether or not areas are considered to be connected/navigable for a given fish species/lifestage is dependent upon travel thresholds that are defined in the `Fish.xlsx` workbook (see [SHArC](SHArC) for more details). These include a minimum swimming depth and maximum swimming speed.
+Whether or not areas are considered to be connected/navigable for a given fish species/lifestage is dependent upon travel thresholds that are defined in the `Fish.xlsx` workbook (see [SHArC](SHArC) for more details). These include a minimum swimming depth and maximum swimming speed. To view/modify the species/lifestage specific travel thresholds, use the drop-down menu: "Select Aquatic Ambiance" --> "DEFINE FISH SPECIES".
 
 ***
 
@@ -58,20 +60,44 @@ Whether or not areas are considered to be connected/navigable for a given fish s
 The analysis begins by performing an interpolation of the water surface elevation across the extent of the DEM. This step is taken in order to approximate how the water surface extends across floodplain areas, thus identifying the presence of disconnected pools that would not be captured by steady-state hydrodynamic model outputs. The interpolation is performed for each discharge as follows:
 
 - The water depth raster is added to the DEM elevation to produce a water surface elevation (WSE) raster.
-- the WSE is interpolated across the DEM extent using Ordinary Kriging interpolation (12 nearest neighbors, Gaussian semivariogram). Only 12 nearest neighbors are used for each interpolated pixel to make the interpolation computationally affordable, and a Gaussian semivariogram model is used by default since it produces the best fit for the hydrodynamic data for the lower Yuba River used during testing and development.
+- the WSE is interpolated across the DEM extent using an Inverse Distance Weighted (IDW) interpolation scheme on the 12 nearest neighbors.
 - The DEM is subtracted from the interpolated WSE raster to produce an interpolated depth raster. Only positive values are saved (negative values indicate an estimated depth to groundwater).
 - Interpolated velocity and velocity angle rasters are created, where velocity is set to zero in the newly interpolated areas.
 - Interpolated rasters are stored in `Connectivity\Condition_name\h_interp`, `Connectivity\Condition_name\u_interp`, `Connectivity\Condition_name\va_interp`.
 
-## Applying Travel Thresholds and Calculating Disconnected Area
+## Escape Route Calculations
 
-Even if there is wetted area connecting two locations, they may not be considered connected in the context of fish passage. This is because low water depths or high velocities may effectively act as "hydraulic barriers", limiting fish mobility. The applied aquatic ambiance contains threshold values for the minimum swimming depth and maximum swimming speed. These thresholds are applied as follows:
+The "shortest escape route" output maps (stored in the `shortest_paths\` output directory) show the length/cost of the shortest/least-cost path from each pixel back into the mainstem of the river channel, accounting for both depth and velocity travel thresholds. In this context, the mainstem is defined as the largest continuous portion of interpolated wetted area deeper than the minimum swimming depth at the lowest available discharge. Conceptually, the shortest escape route to the mainstem is found from each starting pixel as follows:
 
-- The interpolated depth raster is set to null for values less than the minimum swimming depth.
-- The resultant raster is converted into a set of polygon objects.
-- Areas of all the polygons are calculated. The polygon with the greatest area is assumed to be the mainstem of the river channel. All other polygons are considered to be disconnected wetted areas.
+- If the starting pixel is already in the mainstem, it assigned a default value of zero. Otherwise, look at all wetted pixels adjacent to the starting pixel.
+- Apply depth and velocity travel criteria (see below).
+- If both the depth and velocity travel criteria are satisfied, the fish is considered to be able to move from the current pixel to the neighbor. An associated cost of traveling to the neighboring cell can also be computed.
+- Apply this method iteratively to each reachable neighbor. The path which reaches a cell in the mainstem with the smallest total cost is the least-cost path to the mainstem.
 
-For now, this calculation of disconnected areas only applies the depth threshold. The velocity threshold is incorporated into escape route calculations, but will also need to be used to update this calculation in the future.
+***
+
+### Applying Depth and Velocity Travel Criteria
+
+![connect_vel](https://github.com/RiverArchitect/Media/raw/master/images/connect_vel_condition.png)
+
+The depth threshold criteria is applied simply by checking if the current cell and neighboring cell are greater than the minimum swimming depth. If so, the depth threshold criteria is satisfied. Because velocity is a vector quantity, the direction of travel must be considered when applying the velocity threshold criteria.
+
+From the center of each cell, the area is divided into 8 octants corresponding to the 8 neighboring cells, with each octant centered on the direction to its neighboring cell and spanning 45°. If it is possible to add the water velocity vector (𝑣 ⃗𝑤) to a vector with the magnitude of the maximum swimming speed (𝑣 ⃗𝑓) to yield a vector (𝑉 ⃗) falling within an octant, then the velocity threshold criteria is satisfied for travel to the corresponding neighboring cell. A specific example is shown in this diagram where the resultant velocity vector 𝑉 ⃗ points into the upper quadrant, thus the velocity threshold criteria is satisfied for travel to the upper neighbor. Octants are colored red/green based on whether the criteria is/is not satisfied for travel in that direction.
+
+***
+
+Least cost path calculations are implemented in a computationally efficient way by constructing a weighted, directed adjacency graph (stored as a dictionary) and then dynamically traversing the graph working outwards from the mainstem to find shortest path lengths using Dijkstra's algorithm (see explanation below):
+
+![connect_graph](https://github.com/RiverArchitect/Media/raw/master/images/connect_graph.png)
+
+Applying the depth and velocity thresholds at each cell yields a set of neighboring cells for which travel is possible. Each cell which can reach other cells or be reached is represented as a vertex of the graph. Reachability of neighboring vertices is represented by edges connecting the vertices, with an arrow symbol indicating the direction of possible travel (edges without arrows indicate travel is possible in both directions). For each edge, an associated cost of traveling along the edge is calculated, thus yielding a weighted digraph to represent possible fish travel and the associated costs. The least-cost path leading from each vertex to any of the vertices in the target area (corresponding to river mainstem at a lower discharge) is then computed and the path length/cost is stored as a value in the output raster at the location of the starting vertex. Here the target vertices are shown in gold and the least-cost path from point A is shown in green (where the cost function applied is Euclidean distance).
+
+***
+
+## Calculating Disconnected Area
+
+Even if there is wetted area connecting two locations, they may not be considered connected in the context of fish passage. This is because low water depths or high velocities may effectively act as "hydraulic barriers", limiting fish mobility. The applied aquatic ambiance contains threshold values for the minimum swimming depth and maximum swimming speed. After escape route calculations are calculated for a discharge, the resultant path length raster shows which areas are able to reach the river mainstem for the given hydraulic conditions and biological limitations. Wetted areas in the interpolated depth raster for which a least-cost path cannot be calculated are then considered to be disconnected. These disconnected areas are saved to a shapefile for each discharge in the `disc_areas` output directory.
+
 
 ## Determining Q<sub>disconnect</sub>
   
@@ -83,20 +109,6 @@ The `Q_disconnect` map outputs provide estimates of the discharges at which wett
 - The resultant raster is saved as the `Q_disconnect` map output.
 
 Note that the default value of zero indicates pixels wetted at the highest discharge but not present within any of the disconnected area polygons. Other values indicate the highest modeled discharge for which the pixel is disconnected from the channel mainstem.
-
-## Escape Route Calculations
-
-The "shortest escape route" output maps (stored in the `shortest_paths\` output directory) show the length/cost of the shortest/least-cost path from each pixel back into the mainstem of the river channel, accounting for both depth and velocity travel thresholds. In this context, the mainstem is defined as the largest continuous portion of interpolated wetted area deeper than the minimum swimming depth at the lowest available discharge. The shortest escape route to the mainstem is found from each starting pixel as follows:
-
-- If the starting pixel is in the mainstem, it assigned a default value of zero. Otherwise, look at all pixels adjacent to the starting pixel.
-- Apply depth condition: check that the depth is greater than the minimum swimming depth in both the current pixel and the neighboring pixel.
-- Apply velocity condition: calculate the water velocity vector at the current pixel (using velocity magnitude and angle). Check if a "swimming vector" (vector with the magnitude of the maximum swimming speed) can be oriented in such a way that when it is added to the water velocity vector, the resultant vector is oriented in the direction from the current pixel to the neighboring pixel.
-- If both the depth and velocity conditions are satisfied, the fish is considered to be able to move from the current pixel to the neighbor.
-- Applying this method iteratively to each pixel allows us to determine the shortest path to the mainstem.
-
-This calculation is implemented in a computationally efficient way by first constructing a directed adjacency graph (stored as a dictionary) and then dynamically traversing the graph working outwards from the mainstem to find shortest path lengths.
-
-Currently this method only provides the shortest number of "steps" from pixel to pixel to get to the mainstem. Future developments will include the option to convert these to shortest path lengths or a least-cost path, according to user-selected cost functions.
 
 ***
 
