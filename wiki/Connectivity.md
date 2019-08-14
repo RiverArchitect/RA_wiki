@@ -17,7 +17,7 @@ Habitat Connectivity
 
 # Introduction to Connectivity Module<a name="intro"></a>
 
-The *Connectivity* module is used to identify wetted areas that are disconnected from the river mainstem and characterize the degree to which areas are connected. These tools were developed specifically to assess stranding risk for given aquatic species and lifestages.
+The *Connectivity* module is used to identify wetted areas that become disconnected from the river mainstem in the event of a flow reduction, as well as characterize the degree to which wetted areas are connected before a disconnection occurs. These tools were developed to assess stranding risk for any given aquatic species and lifestage.
 
 # Quick GUIde to Connectivity Assessment<a name="guide"></a>
 
@@ -29,17 +29,21 @@ To begin using the Connectivity module, first select a hydraulic [Condition](Sig
 
 Next, select least one [aquatic ambiance](SHArC#hefish) (fish species/lifestage) from the dropdown menu. The aquatic ambiance contains data specific to the fish species/lifestage. Aquatic ambiance data is used by the Connectivity module to determine if fish are able to traverse wetted areas by accounting for the organism's minimum swimming depth and maximum swimming speed (aquatic ambiance data is also used by [SHArC](SHArC) to determine habitat suitability). These data can be viewed/edited via the drop-down menu: `Select Aquatic Ambiance `  --> `DEFINE FISH SPECIES` (scroll to the "Travel Thresholds" section of the workbook).
 
-Once the desired condition and aquatic ambiance(s) are selected, the module can be run with the "Run Connectivity Analysis" button. For further explanation of the methodology used in the analysis, see [Methodology](Connectivity#Methodology).
+Once the desired condition and aquatic ambiance(s) are selected, choose model discharges Q<sub>high</sub> and Q<sub>low</sub>. This defines the range of discharges over which to apply the connectivity analysis, simulating the changes in habitat connectivity for a flow reduction from Q<sub>high</sub> to Q<sub>low</sub>. For further explanation of the methodology used in the analysis, see [Methodology](Connectivity#Methodology).
 
 Outputs are stored in `Connectivity\Output\Condition_name\`. The outputs produced are:
 
-- interpolated rasters (`h_interp`, `u_interp`, `va_interp`): interpolated depth, velocity (magnitude), and velocity angle rasters. See [Interpolating Hydraulic Rasters](Connectivity#interpolating-hydraulic-rasters) for more information.
+- interpolated rasters (`h_interp`, `u_interp`, `va_interp`): interpolated depth, velocity (magnitude), and velocity angle rasters. See [Interpolating Hydraulic Rasters](Connectivity#interpolating-hydraulic-rasters) for more information.'
 
-- `shortest_paths\`: folder containing a raster for each model discharge indicating the minimum distance/least cost required to escape to the low flow river mainstem and subject to constraints imposed by the travel thresholds for the selected aquatic ambiance.
+Outputs specific to the applied flow reduction are stored in the subdirectory `Connectivity\Output\Condition_name\flow_red_Q<sub>high</sub>_Q<sub>low</sub>`. These outputs include:
 
-- `disc_areas\`: folder containing a shapefile for each model discharge indicating wetted areas which are effectively disconnected at that discharge.
+- `shortest_paths\`: directory containing a raster for each model discharge in the range Q<sub>low</sub>-Q<sub>high</sub>, indicating the minimum distance/least cost required to escape to the river mainstem at Q<sub>low</sub> and subject to constraints imposed by the travel thresholds for the selected aquatic ambiance. See [Escape Route Calculations](Connectivity#escape-route-calculations) for more.
 
-- `Q_disconnect.tif`: a raster showing the highest model discharge for which areas are disconnected from the main river channel. Locations that are not disconnected at any modeled discharge are assigned a value of zero. Thus, this map indicates locations and discharges below which stranding risks may occur.
+- `disc_areas\`: folder containing a shapefile for each model discharge indicating wetted areas which are effectively disconnected at that discharge. See [Calculating Disconnected Area](Connectivity#calculating-disconnected-area) for more.
+
+- `disconnected_area.xlsx`: a spreadsheet containing plotted data of discharge vs disconnected area.
+
+- `Q_disconnect.tif`: a raster showing the highest model discharge for which areas are disconnected from the mainstem at Q<sub>low</sub>. Locations that are not disconnected at any modeled discharge are assigned a value of zero. Thus, this map indicates locations and discharges below which stranding risks may occur. See [Determining Q<sub>disconnect</sub>](Connectivity#determining-qdisconnect) for more.
 
 ***
 
@@ -67,7 +71,7 @@ The analysis begins by performing an interpolation of the water surface elevatio
 
 ## Escape Route Calculations
 
-The "shortest escape route" output maps (stored in the `shortest_paths\` output directory) show the length/cost of the shortest/least-cost path from each pixel back into the mainstem of the river channel, accounting for both depth and velocity travel thresholds. In this context, the mainstem is defined as the largest continuous portion of interpolated wetted area deeper than the minimum swimming depth at the lowest available discharge. Conceptually, the shortest escape route to the mainstem is found from each starting pixel as follows:
+The "shortest escape route" output maps (stored in the `shortest_paths\` output directory) show the length/cost of the shortest/least-cost path from each pixel back into the mainstem of the river channel at Q<sub>low</sub>, accounting for both depth and velocity travel thresholds. In this context, the mainstem is defined as the largest continuous portion of interpolated wetted area deeper than the minimum swimming depth at Q<sub>low</sub>. Conceptually, the shortest escape route to the mainstem is found from each starting pixel as follows:
 
 - If the starting pixel is already in the mainstem, it assigned a default value of zero. Otherwise, look at all wetted pixels adjacent to the starting pixel.
 - Apply depth and velocity travel criteria (see below).
@@ -96,7 +100,7 @@ Applying the depth and velocity thresholds at each cell yields a set of neighbor
 
 ## Calculating Disconnected Area
 
-Even if there is wetted area connecting two locations, they may not be considered connected in the context of fish passage. This is because low water depths or high velocities may effectively act as "hydraulic barriers", limiting fish mobility. The applied aquatic ambiance contains threshold values for the minimum swimming depth and maximum swimming speed. After escape routes are calculated for a discharge, the resultant path length raster shows which areas are able to reach the river mainstem for the given hydraulic conditions and biological limitations. Wetted areas in the interpolated depth raster for which a least-cost path cannot be calculated are then considered to be disconnected. These disconnected areas are saved to a shapefile for each discharge in the `disc_areas` output directory.
+Even if there is wetted area connecting two locations, they may not be considered connected in the context of fish passage. This is because low water depths or high velocities may effectively act as "hydraulic barriers", limiting fish mobility. The applied aquatic ambiance contains threshold values for the minimum swimming depth and maximum swimming speed. After escape routes are calculated for a given discharge, the resultant path length raster shows which areas are able to reach the river mainstem for the given hydraulic conditions and biological limitations. Wetted areas in the corresponding interpolated depth raster for which a least-cost path cannot be calculated are considered to be disconnected areas. These disconnected areas are then cropped within the wetted area at Q<sub>high</sub> (not interpolated), as floodplains outside the Q<sub>high</sub> wetted area are assumed to not be active for the simulated flow reduction. Resultant disconnected areas are saved to a shapefile for each discharge in the `disc_areas` output directory.
 
 
 ## Determining Q<sub>disconnect</sub>
@@ -104,9 +108,8 @@ Even if there is wetted area connecting two locations, they may not be considere
 The `Q_disconnect` map outputs provide estimates of the discharges at which wetted areas become disconnected from the mainstem of the river channel. Estimating these discharges is done as follows:
 
 - Assign all pixels wetted at the highest discharge a default value of zero.
-- Using the polygon sets produced by the previous step, the mainstem polygon is removed for each discharge, Thus producing a set of disconnected area polygons for each discharge.
 - Iterating over discharges in ascending order, pixels within disconnected area polygons are assigned a value of the corresponding discharge.
-- The resultant raster is saved as the `Q_disconnect` map output.
+- The resultant raster is saved as the `Q_disconnect.tif` map output.
 
 Note that the default value of zero indicates pixels wetted at the highest discharge but not present within any of the disconnected area polygons. Other values indicate the highest modeled discharge for which the pixel is disconnected from the channel mainstem.
 
