@@ -13,7 +13,7 @@ Installation
 
 ***
 
-# Install and Launch<a name="started"></a>
+<a name="started"></a>
 
 *River Architect* applies on *ArcGIS Pro*'s `arcpy` package and needs to be executed with *ArcGIS Pro*'s conda environment (`C:\Program Files\ArcGIS\Pro\bin\Python\scripts\propy.bat`). The [requirements](#req) section provides more details and installation hints for external packages.
 *River Architect* is designed as an external application rather than a python package, but its modules can be imported as packages for external use (see the *Alternative Run* sections in the module Wikis).<br/>
@@ -35,7 +35,9 @@ Done. Close *Git Bash* and start working with *River Architect*.
 ### *Git GUI*
 For using *Git GUI*, open *Git GUI* and choose `Clone Existing Repository`. Enter the *Source Location*: `https://github.com/RiverArchitect/program`, and the *Target Directory*: `D:/Python/RiverArchitect` (or any other directory, but ensure that the directory does not exist). Click `Clone`. Done.
 
-## Update with *Git Bash / GUI* (re-pull)<a name="update_ra"></a>
+***
+
+## Update with *Git Bash / GUI* (re- pull)<a name="update_ra"></a>
 Currently, *Git Bash* (or Git GUI) are the only options to update local copies of *River Architect*. **Before updating *River Architect*, we recommend to save any files and *Conditions* produced with *River Architect* externally (create a save copy).**
 
 ### *Git Bash*
