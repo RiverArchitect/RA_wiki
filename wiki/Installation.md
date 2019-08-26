@@ -3,7 +3,9 @@ Installation
 
 ***
 
-- [Install and start *River Architect*](#started)
+- [Install *River Architect*](#git_install_ra)
+- [Update *River Architect*](#update_ra)
+- [Launch *River Architect*](#launch_ra)
 - [Prepare file structure](#structure)
 - [Program environment setup and batchfile modification](#raenv)
 - [Requirements and dependencies](#req)
@@ -14,11 +16,53 @@ Installation
 # Install and Launch<a name="started"></a>
 
 *River Architect* applies on *ArcGIS Pro*'s `arcpy` package and needs to be executed with *ArcGIS Pro*'s conda environment (`C:\Program Files\ArcGIS\Pro\bin\Python\scripts\propy.bat`). The [requirements](#req) section provides more details and installation hints for external packages.
-*River Architect* is designed as an external application rather than a python package, but its modules can be imported as packages for external use (see the *Alternative Run* sections in the module Wikis).<br/><br/>
+*River Architect* is designed as an external application rather than a python package, but its modules can be imported as packages for external use (see the *Alternative Run* sections in the module Wikis).<br/>
+
+***
+
+## Installation with *Git Bash / GUI*<a name="git_install_ra"></a>
+We recommend downloading and updating *River Architect* using [*Git Bash*](https://git-scm.com/downloads) (or Git GUI). Alternatively, *River Architect* can be downloaded as *zip* file. However, updates are tricky when *River Architect* is downloaded as *zip* file.
+
+### *Git Bash*
+*GitHub* provides detailed descriptions and standard procedures to work with their repositories ([read more](https://help.github.com/en/articles/cloning-a-repository)). The following "recipe" guides through the first time installation (cloning) of *River Architect:
+
+1. Open *Git Bash*
+2. Type `cd D:/Target/Directory/` to change to the target installation directory (recommended: `cd D:/Python/RiverArchitect/`). If the directory does not exist, it can be created in the system explorer (right-click in empty space > `New >` > `Folder`).
+3. Clone the repository: `git clone https://github.com/RiverArchitect/program`
+
+Done. Close *Git Bash* and start working with *River Architect*.
+
+### *Git GUI*
+For using *Git GUI*, open *Git GUI* and choose `Clone Existing Repository`. Enter the *Source Location*: `https://github.com/RiverArchitect/program`, and the *Target Directory*: `D:/Python/RiverArchitect` (or any other directory, but ensure that the directory does not exist). Click `Clone`. Done.
+
+## Update with *Git Bash / GUI* (re-pull)<a name="update_ra"></a>
+Currently, *Git Bash* (or Git GUI) are the only options to update local copies of *River Architect*. **Before updating *River Architect*, we recommend to save any files and *Conditions* produced with *River Architect* externally (create a save copy).**
+
+### *Git Bash*
+
+Open *Git Bash* and do the following:
+
+1. Go to the local *River Architect* installation directory: `cd D:/Python/RiverArchitect` (or wherever *River Architect* was cloned).
+2. Check the current status: `git status`
+3. Pull changes: `git pull`
+
+Please note that merge errors may occur when changes were made in the local copy of *River Architect*. In this case, *Git Bash* will guide through the manual merge process.
+
+### *Git Bash*
+
+Open *Git Bash* and open `D:/Python/RiverArchitect` from the *Open Recent Repository* list (or wherever *River Architect* is installed). If not listed, click on `Open Existing Repository` and select the *River Architect* installation directory. Then:
+
+1. Click on `Rescan`.
+2. Click on the `Remote` drop-down menu > `Fetch from` > `origin`.
+3. Click on the `Merge` drop-down menu > `Local Merge`.
+
+Please note that merge errors may occur when changes were made in the local copy of *River Architect*. In this case, *Git Bash* may be required to go through the manual merge process.
+
+***
+
+## Launch *River Architect*<a name="launch_ra"></a>
 
 To start using *River Architect*:
- 1. Clone or [download *River Architect* as zip](https://github.com/riverarchitect/program/archive/master.zip).
- 1. Unpack or copy the downloaded files to produce the below described [file structure](#structure).
  1. Right-click on `DRIVE:\path\to\...\RiverArchitect\Start_River_Architect.bat` and click on `Edit`.
      - In the `Start_River_Architect.bat`chfile, ensure that the Python path is correctly defined according to the installed version of *ArcGIS*: `call `**EDIT>>`"%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy"`<<**`"%cd%\master_gui.py"`. For more information about running standalone Python scripts in *ArcGIS Pro*'s conda environment, read their [descriptions](https://pro.arcgis.com/en/pro-app/arcpy/get-started/using-conda-with-arcgis-pro.htm).
      - Save and close `Start_River_Architect.bat`.
@@ -26,7 +70,6 @@ To start using *River Architect*:
  1. Create a [*Condition*](Signposts#getstarted) on the Welcome (*[Get Started](Signposts#getstarted)*) tab.
  1. Analyze and create ecohydraulic paradises for [aquatic ambiances prefered by target (fish) species](SHArC#hefish) with sustainable [river design features](River-design-features) using [lifespan maps](https://www.sciencedirect.com/science/article/pii/S2215016119300913?via%3Dihub).<br/>
     *Hint: The **Quick GUIde** sections in the module Wikis provide straight-forward application guidance.*
-
 
 *River Architect* starts in a GUI that is stored in `master_gui.py`. Alternatively, the modules can be individually launched by double-clicking on the `LAUNCH_Windows_x64.bat` in the module folders (not recommended and may be abandoned in future versions).
 
@@ -211,7 +254,7 @@ The execution of *River Architect* requires the following packages, which are pa
 - `tkinter`
 
 Additional packages:
-- `rpy2` and the R language: The *[Morphology\ModifyTerrain][5]* module requires [an installation of the R language](https://www.r-project.org/) in order to automate the production of river topographic data via the [*RiverBuilder*](http://pasternack.ucdavis.edu/research/model-codes/river-builder/) R package. Note: environmental variables `%R_HOME%` and `%R_USER%` must also be properly defined for Python to access the user installation of R.
+- `rpy2` and the R language: The *[Morphology\ModifyTerrain][5]* module requires [an installation of the R language](https://www.r-project.org/) to automate the production of river topographic data via the [*RiverBuilder*](http://pasternack.ucdavis.edu/research/model-codes/river-builder/) R package. Note: environmental variables `%R_HOME%` and `%R_USER%` must also be properly defined for Python to access the user installation of R.
 
 *River Architect* incorporates a modified version of [`openpyxl`](https://openpyxl.readthedocs.io/en/stable/), but a more proper way is installing `openpyxl` with *ArcGIS Pro*'s [package manager](https://pro.arcgis.com/en/pro-app/arcpy/get-started/what-is-conda.htm). Future versions may additionally require the `gdal` and `rasterio` packages (see [above](#raenv) instructions).\
 Furthermore, *River Architect* requires *ArcGIS Pro*'s "Spatial Analyst" and "3D" ([Volume Assessment](VolumeAssessment) only) extensions. Another version of *River Architect* based on open-source geodata processing packages is planned for the future.

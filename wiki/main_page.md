@@ -9,7 +9,7 @@ River Architect Wiki
   <ol>
   <li><a href="Installation">Installation</a>
     <ul>
-      <li><a href="Installation#started">Install <em>River Architect</em></a></li>
+      <li><a href="Installation#started">Install, update and launch <em>River Architect</em></a></li>
       <li><a href="Installation#structure">Program file structure</a></li>
       <li><a href="Installation#req">Requirements</a></li>
       <li><a href="Installation#logs">Logfiles</a></li>
@@ -89,9 +89,9 @@ River Architect Wiki
   </ul></li>  
 
   <li><a href="Tools">Tools</a> contain beta-version routines (under development)</li>
-  
+
   <li><a href="FAQ">FAQ</a></li>
-  
+
   <li><a href="Troubleshooting">Troubleshooting and Error message handling</a>
   <ul>
     <li><a href="Troubleshooting#issues">Known issues</a></li>
@@ -99,10 +99,13 @@ River Architect Wiki
     <li><a href="Troubleshooting#error-messages">Error messages</a></li>
     <li><a href="Troubleshooting#warning-messages">Warning messages</a></li>
   </ul></li>
-  
+
   </ol>
 
 </p></details>
+
+***
+Please refer to the [installation guide](Installation#started) for [first-time installation](Installation#started), [update](Installation#update_ra), and [launch](Installation#launch_ra) assistance.
 
 ***
 
