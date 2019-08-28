@@ -23,7 +23,7 @@ Installation
 ## Installation with *Git Bash/GUI*<a name="git_install_ra"></a>
 We recommend downloading and updating *River Architect* using [*Git Bash*](https://git-scm.com/downloads) (or Git GUI). Alternatively, *River Architect* can be downloaded as *zip* file. However, updates are tricky when *River Architect* is downloaded as *zip* file.
 
-**Git Bash**
+**Git Bash**<br/>
 *GitHub* provides detailed descriptions and standard procedures to work with their repositories ([read more](https://help.github.com/en/articles/cloning-a-repository)). The following "recipe" guides through the first time installation (cloning) of *River Architect:
 
 1. Open *Git Bash*
@@ -32,7 +32,7 @@ We recommend downloading and updating *River Architect* using [*Git Bash*](https
 
 Done. Close *Git Bash* and start working with *River Architect*.
 
-**Git GUI**
+**Git GUI**<br/>
 For using *Git GUI*, open *Git GUI* and choose `Clone Existing Repository`. Enter the *Source Location*: `https://github.com/RiverArchitect/program`, and the *Target Directory*: `D:/Python/RiverArchitect` (or any other directory, but ensure that the directory does not exist). Click `Clone`. Done.
 
 ***
@@ -40,7 +40,7 @@ For using *Git GUI*, open *Git GUI* and choose `Clone Existing Repository`. Ente
 ## Update with *Git Bash/GUI* (re- pull)<a name="update_ra"></a>
 Currently, *Git Bash* (or Git GUI) are the only options to update local copies of *River Architect*. **Before updating *River Architect*, we recommend to save any files and *Conditions* produced with *River Architect* externally (create a save copy).**
 
-**Git Bash**
+**Git Bash**<br/>
 Open *Git Bash* and do the following:
 
 1. Go to the local *River Architect* installation directory: `cd "D:/Python/RiverArchitect"` (or wherever *River Architect* was cloned).
@@ -49,7 +49,7 @@ Open *Git Bash* and do the following:
 
 Please note that merge errors may occur when changes were made in the local copy of *River Architect*. In this case, *Git Bash* will guide through the manual merge process.
 
-**Git GUI**
+**Git GUI**<br/>
 Open *Git Bash* and open `D:/Python/RiverArchitect` from the *Open Recent Repository* list (or wherever *River Architect* is installed). If not listed, click on `Open Existing Repository` and select the *River Architect* installation directory. Then:
 
 1. Click on `Rescan`.
