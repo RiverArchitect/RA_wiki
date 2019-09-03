@@ -217,7 +217,7 @@ Sample data representing a patch of a Californian gravel-cobble bed river in 210
 The below listed Rasters are available in GeoTIFF format in `01_Conditions/2100_sample/` for the sample case `condition` = `2100_sample`. *Italic font* indicates *optional* Rasters, which are, however, recommended to use because they significantly increase the pertinence of lifespan maps; Rasters written in **bold font** font are **required** for *River Architect* to work. The Raster names correspond to the above-described naming conventions.
 
 | **PARAMETER** | (UNITS) |
-|----------------------------------|:---------|
+|...............|..........|
 | **Flow velocity** | (in fps or m/s) |
 | u000300    | lowest     |
 | u000350    | ...     |
@@ -240,7 +240,7 @@ The below listed Rasters are available in GeoTIFF format in `01_Conditions/2100_
 | **Background**                    | (black and white) |
 | back | here: determines <a href="LifespanDesign">LifespanDesign</a>'s calculation extents |
 |==================================|==========|
-| **Morphological Units **  | **Float / Int** |
+| **Morphological Units**  | **Float / Int** |
 | mu         | generated with `Populate Condition` |
 |==================================|==========|
 | **D mean**     | **(in ft or m)** |
