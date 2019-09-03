@@ -216,36 +216,48 @@ Sample data representing a patch of a Californian gravel-cobble bed river in 210
 
 The below listed Rasters are available in GeoTIFF format in `01_Conditions/2100_sample/` for the sample case `condition` = `2100_sample`. *Italic font* indicates *optional* Rasters, which are, however, recommended to use because they significantly increase the pertinence of lifespan maps; Rasters written in **bold font** font are **required** for *River Architect* to work. The Raster names correspond to the above-described naming conventions.
 
+| **PARAMETER** | (UNITS) |
+|----------------------------------|:---------|
 | **Flow velocity** | (in fps or m/s) |
-| ---------------------------------- | :--------- |
 | u000300    | lowest     |
 | u000350    | ...     |
 | u......    | ...                        |
 | u088053    | highest                    |
++----------------------------------+----------+
 | **Flow depth**       | **(in ft or m)** |
 | h000300      | lowest   |
 | h000350      | ...   |
 | h......      | ...                      |
 | h088053      | highest                  |
++----------------------------------+----------+
 | *Topographic change* | (in ft or m) |
 | dodfill    |average annual deposition height  |
 | dodscour   |average annual scour depths       |
++----------------------------------+----------+
 | **Depth to groundwater** | **(in ft or m)** |
 | d2w          | referring to a baseflow of 15 m³/s (530 cfs) |
++----------------------------------+----------+
 | **Background**                    | (black and white) |
 | back | here: determines <a href="LifespanDesign">LifespanDesign</a>'s calculation extents |
++----------------------------------+----------+
 | **Morphological Units **  | **Float / Int** |
 | mu         | generated with `Populate Condition` |
++----------------------------------+----------+
 | **D mean**     | **(in ft or m)** |
 | dmean\_ft | mean valley grain size        |
++----------------------------------+----------+
 | DEM                | (in ft a.s.l.) |
 | dem        | *Digital Elevation Model*      |
++----------------------------------+----------+
 | **DEM detrended**         | **(in ft or m)** |
 | dem\_detrend | generated with `Populate Condition`|
++----------------------------------+----------+
 | *Side channel*                     | (0/nodata (= off) and 1 (= on)) |
 | sidech     | *Side channel delineation*     |
++----------------------------------+----------+
 | *Wildcard*                         | (0/nodata (= off) and 1 (= on)) |
 | wild         | On/ off values for any purpose to confine analyses |
++----------------------------------+----------+
 
 More Rasters indicating morphological units (e.g., [Wyrick and Pasternack 2014][wyrick14]) or topographic change (e.g., [Carley et al. 2012][carley12]) as well as a detrended digital elevation model (DEM), surface grain size estimate and a depth to groundwater Raster are (optionally) required.
 
