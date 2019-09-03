@@ -100,7 +100,7 @@ With at least one fish species-lifestage selected, HSI Rasters can be generated 
 
 ![hefish](https://github.com/RiverArchitect/Media/raw/master/images/exp_HE_subgui.PNG)
 
-A flow duration curve for a preferred aquatic ambiance of target fish-lifestages can be generated from any discharge series within the [Get Started][2] module, which produces correctly formatted flow duration workbooks in `RiverArchitect/00_Flows/CONDITION/flow_duration_FILI.xlsx`. The flow duration curve generation only considers discharges observed within the seasons defined in [`RiverArchitect/SHArC/.templates/Fish.xlsx`](#hefish). For the consideration of completed hydrology years, define `Season start` as `1-Oct` and `Season end` as `30-Sep` (see above discussion).
+A flow duration curve for a preferred aquatic ambiance of target fish-lifestages can be generated from any discharge series within the [Get Started][2] module, which produces correctly formatted flow duration workbooks in `RiverArchitect/00_Flows/CONDITION/flow_duration_FILI.xlsx`. The flow duration curve generation only considers discharges observed within the seasons defined in [`RiverArchitect/.site_packages/templates/Fish.xlsx`](#hefish). For the consideration of completed hydrology years, define `Season start` as `1-Oct` and `Season end` as `30-Sep` (see above discussion).
 
 In the process of *HHSI* Raster generation, the produced flow duration curves can (must) be used by clicking the `i) Select flow duration curve (.XLSX)` button, which button opens the file explorer in `RiverArchitect/00_Flows/`. 
 The flow duration workbook must list discharges in column `A`, starting at row 2 in descending order. The discharges need to be positive float numbers. The associated exceedance durations (`%`) are stated in column `C`.
@@ -126,7 +126,7 @@ Relevant cover types can be selected by checking the according checkboxes, where
 
 -   Wood: A `wood.shp` polygon shapefile is required; the polygons delineating boulders need to have a `Short Integer`-type field called `cover` in the (`Attributes table`) and the `cover` field value of polygons is `1`.
 
-The geofiles are used with the habitat suitability (curve) definitions in the `Fish.xlsx` workbook (tab `fish`), which is located in `SHArC/.templates/`.<br/>
+The geofiles are used with the habitat suitability (curve) definitions in the `Fish.xlsx` workbook (tab `fish`), which is located in `RiverArchitect/.site_packages/templates/`.<br/>
 *HINT:* The applicable cover types are limited to the terms "Substrate", "Boulders", "Cobbles", "Plants", and "Wood".
 Bridge piers or other structural turbulence objects may constitute other cover types that are not explicitly implemented in the *SHArC* module. However, may cover types can be associated with similar effects as the implemented cover types. Thus, other cover types can be added as polygons in the shapefiles for "Boulders", "Plants", or "Wood" cover types.
 
