@@ -214,50 +214,39 @@ The input Rasters need to be in **GeoTIFF** (*.tif*) format, notably, a `raster_
 Relevant Raster names for calculation are defined in an input file ([`.inp`](#inpfile)) of the [*LifespanDesign*][3] module (input section see for details and definitions). Please note that *.inp* files for lifespan mapping are different from the input (*.txt*) files required for [River Builder](RiverBuilder).
 Sample data representing a patch of a Californian gravel-cobble bed river in 2100 can be downloaded [here](https://github.com/RiverArchitect/SampleData/archive/master.zip). The input file of the sample case is located in `01_Conditions/2100_sample/input_definitions.inp` file. The sample case includes a set of Rasters for flow scenarios corresponding to return periods of < 1.0 (ignored in the input file), 1.0,  ... , 2.0, 5.0, 10.0, 15.0, 20.0, 30.0, 40.0, and 50.0 years, as well as a couple of annual discharges for habitat assessments. The according flows are defined in `01_Conditions/2100_sample/flow_definitions.xlsx`, with pre-compiled flow duration curves for whetted area (`alhy`), Chinook salmon juveniles (`chju`), fry (`chfr`), and spawning (`chju`) lifestages that are stored in `00_Flows/2100_sample/flow_duration_FILI.xlsx` (see above [flow definitions](#ana-flows)).
 
-The below listed Rasters are available in GeoTIFF format in `01_Conditions/2100_sample/` for the sample case `condition` = `2100_sample`. *Italic font* indicates *optional* Rasters, which are, however, recommended to use because they significantly increase the pertinence of lifespan maps; Rasters written in **bold font** font are **required** for *River Architect* to work. The Raster names correspond to the above-described naming conventions.
+The below listed Rasters are available in GeoTIFF format in `01_Conditions/2100_sample/` for the sample case `condition` = `2100_sample`. *Italic font* indicates *optional* Rasters, which are, however, recommended to use because they significantly increase the pertinence of lifespan maps; Rasters written in **`bold rouge font`** font are **`required`** for *River Architect* to work. The Raster names correspond to the above-described naming conventions.
 
 | **PARAMETER** | (UNITS) |
-|...............|..........|
-| **Flow velocity** | (in fps or m/s) |
+|---------------|:--------|
+| **`Flow velocity`** | **`(in fps or m/s)`** |
 | u000300    | lowest     |
 | u000350    | ...     |
 | u......    | ...                        |
 | u088053    | highest                    |
-|==================================|==========|
-| **Flow depth**       | **(in ft or m)** |
+| **`Flow depth`**       | **`(in ft or m)`** |
 | h000300      | lowest   |
 | h000350      | ...   |
 | h......      | ...                      |
 | h088053      | highest                  |
-|==================================|==========|
-| *Topographic change* | (in ft or m) |
+| **Topographic change** | **(in ft or m)** |
 | dodfill    |average annual deposition height  |
 | dodscour   |average annual scour depths       |
-|==================================|==========|
-| **Depth to groundwater** | **(in ft or m)** |
+| **`Depth to groundwater`** | **`(in ft or m)`** |
 | d2w          | referring to a baseflow of 15 m³/s (530 cfs) |
-|==================================|==========|
-| **Background**                    | (black and white) |
+| **Background**                    | **(black and white)** |
 | back | here: determines <a href="LifespanDesign">LifespanDesign</a>'s calculation extents |
-|==================================|==========|
-| **Morphological Units**  | **Float / Int** |
-| mu         | generated with `Populate Condition` |
-|==================================|==========|
-| **D mean**     | **(in ft or m)** |
-| dmean\_ft | mean valley grain size        |
-|==================================|==========|
-| DEM                | (in ft a.s.l.) |
+| **`Morphological Units`**  | **`Float / Int`** |
+| mu         | generated with *Populate Condition* (Get Started) |
+| **`D mean`**     | **`(in ft or m)`** |
+| dmean\_ft or dmean | mean valley grain size        |
+| **DEM**                | (in ft a.s.l.) |
 | dem        | *Digital Elevation Model*      |
-|==================================|==========|
-| **DEM detrended**         | **(in ft or m)** |
+| **`DEM detrended`**         | **`(in ft or m)`** |
 | dem\_detrend | generated with `Populate Condition`|
-|==================================|==========|
-| *Side channel*                     | (0/nodata (= off) and 1 (= on)) |
+| **Side channel**                     | **(0/nodata (= off) and 1 (= on))** |
 | sidech     | *Side channel delineation*     |
-|==================================|==========|
-| *Wildcard*                         | (0/nodata (= off) and 1 (= on)) |
+| **Wildcard**                         | **(0/nodata (= off) and 1 (= on))** |
 | wild         | On/ off values for any purpose to confine analyses |
-|==================================|==========|
 
 More Rasters indicating morphological units (e.g., [Wyrick and Pasternack 2014][wyrick14]) or topographic change (e.g., [Carley et al. 2012][carley12]) as well as a detrended digital elevation model (DEM), surface grain size estimate and a depth to groundwater Raster are (optionally) required.
 
