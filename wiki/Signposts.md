@@ -242,7 +242,7 @@ The below listed Rasters are available in GeoTIFF format in `01_Conditions/2100_
 | `DEM`                | `(in ft a.s.l.)` |
 | dem        | *Digital Elevation Model*      |
 | **`DEM DETRENDED`**         | **`(in ft or m)`** |
-| dem\_detrend | generated with `Populate Condition`|
+| dem\_detrend | generated with *Populate Condition*|
 | `Side channel`                     | `(0/nodata=off and 1=on)` |
 | sidech     | *Side channel delineation*     |
 | `Wildcard`   | `(0/nodata=off and 1=on)` |

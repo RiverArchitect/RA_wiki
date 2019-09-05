@@ -13,6 +13,7 @@ We do our very best to program *River Architect* as robust and flexible as possi
 	 * Limit the project area to reasonable extents (single Raster size <= 350 MB). 
 	 * Limit the number of discharges to less than 10 (set relevant discharges defined in rows 4, 11, and 12 of [*input files*](Signposts#inpfile) to less than 10); manual modification of automatically generated input files may be required (rows 4, 11, and 12 of `01_Conditions/CONDITION/input_definitions.inp`).
 	 * Analyze only one feature at a time rather than feature groups (such as "Plantings"). In this case, the single Raster size may be up to 1 GB.
+- **Grain size raster name coherence**: The `LifespanDesign` module will read grain size raster names from `01_Conditions/CONDITION/input_definitions.inp`. However, the `Ecohydraulics` module absolutely requires that a grain size raster in SI units is named `dmean.tif` (units: meters) and a grain size raster in U.S. customary units must be named `dmean_ft.tif` (units: feet).
 
 
 # How to trace Error and Warning messages<a name="howto"></a>
