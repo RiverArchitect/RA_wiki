@@ -169,12 +169,12 @@ By default, this threshold value *&theta;* is 0.5 (i.e., the routine sums up the
 Launch the *SHArea* calculation by clicking on `Run Seasonal Habitat Area Calculator - SHArC`. The resulting workbooks will be written to `RiverArchitect/SHArC/SHArea/CONDITION_sharea_FILI.xlsx`. The `SHArC` routine fills column `F` in `CONDITION_sharea_FILI.xlsx`, which automatically calculates column `G`: Area per discharge. Thus, the *SHArea* value in cell `J2` is the sum of column `G`. 
 *CHSI* Rasters with relevant information for usable (wetted / habitat) area will be stored in `RiverArchitect/SHArC/SHArea/Rasters_CONDITION/`. The Raster statistics correspond to the numbers written to column `F` in `RiverArchitect/SHArC/SHArea/CONDITION_sharea_FILI.xlsx`.
 
-## Use WUA (Weighted Usable Area) Option<a name="hewua"></a>
+<!--## Use WUA (Weighted Usable Area) Option<a name="hewua"></a>
 Included in the SHArea calculation is an option to apply weighting to the usable area. Weighting the surface area of each pixel by the combined habitat suitability index (*cHSI*) results in an index known as the weighted usable area (*WUA*) that was first described in [Bovee (1982)][bovee82]. To calculate the sum of the discharge-related *WUA* of a given site: 
 
 *WUA* = *cHSI<sub>mean</sub>* · &Sigma; A<sub>pixels</sub>
 
-Before clicking on`Run Seasonal Habitat Area Calculator - SHArC`, check the box above to enable the `Use weighted usable area` option to apply weighting to the calculation.  By default, when this option is enabled the cHSI threshold value  *&theta;* will be set to 0.0 (i.e., all cHSI values, including 0.0, are used to weight the area of each pixel). 
+Before clicking on`Run Seasonal Habitat Area Calculator - SHArC`, check the box above to enable the `Use weighted usable area` option to apply weighting to the calculation.  By default, when this option is enabled the cHSI threshold value  *&theta;* will be set to 0.0 (i.e., all cHSI values, including 0.0, are used to weight the area of each pixel).-->
 
 ## Q - Area Analysis<a name="heqa"></a>
 The time evolution or (interpolated) habitat area associated with a discharge provide insights into the ecological efficiency of a habitat enhancement measures. The *SHArC* module can generate interpolated discharge-usable habitat area curves even for discharges that were not numerically modeled with a 2D hydrodynamic simulation. A click on the `Discharge - Aquatic Ambiance Area Curve` or `Time series - Aquatic Ambiance Area` button generates habitat area graphs as a function of all discharges of a flow duration curve or a discharge time series, respectively.<br/>
