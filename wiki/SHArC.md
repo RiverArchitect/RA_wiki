@@ -160,7 +160,7 @@ Two combination buttons are available: (1) `pure hydraulic` and (2) `hydraulic a
 
 The `Run Seasonal Habitat Area Caluclator - SHArC` button launches the [calculation of usable SHArea](#herunchsi) based on the combined habitat suitability index (*cHSI*). Usable (habitat) area is defined as the surface where *cHSI* (or *CSI*) pixel values are larger than the `SHArea threshold` *&theta;*. *SHArea* is defined as the sum of usable habitat areas of *cHSI* of relevant discharges multiplied with the relative presence (*p<sub>Qk</sub>*). Relevant discharges occur every year during the aquatic ambiance (fish-lifestage) presence season that is defined by the [*Season start* and *Season end* tags in *Fish.xlsx*](#hefish). Thus, *SHArea* as the sum of discharge-related usable habitat area is:
 
-*SHArea = &Sigma;<sub>Qk</sub> \[ &Sigma;<sub>px</sub>(cHSI > &theta;)· A<sub>px</sub>· p(Q<sub>k</sub>)\] *
+*SHArea = &Sigma;<sub>Qk</sub> \[ &Sigma;<sub>px</sub>(cHSI > &theta;)· A<sub>px</sub>· p(Q<sub>k</sub>)\]*
 
 where *<sub>px</sub>* denotes "pixel" and *A<sub>px</sub>* is the size of a pixel in m² (or ft²).
 By default, this threshold value *&theta;* is 0.5 (i.e., the routine sums up the surface of pixels where the *cHSI* is larger than 0.5). The threshold value can be changed by clicking on the `Set SHArea threshold ...` button. *p<sub>Qk</sub>* denotes the relative seasonal presence of a discretized discharge *Q<sub>k</sub>* that is associated with a set of hydraulic Rasters (flow depth and velocity). The below figure illustrates the SHArea integration scheme based on the application of four discharges (1000, 2000, 3000, and 4000 m<sup>3</sup>/s or cfs) of an aquatic ambiance for a fish-lifestage season.
