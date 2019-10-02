@@ -162,9 +162,7 @@ The `Run Seasonal Habitat Area Caluclator - SHArC` button launches the [calculat
 
 *SHArea = &Sigma;<sub>Qk</sub> \[ &Sigma;<sub>px</sub>(\{if cHSI(<sub>px</sub>) > &theta;\}· A<sub>px</sub>)· p(Q<sub>k</sub>)\]*
 
-where *<sub>px</sub>* denotes "pixel" and *A<sub>px</sub>* is the size of a pixel in m² (or ft²). By default, this threshold value *&theta;* is 0.5 (i.e., the routine sums up the surface of pixels where the *cHSI* is larger than 0.5). The expression *\{if cHSI(<sub>px</sub>) > &theta;\}* is **1** if the *cHSI* value of a pixel is higher than *&theta*; and it is **0** if the *cHSI* value of a pixel is smaller than *&theta;*.
-
-The threshold value can be changed by clicking on the `Set SHArea threshold ...` button. *p<sub>Qk</sub>* denotes the relative seasonal presence of a discretized discharge *Q<sub>k</sub>* that is associated with a set of hydraulic Rasters (flow depth and velocity). The below figure illustrates the SHArea integration scheme based on the application of four discharges (1000, 2000, 3000, and 4000 m<sup>3</sup>/s or cfs) of an aquatic ambiance for a fish-lifestage season.
+where ***<sub>px</sub>*** denotes "pixel" and ***A<sub>px</sub>*** is the size of a pixel in m² (or ft²). By default, this threshold value ***&theta;*** is 0.5 (i.e., the routine sums up the surface of pixels where the *cHSI* is larger than 0.5). The threshold value can be changed by clicking on the `Set SHArea threshold ...` button. The expression ***\{if cHSI(<sub>px</sub>) > &theta;\}*** is **1** if the *cHSI* value of a pixel is higher than *&theta;* and it is **0** if the *cHSI* value of a pixel is smaller than *&theta;*. ***p<sub>Qk</sub>*** denotes the relative seasonal presence of a discretized discharge ***Q<sub>k</sub>*** that is associated with a set of hydraulic Rasters (flow depth and velocity). The below figure illustrates the *SHArea* integration scheme based on the application of four discharges (1000, 2000, 3000, and 4000 m<sup>3</sup>/s or cfs) of an aquatic ambiance for a fish-lifestage season.
 
 ![SHAreaint](https://github.com/RiverArchitect/Media/raw/master/images/RA_HE_integration.png)
 
