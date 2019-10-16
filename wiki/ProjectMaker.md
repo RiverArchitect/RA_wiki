@@ -258,6 +258,8 @@ When the above requirements are fulfilled, the *Project Proposal* GUI can assess
 
 The program will run in the background and prompts the calculation progress in the console window.
 
+After running the program, discharge-specific usable habitat area was written to a spreadsheet located in `ProjectName/Geodata/SHArea_evaluation_UNIT.xlsx` (see output section below).
+
 ***
 
 ## Output<a name="pmiout"></a>
