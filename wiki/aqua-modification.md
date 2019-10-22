@@ -6,7 +6,7 @@ SHArC - Code modification
 - [Introduction to Habitat Suitability evaluation](SHArC#heintro)
 - [Quick GUIde to habitat suitability evaluation](SHArC#hequick)
   * [Main window set-up and run](SHArC#hegui)
-  * [Input: Aquatic Ambiances and Fish](SHArC#hefish)
+  * [Input: Physical Habitats and Fish](SHArC#hefish)
   * [Input: Combine methods (of habitat suitability Rasters)](SHArC#hecombine)
   * [Input: Define computation boundaries](SHArC#hebound)
   * [Input: HHSI](SHArC#hemakehsi)
@@ -23,7 +23,7 @@ SHArC - Code modification
   * [Cover HSI: Vegetation](SHArC-working-principles#veghsi)
   * [Cover HSI combination methods](SHArC-working-principles#hecombinecov)
   * [Usable habitat area calculation](SHArC-working-principles#hewuamethods)
-- **More about Aquatic Ambiances and Modifying `Fish.xlsx`**
+- **More about Physical Habitats and Modifying `Fish.xlsx`**
 
 
 ***

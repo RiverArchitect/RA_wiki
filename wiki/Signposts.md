@@ -145,7 +145,7 @@ Start with selecting a *Condition* from the upper listbox and click the `Analyze
 
 ![raq](https://github.com/RiverArchitect/Media/raw/master/images/def_return_periods.PNG)
 
-Flow duration curves are required for ecohydraulic analyses and can be generated for specific [aquatic ambiances preferred by target fish species-lifestages](SHArC#hefish).
+Flow duration curves are required for ecohydraulic analyses and can be generated for specific [Physical Habitats preferred by target fish species-lifestages](SHArC#hefish).
 Select at least one *Fish Species - Lifestage* from the lower listbox and use the `Add` button (to add multiple *Fish Species - Lifestage*s, select-add one-by-one). A click on the `Modify Source` button opens the `Fish.xlsx` workbook that contains *Fish Species - Lifestage* definitions. At this point, on particular fish names and seasons start/end dates may be modified. Modifications of *Lifestages* should be avoided. For more details, refer to the [SHArC Wiki pages](SHArC#hefish).
 Before a *Fish Species - Lifestage* flow duration curve can be generated, ensure to `Select input Flow Series` (workbook) with the following characteristics:
 
@@ -162,7 +162,7 @@ Before a *Fish Species - Lifestage* flow duration curve can be generated, ensure
 
 An example workbook is provided with `RiverArchitect/00_Flows/InputFlowSeries/flow_series_example_data.xlsx`. 
 
-Click on `Make flow duration curve(s)` (plural applies if multiple *Fish Species - Lifestage*s are selected) to generate an aquatic ambiance workbook for target *Fish Species - Lifestage*s. The workbook containing the last *Fish Species - Lifestage* flow duration curve in the selected list will open up automatically when the flow duration curve generation finishes without error messages. All generated workbooks will be saved as `RiverArchitect/00_Flows/CONDITION/flow_duration_FILI.xlsx`, where `FILI` denotes the first two letters of the selected fish species and lifestage. The workbooks contain two tabs that link all observed mean daily flows from the target *Fish Species - Lifestage*'s season (tab 1) with the available 2D model data (tab 2). The result is a flow duration curve that provides a measure of how well the 2D model data may represent the relevant discharges for a *Fish Species - Lifestage*.
+Click on `Make flow duration curve(s)` (plural applies if multiple *Fish Species - Lifestage*s are selected) to generate an Physical Habitat workbook for target *Fish Species - Lifestage*s. The workbook containing the last *Fish Species - Lifestage* flow duration curve in the selected list will open up automatically when the flow duration curve generation finishes without error messages. All generated workbooks will be saved as `RiverArchitect/00_Flows/CONDITION/flow_duration_FILI.xlsx`, where `FILI` denotes the first two letters of the selected fish species and lifestage. The workbooks contain two tabs that link all observed mean daily flows from the target *Fish Species - Lifestage*'s season (tab 1) with the available 2D model data (tab 2). The result is a flow duration curve that provides a measure of how well the 2D model data may represent the relevant discharges for a *Fish Species - Lifestage*.
 
 ![raq](https://github.com/RiverArchitect/Media/raw/master/images/RA_flow_dur.PNG)
 

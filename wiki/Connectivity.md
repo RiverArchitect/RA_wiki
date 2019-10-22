@@ -27,9 +27,9 @@ The *Connectivity* module is used to identify wetted areas that become disconnec
 
 To begin using the Connectivity module, first select a hydraulic [Condition](Signposts#conditions). In order to accurately determine where velocity is a barrier to fish passage, the selected condition must include velocity angle input rasters.
 
-Next, select least one [aquatic ambiance](SHArC#hefish) (fish species/lifestage) from the dropdown menu. The aquatic ambiance contains data specific to the fish species/lifestage. Aquatic ambiance data is used by the Connectivity module to determine if fish are able to traverse wetted areas by accounting for the organism's minimum swimming depth and maximum swimming speed (aquatic ambiance data is also used by [SHArC](SHArC) to determine habitat suitability). These data can be viewed/edited via the drop-down menu: `Select Aquatic Ambiance `  --> `DEFINE FISH SPECIES` (scroll to the "Travel Thresholds" section of the workbook).
+Next, select least one [Physical Habitat](SHArC#hefish) (fish species/lifestage) from the dropdown menu. The Physical Habitat contains data specific to the fish species/lifestage. Physical Habitat data is used by the Connectivity module to determine if fish are able to traverse wetted areas by accounting for the organism's minimum swimming depth and maximum swimming speed (Physical Habitat data is also used by [SHArC](SHArC) to determine habitat suitability). These data can be viewed/edited via the drop-down menu: `Select Physical Habitat `  --> `DEFINE FISH SPECIES` (scroll to the "Travel Thresholds" section of the workbook).
 
-Once the desired condition and aquatic ambiance(s) are selected, choose model discharges Q<sub>high</sub> and Q<sub>low</sub>. This defines the range of discharges over which to apply the connectivity analysis, simulating the changes in habitat connectivity for a flow reduction from Q<sub>high</sub> to Q<sub>low</sub>. For further explanation of the methodology used in the analysis, see [Methodology](Connectivity#Methodology).
+Once the desired condition and Physical Habitat(s) are selected, choose model discharges Q<sub>high</sub> and Q<sub>low</sub>. This defines the range of discharges over which to apply the connectivity analysis, simulating the changes in habitat connectivity for a flow reduction from Q<sub>high</sub> to Q<sub>low</sub>. For further explanation of the methodology used in the analysis, see [Methodology](Connectivity#Methodology).
 
 Outputs are stored in `Connectivity\Output\Condition_name\`. The outputs produced are:
 
@@ -37,7 +37,7 @@ Outputs are stored in `Connectivity\Output\Condition_name\`. The outputs produce
 
 Outputs specific to the applied flow reduction are stored in the subdirectory `Connectivity\Output\Condition_name\flow_red_Q<sub>high</sub>_Q<sub>low</sub>`. These outputs include:
 
-- `shortest_paths\`: directory containing a raster for each model discharge in the range Q<sub>low</sub>-Q<sub>high</sub>, indicating the minimum distance/least cost required to escape to the river mainstem at Q<sub>low</sub> and subject to constraints imposed by the travel thresholds for the selected aquatic ambiance. See [Escape Route Calculations](Connectivity#escape-route-calculations) for more.
+- `shortest_paths\`: directory containing a raster for each model discharge in the range Q<sub>low</sub>-Q<sub>high</sub>, indicating the minimum distance/least cost required to escape to the river mainstem at Q<sub>low</sub> and subject to constraints imposed by the travel thresholds for the selected Physical Habitat. See [Escape Route Calculations](Connectivity#escape-route-calculations) for more.
 
 - `disc_areas\`: folder containing a shapefile for each model discharge indicating wetted areas which are effectively disconnected at that discharge. See [Calculating Disconnected Area](Connectivity#calculating-disconnected-area) for more.
 
@@ -51,7 +51,7 @@ Outputs specific to the applied flow reduction are stored in the subdirectory `C
 
 ***
 
-Whether or not areas are considered to be connected/navigable for a given fish species/lifestage is dependent upon travel thresholds that are defined in the `Fish.xlsx` workbook (see [SHArC](SHArC) for more details). These include a minimum swimming depth and maximum swimming speed. To view/modify the species/lifestage specific travel thresholds, use the drop-down menu: "Select Aquatic Ambiance" --> "DEFINE FISH SPECIES".
+Whether or not areas are considered to be connected/navigable for a given fish species/lifestage is dependent upon travel thresholds that are defined in the `Fish.xlsx` workbook (see [SHArC](SHArC) for more details). These include a minimum swimming depth and maximum swimming speed. To view/modify the species/lifestage specific travel thresholds, use the drop-down menu: "Select Physical Habitat" --> "DEFINE FISH SPECIES".
 
 ***
 
@@ -100,7 +100,7 @@ Applying the depth and velocity thresholds at each cell yields a set of neighbor
 
 ## Calculating Disconnected Area
 
-Even if there is wetted area connecting two locations, they may not be considered connected in the context of fish passage. This is because low water depths or high velocities may effectively act as "hydraulic barriers", limiting fish mobility. The applied aquatic ambiance contains threshold values for the minimum swimming depth and maximum swimming speed. After escape routes are calculated for a given discharge, the resultant path length raster shows which areas are able to reach the river mainstem for the given hydraulic conditions and biological limitations. Wetted areas in the corresponding interpolated depth raster for which a least-cost path cannot be calculated are considered to be disconnected areas. These disconnected areas are then cropped within the wetted area at Q<sub>high</sub> (not interpolated), as floodplains outside the Q<sub>high</sub> wetted area are assumed to not be active for the simulated flow reduction. Resultant disconnected areas are saved to a shapefile for each discharge in the `disc_areas` output directory.
+Even if there is wetted area connecting two locations, they may not be considered connected in the context of fish passage. This is because low water depths or high velocities may effectively act as "hydraulic barriers", limiting fish mobility. The applied Physical Habitat contains threshold values for the minimum swimming depth and maximum swimming speed. After escape routes are calculated for a given discharge, the resultant path length raster shows which areas are able to reach the river mainstem for the given hydraulic conditions and biological limitations. Wetted areas in the corresponding interpolated depth raster for which a least-cost path cannot be calculated are considered to be disconnected areas. These disconnected areas are then cropped within the wetted area at Q<sub>high</sub> (not interpolated), as floodplains outside the Q<sub>high</sub> wetted area are assumed to not be active for the simulated flow reduction. Resultant disconnected areas are saved to a shapefile for each discharge in the `disc_areas` output directory.
 
 
 ## Determining Q<sub>disconnect</sub>
@@ -117,7 +117,7 @@ Note that the default value of zero indicates pixels wetted at the highest disch
 
 # References
 
-Travel thresholds used to define aquatic ambiances in `Fish.xlsx` were provided by the following sources:
+Travel thresholds used to define Physical Habitats in `Fish.xlsx` were provided by the following sources:
 
 [CDFG. (2012). Standard Operating Procedure for Critical Riffle Analysis for Fish Passage in California DFG-IFP-001, updated February 2013. California Department of Fish and Game, DFG-IFP-00(September), 1–25.](https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=150377)
 

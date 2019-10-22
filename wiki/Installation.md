@@ -68,7 +68,7 @@ To start using *River Architect*:
      - Save and close `Start_River_Architect.bat`.
  1. Double-click on `DRIVE:\path\to\...\RiverArchitect\Start_River_Architect.bat` to start *River Architect*.
  1. Create a [*Condition*](Signposts#getstarted) on the Welcome (*[Get Started](Signposts#getstarted)*) tab.
- 1. Analyze and create ecohydraulic paradises for [aquatic ambiances prefered by target (fish) species](SHArC#hefish) with sustainable [river design features](River-design-features) using [lifespan maps](https://www.sciencedirect.com/science/article/pii/S2215016119300913?via%3Dihub).<br/>
+ 1. Analyze and create ecohydraulic paradises for [Physical Habitats prefered by target (fish) species](SHArC#hefish) with sustainable [river design features](River-design-features) using [lifespan maps](https://www.sciencedirect.com/science/article/pii/S2215016119300913?via%3Dihub).<br/>
     *Hint: The **Quick GUIde** sections in the module Wikis provide straight-forward application guidance.*
 
 *River Architect* starts in a GUI that is stored in `master_gui.py`. Alternatively, the modules can be individually launched by double-clicking on the `LAUNCH_Windows_x64.bat` in the module folders (not recommended and may be abandoned in future versions).

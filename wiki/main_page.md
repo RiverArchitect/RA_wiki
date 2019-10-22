@@ -67,12 +67,12 @@ River Architect Wiki
     <li>Assess habitat area with the <a href="SHArC">SHArC</a> module
     <ul>
       <li><a href="SHArC#hegui">Quick GUIde</a></li>
-      <li><a href="SHArC#hefish">Define <strong>Aquatic Ambiances</strong> for <strong>Fish</strong></a></li>
+      <li><a href="SHArC#hefish">Define <strong>Physical Habitats</strong> for <strong>Fish</strong></a></li>
       <li><a href="SHArC#herunSHArea"><strong>SHArea</strong> calculation</a></li>
       <li><a href="SHArC-working-principles#heprin">Working principles</a></li>
     </ul></li>
-    <li><a href="SHArC#hefish">Predefined <strong>Fish</strong> (Aquatic Ambiances)</a></li>
-    <li><a href="aqua-modification#hecode">Edit Fish (Aquatic Ambiances) template</a></li>
+    <li><a href="SHArC#hefish">Predefined <strong>Fish</strong> (Physical Habitats)</a></li>
+    <li><a href="aqua-modification#hecode">Edit Fish (Physical Habitats) template</a></li>
     <li><a href="Connectivity">Habitat Connectivity</a>
     <ul>
       <li><a href="Connectivity#intro">Introduction</a></li>
@@ -177,7 +177,7 @@ The procedure of project design following the flowchart involves the following s
 10. If the soils are too coarse (i.e., the capillarity is not high enough to enable plant root growth), apply the connectivity feature ["incorporate fine sediment in soils"](River-design-features#finesed).
 
 11. If gravel augmentation methods are applicable: Consecutively apply the [*LifespanDesign*][3] and [*MaxLifespan*][4] modules to [connectivity features](River-design-features#featoverview) to foster self-sustaining, artificially created ecomorphological patterns within the terraforming process.<br/>
-    If gravel is added in-stream, re-run the numerical model for the assessment of [gravel stability](River-design-features#rocks) with the [*LifespanDesign*][3] module and the combined habitat suitability with the [*SHArC*][6] module to compare the [**S**easonal **H**abitat **Area** (**SHArea**)](SHArC#herunSHArea) before and after enhancement of [Aquatic Ambiances for target fish species (lifestages)](SHArC#hefish).
+    If gravel is added in-stream, re-run the numerical model for the assessment of [gravel stability](River-design-features#rocks) with the [*LifespanDesign*][3] module and the combined habitat suitability with the [*SHArC*][6] module to compare the [**S**easonal **H**abitat **Area** (**SHArea**)](SHArC#herunSHArea) before and after enhancement of [Physical Habitats for target fish species (lifestages)](SHArC#hefish).
 
 12. Use the [*SHArC*][6] to assess the *"existing"* (pre-project) and *"with implementation"* (post-project) habitat suitability in terms of annually usable habitat area (SHArea).
 

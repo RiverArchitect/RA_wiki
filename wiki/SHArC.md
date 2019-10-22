@@ -6,7 +6,7 @@ Seasonal Habitat Area Calculator (SHArC)
 - [Introduction to Habitat Suitability evaluation](#heintro)
 - [Quick GUIde to habitat suitability evaluation](#hequick)
   * [Main window set-up and run](#main-window-set-up-and-run)
-  * [Input: Aquatic Ambiances for Fish](#hefish)
+  * [Input: Physical Habitats for Fish](#hefish)
   * [Input: Define computation boundaries](#hebound)
   * [Input: HHSI](#hemakehsi)
   * [Input: Cover HSI](#hemakecovhsi)
@@ -23,14 +23,14 @@ Seasonal Habitat Area Calculator (SHArC)
   * [Cover HSI: Vegetation](SHArC-working-principles#veghsi)
   * [Cover HSI combination methods](SHArC-working-principles#hecombinecov)
   * [Usable habitat area calculation](SHArC-working-principles#hewuamethods)
-- [More about Aquatic Ambiances and Modifying `Fish.xlsx`](aqua-modification#hecode)
+- [More about Physical Habitats and Modifying `Fish.xlsx`](aqua-modification#hecode)
 
 ***
 
 # Introduction to Habitat Suitability evaluation<a name="heintro"></a>
 
 The *SHArC* module creates habitat suitability index (*HSI*) Rasters for various fish species and combines multiple HSI Rasters into a composite habitat suitability index Raster (*cHSI* or *CSI*). The habitat suitability index ranges between 0.0 and 1.0, according to [Bovee (1986)][bovee86]. It uses a threshold value for defining valuable habitat, which is initially set to 0.5 (i.e., *HSI* values between 0.0 and 0.5 or `NoData` are considered as *"non-habitat"* and values between 0.5 and 1.0 correspond to valuable habitat). 
-A minimum of three normal discharges within a seasonal flow duration curve should be provided (e.g., the *Q<sub>300</sub>*, *Q<sub>200</sub>* and *Q<sub>100</sub>* denote the flows that are exceeded during 300, 200 and 100 days per year, respectively). The module's [*HHSI* (Hydraulic Habitat Suitability Index) Raster generator](#hemakehsi) provides routines to produce seasonal flow duration curves from discharge series. The *SHArC* module uses the resulting seasonal flow exceedance probabilities that are associated with *cHSI* Rasters for summing up the surface where the *cHSI* is larger than the threshold value (of 0.5 by default). This surface corresponds to the [**S**easonal **H**abitat **Area** (**SHArea**)](#herunSHArea) in \[m<sup>2</sup> per season\] or \[acres per season\]. *Note* that **seasonal refers to the aquatic ambiance present during a user-defined fish-lifestage period** (see [definitions of aquatic ambiances for fish-lifestage](#hefish)). The module writes relevant flows, exceedance properties and the SHArea to `CONDITION`-related spreadsheets in the `SHArC/SHArea/` directory.
+A minimum of three normal discharges within a seasonal flow duration curve should be provided (e.g., the *Q<sub>300</sub>*, *Q<sub>200</sub>* and *Q<sub>100</sub>* denote the flows that are exceeded during 300, 200 and 100 days per year, respectively). The module's [*HHSI* (Hydraulic Habitat Suitability Index) Raster generator](#hemakehsi) provides routines to produce seasonal flow duration curves from discharge series. The *SHArC* module uses the resulting seasonal flow exceedance probabilities that are associated with *cHSI* Rasters for summing up the surface where the *cHSI* is larger than the threshold value (of 0.5 by default). This surface corresponds to the [**S**easonal **H**abitat **Area** (**SHArea**)](#herunSHArea) in \[m<sup>2</sup> per season\] or \[acres per season\]. *Note* that **seasonal refers to the Physical Habitat present during a user-defined fish-lifestage period** (see [definitions of Physical Habitats for fish-lifestage](#hefish)). The module writes relevant flows, exceedance properties and the SHArea to `CONDITION`-related spreadsheets in the `SHArC/SHArea/` directory.
 
 *Note that the SHArC module has no own mapping function. `cHSI` Rasters may be mapped with the project assessment templates of the ProjectMaker module.*
 
@@ -46,13 +46,13 @@ The below figure shows the *SHArC* GUI at start-up.
 ![guihe](https://github.com/RiverArchitect/Media/raw/master/images/gui_start_he.PNG)
 
 
-To begin a habitat evaluation as a function of *SHArea*, the module first requires a definition of relevant aquatic ambiances for target fish species and lifestages that it [reads from a workbook](#hefish).
+To begin a habitat evaluation as a function of *SHArea*, the module first requires a definition of relevant Physical Habitats for target fish species and lifestages that it [reads from a workbook](#hefish).
 Second, [hydraulic habitat suitability Rasters](#hemakehsi) and related discharge exceedance probabilities need to be calculated. The latter step creates habitat conditions, which can now be selected. Once a habitat condition is selected, the next step [combines flow depth and velocity habitat suitability Rasters](#herunchsi). Finally, [*SHArea* is computed](#herunSHArea) based on combined habitat suitability Rasters, with or without *cover*.
 
 
-## Input: Aquatic Ambiance for Fish<a name="hefish"></a>
+## Input: Physical Habitat for Fish<a name="hefish"></a>
 
-The `Select Aquatic Ambiance` menu enables the definition of flow depth and velocity-dependent habitat suitability curves, as well as travel thresholds for use in the [Habitat Connectivity](Connectivity) module. The `DEFINE FISH SPECIES` menu entry opens a workbook called `Fish.xlsx`, which is located in `RiverArchitect/.site_packages/templates/`. The `Fish.xlsx` workbook contains the definition of fish species names (rows 2 to 4) and up to four lifestages per species. For every lifestage, a preference season and piece-wise linear habitat suitability curves can be entered. Moreover, the default workbook contains a global definition of aquatic habitat (`All Aquatic`), where a hydrologic year, season, flow depth, and/or velocity lifestage-like definition can be made. These lifestage-like definitions correspond to wetted area that may be considered for an entire hydrologic year, limited to a season, and/or pixels where a minimum flow depth (default: 0.001 m or ft) or velocity (default: 0.001 m/s or fps) is present. The `All Aquatic` habitat suitability curves assign a theoretic habitat suitability index of 1.0 to all wetted pixels (i.e., where the flow depth or velocity is larger than 0.001).
+The `Select Physical Habitat` menu enables the definition of flow depth and velocity-dependent habitat suitability curves, as well as travel thresholds for use in the [Habitat Connectivity](Connectivity) module. The `DEFINE FISH SPECIES` menu entry opens a workbook called `Fish.xlsx`, which is located in `RiverArchitect/.site_packages/templates/`. The `Fish.xlsx` workbook contains the definition of fish species names (rows 2 to 4) and up to four lifestages per species. For every lifestage, a preference season and piece-wise linear habitat suitability curves can be entered. Moreover, the default workbook contains a global definition of aquatic habitat (`All Aquatic`), where a hydrologic year, season, flow depth, and/or velocity lifestage-like definition can be made. These lifestage-like definitions correspond to wetted area that may be considered for an entire hydrologic year, limited to a season, and/or pixels where a minimum flow depth (default: 0.001 m or ft) or velocity (default: 0.001 m/s or fps) is present. The `All Aquatic` habitat suitability curves assign a theoretic habitat suitability index of 1.0 to all wetted pixels (i.e., where the flow depth or velocity is larger than 0.001).
 
 ![hefish](https://github.com/RiverArchitect/Media/raw/master/images/RA_HE_fish_xlsx.png)
 
@@ -94,13 +94,13 @@ A boundary shapefile (polygon) can be selected to limit the calculation extents 
 
 ## Input: HHSI<a name="hemakehsi"></a>
 
-Before habitat suitability Rasters can be calculated, at least one fish species/lifestage needs to be selected (multiple selections are possible) because *SHArC* will only use hydraulic Rasters that are relevant to the selected aquatic ambiance for a fish-lifestage (see [*Season start* and *Season end* in *Fish.xlsx*](#hefish)).<br/>
+Before habitat suitability Rasters can be calculated, at least one fish species/lifestage needs to be selected (multiple selections are possible) because *SHArC* will only use hydraulic Rasters that are relevant to the selected Physical Habitat for a fish-lifestage (see [*Season start* and *Season end* in *Fish.xlsx*](#hefish)).<br/>
 
 With at least one fish species-lifestage selected, HSI Rasters can be generated by clicking on the `Generate HSI Rasters` menu and `Flow depth and velocity HSI`. A new window opens and first asks for a discharge (or flow) duration curve:
 
 ![hefish](https://github.com/RiverArchitect/Media/raw/master/images/exp_HE_subgui.PNG)
 
-A flow duration curve for a preferred aquatic ambiance of target fish-lifestages can be generated from any discharge series within the [Get Started][2] module, which produces correctly formatted flow duration workbooks in `RiverArchitect/00_Flows/CONDITION/flow_duration_FILI.xlsx`. The flow duration curve generation only considers discharges observed within the seasons defined in [`RiverArchitect/.site_packages/templates/Fish.xlsx`](#hefish). For the consideration of completed hydrology years, define `Season start` as `1-Oct` and `Season end` as `30-Sep` (see above discussion).
+A flow duration curve for a preferred Physical Habitat of target fish-lifestages can be generated from any discharge series within the [Get Started][2] module, which produces correctly formatted flow duration workbooks in `RiverArchitect/00_Flows/CONDITION/flow_duration_FILI.xlsx`. The flow duration curve generation only considers discharges observed within the seasons defined in [`RiverArchitect/.site_packages/templates/Fish.xlsx`](#hefish). For the consideration of completed hydrology years, define `Season start` as `1-Oct` and `Season end` as `30-Sep` (see above discussion).
 
 In the process of *HHSI* Raster generation, the produced flow duration curves can (must) be used by clicking the `i) Select flow duration curve (.XLSX)` button, which button opens the file explorer in `RiverArchitect/00_Flows/`. 
 The flow duration workbook must list discharges in column `A`, starting at row 2 in descending order. The discharges need to be positive float numbers. The associated exceedance durations (`%`) are stated in column `C`.
@@ -112,7 +112,7 @@ The resulting depth-*HSI* Rasters are named `dsi_FILIqqqqqq` and velocity-*HSI* 
 
 ## Input: Cover HSI<a name="hemakecovhsi"></a>
 
-As before, at least one aquatic ambiance for fish species/lifestage needs to be selected (multiple selections are possible). The cover HSI Raster generation can be limited to a user-defined flow region by selecting one of the `hQQQQQQ` Raster names in the `2) Define flow region` frame. However, the later combination of the cover HSI Rasters with the HHSI (hydraulic HSI) Rasters will automatically limit the usable habitat area to wetted pixels only. Thus, the most pertinent choice here is selecting `all terrain`. Click on `Confirm selection` to do so.<br/>
+As before, at least one Physical Habitat for fish species/lifestage needs to be selected (multiple selections are possible). The cover HSI Raster generation can be limited to a user-defined flow region by selecting one of the `hQQQQQQ` Raster names in the `2) Define flow region` frame. However, the later combination of the cover HSI Rasters with the HHSI (hydraulic HSI) Rasters will automatically limit the usable habitat area to wetted pixels only. Thus, the most pertinent choice here is selecting `all terrain`. Click on `Confirm selection` to do so.<br/>
 Relevant cover types can be selected by checking the according checkboxes, where geofiles are required to be stored in
 `RiverArchitect/01_Conditions/CONDITION/` apply the cover types: 
 
@@ -158,14 +158,14 @@ Two combination buttons are available: (1) `pure hydraulic` and (2) `hydraulic a
 
 ## Calculate SHArea<a name="herunSHArea"></a>
 
-The `Run Seasonal Habitat Area Caluclator - SHArC` button launches the [calculation of usable SHArea](#herunchsi) based on the combined habitat suitability index (*cHSI*). Usable (habitat) area is defined as the surface where *cHSI* (or *CSI*) pixel values are larger than the `SHArea threshold` *&theta;*. *SHArea* is defined as the sum of usable habitat areas of *cHSI* of relevant discharges multiplied with the relative presence (*p<sub>Qk</sub>*). Relevant discharges occur every year during the aquatic ambiance (fish-lifestage) presence season that is defined by the [*Season start* and *Season end* tags in *Fish.xlsx*](#hefish). Thus, *SHArea* as the sum of discharge-related usable habitat area is:
+The `Run Seasonal Habitat Area Caluclator - SHArC` button launches the [calculation of usable SHArea](#herunchsi) based on the combined habitat suitability index (*cHSI*). Usable (habitat) area is defined as the surface where *cHSI* (or *CSI*) pixel values are larger than the `SHArea threshold` *&theta;*. *SHArea* is defined as the sum of usable habitat areas of *cHSI* of relevant discharges multiplied with the relative presence (*p<sub>Qk</sub>*). Relevant discharges occur every year during the Physical Habitat (fish-lifestage) presence season that is defined by the [*Season start* and *Season end* tags in *Fish.xlsx*](#hefish). Thus, *SHArea* as the sum of discharge-related usable habitat area is:
 
 *SHArea = &Sigma;<sub>Qk</sub> \[ &Sigma;<sub>px</sub>(\{if cHSI(<sub>px</sub>) > &theta;\}· A<sub>px</sub>)· p(Q<sub>k</sub>)\]*
 
 where ***<sub>px</sub>*** denotes "pixel" and ***A<sub>px</sub>*** is the size of a pixel in m² (or ft²). By default, this threshold value ***&theta;*** is 0.5 (i.e., the routine sums up the surface of pixels where the *cHSI* is larger than 0.5). The threshold value can be changed by clicking on the `Set SHArea threshold ...` button. The expression ***\{if cHSI(<sub>px</sub>) > &theta;\}*** is **1** if the *cHSI* value of a pixel is higher than *&theta;* and it is **0** if the *cHSI* value of a pixel is smaller than *&theta;*. ***p<sub>Qk</sub>*** denotes the relative seasonal presence of a discretized discharge ***Q<sub>k</sub>*** that is associated with a set of hydraulic Rasters (flow depth and velocity). *River Architect* converts usable habitat area rasters to polygon shapefiles and adds an `AREA` field  to the shapefiles where Polygon areas are calculated using `arcpy.CalculateGeometryAttributes_management(shp_name, geometry_property=[["F_AREA", "AREA"]], area_unit=user_area_unit)`; where `shp_name`is a temporary shapefile and `user_area_unit`is the user-defined unit system (US customary or metric). The resulting discharge-specific area is written to a spreadsheet located in `SHArC/SHArea/CONDITION_sharea_...xlsx`. 
 *Note: For specific project, intermediate area calculation results are written to workbooks when SHArea is calculated within the [Project Maker](ProjectMaker#pmrunSHArea) module.*
 
- The below figure illustrates the *SHArea* integration scheme based on the application of four discharges (1000, 2000, 3000, and 4000 m<sup>3</sup>/s or cfs) of an aquatic ambiance for a fish-lifestage season.
+ The below figure illustrates the *SHArea* integration scheme based on the application of four discharges (1000, 2000, 3000, and 4000 m<sup>3</sup>/s or cfs) of an Physical Habitat for a fish-lifestage season.
 
 ![SHAreaint](https://github.com/RiverArchitect/Media/raw/master/images/RA_HE_integration.png)
 
@@ -180,8 +180,8 @@ Included in the SHArea calculation is an option to apply weighting to the usable
 Before clicking on`Run Seasonal Habitat Area Calculator - SHArC`, check the box above to enable the `Use weighted usable area` option to apply weighting to the calculation.  By default, when this option is enabled the cHSI threshold value  *&theta;* will be set to 0.0 (i.e., all cHSI values, including 0.0, are used to weight the area of each pixel).-->
 
 ## Q - Area Analysis<a name="heqa"></a>
-The time evolution or (interpolated) habitat area associated with a discharge provide insights into the ecological efficiency of a habitat enhancement measures. The *SHArC* module can generate interpolated discharge-usable habitat area curves even for discharges that were not numerically modeled with a 2D hydrodynamic simulation. A click on the `Discharge - Aquatic Ambiance Area Curve` or `Time series - Aquatic Ambiance Area` button generates habitat area graphs as a function of all discharges of a flow duration curve or a discharge time series, respectively.<br/>
-For flow duration curves, by default, *SHArC* uses the discharge duration workbook `flow_duration_FILI.xlsx` associated with the habitat *CONDITION* in `RiverArchitect/00_Flows/CONDITION/`. This behavior can be changed by checking the *Use other flow duration curve* box. The resulting *Discharge - Aquatic Ambiance Area Curve* will be produced in `SHArC/SHArea/CONDITION_QvsA_FILI_stats.xlsx` that contains the following diagram:
+The time evolution or (interpolated) habitat area associated with a discharge provide insights into the ecological efficiency of a habitat enhancement measures. The *SHArC* module can generate interpolated discharge-usable habitat area curves even for discharges that were not numerically modeled with a 2D hydrodynamic simulation. A click on the `Discharge - Physical Habitat Area Curve` or `Time series - Physical Habitat Area` button generates habitat area graphs as a function of all discharges of a flow duration curve or a discharge time series, respectively.<br/>
+For flow duration curves, by default, *SHArC* uses the discharge duration workbook `flow_duration_FILI.xlsx` associated with the habitat *CONDITION* in `RiverArchitect/00_Flows/CONDITION/`. This behavior can be changed by checking the *Use other flow duration curve* box. The resulting *Discharge - Physical Habitat Area Curve* will be produced in `SHArC/SHArea/CONDITION_QvsA_FILI_stats.xlsx` that contains the following diagram:
 
 ![hefish](https://github.com/RiverArchitect/Media/raw/master/images/RA_QvsA_stats.png)
 
@@ -196,7 +196,7 @@ The flow time series calculation will ask for a workbook with mean daily dischar
 	+ row `2` indicates the date units (i.e., `B2 = "(CFS)"` or `B2 = "(CMS)"), and 
 	+ mean daily flows must be entered from row `3` onward (i.e., dates in the format `B3 = 59.3` or `B4 = 79`).
 
-The resulting *Time series - Aquatic Ambiance Area* will be produced in `SHArC/SHArea/CONDITION_QvsA_FILI_time.xlsx` that contains the following diagram:
+The resulting *Time series - Physical Habitat Area* will be produced in `SHArC/SHArea/CONDITION_QvsA_FILI_time.xlsx` that contains the following diagram:
 
 ![hefish](https://github.com/RiverArchitect/Media/raw/master/images/RA_QvsA_time.png)
 
