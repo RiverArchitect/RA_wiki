@@ -199,7 +199,6 @@ Error messages
     - *Cause:*   The `make_pdf_maps(self, ...)` function of the `Mapper()` class (`.site_packages/riverpy/cMapper.py`) raises this error when `LifespanDesign/.templates/mapping.inp` or `MaxLifespan/.templates/mapping.inp` contain invalid xy-coordinates (format).
     - *Remedy:*  Ensure the definitions in [`LifespanDesign/.templates/mapping.inp` and `MaxLifespan/.templates/mapping.inp`](Signposts#inpfile) are correct.
 
-
  - **`ERROR: Could not find / access input Rasters.`**
     - *Cause:*   Error raised by the `D2W` class (`GetStarted/cDepth2Groundwater.py`) or the `DET` class (`GetStarted/cDetrendedDEM.py`) or the `MU` class (`GetStarted/cMorphUnits.py`) when the defined DEM, flow depth, or velocity *GeoTIFF*s are not usable.
     - *Remedy:*
@@ -226,7 +225,7 @@ Error messages
 
  - **`ERROR: Could not find Lifespan Raster (...).`**
     - *Cause:*   Error raised by the `ProjectMaker/s30_terrain_stabilization/`'s `main()` function when it cannot find lifespan Rasters.
-    - *Remedy:*  Ensure to run the <a href="LifespanDesign">LifespanDesign</a> module for the select *Condition* first. The program absolutely requires `Grains / Boulders` (`lf_grains.tif`), and optionally requires `Streamwood` (`lf_wood.tif`) and `Bioengineering (other)` (`lf_bio.tif`).
+    - *Remedy:*  Go to the <a href="Lifespan/Design">LifespanDesign</a> tab for the selected *Condition*. Create lifespan maps for the `Grains / Boulders` feature ( creates `lf_grains.tif`). Terrain stabilization absolutely requires `Grains / Boulders` (`lf_grains.tif`), and optionally requires `Streamwood` (`lf_wood.tif`) and `Bioengineering (other)` (`lf_bio.tif`).
 
  - **`ERROR: Could not find sheet "extents" in computation_extents.xlsx.`**
     - *Cause:*   Error raised by the `get_reach_coordinates(self, internal_reach_id)` function of the `Read()` class in `RiverArchitect/.site_packages/riverpy/cReachManager.py`) when the `extents` sheet in the reach coordinate workbook (`ModifyTerrain/.templates/computation_extents.xlsx`) could not be read.
@@ -294,7 +293,6 @@ Error messages
     - *Remedy:*
         + `riverpy`: Ensure that the provided workbook respects the input requirements described in the instructions of the applied module.
         + `GetStarted/fSubCondition`: Verify the consistency of the Rasters in the source condition and make sure that no other program is using data from the source condition.
-
 
 - **`ERROR: Could not read source project (...)`**
     - *Cause:*   A module cannot find a project for mapping when it tries to open `aprx_origin = arcpy.mp.ArcGISProject(self.ref_lyt_dir + "module_name.aprx")`.
@@ -784,6 +782,10 @@ Warning messages
  - **`WARNING: Could not divide [...] by [...]`**
     - *Cause:*   Raised by `calculate_relative_exceedance(self)` of [*SHArC*][6]'s `FlowAssessment()` class in `SHArC/cFlows.py` when the flow duration curve contains invalid data.
     - *Remedy:*  Ensure the correct setup of the used flow duration curve in `SHArC/FlowDurationCurves/`. The data types and file structure must correspond to that of the provided template `flow_duration _template.xlsx` and all discharge values need to be positive floats. Review the [HHSI input preparation](SHArC#hemakehsi) for details.
+	
+- **`WARNING: Could not find Lifespan Raster (...).`**
+    - *Cause:*   Raised by the `ProjectMaker/s30_terrain_stabilization/`'s  or `ProjectMaker/s21_plantings_stabilization/`'s `main()` function when it cannot find lifespan Rasters.
+    - *Remedy:*  Go to the <a href="Lifespan/Design">LifespanDesign</a> tab for the selected *Condition*. Create lifespan maps for the goup layers plantings, bioengineering, and connectivity. <a href="Project Maker">ProjectMaker</a> absolutely requires `Grains / Boulders` (`lf_grains.tif`), and optionally requires `Streamwood` (`lf_wood.tif`) and `Bioengineering (other)` (`lf_bio.tif`).
 
  - **`WARNING: Could not get flow depth Raster properties. Setting [...]`**
     - *Cause:*   The `crop_input_Raster(self, ...)` function (`SHArC/cHSI.py`) prints this warning message when it cannot read the Raster properties from the defined input flow depth Raster.
