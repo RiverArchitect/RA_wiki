@@ -41,23 +41,23 @@ The *ProjectMaker* module guides through the half-automated assessment of cost-r
 
 ## Prerequisites<a name="pmprereq"></a>
 
-@alert important
 
-Ensure that the following steps were executed in order to generate the required geodata for creating a project proposal:
-
--   If terraforming applies:
-    -   The *SiteName* restoration terraforming plan was verified with 2D hydrodynamic modeling
-    -   The *River Architect*'s [*VolumeAssessment*](VolumeAssessment) module was applied to calculate excavation / fill volumes.
--   The [*LifespanDesign*][3] and [*MaxLifespan*][4] modules were executed for [plantings](River-design-features#plants) and [other bioengineering features](River-design-features#bioeng). Thus, the following directories should exist and contain plantings and other bioengineering rasters:
-    -   [Plantings](River-design-features#plants):
-        +  `RiverArchitect/LifespanDesign/Output/Rasters/CONDITION_lyr20/`
-        +  `RiverArchitect/MaxLifespan/Output/Rasters/CONDITION_lyr20/`
-    -   [Other Bioengineering](River-design-features#bioeng):
-        + `RiverArchitect/LifespanDesign/Output/Rasters/CONDITION_lyr20/`
-        + `RiverArchitect/MaxLifespan/Output/Rasters/CONDITION_lyr20/`
--   The [*SHArC*][6] module was applied to the pre-project (initial) condition and the "with implementation" ("as-built") condition.
-
-@end
+***
+> Ensure that the following steps were executed in order to generate the required geodata for creating a project proposal:
+> 
+> -   If terraforming applies:
+>     -   The *SiteName* restoration terraforming plan was verified with 2D hydrodynamic modeling
+>     -   The *River Architect*'s [*VolumeAssessment*](VolumeAssessment) module was applied to calculate excavation / fill volumes.
+> -   The [*LifespanDesign*][3] and [*MaxLifespan*][4] modules were executed for [plantings](River-design-features#plants) and [other bioengineering features](River-design-features#bioeng). Thus, the following directories should exist and contain plantings and other bioengineering rasters:
+>     -   [Plantings](River-design-features#plants):
+>         +  `RiverArchitect/LifespanDesign/Output/Rasters/CONDITION_lyr20/`
+>         +  `RiverArchitect/MaxLifespan/Output/Rasters/CONDITION_lyr20/`
+>     -   [Other Bioengineering](River-design-features#bioeng):
+>         + `RiverArchitect/LifespanDesign/Output/Rasters/CONDITION_lyr20/`
+>         + `RiverArchitect/MaxLifespan/Output/Rasters/CONDITION_lyr20/`
+> -   The [*SHArC*][6] module was applied to the pre-project (initial) condition and the "with implementation" ("as-built") condition.
+> 
+***
 
 ## Main window set-up and run<a name="pmgui"></a>
 
