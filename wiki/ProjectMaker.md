@@ -41,6 +41,7 @@ The *ProjectMaker* module guides through the half-automated assessment of cost-r
 
 ## Prerequisites<a name="pmprereq"></a>
 
+@alert important
 Ensure that the following steps were executed in order to generate the required geodata for creating a project proposal:
 
 -   If terraforming applies:
@@ -55,6 +56,7 @@ Ensure that the following steps were executed in order to generate the required 
         + `RiverArchitect/MaxLifespan/Output/Rasters/CONDITION_lyr20/`
 -   The [*SHArC*][6] module was applied to the pre-project (initial) condition and the "with implementation" ("as-built") condition.
 
+@end
 
 ## Main window set-up and run<a name="pmgui"></a>
 
