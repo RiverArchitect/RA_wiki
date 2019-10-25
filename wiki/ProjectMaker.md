@@ -42,6 +42,7 @@ The *ProjectMaker* module guides through the half-automated assessment of cost-r
 ## Prerequisites<a name="pmprereq"></a>
 
 @alert important
+
 Ensure that the following steps were executed in order to generate the required geodata for creating a project proposal:
 
 -   If terraforming applies:
