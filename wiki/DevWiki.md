@@ -18,7 +18,7 @@ git push
 Please note: if `git pull --rebase` encounters problems, issues will be highlighted in the edited markdown / HTML files.
 
 
-# Documention conventions <a name="convent"></a>
+# Documentation conventions <a name="convent"></a>
 
 For editing markdown documents, we recommend using [Notepad++](https://notepad-plus-plus.org) with [Editoria's markdown syntax style](https://github.com/Edditoria/markdown-plus-plus).
 Please be graphically descriptive and add figures to facilitate understanding your coding brilliance. For adding images, upload them to the *River Architect* [Media/images](https://github.com/RiverArchitect/Media) (yes, you will need to clone this repository, too - [read more about using `git`](DevGit)). Images can then be implemented in markdown file with:<br/>

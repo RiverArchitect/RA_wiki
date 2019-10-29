@@ -7,7 +7,7 @@ DEVELOPMENT
 - [**Add a module to River Architect**](#addmod)
   * [Use Python templates](#template)
   * [Bind the new module to the GUI](#bind)
-- [Modify the Wiki](DevWiki)
+- [Edit the Wiki](DevWiki)
 - [Use `git`](DevGit)
 
 ***
@@ -48,6 +48,7 @@ The *River Architect Wiki* for developers assumes a basic understanding of *Pyth
 Overview
 -	[Use Python templates](#template)
 -	[Bind the new module to the GUI](#bind)
+
 ***
 
 New modules or code modifications should be pushed to the `program` repository [[https://github.com/RiverArchitect/program]] ([read more about using `git`](DevGit)).
