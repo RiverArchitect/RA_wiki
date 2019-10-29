@@ -176,6 +176,7 @@ class TEMPLATE:
 -	modify the input arguments of the `__init__(self, *args, **kwargs)` function.
 
 The `cTEMPLATE.TEMPLATE()` class initiates a `self.logger` variable to write calculation progress to a logfile that is created as `RiverArchitect/logfile.log` when *River Architect* is called from the main GUI. This logefile should be used at every critical step where erroneous user input may yield wrong or no result. For example, if a user selects a raster file without valid data, the code should detect and tell the user about the problem using precise `try`-`except` statements. The `cTEMPLATE.TEMPLATE.use_spatial_analyst_function(input_raster_path)` function provides an example for the implementation of such behavior:
+<a name="tryexcept"></a>
 
 ```python
 	try:
