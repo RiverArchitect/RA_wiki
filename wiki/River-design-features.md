@@ -61,7 +61,7 @@ In addition, the *River Architect* provides the option of limiting restoration f
 
 ## Feature-wise lifespan and design maps<a name="lffeats"></a>
 
-The [Lifespan \& Design][3] tab enables the creation of lifespan and design maps of the features defined in the `threshold_values.xlsx` workbook. The names of lifespan and design maps start with either **`lf_`** for **Lifespan Maps** or **`ds_`** for **Design Maps**, followed by the **Feature ID** defined in the `threshold_values.xlsx` workbook. **Design Maps** additionally include a string of the parameter that they define (e.g. `_Dst_` contains stable grain size diameters and `_Dw_` contains stable wood log diameters referring to a user-defined flood frequency). Thus, typical names are:
+The [Lifespan & Design][3] tab enables the creation of lifespan and design maps of the features defined in the `threshold_values.xlsx` workbook. The names of lifespan and design maps start with either **`lf_`** for **Lifespan Maps** or **`ds_`** for **Design Maps**, followed by the **Feature ID** defined in the `threshold_values.xlsx` workbook. **Design Maps** additionally include a string of the parameter that they define (e.g. `_Dst_` contains stable grain size diameters and `_Dw_` contains stable wood log diameters referring to a user-defined flood frequency). Thus, typical names are:
 
 -	**Lifespan Maps**: **`lf_FeatureID.tif`**
 -	**Design Maps**: **`ds_PARAMETER_FeatureID.tif`**
@@ -90,7 +90,7 @@ Recommended threshold values in the [`threshold_values.xlsx` workbook](#featover
 -	Frequency threshold for design maps (e.g., 20 years);
 - 	Dimensionless safety factor `SF` for design maps.
 
-The [Lifespan \& Design][3] tab enables the creation of:
+The [Lifespan & Design][3] tab enables the creation of:
 
 -	**Lifespan Maps** with output Raster name: `.../LifespanDesign/Output/Rasters/CONDITION_lyr20/lf_grains.tif`; and
 -	**Design Maps** with output Raster name: `.../LifespanDesign/Output/Rasters/CONDITION_lyr20/ds_Dst_grains.tif`, which is a derivative of the Gauckler-Manning-Strickler formula using [Manning\'s *n*][manningsn]:<br/>
@@ -110,10 +110,10 @@ The creation of artificial backwaters and swales, or more generally calm water z
 -   Flow velocity `u` of 0.03 m/s (0.1 fps);
 -   Frequency threshold (design maps) of 5 years;
 -   Critical dimensionless bed shear stress `taux` with a threshold of *&tau;<sub>\*,cr</sub>* threshold of 0.047.
--   Topographic change: fill \& scour rates (`tcd`-`scour`-`fill`) of >= 0.1 m (0.3 ft) multiplied with the number of observation years (if a topographic change raster includes scour/fill observed over multiple years).
+-   Topographic change: fill & scour rates (`tcd`-`scour`-`fill`) of >= 0.1 m (0.3 ft) multiplied with the number of observation years (if a topographic change raster includes scour/fill observed over multiple years).
 -   Morphological Units (relevance-method) with `mu_relevance = ["agriplain", "backswamp", "mining pit", "pond", "pool", "slackwater", "swale"].`
 
-The [Lifespan \& Design][3] tab enables the creation of:
+The [Lifespan & Design][3] tab enables the creation of:
 
 -	**Lifespan Maps** with output Raster name: `.../LifespanDesign/Output/Rasters/CONDITION_lyr10/lf_backwt.tif`; and
 -	**Design Maps** with output Raster name: `.../LifespanDesign/Output/Rasters/CONDITION_lyr10/ds_Dst_backwt.tif`.
@@ -127,7 +127,7 @@ In the context of river engineering, soil-bioengineering applies living material
 
 *River Architect* uses the `.../01_Conditions/CONDITION/dem.tif` to compute the percent-wise terrain slope `S0`, where modified terrain with slopes of more than the `S0` threshold is considered to require reinforcement.
 
-The [Lifespan \& Design][3] tab enables the creation of :
+The [Lifespan & Design][3] tab enables the creation of :
 
 -	**Lifespan Maps** with output Raster names:
 	+ `.../LifespanDesign/Output/Rasters/CONDITION_lyr20/lf_bio_v_bio.tif` (vegetative bioengineering)
@@ -143,7 +143,7 @@ Berms are artificial lateral confinements that are represented by man-made bars 
 -   Morphological Units (relevance-method) with `mu_relevance = ["bank", " floodplain ", "high floodplain", "island floodplain ", "island high floodplain ", "lateral bar", "levee", "spur dike", "terrace"]`.
 -   Detrended DEM `det` with a lower limit of 5.2 m (17 ft) and an upper limit of 7.6 m (25 ft) to limit the application of berm setback and widening to economically reasonable extents.
 
-The [Lifespan \& Design][3] tab enables the creation of:
+The [Lifespan & Design][3] tab enables the creation of:
 
 -	**Design Maps** with output Raster name: `.../LifespanDesign/Output/Rasters/CONDITION_lyr10/det_widen.tif`.
 
@@ -165,7 +165,7 @@ and the exclusive list is defined as `mu_bad = ["tributary channel", "tributary 
 For streamwood, the exclusive approach based on `mu_bad` applies (see [parameters](LifespanDesign-parameters)).<br/>
 The design maps for the minimum required log diameter *D<sub>w</sub>* results from [Ruiz-Villanueva et al. (2016)][ruiz16b]'s interpolation curve as a function of the flow depth. The module applies on the single-thread formula because it returns larger values for the log diameter than the multi-thread formula when the probability of motion is set to zero: `Dw` = 0.32 / 0.18·`h`. The output map limits to regions where `Dw` is smaller than 7.6 m (300 in - lease contact us if that is not sufficient for a particular application).
 
-The [Lifespan \& Design][3] tab enables the creation of:
+The [Lifespan & Design][3] tab enables the creation of:
 
 -	**Lifespan Maps** with output Raster name: `.../LifespanDesign/Output/Rasters/CONDITION_lyr20/lf_wood.tif`; and
 -	**Design Maps** with output Raster name: `.../LifespanDesign/Output/Rasters/CONDITION_lyr20/ds_Dw_wood.tif`.
@@ -182,7 +182,7 @@ Artificially introduced fine sediment facilitates the root growth of new plantin
 
 In general, the topographic change and depth to water table thresholds should correspond to the largest values that any plantings type (cf. [Vegetation Plantings](#plants)) supports because only these areas are of interest for the incorporation of fine sediment in soils.
 
-The [Lifespan \& Design][3] tab enables the creation of:
+The [Lifespan & Design][3] tab enables the creation of:
 
 -	**Lifespan Maps** with output Raster name: `.../LifespanDesign/Output/Rasters/CONDITION_lyr30/lf_fines.tif`; and
 -	**Design Maps** with output Raster name: `.../LifespanDesign/Output/Rasters/CONDITION_lyr30/ds_Dcf_fines.tif`.
@@ -206,7 +206,7 @@ Grading aims at the reconnection of high floodplains and isolated islands throug
 
 Moreover, morphological unit criteria may be defined.
 
-The [Lifespan \& Design][3] tab enables the creation of:
+The [Lifespan & Design][3] tab enables the creation of:
 
 -	**Lifespan Maps** with output Raster name: `.../LifespanDesign/Output/Rasters/CONDITION_lyr10/lf_grade.tif` contain on/off lifespans corresponding to the maximum defined lifespan (highest discharge) or `NoData` pixels, respectively.
 
@@ -296,7 +296,7 @@ Indigenous plant species can be found on regional / country-specific websites li
 | Worldwide (1)          | [Free and open access to biodiversity data][gbif18]          |
 | Worldwide (2)          | [The Plant List][plantlist13]                                |
 
-The [Lifespan \& Design][3] tab enables the creation of:
+The [Lifespan & Design][3] tab enables the creation of:
 
 -	**Lifespan Maps** with output Raster names: `.../LifespanDesign/Output/Rasters/CONDITION_lyr20/lf_box.tif --lf_cot.tif --lf_whi.tif --lf_wil.tif`. 
 
@@ -319,7 +319,7 @@ Recommended threshold values in the [`threshold_values.xlsx` workbook](#featover
 -	Gravel stockpiles on floodplains or riverbanks: Morphological Units (relevance-method) with `mu_relevance = ["agriplain", "backswamp", "bank", "cutbank", "flood runner", "floodplain", "high floodplain", " hillside", "island high floodplain", "island floodplain", "lateral bar", "levee", "medial bar", "mining pit", "point bar", "pond", "spur dike", "tailings ", "terrace"]`
 -   Gravel injections in the main channel: Morphological Units (relevance-method) with `mu_relevance = ["chute", "fast glide", "flood runner", "bedrock", "lateral bar", "medial bar", "pool", "riffle", "riffle transition", "run", "slackwater", "slow glide", "swale", " tailings"]`
 
-The [Lifespan \& Design][3] tab enables the creation of:
+The [Lifespan & Design][3] tab enables the creation of:
 
 -	**Lifespan Maps** with output Raster name: `.../LifespanDesign/Output/Rasters/CONDITION_lyr30/lf_gravin.tif --lf_gravou.tif`; and
 -	**Design Maps** with output Raster name: `.../LifespanDesign/Output/Rasters/CONDITION_lyr30/ds_Dst_gravin.tif --ds_Dst_gravou.tif`.
@@ -334,7 +334,7 @@ From a parametric point of view, side cavities make sense at channel banks to cr
 	+ `scour` threshold of 30.5 m (100 ft) marks an arbitrarily chosen value that leads to the exclusion of all fill-prone sites, where side cavities may be easily buried.
 -   Morphological Units (relevance-method) with `mu_relevance = ["bank", "cutbank", "lateral bar", "spur dike", "tailings"]`.
 
-The [Lifespan \& Design][3] tab enables the creation of:
+The [Lifespan & Design][3] tab enables the creation of:
 
 -	**Design Maps** with output Raster name: `.../LifespanDesign/Output/Rasters/CONDITION_lyr30/ds_mu_sideca.tif`.
 
@@ -408,7 +408,7 @@ Within `1`-pixels in `sidech.tif` such as a function of the following input para
 -   Topographic change: fill rate `tcd`-`fill` of less than 0.1 m (0.3 ft);
 -   Critical dimensionless bed shear stress `taux` should be smaller than 0.047.
 
-The [Lifespan \& Design][3] tab enables the creation of:
+The [Lifespan & Design][3] tab enables the creation of:
 
 -	**Lifespan Maps** with output Raster names: `.../LifespanDesign/Output/Rasters/CONDITION_lyr21/lf_sidech.tif`. 
 

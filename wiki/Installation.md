@@ -24,7 +24,7 @@ Installation
 We recommend downloading and updating *River Architect* using [*Git Bash*](https://git-scm.com/downloads) (or Git GUI). Alternatively, *River Architect* can be downloaded as *zip* file. However, updates are tricky when *River Architect* is downloaded as *zip* file.
 
 **Git Bash**<br/>
-*GitHub* provides detailed descriptions and standard procedures to work with their repositories ([read more](https://help.github.com/en/articles/cloning-a-repository)). The following "recipe" guides through the first time installation (cloning) of *River Architect:
+*GitHub* provides detailed descriptions and standard procedures to work with their repositories ([read more](https://help.github.com/en/articles/cloning-a-repository)). The following "recipe" guides through the first time installation (cloning) of *River Architect*:
 
 1. Open *Git Bash*
 2. Type `cd "D:/Target/Directory/"` to change to the target installation directory (recommended: `cd "D:/Python/RiverArchitect/"`). If the directory does not exist, it can be created in the system explorer (right-click in empty space > `New >` > `Folder`).
