@@ -37,6 +37,8 @@ For adding new module documentation, create a new markdown file (e.g., `RA_wiki/
 1. Detailed descriptions / extended usage (e.g., equations and technical details)
 
 
+**Document Warning and Error messages** prompted in `try:` - `except:` statements with `self.logger.info("ERROR: Message")`. It would be better to use more precise exception rules such as `except ValueError:`, but we kept the broad "shotgun" approach with `except:` only because we encountered unexpected exception types using `arcpy`. A better and future way of error message logging in *River Architect* will be to use `self.logger.error()` in the exception statement rather than `self.logger.info()`, which should exclusively be used to log calculation progress. **Important is to add error messages, as well as warning messages, to the [Troubleshooting Wiki](Troubleshooting)** ([read more about extending the Wiki](DevWiki)). Use warning messages when a function can still work even though a variable assignment error occurred such as when an optional, additional raster is missing.
+
 
 
 

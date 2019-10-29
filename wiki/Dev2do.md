@@ -8,6 +8,7 @@ Future tasks for *River Architect* development:
 1. Resolve `arcpy` dependencies (move to *QGIS* and [`gdal`](https://gdal.org))
 1. Update and test [`River Builder`](RiverBuilder) implementation
 1. Couple with 2D numerical models
+1. Change Error and Warning message logging from `logger.info()` to `logger.error()` and `logger.warning()` statements.
 
 
 
