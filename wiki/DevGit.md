@@ -28,7 +28,7 @@ To download, modify and push changes to *River Architect* download and install [
 
 Done. Close *Git Bash*.
 
-
+Being a small developer team, we are currently not using [`git` branching](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell). This may change in the future ...
 
 
 
