@@ -72,9 +72,22 @@ All definitions made in this workbook need to respect the default workbook struc
 
 - Cover (vegetative) in row 84 to 85. `Rad.` defines the radius around single `Plants` or `Wood` placements, where habitat improves by an HSI value.
 
-- Fish lifestages must be named either `spawning, fry, ammocoetes, juvenile, adult, hydrologic year, season, depth > x`, or `velocity > x`. The lifestage names are currently hard-coded in the `Fish` class (`RiverArchitect/.site_packages/riverpy/cFish.py`) dictionary `self.ls_col_add = {"spawning": 1, "fry": 3, "ammocoetes": 3, "juvenile": 5, "adult": 7, "hydrologic year": 1, "season": 3, "depth > x": 5, "velocity > x": 7}` (see [known issues](Troubleshooting#issues)). This dictionary can be changed for using other lifestage names and we are working on an improvement in later versions. Note that this dictionary defines the relative column numbers that are added to the column where the fish name is defined (e.g., for name=*Chinook Salmon*, the start column is "C" and the *spawning*-column is "C+1"="D", while the "fry"-column is "C+3"="F" and so on).
-
 - Habitat Suitability Index curves can be found in the scientific literature with the the following keywords: `Habitat Suitability`, `Index`, `Curve`, *`TARGET SPECIES`* (e.g., [here](https://www.science.gov/topicpages/h/habitat+suitability+curves)).
+
+- Fish lifestages must be named either `spawning, fry, ammocoetes, juvenile, adult, hydrologic year, season, depth > x`, `velocity > x`, or `"rearing": 7`. The lifestage names are currently hard-coded in the `Fish` class (`RiverArchitect/.site_packages/riverpy/cFish.py`) dictionary `self.ls_col_add = {"spawning": 1, "fry": 3, "ammocoetes": 3, "juvenile": 5, "adult": 7, "hydrologic year": 1, "season": 3, "depth > x": 5, "velocity > x": 7, "rearing": 7}` (see [known issues](Troubleshooting#issues)). This dictionary can be changed for using other lifestage names and we are working on an improvement in later versions. Note that this dictionary defines the relative column numbers that are added to the column where the fish species name is defined (e.g., for name=*Chinook Salmon*, the start column is "C" and the *spawning*-column is "C+1"="D", while the "fry"-column is "C+3"="F" and so on). For example, for adding a `"rearing"` lifestage for `Chinook salmon` (one of the default species), `"rearing"` must replace `"adult"`, which is in the relative 7th (col."C"+7 = "J" column) of the Chinook salmon species. In fact, the species names are written to merged cells that cover two columns (see below table), but *River Architect* only reads the numeric value from `self.ls_col_add` to access curve data. **Thus, all lifestages must be defined in `self.ls_col_add`, as relative column number to the 0-column of every Fish species.** The following overview table of merged cells shows where to put what lifestage relative to the 0-column (**REMIND other lifestages than these required modifications of `self.ls_col_add` in `RiverArchitect/.site_packages/riverpy/cFish.py`):
+
+|LIFESTAGE | REL. COl. NO. | EXAMPLE FOR CHINOOK SALMON |
+|----------|---------------|----------------------------|
+| spawning | 1 | C-D |
+| fry | 3 | E-F |
+| ammocoetes | 3 | E-F |
+| juvenile | 5 | G-H |
+| adult | 7 | I-J |
+| rearing | 7 | I-J |
+| hydrologic year | 1 | C-D (example: All Aquatic AI-AJ)|
+| season | 3 | E-F (example: All Aquatic AK-AL)|
+| depth > x | 5 | G-H (example: All Aquatic AM-AN)|
+| velocity > x | 7 | I-J (example: All Aquatic AO-AP)|
 
 
 The `Season start` and `Season end` dates are important in the flow duration generation for *HHSI* curves. For the consideration of entire hydrological years (or [water years](https://en.wikipedia.org/wiki/Water_year)), define `Season start` as `1-Oct` and `Season end` as `30-Sep` (in the United States and Switzerland, in Germany from `1-Nov` to `31-Oct` according to the definition of an *Abflussjahr* in the [DIN 4049](https://www.din.de/en/getting-involved/standards-committees/naw/standards/wdc-beuth:din21:1987523)). Hydrological/water years are defined based on the assumption that water resources are smallest in fall. Fish seasons are relevant for habitat assessment because fish grows and a lifestage (e.g., juvenile) may not be relevant for the entire year (that means: possibly not use the entire year).
