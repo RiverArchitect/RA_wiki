@@ -13,6 +13,8 @@ Run the following scripts with Esri's *Python* environment ([read more](Installa
  - `make_flowduration.py` creates flow duration curves (annual averages) for the assessment of AUA.
 
  - `morphologydesigner.py` creates design tables for self-sustaining pool-riffle channels (uses `cHydraulic.py` and `cPoolRiffle.py`).
+ 
+ - `rename_files.py` facilitates renaming input files for conditions according to [raster file name conventions](Signposts#nameconvention) by adding, removing or replacing a file name prefix and suffix.<a name="renamefiles"></a>
 
  - `run_make_….bat` are a batchfiles that run `make_….py` on Windows x64.
 

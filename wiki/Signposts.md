@@ -46,7 +46,7 @@ A new popup window inquires following inputs for generating a new *Condition* fr
 
 *Note that the optional inputs are highly recommended to make the subsequent analyses robust.*
 
-Once the input is defined, clicking on the `CREATE CONDITION` button will create the new *Condition* as `RiverArchitect/01_Conditions/`*NEW\_CONDITION* with the following contents:
+Once the input is defined, clicking on the `CREATE CONDITION` button will create the new *Condition* as `RiverArchitect/01_Conditions/`*NEW\_CONDITION* with the following contents:<a name="nameconvention"></a>
 
 - `back.tif` is a background Raster that may be used for limiting lifespan analyses (<a href="LifespanDesign">LifespanDesign</a>) extents and all subsequent analyses. Moreover, the background Raster enables consistent mapping.
 
@@ -64,7 +64,7 @@ Once the input is defined, clicking on the `CREATE CONDITION` button will create
 
 - `vaQQQQQQ.tif` is flow velocity direction rasters required by the [Habitat Connectivity](Connectivity) module. [Read more about file name conventions.](#terms)
 
-The flow depth and velocity Rasters may require manual renaming to adapt to the [Raster name conventions](#terms). Subsequently, populating the created *Condition* is strongly recommended
+The flow depth and velocity Rasters may require manual renaming to adapt to these Raster name conventions. A [*River Architect Tools* script](Tools#renamefiles) facilitates renaming multiple file names. Subsequently, populating the created *Condition* is strongly recommended
 
 ## Populate Condition<a name="pop-condition"></a>
 ***
@@ -79,8 +79,8 @@ The flow depth and velocity Rasters may require manual renaming to adapt to the 
 ***
 Instream morphological unit Rasters according to [Wyrick and Pasternack (2014)][wyrick14] enable the correct allocation of [river design features](River-design-features) as defined in the [thresholds workbook](LifespanDesign#modthresh). For this purpose, the following inputs are needed:
 
- -  A flow velocity raster (use [baseflow](https://en.wikipedia.org/wiki/Baseflow) according to the [literature][wyrick14]);
- -  A flow depth raster (use [baseflow](https://en.wikipedia.org/wiki/Baseflow) according to the [literature][wyrick14]).
+ -  A flow velocity raster (use [baseflow](https://en.wikipedia.org/wiki/Baseflow) in line with [scientific literature][wyrick14]);
+ -  A flow depth raster (use [baseflow](https://en.wikipedia.org/wiki/Baseflow) in line with [scientific literature][wyrick14]).
 
 The delineation of morphological units as a function of flow depth and velocity can be modified in the `morphological_units.xlsx` workbook (`RiverArchitect/.site_packages/templates/` folder). A click on the `Populate Condition` GUI's `View/change MU definitions` opens this workbook.
 
