@@ -9,6 +9,7 @@ Get Started and Signposts
   +  [Analyze Flow](#ana-flows)
   +  [Make a Subset Condition](#sub-condition)
   +  [Make Input Files (.inp)](#inpfile)
+  +  [Align Input Rasters](#align-inputs)
 - [Geofile name conventions](Signposts#terms)
 - [Input file preparation](Signposts#inputs)
 
@@ -42,7 +43,7 @@ A new popup window inquires following inputs for generating a new *Condition* fr
 - An optional folder containing velocity angle Rasters (any Raster type is permitted) corresponding to multiple discharges ([read more on discharge definitions](#inputs)). Note that velocity angles are defined in degrees from North, i.e. North=0, East=90, West=-90, South=180/-180. A *Raster string* may be defined to select only Rasters that contain certain letters in their name from the defined folder (e.g., enter `va`).
 - An optional *Scour* Raster (U.S. customary: in feet or SI metric: in meters) containing annual scour rates, which may result from terrain change detection analyses ([Pasternack and Wyrick 2017](http://dx.doi.org/10.1002/esp.4064)) or hydro-morphodynamic modeling (tricky).
 - An optional *Fill* Raster (U.S. customary: in feet or SI metric: in meters) containing annual fill rates, which may result from terrain change detection analyses ([Pasternack and Wyrick 2017](http://dx.doi.org/10.1002/esp.4064)) or hydro-morphodynamic modeling (tricky).
-- A background Raster.
+- A background Raster, which can optionally be used to [Align Input Rasters](#align-inputs).
 
 *Note that the optional inputs are highly recommended to make the subsequent analyses robust.*
 
@@ -202,6 +203,19 @@ For retrieving the extent, in *ArcGIS* Desktop, go to the `View` menu, click on 
 The function uses these definitions for zooming to each point defined below Line 8 in `mapping.inp`, cropping the map to the defined extents and exporting each page to a `pdf` map bundle containing as many pages as there are defined in `mapping.inp`.<br/>
 The program uses the reference coordinate system and projection defined in the `.aprx` file's map layout templates or in `mapping.inp`.
 
+
+## Align Input Rasters<a name="align-inputs"></a>
+***
+In order to ensure robustness and accuracy of analyses, it is important that input rasters share a common alignment, cell size, and coordinate system. Input rasters can be aligned in the following ways:
+- During creation of a new [Condition](#new-condition), align input rasters by using a background raster and selecting the "Use to align input rasters" checkbox.
+- For an existing condition, the tool from the GetStarted menu allows selection of an alignment raster.
+
+The alignment routine reprojects and/or resamples the input raster data to match the following attributes from the input alignment raster:
+- ArcGIS SpatialRefernce (i.e. reference coordinate system)
+- lower left corner of raster, modulo cell size
+- cell size
+
+Caution should be taken when using the built-in alignment routine, as input data may have already been resampled (e.g. from a mesh, TIN, or point features) and repeated resampling of data may create artifacts in the resultant data. Additionally, other routines in River Architect assume that water surface elevation can be calculated by summation of the DEM and depth rasters, which may not hold true if these data have been subject to different resampling schemes.
 
 # Geofile (Raster) conventions<a name="terms"></a>
 ***
