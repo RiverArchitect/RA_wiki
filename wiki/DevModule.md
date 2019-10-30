@@ -55,7 +55,7 @@ New modules or code modifications should be pushed to the `program` repository [
 
 *River Architect* has currently five **master** tabs (or modules) and three of them have **slave**-tabs (sub-modules): [Lifespan](LifespanDesign), [Morphology](ModifyTerrain), and [Ecohydraulics](SHArC). The development of a new module or sub-module follows the same standards and varies only in the way how the tab is finally bound in the *River Architect* master GUI. For creating a new (sub) module, do the following:
 
-1. Have a look at *River Architect* and think about the capacities that the new module should have, and how it can be fitted in the existing framework (think twice before adding a new master tab).
+1. Have a look at *River Architect* ([see folder and file structure](Installation#structure)) and think about the capacities that the new module should have, and how it can be fitted in the existing framework (think twice before adding a new master tab).
 1. Clone the template repository: `git clone https://github.com/RiverArchitect/development.git`.
 1. Frome the cloned repository, copy the folder `RiverArchitect/development/moduleTEMPLATE/` to `RiverArchitect/moduleTEMPLATE/`.
 1. Rename `RiverArchitect/moduleTEMPLATE/` to  `RiverArchitect/NEW_MODULE_NAME/` (obviously, replace `NEW_MODULE_NAME` with the name of the new module).
