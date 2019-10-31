@@ -9,7 +9,7 @@ Habitat Connectivity
 - [Methodology](#methodology)
   * [Interpolating Hydraulic Rasters](#interpolating-hydraulic-rasters)
   * [Escape Route Calculations](#escape-route-calculations)
-  * [Calculating Disconnected Area](#calculating-disconnected-area)
+  * [Calculating Disconnected Habitat Area](#calculating-disconnected-area)
   * [Determining Q<sub>disconnect</sub>](#determining-qdisconnect)
 - [References](#references)
 
@@ -17,7 +17,13 @@ Habitat Connectivity
 
 # Introduction to Connectivity Module<a name="intro"></a>
 
-The *Connectivity* module is used to identify wetted areas that become disconnected from the river mainstem in the event of a flow reduction, as well as characterize the degree to which wetted areas are connected before a disconnection occurs. These tools were developed to assess stranding risk for any given aquatic species and lifestage.
+The *Connectivity* module can be used to identify the following for a given flow reduction scenario: 
+- wetted areas that become disconnected from the river mainstem in the event of a flow reduction
+- the discharges at which specific areas disconnect
+- stranding risk associated with each disconnected area
+- the degree to which wetted areas are connected before a complete disconnection occurs.
+
+These tools were developed to assess stranding risk for any given aquatic species and lifestage.
 
 # Quick GUIde to Connectivity Assessment<a name="guide"></a>
 
@@ -25,9 +31,9 @@ The *Connectivity* module is used to identify wetted areas that become disconnec
 
 ![mtgui](https://github.com/RiverArchitect/Media/raw/master/images/gui_start_connect.PNG)
 
-To begin using the Connectivity module, first select a hydraulic [Condition](Signposts#conditions). In order to accurately determine where velocity is a barrier to fish passage, the selected condition must include velocity angle input rasters.
+To begin using the Connectivity module, first select a hydraulic [Condition](Signposts#conditions). In order to accurately determine where velocity is a barrier to fish passage, the selected condition must include velocity angle input rasters. In order to estimate stranding risks, cHSI rasters must have already been calculated for the input Condition using the [SHArC](SHArC) module.
 
-Next, select least one [Physical Habitat](SHArC#hefish) (fish species/lifestage) from the dropdown menu. The Physical Habitat contains data specific to the fish species/lifestage. Physical Habitat data is used by the Connectivity module to determine if fish are able to traverse wetted areas by accounting for the organism's minimum swimming depth and maximum swimming speed (Physical Habitat data is also used by [SHArC](SHArC) to determine habitat suitability). These data can be viewed/edited via the drop-down menu: `Select Physical Habitat `  --> `DEFINE FISH SPECIES` (scroll to the "Travel Thresholds" section of the workbook).
+Next, select at least one [Physical Habitat](SHArC#hefish) (fish species/lifestage) from the dropdown menu. The Physical Habitat contains data specific to the fish species/lifestage. Physical Habitat data is used by the Connectivity module to determine if fish are able to traverse wetted areas by accounting for the organism's minimum swimming depth and maximum swimming speed (Physical Habitat data are also used by [SHArC](SHArC) to determine habitat suitability). These data can be viewed/edited via the drop-down menu: `Select Physical Habitat `  --> `DEFINE FISH SPECIES` (scroll to the "Travel Thresholds" section of the workbook).
 
 Once the desired condition and Physical Habitat(s) are selected, choose model discharges Q<sub>high</sub> and Q<sub>low</sub>. This defines the range of discharges over which to apply the connectivity analysis, simulating the changes in habitat connectivity for a flow reduction from Q<sub>high</sub> to Q<sub>low</sub>. For further explanation of the methodology used in the analysis, see [Methodology](Connectivity#Methodology).
 
@@ -35,13 +41,15 @@ Outputs are stored in `Connectivity\Output\Condition_name\`. The outputs produce
 
 - interpolated rasters (`h_interp`, `u_interp`, `va_interp`): interpolated depth, velocity (magnitude), and velocity angle rasters. See [Interpolating Hydraulic Rasters](Connectivity#interpolating-hydraulic-rasters) for more information.'
 
-Outputs specific to the applied flow reduction are stored in the subdirectory `Connectivity\Output\Condition_name\flow_red_Q<sub>high</sub>_Q<sub>low</sub>`. These outputs include:
+Outputs specific to the applied flow reduction are stored in the subdirectory `Connectivity\Output\Condition_name\flow_red_Qhigh_Qlow`. These outputs include:
 
-- `shortest_paths\`: directory containing a raster for each model discharge in the range Q<sub>low</sub>-Q<sub>high</sub>, indicating the minimum distance/least cost required to escape to the river mainstem at Q<sub>low</sub> and subject to constraints imposed by the travel thresholds for the selected Physical Habitat. See [Escape Route Calculations](Connectivity#escape-route-calculations) for more.
+- `shortest_paths\`: directory containing a raster for each model discharge in the range Q<sub>low</sub>-Q<sub>high</sub>, indicating the minimum distance/least cost required to escape to the river mainstem at Q<sub>low</sub>, subject to constraints imposed by the travel thresholds for the selected Physical Habitat. See [Escape Route Calculations](Connectivity#escape-route-calculations) for more.
 
-- `disc_areas\`: folder containing a shapefile for each model discharge indicating wetted areas which are effectively disconnected at that discharge. See [Calculating Disconnected Area](Connectivity#calculating-disconnected-area) for more.
+- `disc_areas\`: directory containing a shapefile for each model discharge indicating wetted areas which are effectively disconnected at that discharge. See [Calculating Disconnected Habitat Area](Connectivity#calculating-disconnected-area) for more.
 
 - `disconnected_area.xlsx`: a spreadsheet containing plotted data of discharge vs disconnected area.
+
+- `disconnected_habitat.tif`: a raster showing all wetted areas which become disconnected in the applied flow reduction scenario, weighted by the combined habitat suitability index (cHSI) at Q<sub>high</sub> (before the flow reduction occurs). See [Calculating Disconnected Habitat Area](Connectivity#calculating-disconnected-area) for more.
 
 - `Q_disconnect.tif`: a raster showing the highest model discharge for which areas are disconnected from the mainstem at Q<sub>low</sub>. Locations that are not disconnected at any modeled discharge are assigned a value of zero. Thus, this map indicates locations and discharges below which stranding risks may occur. See [Determining Q<sub>disconnect</sub>](Connectivity#determining-qdisconnect) for more.
 
@@ -98,10 +106,11 @@ Applying the depth and velocity thresholds at each cell yields a set of neighbor
 
 ***
 
-## Calculating Disconnected Area
+## Calculating Disconnected Habitat Area
 
 Even if there is wetted area connecting two locations, they may not be considered connected in the context of fish passage. This is because low water depths or high velocities may effectively act as "hydraulic barriers", limiting fish mobility. The applied Physical Habitat contains threshold values for the minimum swimming depth and maximum swimming speed. After escape routes are calculated for a given discharge, the resultant path length raster shows which areas are able to reach the river mainstem for the given hydraulic conditions and biological limitations. Wetted areas in the corresponding interpolated depth raster for which a least-cost path cannot be calculated are considered to be disconnected areas. These disconnected areas are then cropped within the wetted area at Q<sub>high</sub> (not interpolated), as floodplains outside the Q<sub>high</sub> wetted area are assumed to not be active for the simulated flow reduction. Resultant disconnected areas are saved to a shapefile for each discharge in the `disc_areas` output directory.
 
+Once disconnected areas have been calculated, they are weighted by the combined habitat suitability index (cHSI) at Q<sub>high</sub> for the target Physical Habitat. The resultant raster is stored as `disconnected_habitat` in the output directory. Since cHSI serves as a proxy for fish density in habitat-limited environments, the cHSI at Q<sub>high</sub> in areas that become disconnected by the flow reduction serves as a spatially-distributed stranding risk metric.
 
 ## Determining Q<sub>disconnect</sub>
   
