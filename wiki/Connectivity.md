@@ -35,7 +35,11 @@ To begin using the Connectivity module, first select a hydraulic [Condition](Sig
 
 Next, select at least one [Physical Habitat](SHArC#hefish) (fish species/lifestage) from the dropdown menu. The Physical Habitat contains data specific to the fish species/lifestage. Physical Habitat data is used by the Connectivity module to determine if fish are able to traverse wetted areas by accounting for the organism's minimum swimming depth and maximum swimming speed (Physical Habitat data are also used by [SHArC](SHArC) to determine habitat suitability). These data can be viewed/edited via the drop-down menu: `Select Physical Habitat `  --> `DEFINE FISH SPECIES` (scroll to the "Travel Thresholds" section of the workbook).
 
-Once the desired condition and Physical Habitat(s) are selected, choose model discharges Q<sub>high</sub> and Q<sub>low</sub>. This defines the range of discharges over which to apply the connectivity analysis, simulating the changes in habitat connectivity for a flow reduction from Q<sub>high</sub> to Q<sub>low</sub>. For further explanation of the methodology used in the analysis, see [Methodology](Connectivity#Methodology).
+Once the desired condition and Physical Habitat(s) are selected, choose model discharges Q<sub>high</sub> and Q<sub>low</sub>. This defines the range of discharges over which to apply the connectivity analysis, simulating the changes in habitat connectivity for a flow reduction from Q<sub>high</sub> to Q<sub>low</sub>.
+
+Lastly, select an interpolation method. See [Interpolating Hydraulic Rasters](#interpolating-hydraulic-rasters) for more information.
+
+For further explanation of the methodology used in the analysis, see [Methodology](Connectivity#Methodology).
 
 Outputs are stored in `Connectivity\Output\Condition_name\`. The outputs produced are:
 
@@ -75,7 +79,13 @@ The analysis begins by performing an interpolation of the water surface elevatio
 - the WSE is interpolated across the DEM extent using an Inverse Distance Weighted (IDW) interpolation scheme on the 12 nearest neighbors.
 - The DEM is subtracted from the interpolated WSE raster to produce an interpolated depth raster. Only positive values are saved (negative values indicate an estimated depth to groundwater).
 - Interpolated velocity and velocity angle rasters are created, where velocity is set to zero in the newly interpolated areas.
-- Interpolated rasters are stored in `Connectivity\Condition_name\h_interp`, `Connectivity\Condition_name\u_interp`, `Connectivity\Condition_name\va_interp`.
+- Interpolated rasters are stored in `Connectivity\Condition_name\h_interp`, `Connectivity\Condition_name\u_interp`, `Connectivity\Condition_name\va_interp`. All interpolated rasters are saved with a corresponding .info.txt file which records the interpolation method and input rasters used in its creation.
+
+The available interpolation methods are:
+
+- `IDW`: Inverse distance weighted interpolation. Each null cell in the low flow depth raster is assigned a weighted average of its 12 nearest neighbors. Each weight is inversely proportional to the second power of the distance between the interpolated cell and its neighbor. Thus, the closest neighbors to an interpolated cell receive the largest weights. This method was found to have the best balance of computational speed and accuracy when tested via cross-validation.
+- `Kriging`: Ordinary Kriging interpolation. This method also uses a weighted average of the 12 nearest neighbors, but weights are calculated using a semi-variogram, which describes the variance of the input data set as a function of the distance between points. A spherical functional form is also assumed for the fitted semi-variogram. Kriging is the most accurate interpolation method if certain assumptions are met regarding normality and stationarity of error terms. However, it is also the most computationally expensive method. This method was found to have comparable accuracy compared to IDW, but with significantly higher computational costs.
+- `Nearest Neighbor`: The simplest method, which sets the water surface elevation of each null cell to that of the nearest neighboring cell.
 
 ## Escape Route Calculations
 
