@@ -123,7 +123,7 @@ The [Lifespan & Design][3] tab enables the creation of:
 In the context of river engineering, soil-bioengineering applies living materials (plants) to stabilize terrain and enhance habitat. Alas, dry conditions in arid and semi-arid (Mediterranean) climate zones limits the possibilities of application. Therefore, *River Architect* additionally considers the placement of angular boulders (see [angular boulders](#rocks)). Recommended threshold values in the [`threshold_values.xlsx` workbook](#featoverview) are:
 
 -   Depth to groundwater `d2w` with minimum and maximum values as a function of vegetation plantings requirements or integration depth of vegetative bioengineering features. Thus, *River Architect* applies vegetative bioengineering such as fascines or geotextile between the **(min)** value in row 7 and the **(max)** value in row 8 of the [threshold value workbook](LifespanDesign#input-modify-threshold-values). Regions with at terrain slope above the threshold defined in row 20 and above the maximum Depth to the groundwater defined in row 8 get mineral bioengineering (such as rock paving or riprap) assigned according to the [stable grain size](#rocks). The differentiation is made because vegetative bioengineering features may dry out when the water table is too far away (vertically).
--   Terrain slope `S0` of 0.2 (20\%).
+-   Terrain slope `S0` of 0.2 (20%).
 
 *River Architect* uses the `.../01_Conditions/CONDITION/dem.tif` to compute the percent-wise terrain slope `S0`, where modified terrain with slopes of more than the `S0` threshold is considered to require reinforcement.
 
@@ -177,7 +177,7 @@ Artificially introduced fine sediment facilitates the root growth of new plantin
 -   Critical dimensionless bed shear stress `taux` of *&tau;<sub>\*,cr</sub></sub>* = 0.030.
 -   Topographic change rates:
 	+ `scour` with respect to [White Alder](#plants) (largest for plantings) of 0.3 m (1.0 ft) multiplied with the number of years of terrain change observation 
-	+ `fill` with respect to [Cottonwood](#plants) (highest for plantings) of 0.8 *times the seedling length in m or ft* and multiplied with the number of years of terrain change observation (the sample case uses Cottonwood with a planting depth of 80\%, a cutting length of 7 ft (2.1 m) and a topographic change observation period of 3 years)
+	+ `fill` with respect to [Cottonwood](#plants) (highest for plantings) of 0.8 *times the seedling length in m or ft* and multiplied with the number of years of terrain change observation (the sample case uses Cottonwood with a planting depth of 80%, a cutting length of 7 ft (2.1 m) and a topographic change observation period of 3 years)
 -   Depth to groundwater `d2w` with a lower limit of 0.3 m (1 ft) and an upper limit of 3.0 m (10 ft) corresponding to vegetation [plantings](#plants) requirements.
 
 In general, the topographic change and depth to water table thresholds should correspond to the largest values that any plantings type (cf. [Vegetation Plantings](#plants)) supports because only these areas are of interest for the incorporation of fine sediment in soils.
@@ -214,7 +214,7 @@ The grading lifespan maps can also be interpreted as a **Design Map**, which are
 
 ## Plantings<a name="plants"></a>
 
-The survival analysis of plantings assumes a general cutting length of min. 2.1 m (7 ft), where approximately 80*\%* of the cuttings are planted in the ground and 20*\%* protrude above the ground. The *<a href="LifespanDesign">LifespanDesign</a>* module enables the differentiation between up to four indigenous plant species that are relevant for habitat enhancement. The installation contains threshold parameters for **lifespan maps** for the following plant species native to Northern California (referred to as "sample case"). The depth to the groundwater `d2w` thresholds correspond to naturally observed occurrences. **No design maps** are created because the lifespan maps already contain all relevant information.
+The survival analysis of plantings assumes a general cutting length of min. 2.1 m (7 ft), where approximately 80*%* of the cuttings are planted in the ground and 20*%* protrude above the ground. The *<a href="LifespanDesign">LifespanDesign</a>* module enables the differentiation between up to four indigenous plant species that are relevant for habitat enhancement. The installation contains threshold parameters for **lifespan maps** for the following plant species native to Northern California (referred to as "sample case"). The depth to the groundwater `d2w` thresholds correspond to naturally observed occurrences. **No design maps** are created because the lifespan maps already contain all relevant information.
 Recommended threshold values in the [`threshold_values.xlsx` workbook](#featoverview) for phreatophytes are:
 
 -   Box Elder (*Acer Negundo*)
@@ -233,7 +233,7 @@ Recommended threshold values in the [`threshold_values.xlsx` workbook](#featover
 	   * `fill` >= 0.8 *times seedling length* ([Kui and Stella 2016][kui16a], [Polzin and Rood 2006][polzin06])
 	+ Depth to groundwater  `d2w` with a lower threshold of 1.5 m (5 ft) and an upper threshold of 3 m (10 ft)<br/>
 	   *Full source ranges: 0.6 m to 4.6 m ([Stella et al. 2003][stella03]), 0.6 m to 2.7 m ([SYRCL 2013][syrcl13]), 0.6 m to 2.8 m above baseflow level for the closely-related black cottonwood (*Populus trichocarpa*, extracted from [Polzin and Rood 2006][polzin06]), 0.23±0.08 m to 1.58±0.14 m for establishment of woody riparian species and up to 2.9 m for existing plants ([Shafroth et al. 1998][shafroth98], [2000][shafroth00]), up to 2.0 m ([Stromberg et al. 1996][stromberg96]), up to 1.0 m, [Stromberg et al. 1991][stromberg91]), up to 4.5 m for adult lifestages ([Busch and Smith 1995][busch95]), up to 3.5 m for adult lifestages ([Lite and Stromberg 2005][lite05]), up to 4-5 m for salicae in general ([Politti et al. 2018][politti18])*
-	+  The base case applies sample values of a minimum cutting length of 2.1 m (7 ft), a topographic change observation period length of 3 years and a planting depth of 80\% (0.8) of the cutting length.
+	+  The base case applies sample values of a minimum cutting length of 2.1 m (7 ft), a topographic change observation period length of 3 years and a planting depth of 80% (0.8) of the cutting length.
 
 -   White Alder (*Alnus Rhombifolia*)
 	+  Critical dimensionless bed shear stress `taux` of 0.047
@@ -252,11 +252,11 @@ Recommended threshold values in the [`threshold_values.xlsx` workbook](#featover
 	   * Depth to groundwater `d2w` with a lower threshold of 0.3 m (1.0 ft) and an upper threshold of 1.5 m  (4.9 ft) <br/>
 	     *Full source ranges: 0.6 m to 2.7 m ([SYRCL 2013][syrcl13])*
 	+  Willows (*Salix alba*)<br/>
-	   *All *Salix alba* parameters are extracted from [Pasquale et al. (2011)][pasquale11], [(2012)][pasquale12], and [(2014)][pasquale14].*
+		 *Salix alba parameters are extracted from [Pasquale et al. (2011)][pasquale11], [(2012)][pasquale12], and [(2014)][pasquale14].*
 	   * Flow depth `h` of *>=* 0.2 m (0.7 ft)
 	   * Critical dimensionless bed shear stress `taux` of 0.1 (if the root depth is larger than 0.5 m and the stem height is larger than 1.0 m)
 	   * Topographic change: scour rate `tcd`-`scour` >= 0.1 m (0.2 ft)      
-	+  The default workbook case applies sample values of a minimum cutting length of 2.1 m (7 ft), a topographic change observation period length of 3 years and a planting depth of 80\% (0.8) of the cutting length.
+	+  The default workbook case applies sample values of a minimum cutting length of 2.1 m (7 ft), a topographic change observation period length of 3 years and a planting depth of 80% (0.8) of the cutting length.
 
 Some of the above-listed studies on plant stability refer to sand-bed rivers, where scour depths are likelier to be achieved than in gravel-bed rivers (e.g., [Wilcock 1988][wilcock88], [Bywater-Reyes et al. 2015][bywater15]). Threshold values from studies including data from sand-beds ([Stromberg et al. 1993][stromberg93], [Wilcox and Shafroth 2013][wilcox13], [Kui and Stella 2016][kui16a]) require a safety factor of 2 to 4 regarding scour, as the root-plant surfaces are higher in the finer sand beds. The increased contact surface causes higher stability (i.e., the required drag forces for uprooting in gravel/cobble bed rivers are 2-4 times lower) ([Politti et al. 2018][politti18]).
 
@@ -314,7 +314,7 @@ Gravel deposits on floodplains should be erodible by frequent floods (i.e., stoc
 
 Recommended threshold values in the [`threshold_values.xlsx` workbook](#featoverview) for in-channel gravel injections are:
 
--   Critical dimensionless bed shear stress `taux` of *&tau;<sub>\*,cr</sub></sub>* = 0.047.
+-   Critical dimensionless bed shear stress `taux` of *&tau;<sub>\*,cr</sub>* = 0.047.
 -   Gravel stockpiles on floodplains or riverbanks: Topographic change scour rate: for gravel stockpiles (default in cell `R23` of the [`threshold_values.xlsx` workbook](#featoverview): 0.3 m (or 1 ft) per year).
 -	Gravel stockpiles on floodplains or riverbanks: Morphological Units (relevance-method) with `mu_relevance = ["agriplain", "backswamp", "bank", "cutbank", "flood runner", "floodplain", "high floodplain", " hillside", "island high floodplain", "island floodplain", "lateral bar", "levee", "medial bar", "mining pit", "point bar", "pond", "spur dike", "tailings ", "terrace"]`
 -   Gravel injections in the main channel: Morphological Units (relevance-method) with `mu_relevance = ["chute", "fast glide", "flood runner", "bedrock", "lateral bar", "medial bar", "pool", "riffle", "riffle transition", "run", "slackwater", "slow glide", "swale", " tailings"]`
