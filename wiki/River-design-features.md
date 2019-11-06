@@ -40,8 +40,8 @@ Changes in this workbook should limit to cells with `INPUT`-type formatting and 
     -   Side Channels, representative for Anabranches, Multithread- or Anastomosed Channels and Flood Runners (*Feature ID: sidech*)
 	
 -   **Plantings features** include up to four plant species. The pre-defined plant species are ([can be modified](#modfeat), except for the fields that are marked for input in the thresholds workbook):
-    -   (Fremont) Cottonwood (*Populus Fremontii*, *Feature ID: cot*)
     -   Box Elder (*Acer Negundo*, *Feature ID: box*)
+    -   (Fremont) Cottonwood (*Populus Fremontii*, *Feature ID: cot*)
     -   White Alder (*Alnus Rhombifolia*, *Feature ID: whi*)
     -   Willows (*Salix Goodingii / laevigata / lasiolepis / alba*, *Feature ID: wil*)
 
