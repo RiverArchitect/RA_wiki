@@ -3,7 +3,7 @@ The to-do list for developers
 
 To edit this list, please clone the Wiki ([see descriptions](DevGit)) and follow the [Wiki writing instructions](DevWiki).
 
-Minor future tasks (max. one day of work each):
+### Minor future tasks (max. one day of work each)
 
 - General
 	1. Change Error and Warning message logging from `logger.info()` to `logger.error()` and `logger.warning()` statements.
@@ -16,7 +16,7 @@ Minor future tasks (max. one day of work each):
 
 	
 
-Major future tasks for *River Architect* development:
+### Major future tasks for *River Architect* development
 
 1. Add a *Load User Settings* options ([see below](#usrstgs))
 1. Resolve `arcpy` dependencies (move to *QGIS* and [`gdal`](https://gdal.org))
