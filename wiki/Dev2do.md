@@ -25,12 +25,10 @@ Major future tasks for *River Architect* development:
 
 
 
-
+# DETAILED PROBLEM DESCRIPTIONS
 ***
 
-# DETAILED PROBLEM DESCRIPTIONS
-
-# User settings  <a name="usrstgs"></a>
+## User settings  <a name="usrstgs"></a>
 ***
 
 A user settings load function may use a text file to enable the following user definitions (provided by [sierrajphillips](https://github.com/sierrajphillips)):
