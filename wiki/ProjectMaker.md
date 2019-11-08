@@ -103,7 +103,7 @@ To determine cost-relevant quantities for a site-related restoration plan, a man
 
 ## Input: Plantings shapefiles <a name="pminp3"></a>
 
-The [*MaxLifespan*][4] module produces geofiles (i.e., rasters and shapefiles) of complete river reaches.  An overlay of the above-created project area polygon over recent satellite image shows, where existing shrubs intersect with projected actions. A *PlantExisting.shp* shapefile with polygons delineating these intersects needs to be created and drawn as follows in the `ProjectName/ProjectMaps.aprx`-file:
+*Project Maker* will place plants only where it makes sense and removes existing plants where necessary. An overlay of the above-created project area polygon over recent satellite image shows, where existing plants intersect with projected actions and where these plants may need to be cleared (removed). A *PlantExisting.shp* shapefile with polygons delineating these intersects needs to be created and drawn as follows in the `ProjectName/ProjectMaps.aprx`-file:
 
 1.  In the Catalog tab, open the folder tree `ProjectName/Geodata/Shapefiles/` (double click on the folder to make it appear in the lower box).
 
@@ -121,7 +121,7 @@ The [*MaxLifespan*][4] module produces geofiles (i.e., rasters and shapefiles) o
     5.  Go to the `Attribute Table` tab and type `Existing` (*text*) in the `ActionType` field and `1` (*short integer*) in the `gridcode` field.
     6.  Once all visible plantings within the project area are delineated, save the edits.
 
-Terraforming may require clearing of existing vegetation in the project area. In this case, use the above created *PlantExisting.shp* as template to delineate plants to remove (to be cleared):
+Terraforming may require clearing of existing vegetation in the project area. In this case, use the above created *PlantExisting.shp* as template to delineate plants to remove (to be cleared): <a name="pminp31"></a>
 
 1.  In the Catalog tab, open the folder tree `ProjectName/Geodata/Shapefiles/` (double click on the folder to make it appear in the lower box).
 
@@ -135,7 +135,7 @@ Terraforming may require clearing of existing vegetation in the project area. In
         *When highliting existing plantings for clearing, remember that in river restoration and habitat enhancement projects "clearing" should limit to the absolutely required minimum. That means: Delete as many polygons of existing plants as possble from `PlantClearing.shp`.*
     3.  Once all non-clearing plants are removed, save the edits.
 
-Save and close `ProjectName/ProjectMaps.aprx`.
+Save and close `ProjectName/ProjectMaps.aprx`. **Note: Both `PlantExisting` and `PlantClearing` shapefiles are not mandatory for running *Project Maker*, but recommended.**
 
 ***
 

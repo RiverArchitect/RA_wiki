@@ -874,8 +874,8 @@ Warning messages
     - *Remedy:*  This warning message only occurs if the GUI application was changed or when the [*ModifyTerrain*][5] module is externally called with bad argument order. Review the argument order/assignments in the external call `var = mt.ModifyTerrain(condition=..., unit_system=..., ...)`.
 
  - **`WARNING: Merge operation failed (empty shapefiles?).`**
-    - *Cause:*   Error raised by the `ProjectMaker/s30_terrain_stabilization/`'s `main()` function when the Bioengineering and Angular Boulder shaepfiles for stabilizing the terrain failed.
-    - *Remedy:*  One or both stabilization shapefiles (`ProjectMaker/ProjectName/Geodata/Shaepfiles/Terrain_stab.shp` or `.../Terrain_boulder_stab.shp`) may be empty. Check source data or consider to change the user-defined requried critical lifespan.
+    - *Cause:*   Raised by the `ProjectMaker/s30_terrain_stabilization/`'s `main()` function when the Bioengineering and Angular Boulder shaepfiles for stabilizing the terrain failed.
+    - *Remedy:*  One or both stabilization shapefiles (`ProjectMaker/ProjectName/Geodata/Shapefiles/Terrain_stab.shp` or `.../Terrain_boulder_stab.shp`) may be empty. Check source data or consider to change the user-defined requried critical lifespan.
 
  - **`WARNING: No Lifespan / Design Raster found (...).`**
     - *Cause:*   Raised by the `MaxLifespan`'s `Director` class (`MaxLifespan/cFeatureActions.py`) when it cannot find any valid lifespan or design Raster for a condition.
@@ -888,6 +888,10 @@ Warning messages
  - **`WARNING: Old logfile is locked [...].`**
     - *Cause:*   Raised by the `logging_start(logfile_name)` function (multiple classes) when the logfiles are locked by another process. The parenthesis `[...]` indicates the concerned run task.
     - *Remedy:*  Ensure that the logfiles of the concerned module are not opened in any other process or program.
+	
+ - **`WARNING: PlantExisting.shp is corrupted or non-existent.`**
+    - *Cause:*   Raised by the `ProjectMaker/s20_plantings_delineation/`'s `main()` function when it could not process the existing plants shapefile.
+    - *Remedy:*  Ensure that existing plants (`ProjectMaker/ProjectName/Geodata/Shapefiles/PlantExisting.shp`) is correctly set up [according to the descriptions in the wiki](ProjectMaker#pminp31). However, this raster is not absolutely required.
 
  - **`WARNING: Substituting user-defined crit. lifespan (...) with ....`**
     - *Cause:*   Error raised by the `ProjectMaker/s30_terrain_stabilization/`'s `main()` function when the user-defined critical lifespan for terrain stabilization does not exaclty correspond to the available hydraulic Rasters defined for the provided *Condition*.
