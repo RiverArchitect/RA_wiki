@@ -134,8 +134,11 @@ Terraforming may require clearing of existing vegetation in the project area. In
     2.  Highlight all polygons of existing plants that do not need to be removed. Press `Delete` to remove these plant polygons from the clearing list. <br/>
         *When highliting existing plantings for clearing, remember that in river restoration and habitat enhancement projects "clearing" should limit to the absolutely required minimum. That means: Delete as many polygons of existing plants as possble from `PlantClearing.shp`.*
     3.  Once all non-clearing plants are removed, save the edits.
+	
+5. *Project Maker* will not place any plant where existing plants are, even though when these are highlighted in the the `PlantClearing` shapefile. Therefore, consider to remove the polygons contained in `PlantClearing.shp` from `PlantExisting.shp`.
 
-Save and close `ProjectName/ProjectMaps.aprx`. **Note: Both `PlantExisting` and `PlantClearing` shapefiles are not mandatory for running *Project Maker*, but recommended.**
+Save and close `ProjectName/ProjectMaps.aprx`.
+**Note: Both `PlantExisting` and `PlantClearing` shapefiles are not mandatory for running *Project Maker*, but recommended.**
 
 ***
 
