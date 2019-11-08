@@ -101,26 +101,39 @@ To determine cost-relevant quantities for a site-related restoration plan, a man
 	1.  Go to the `Attribute Table` tab and type *`Restoration zone`* in the `AreaCode` field and *`1`* in the `gridcode` field.
 	1.  `Save` edits.
 
-## Input: Plantings shapefile<a name="pminp3"></a>
+## Input: Plantings shapefiles <a name="pminp3"></a>
 
-The [*MaxLifespan*][4] module produces geofiles (i.e., rasters and shapefiles) of complete river reaches. Besides, terraforming may require clearing of existing vegetation in the project area. An overlay of the above-created project area polygon over recent satellite image shows, where existing shrubs intersect with projected terraforming surfaces. A *PlantDelineation.shp* shapefile with polygons delineating these intersects needs to be created and drawn as follows in the `ProjectName/ProjectMaps.aprx`-file:
+The [*MaxLifespan*][4] module produces geofiles (i.e., rasters and shapefiles) of complete river reaches.  An overlay of the above-created project area polygon over recent satellite image shows, where existing shrubs intersect with projected actions. A *PlantExisting.shp* shapefile with polygons delineating these intersects needs to be created and drawn as follows in the `ProjectName/ProjectMaps.aprx`-file:
 
 1.  In the Catalog tab, open the folder tree `ProjectName/Geodata/Shapefiles/` (double click on the folder to make it appear in the lower box).
 
-2.  Create a new polygon-shapefile in `ProjectName/Geodata/Shapefiles/` ([read more on arcgis.com](https://pro.arcgis.com/en/pro-app/help/editing/create-polygon-features.htm)), name it `PlantDelineation`, and select the project *Coordinate System* (`Current Map`). Click on `Run`.
+2.  Create a new polygon-shapefile in `ProjectName/Geodata/Shapefiles/` ([read more on arcgis.com](https://pro.arcgis.com/en/pro-app/help/editing/create-polygon-features.htm)), name it `PlantExisting`, and select the project *Coordinate System* (`Current Map`). Click on `Run`.
 
-3.  Remove the newly created layer from layout's *Contents* tab, double-click on the existing `Clearing of Shrubs` layer -> `Layer Properties` opens up -> go to the `Source` tab -> click on `Set Data Source ...` -> Select the newly created `.../Shapefiles/PlantDelineation.shp` file -> click `OK`.
+3.  Remove the newly created layer from layout's *Contents* tab, double-click on the existing `Existing plants (all)` layer -> `Layer Properties` opens up -> go to the `Source` tab -> click on `Set Data Source ...` -> Select the newly created `.../Shapefiles/PlantExisting.shp` file -> click `OK`.
 
-4.   In the layout's `Contents` tab, right-click on the `PlantDelineation` layer, then `Attribute Table`. In the `Attribute Table`, click on the top-left *Field:* `Add` button. Name the field `ActionType`, select a `Text` in the *Data Type* column and `50` in the *Length* column. Click below the new field to and add another field (*Click here to add a new field* label) with the following properties: *Field Name* = `gridcode`, *Data Type* = `Short` data type, *Number Format* = `Numeric`, *Precision* = 0, and *Scale* = 0 field named `gridcode`. Go to *ArcGIS Pro*'s *Fields* ribbon (top of the window) and click `Save`. Close the *Fields: Project area (...)* tab (the one where the fields were previously added).
+4.   In the layout's `Contents` tab, right-click on the `PlantExisting` layer, then `Attribute Table`. In the `Attribute Table`, click on the top-left *Field:* `Add` button. Name the field `ActionType`, select a `Text` in the *Data Type* column and `50` in the *Length* column. Click below the new field to and add another field (*Click here to add a new field* label) with the following properties: *Field Name* = `gridcode`, *Data Type* = `Short` data type, *Number Format* = `Numeric`, *Precision* = 0, and *Scale* = 0 field named `gridcode`. Go to *ArcGIS Pro*'s *Fields* ribbon (top of the window) and click `Save`. Close the *Fields: Project area (...)* tab (the one where the fields were previously added).
 
 5.  Delineate existing plantings area:
 	1.  Ensure that a valid background image is linked to the `background` layer (`Properties` -> `Source` tab).
-    2.  In *ArcGIS Pro*'s *Edit* ribbon (top of the window), click on `Create` (ensure that the `PlantDelineation` layer is selected in the *Contents* tab) > A *Create Features* opens.
-    3.  In the *Create Features* tab, click (highlight) on `ProjectDelineation`, then on `Polygon`.
-    4.  Draw polygons around existing plantings that are visible in the background (satellite image) project area, within the zone where the modified DEM rasters indicate terrain modification (finish polygons with the `F2`-key).<br/>
-        *When delineating existing plantings for clearing, remember that in stream restoration and habitat enhancement projects "clearing" should limit to the absolutely required minimum.*
-    5.  Go to the `Attribute Table` tab and type `Clearing` (*text*) in the `ActionType` field and `1` (*short integer*) in the `gridcode` field.
-    6.  Once all visible plantings within the terraforming project area are delineated, save the edits.
+    2.  In *ArcGIS Pro*'s *Edit* ribbon (top of the window), click on `Create` (ensure that the `PlantExisting` layer is selected in the *Contents* tab) > A *Create Features* opens.
+    3.  In the *Create Features* tab, click (highlight) on `PlantExisting`, then on `Polygon`.
+    4.  Draw polygons around existing plantings that are visible in the background (satellite image) project area, within the zone where the modified DEM rasters indicate terrain modification (finish polygons with the `F2`-key).<br/>        
+    5.  Go to the `Attribute Table` tab and type `Existing` (*text*) in the `ActionType` field and `1` (*short integer*) in the `gridcode` field.
+    6.  Once all visible plantings within the project area are delineated, save the edits.
+
+Terraforming may require clearing of existing vegetation in the project area. In this case, use the above created *PlantExisting.shp* as template to delineate plants to remove (to be cleared):
+
+1.  In the Catalog tab, open the folder tree `ProjectName/Geodata/Shapefiles/` (double click on the folder to make it appear in the lower box).
+
+2.  Make a copy of a new polygon-shapefile in `ProjectName/Geodata/Shapefiles/PlantExisting.shp` and name it `PlantClearing.shp` in the same folder.
+
+3.  In the map *Contents* tab, double-click on the existing `Clearing of Shrubs` layer -> `Layer Properties` opens up -> go to the `Source` tab -> click on `Set Data Source ...` -> Select the newly created `.../Shapefiles/PlantClearing.shp` file -> click `OK`.
+
+4.  Delineate existing plantings to be removed (clearing):
+	1.  In the layout's `Contents` tab, right-click on the `PlantClearing` layer, then `Attribute Table`.
+    2.  Highlight all polygons of existing plants that do not need to be removed. Press `Delete` to remove these plant polygons from the clearing list. <br/>
+        *When highliting existing plantings for clearing, remember that in river restoration and habitat enhancement projects "clearing" should limit to the absolutely required minimum. That means: Delete as many polygons of existing plants as possble from `PlantClearing.shp`.*
+    3.  Once all non-clearing plants are removed, save the edits.
 
 Save and close `ProjectName/ProjectMaps.aprx`.
 
