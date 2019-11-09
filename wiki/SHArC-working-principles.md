@@ -28,6 +28,8 @@ SHArC - Working Principles
 ***
 
 # Working principles<a name="heprin"></a>
+***
+
 
 ## Cover HSI: Substrate<a name="subshsi"></a>
 
