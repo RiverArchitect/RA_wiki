@@ -79,7 +79,7 @@ Moerover, lifespan and design map Rasters are saved in different layer folders, 
 
 The standard installation of *River Architect* comes with a set of pre-defined river design features (cf. [Schwindt et al. 2019][schwindt19]). For topographic change, scour and fill rates are considered over a 3-year observation period (2008 to 2014, see [Weber and Pasternack 2017][weber17]). The following hypotheses apply to the pre-defined features.
 
-## Grains, Angular boulders and Grain Mobility<a name="rocks"></a>
+## Grains, Grain Mobility, and Angular boulders<a name="rocks"></a>
 
 The mobile grain size or the necessary size for the punctual placing of boulders and comprehensive rock cover is referred to as "Grains/Boulders" in the default [`threshold_values.xlsx` workbook](#featoverview). Such information is necessary, for example, to stabilize banks or erosion-prone surfaces (e.g., [Maynord and Neill 2008][maynord08]). Lifespan maps of the mobility of the present terrain refer to the present grain size (`.../01_Conditions/CONDITION/dmean.tif`). The required minimum diameter for boulders or mobile grains results from the spatial evaluation of *D<sub>cr</sub>* on mobile grain design maps.
 
@@ -93,10 +93,10 @@ Recommended threshold values in the [`threshold_values.xlsx` workbook](#featover
 The [Lifespan & Design][3] tab enables the creation of:
 
 -	**Lifespan Maps** with output Raster name: `.../LifespanDesign/Output/Rasters/CONDITION_lyr20/lf_grains.tif`; and
--	**Design Maps** with output Raster name: `.../LifespanDesign/Output/Rasters/CONDITION_lyr20/ds_Dst_grains.tif`, which is a derivative of the Gauckler-Manning-Strickler formula using [Manning\'s *n*][manningsn]:<br/>
+-	**Design Maps** with output Raster name: `.../LifespanDesign/Output/Rasters/CONDITION_lyr20/ds_Dst_grains.tif` in *m* or *inches*, which is a derivative of the Gauckler-Manning-Strickler formula using [Manning\'s *n*][manningsn]:<br/>
     *D<sub>cr</sub>* =  *SF* *· u<sup>2</sup> · n<sup>2</sup>* / *\[(s - 1) · h<sup>1/3</sup> · &tau;<sub>\*,cr</sub> \]* <br/>
 
-*D<sub>cr</sub>* is the minimum required angular boulders (rocks) size (in m or inches/feet); *s* is the dimensionless relative grain density (ratio of sediment and water density, equal to 2.68); and *n* is [Manning\'s *n*][manningsn] can be changed in the GUI (in s/ft<sup>1/3</sup> or s/m<sup>1/3</sup> - an internal conversion factor of k = 1.49 applies in the case of the US customary system). The following parameters are taken from `.../01_Conditions/CONDITION/` input *GeoTIFF*s
+*D<sub>cr</sub>* is the minimum required angular boulders (rocks) size (in m or inches); *s* is the dimensionless relative grain density (ratio of sediment and water density, equal to 2.68); and *n* is [Manning\'s *n*][manningsn] can be changed in the GUI (in s/ft<sup>1/3</sup> or s/m<sup>1/3</sup> - an internal conversion factor of k = 1.49 applies in the case of the US customary system). The following parameters are taken from `.../01_Conditions/CONDITION/` input *GeoTIFF*s
 - *h* is the flow depth (pixel-wise, in m or ft);
 - *u* is the flow velocity (pixel-wise, in m/s or fps).
 
