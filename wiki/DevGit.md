@@ -28,8 +28,16 @@ To download, modify and push changes to *River Architect* download and install [
 
 Done. Close *Git Bash*.
 
+Push only relevant files and consider using a [`.gitignore`](https://git-scm.com/docs/gitignore) file. *River Architect* already comes with a `.gitignore` file that excludes `.pyc` (compiled bytecodes) and `.log` (logfiles) files. To exclude local subdirectories from `git push`, or directory patterns, add them as follows (replace `pattern2ignore` and `directory2ignore` with folder names):
+
+```
+
+*.pyc
+*.log
+**/pattern2ignore/
+/directory2ignore/
+
+```
+
 Being a small developer team, we are currently not using [`git` branching](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell). This may change in the future ...
-
-
-
 

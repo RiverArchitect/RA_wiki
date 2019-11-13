@@ -48,6 +48,17 @@ Open *Git Bash* and do the following:
 3. Pull changes: `git pull`
 
 Please note that merge errors may occur when changes were made in the local copy of *River Architect*. In this case, *Git Bash* will guide through the manual merge process.
+**If you modified template workbooks (`Fish.xlsx` or `threshold_values.xlsx`): Create a [`.gitignore`](https://git-scm.com/docs/gitignore) file** in the `/RiverArchitect/` directory. Open the `.gitignore` file with a text editor and enter the following:
+
+```
+
+/LifespanDesign/.templates/threshold_values.xlsx
+/.site_packages/templates/Fish.xlsx
+
+```
+
+Save the `.gitignore` file and close the text editor. Now `git pull` will no longer overwrite `Fish.xlsx` and `threshold_values.xlsx`.
+
 
 **Git GUI**<br/>
 Open *Git Bash* and open `D:/Python/RiverArchitect` from the *Open Recent Repository* list (or wherever *River Architect* is installed). If not listed, click on `Open Existing Repository` and select the *River Architect* installation directory. Then:
@@ -56,7 +67,7 @@ Open *Git Bash* and open `D:/Python/RiverArchitect` from the *Open Recent Reposi
 2. Click on the `Remote` drop-down menu > `Fetch from` > `origin`.
 3. Click on the `Merge` drop-down menu > `Local Merge`.
 
-Please note that merge errors may occur when changes were made in the local copy of *River Architect*. In this case, *Git Bash* may be required to go through the manual merge process.
+
 
 ***
 
