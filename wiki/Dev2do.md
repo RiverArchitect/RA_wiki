@@ -9,7 +9,7 @@ To edit this list, please clone the Wiki ([see descriptions](DevGit)) and follow
 	1. Change Error and Warning message logging from `logger.info()` to `logger.error()` and `logger.warning()` statements.
 
 - [Lifespan](LifespanDesign)
-	1. Mapping (PDF export) of lifespan maps does not work in many cases for several potential reasons: Definition of zoonm coordinates, automated layout selection, and visibility of layers (code lines `220` to `225`). Sometimes it works anyway. Because PDF export is not a core function of *River Architect*, the PDF export problem had a low priority in the development, but should be fixed in the future.
+	1. Mapping (PDF export) of lifespan maps does not work in many cases for several potential reasons: Definition of zoonm coordinates, automated layout selection, and visibility of layers (issues located in code lines `220` to `225` of `/.site_packages/riverpy/cMapper.py`). Sometimes it works anyway. Because PDF export is not a core function of *River Architect*, the PDF export problem had a low priority in the development, but should be fixed in the future.
 
 
 - [Project Maker](ProjectMaker)
