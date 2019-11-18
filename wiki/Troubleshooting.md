@@ -14,6 +14,8 @@ We do our very best to program *River Architect* as robust and flexible as possi
 	 * Limit the number of discharges to less than 10 (set relevant discharges defined in rows 4, 11, and 12 of [*input files*](Signposts#inpfile) to less than 10); manual modification of automatically generated input files may be required (rows 4, 11, and 12 of `01_Conditions/CONDITION/input_definitions.inp`).
 	 * Analyze only one feature at a time rather than feature groups (such as "Plantings"). In this case, the single Raster size may be up to 1 GB.
 - **Grain size raster name coherence**: The `LifespanDesign` module will read grain size raster names from `01_Conditions/CONDITION/input_definitions.inp`. However, the `Ecohydraulics` module absolutely requires that a grain size raster in SI units is named `dmean.tif` (units: meters) and a grain size raster in U.S. customary units must be named `dmean_ft.tif` (units: feet).
+- **PDF maps export of lifespan** maps fails under some circumstances ([read more in the error message](pdfexp)).
+
 
 
 # How to trace Error and Warning messages<a name="howto"></a>
@@ -439,9 +441,11 @@ Error messages
     - *Cause:*   Error raised by the `lower_dem_for_plants* function of the `ModifyTerrain` class in `ModifyTerrain/cModifyTerrain.py`) when the threshold workbook (`LifespanDesign/.templates/thresh old_values.xlsx`) is not accessible or does not contain values for *Depth to groundwater (min) / max*  contains invalid data.
     - *Remedy:*  Ensure the correct setup of `LifespanDesign/.templates/threshold_values.xlsx` ([Modify Threshold Values within the *LifespanDesign* module](LifespanDesign#modthresh)). Note that *ModifyTerrain* starts reading depth to ground water values column by column, until it meets a non-numeric value.
 
- - **`ERROR: Failed to save PDF map assembly.`**
+ - **`ERROR: Failed to save PDF map assembly.`**<a name="pdfexp"></a>
     - *Cause:*   The `make_pdf_maps(self, ...)` function of the `Mapper()` class (`.site_packages/riverpy/cMapper.py`) raises this error when the map assembly is corrupted.
-    - *Remedy:*  Ensure that no other program accesses the `LifespanDesign/.cache/`, `MaxLifespan/.cache/`, `ModifyTerrain/.cache/`, `LifespanDesign/Output/`, `MaxLifespan/Output/`, or `ModifyTerrain/Output/` directories or their contents (close *ArcGIS Pro* and verify read/write rights for `RiverArchitect/02_Maps/CONDITION/`).
+    - *Remedy:* 
+        + PDF map export of Lifespan maps has troubles at the moment. We recommend to open the automatically created project `RiverArchitect/02_Maps/CONDITION/maps_CONDITION_lyrXY.aprx` and to export PDF maps in *ArcGIS Pro*: (1) Go to desired layout tab; (2) Ensure map layout fits desired export; (3) Go to the `Share` ribbon and click on the green arrow `Layout` (export layout). 
+        + Ensure that no other program accesses the `LifespanDesign/.cache/`, `MaxLifespan/.cache/`, `ModifyTerrain/.cache/`, `LifespanDesign/Output/`, `MaxLifespan/Output/`, or `ModifyTerrain/Output/` directories or their contents (close *ArcGIS Pro* and verify read/write rights for `RiverArchitect/02_Maps/CONDITION/`).
 
  - **`ERROR: Failed to save WORKBOOK.`**
     - *Cause:*   Raised by `calculate_sha(self)` of [*SHArC*][6]'s `CHSI()` class in `SHArC/cHSI.py` when it could not save `CONDITION_FILI.xlsx`.
@@ -454,7 +458,7 @@ Error messages
 
  - **`ERROR: FEAT SHORTNAME contains non-valid data or is empty.`**
     - *Cause:*   Raised by `get_design_data(self)` in `MaxLifespan/cActionAssessment.py` when the  feature `shortname` Raster is empty or the `shortname* itself does not match the code conventions.
-    - *Remedy:*        
+    - *Remedy:* 
         + If code was modified: Review code modifications and ensure to define feature `shortname`s as listed in the [River Design and Restoration Features pages](River-design-features#featoverview). If a new feature was added, it also needs to be appended in the container lists (`self.id_list, self.threshold_cols, self.name_list`) of the `Feature()` class in `.site_packages/riverpy/cDefinit ions.py`. A new feature also requires modifications of the `RiverArchitect/LifespanDesign/.templates/threshold_values.xlsx` spreadsheet ([Modify Threshold Values within the *LifespanDesign* module](LifespanDesign#modthresh)), in line with the column state in the `self.threshold_cols* list of the `Feature()` class.
         + Check consistency of suspected lifespan/design Rasters, the correctness of lifespan/design input directory definitions ([MaxLifespan Quick GUIde](MaxLifespan#actquick)) and if needed re-run lifespan/design Raster Maker.
     

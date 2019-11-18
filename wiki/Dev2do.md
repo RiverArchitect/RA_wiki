@@ -1,12 +1,16 @@
 The to-do list for developers
 ===========
 
-To edit this list, please clone the Wiki ([see descriptions](DevGit)) and follow the [Wiki writing instructions](DevWiki).
+To edit this list, please clone the Wiki ([see descriptions](DevGit)) and follow the [Wiki writing instructions](DevWiki). More issues regarding the application of *River Architect* are listed in the [Troubslehooting Wiki](Troubleshooting#issues). Please update this [*Known issues* list ](Troubleshooting#issues) for users, too, once a problem is fixed.
 
 ### Minor future tasks (max. one day of work each)
 
 - General
 	1. Change Error and Warning message logging from `logger.info()` to `logger.error()` and `logger.warning()` statements.
+
+- [Lifespan](LifespanDesign)
+	1. Mapping (PDF export) of lifespan maps does not work in many cases for several potential reasons: Definition of zoonm coordinates, automated layout selection, and visibility of layers (code lines `220` to `225`). Sometimes it works anyway. Because PDF export is not a core function of *River Architect*, the PDF export problem had a low priority in the development, but should be fixed in the future.
+
 
 - [Project Maker](ProjectMaker)
 	1. [**Project Maker**](ProjectMaker#pmplants) places plant species in alphabeticaly order when several plant species have the same maximum lifespan at a pixel. However, users should have the option to define the order in which plant species are placed. A drop-down menu or pop-up window call (button?) in the *Project Maker* GUI (`ProjectMaker/project_maker_gui.py`, somewhere between `row=9` and `row=13`) should be implemented to enable the user selection. Moreover, an adaptation will be required in `ProjectMaker/s20_plantings_delineation.py` between lines 96 to 158 (approximately); currently, the automated hierarchical order is enforced by storing pixels, which are already assigned to a plant species, in an `arcpy.Raster()` instance called `occupied_px_ras` (first instantiation is `str()`). `occupied_px_ras` is overwritten (updated) in every loop between lines 115 and 120 (approximately).
