@@ -41,6 +41,8 @@ Next, select at least one [Physical Habitat](SHArC#hefish) (fish species/lifesta
 
 Once the desired condition and Physical Habitat(s) are selected, choose model discharges Q<sub>high</sub> and Q<sub>low</sub>. This defines the range of discharges over which to apply the connectivity analysis, simulating the changes in habitat connectivity for a flow reduction from Q<sub>high</sub> to Q<sub>low</sub>.
 
+Next, input a time period for the downramping. This is the amount of time (in minutes) over which the downramping is expected to occur. This parameter is used to estimate ramping rates as described in [Estimating Ramping Rates](#ramping-rates).
+
 Lastly, select an interpolation method. See [Interpolating Hydraulic Rasters](#interpolating-hydraulic-rasters) for more information.
 
 For further explanation of the methodology used in the analysis, see [Methodology](Connectivity#Methodology).
