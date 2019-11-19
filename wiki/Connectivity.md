@@ -11,6 +11,8 @@ Habitat Connectivity
   * [Escape Route Calculations](#escape-route-calculations)
   * [Calculating Disconnected Habitat Area](#calculating-disconnected-area)
   * [Determining Q<sub>disconnect</sub>](#determining-qdisconnect)
+  * [Disconnection Frequencies](#disc-freq)
+  * [Estimating Ramping Rates](#ramping-rates)
 - [References](#references)
 
 ***
@@ -31,7 +33,9 @@ These tools were developed to assess stranding risk for any given aquatic specie
 
 ![mtgui](https://github.com/RiverArchitect/Media/raw/master/images/gui_start_connect.PNG)
 
-To begin using the Connectivity module, first select a hydraulic [Condition](Signposts#conditions). In order to accurately determine where velocity is a barrier to fish passage, the selected condition must include velocity angle input rasters. In order to estimate stranding risks, cHSI rasters must have already been calculated for the input Condition using the [SHArC](SHArC) module.
+To begin using the Connectivity module, first select a hydraulic [Condition](Signposts#conditions). 
+
+*Note*: In order to determine where velocity is a barrier to fish passage, the selected condition must include velocity angle rasters. Otherwise, velocity barriers will not be considered. In order to create the `disconnected_habitat` output raster, cHSI rasters must have already been calculated for the applied [Condition](Signposts#conditions)/[Physical Habitat](SHArC#hefish) using the [SHArC](SHArC) module. In order to create the `disc_freq` output raster, flows must have already been analyzed ([Make flow duration curves](Signposts#ana-flows)) for the applied [Condition](Signposts#conditions)/[Physical Habitat](SHArC#hefish).
 
 Next, select at least one [Physical Habitat](SHArC#hefish) (fish species/lifestage) from the dropdown menu. The Physical Habitat contains data specific to the fish species/lifestage. Physical Habitat data is used by the Connectivity module to determine if fish are able to traverse wetted areas by accounting for the organism's minimum swimming depth and maximum swimming speed (Physical Habitat data are also used by [SHArC](SHArC) to determine habitat suitability). These data can be viewed/edited via the drop-down menu: `Select Physical Habitat `  --> `DEFINE FISH SPECIES` (scroll to the "Travel Thresholds" section of the workbook).
 
@@ -48,14 +52,12 @@ Outputs are stored in `Connectivity\Output\Condition_name\`. The outputs produce
 Outputs specific to the applied flow reduction are stored in the subdirectory `Connectivity\Output\Condition_name\flow_red_Qhigh_Qlow`. These outputs include:
 
 - `shortest_paths\`: directory containing a raster for each model discharge in the range Q<sub>low</sub>-Q<sub>high</sub>, indicating the minimum distance/least cost required to escape to the river mainstem at Q<sub>low</sub>, subject to constraints imposed by the travel thresholds for the selected Physical Habitat. See [Escape Route Calculations](Connectivity#escape-route-calculations) for more.
-
 - `disc_areas\`: directory containing a shapefile for each model discharge indicating wetted areas which are effectively disconnected at that discharge. See [Calculating Disconnected Habitat Area](Connectivity#calculating-disconnected-area) for more.
-
 - `disconnected_area.xlsx`: a spreadsheet containing plotted data of discharge vs disconnected area.
-
 - `disconnected_habitat.tif`: a raster showing all wetted areas which become disconnected in the applied flow reduction scenario, weighted by the combined habitat suitability index (cHSI) at Q<sub>high</sub> (before the flow reduction occurs). See [Calculating Disconnected Habitat Area](Connectivity#calculating-disconnected-area) for more.
-
 - `Q_disconnect.tif`: a raster showing the highest model discharge for which areas are disconnected from the mainstem at Q<sub>low</sub>. Locations that are not disconnected at any modeled discharge are assigned a value of zero. Thus, this map indicates locations and discharges below which stranding risks may occur. See [Determining Q<sub>disconnect</sub>](Connectivity#determining-qdisconnect) for more.
+- `disc_freq.tif`: a raster showing the historical frequency for which each area becomes disconnected, in number of times per year, confined to the season of interest for the analyzed species/lifestage. See [Disconnection Frequencies](#disc-freq) for more.
+- `ramping_rate_time.tif`: a raster showing the estimated ramping rate before disconnection occurs. See [Estimating Ramping Rates](#ramping-rates) for more.
 
 ***
 
@@ -123,7 +125,7 @@ Even if there is wetted area connecting two locations, they may not be considere
 Once disconnected areas have been calculated, they are weighted by the combined habitat suitability index (cHSI) at Q<sub>high</sub> for the target Physical Habitat. The resultant raster is stored as `disconnected_habitat` in the output directory. Since cHSI serves as a proxy for fish density in habitat-limited environments, the cHSI at Q<sub>high</sub> in areas that become disconnected by the flow reduction serves as a spatially-distributed stranding risk metric.
 
 ## Determining Q<sub>disconnect</sub>
-  
+
 The `Q_disconnect` map outputs provide estimates of the discharges at which wetted areas become disconnected from the mainstem of the river channel. Estimating these discharges is done as follows:
 
 - Assign all pixels wetted at the highest discharge a default value of zero.
@@ -131,6 +133,23 @@ The `Q_disconnect` map outputs provide estimates of the discharges at which wett
 - The resultant raster is saved as the `Q_disconnect.tif` map output.
 
 Note that the default value of zero indicates pixels wetted at the highest discharge but not present within any of the disconnected area polygons. Other values indicate the highest modeled discharge for which the pixel is disconnected from the channel mainstem.
+
+## Disconnection Frequencies <a name="disc-freq"></a>
+
+For each disconnected area, `Q_disconnect` can be combined with the hydrologic record in order to calculate the average number of disconnection events occurring per year. This is generated by calculating the total number of times mean daily flow drops below `Q_disconnect` during the season of interest for the applied species/lifestage (as defined in  `Fish.xlsx`, see [SHArC](SHArC) for more details) divided by the number of years on record.
+
+A `disc_freq` output map will be produced provided that flows have already been analyzed ([Make flow duration curves](Signposts#ana-flows)) for the applied [Condition](Signposts#conditions)/[Physical Habitat](SHArC#hefish).
+
+## Estimating Ramping Rates <a name="ramping-rates"></a>
+
+Ramping rates are estimated by applying the following assumptions:
+
+- the flow reduction scenario is characterized by a linearly downramping hydrograph from Q<sub>high</sub> to Q<sub>low</sub> over the input time period
+- Downstream attenuation of the hydrograph is not considered
+
+Ramping rates are estimated via linear approximation, using the difference in depths at the last two model discharges before disconnection occurs.
+
+The ramping rate output raster is stored as `ramping_rate_###min.tif`, where `###` corresponds to the input time period over which the downramping occurs.
 
 ***
 
