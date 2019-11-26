@@ -112,7 +112,7 @@ RiverArchitect estimates the depth to groundwater by interpolating the given low
 - `Kriging`: Ordinary Kriging interpolation. This method also uses a weighted average of the 12 nearest neighbors, but weights are calculated using a semi-variogram, which describes the variance of the input data set as a function of the distance between points. A spherical functional form is also assumed for the fitted semi-variogram. Kriging is the most accurate interpolation method if certain assumptions are met regarding normality and stationarity of error terms. However, it is also the most computationally expensive method.
 - `Nearest Neighbor`: The simplest method, which sets the water surface elevation of each null cell to that of the nearest neighboring cell.
 
-All interpolated rasters are saved with a corresponding `.info.txt` file which records the interpolation method and input rasters used in its creation.
+All interpolated rasters are saved with a corresponding `.info.txt` file which records the interpolation method and input rasters used in its creation. 
 
 ### Make Detrended DEM Rasters<a name="det"></a>
 ***
@@ -120,6 +120,8 @@ Automation of [grading](River-design-features#grading) or the relevance of [wide
 
  -  A terrain DEM (or DTM) is automatically assigned from the selected *Condition* folder.
  -  A flow depth Raster (in arid regions) marks the level for relative elevations. Designers may have different reasons for choosing the relevant flow depth Raster (low flows for habitat enhancement or high flows for flood protection), and therefore, no recommendation is made here.
+ 
+Please note that step-like artifacts may occur in the detrended DEM. The steps result from variations in the Thalweg elevation of the DEM that attenuate with the selection of flow depth Rasters of higher discharges. Users can decide to select a low-flow depth Raster to be on the safe side for delineating vegetation plantings or a high-flow depth Raster to reduce step-like artifacts in the detrended DEM.
 
 ## Create a spatial subset of a Condition<a name="sub-condition"></a>
 ***
