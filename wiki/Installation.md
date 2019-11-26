@@ -43,7 +43,7 @@ Currently, *Git Bash* (or Git GUI) are the only options to update local copies o
 **Git Bash**<br/>
 Open *Git Bash* and do the following:
 
-1. Go to the local *River Architect* installation directory: `cd "D:/Python/RiverArchitect"` (or wherever *River Architect* was cloned).
+1. Go to the local *River Architect* installation directory: `cd "D:/Python/RiverArchitect/program/"` (or wherever *River Architect* was cloned).
 2. Check the current status: `git status`
 3. Pull changes: `git pull`
 
@@ -196,7 +196,7 @@ The main directory (`/RiverArchitect/`) contains the program launcher named `Sta
     -   `cSHArC.py` applies *SHArC* results, in particular *cHSI* Rasters for calculating [SHArea](SHArC#herunSHArea) in the project area.
     -   `project_maker_gui.py` contains the class of this module.
     -   `s20_plantings_delineation.py` applies [*LifespanDesign*][3] and [*MaxLifespan*][4] for assessing the most suitable vegetation plantings within the project area.
-    -   `s21_plantings_stabilization.py` applies [*LifespanDesign*][3] and [*MaxLifespan*][4] outputs as well as user-defined input parameters for mapping bioengineering futures required to stabilize vulnerable vegetation plantings.
+    -   `s21_plantings_stabilization.py` applies [*LifespanDesign*][3] and [*MaxLifespan*][4] outputs as well as user-defined input parameters for mapping nature-based engineering features required to stabilize vulnerable vegetation plantings.
     -   `s30_terrain_stabilization.py` applies [*LifespanDesign*][3] and [*MaxLifespan*][4] outputs to stabilize terraforming features.
     -   `s40_compare_wua.py` applies on [*SHArC*][6] *cHSI* Rasters used in `cSHArC.py` for assessing the annually usable habitat area for a target fish species and lifestage within the project area.
     -   `LAUNCH_Windows_x64.bat` is a batchfile that runs `project_maker_gui.py` on Windows x64.

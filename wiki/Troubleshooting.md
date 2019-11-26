@@ -212,7 +212,7 @@ Error messages
     - *Cause:*   Error raised by the `main()` function in `ProjectMaker/s20_plantings_delineation.py`) when the defined directory of max. lifespan Rasters contains invalid or corrupted Raster data.
     - *Remedy:*
         + Ensure the correct usage of variables and input definitions ([ProjectMaker Quick GUIde](ProjectMaker#pmquick)).
-        + Ensure that max. lifespan Rasters were generated without errors; if necessary, visually control the consistency of max. lifespan Rasters in `.../MaxLifespan/Output/Rasters/CONDITION_reach_lyr20_plants/` and `.../MaxLifespan/Products/Rasters/CONDITION_reach_lyr20_plants/` or ...`bioengineering` (cf. [ProjectMaker Vegetation Plantings and Supporting Features](ProjectMaker#pmplants)).
+        + Ensure that max. lifespan Rasters were generated without errors; if necessary, visually control the consistency of max. lifespan Rasters in `.../MaxLifespan/Output/Rasters/CONDITION_reach_lyr20_plants/` and `.../MaxLifespan/Products/Rasters/CONDITION_reach_lyr20_plants/` or ...`nature-based engineering` (cf. [Project Maker vegetation plantings and supporting nature-based engineering features](ProjectMaker#pmplants)).
 
  - **`ERROR: Could not find any worksheet.`**
     - *Cause:*   Error raised by the `open_wb(self)` function of the `Read()` class in `RiverArchitect/.site_packages/riverpy/cInputOutput.py` or the `MakeFlowTable` class (`RiverArchitect/.site_packages/riverpy/cMakeTable.py`) when the concerned workbook contains errors.
@@ -227,7 +227,7 @@ Error messages
 
  - **`ERROR: Could not find Lifespan Raster (...).`**
     - *Cause:*   Error raised by the `ProjectMaker/s30_terrain_stabilization/`'s `main()` function when it cannot find lifespan Rasters.
-    - *Remedy:*  Go to the <a href="Lifespan/Design">LifespanDesign</a> tab for the selected *Condition*. Create lifespan maps for the `Grains / Boulders` feature ( creates `lf_grains.tif`). Terrain stabilization absolutely requires `Grains / Boulders` (`lf_grains.tif`), and optionally requires `Streamwood` (`lf_wood.tif`) and `Bioengineering (other)` (`lf_bio.tif`).
+    - *Remedy:*  Go to the <a href="Lifespan/Design">LifespanDesign</a> tab for the selected *Condition*. Create lifespan maps for the `Grains / Boulders` feature ( creates `lf_grains.tif`). Terrain stabilization absolutely requires `Grains / Boulders` (`lf_grains.tif`), and optionally requires `Streamwood` (`lf_wood.tif`) and `Nature-based engineering features (other)` (`lf_bio.tif`).
 
  - **`ERROR: Could not find sheet "extents" in computation_extents.xlsx.`**
     - *Cause:*   Error raised by the `get_reach_coordinates(self, internal_reach_id)` function of the `Read()` class in `RiverArchitect/.site_packages/riverpy/cReachManager.py`) when the `extents` sheet in the reach coordinate workbook (`ModifyTerrain/.templates/computation_extents.xlsx`) could not be read.
@@ -528,10 +528,10 @@ Error messages
 
 
  - **`ERROR: Invalid keyword for feature type.`**
-    - *Cause:*   The `Manager` class in `MaxLifespan/cFeatureActions.py` raises this error when it received a `feature_type` argument that is not `"terraforming"`, `"plantings"`, `"bioengineering"`, or `"maintenance"`. The error may occur either after code modifications or when`geo_file_maker(condition, feature_type, *args)` in `MaxLifespan/action_planner.py` was executed as standalone or imported as a package in an external application.
+    - *Cause:*   The `Manager` class in `MaxLifespan/cFeatureActions.py` raises this error when it received a `feature_type` argument that is not `"terraforming"`, `"plantings"`, `"nature-based engineering"`, or `"maintenance"`. The error may occur either after code modifications or when`geo_file_maker(condition, feature_type, *args)` in `MaxLifespan/action_planner.py` was executed as standalone or imported as a package in an external application.
     - *Remedy:*
         + Ensure that code extensions comply with coding conventions and instructions in the [MaxLifespan module code modification possibilities](MaxLifespan#actcode). 
-        + Ensure that external calls of `geo_file_maker(condition, feature_type, *args)` contain an acceptable  `feature_type` (i.e., `feature_type=` either  `"terraforming"`, `"plantings"`, `"bioengineering"`, or `"maintenance"`).
+        + Ensure that external calls of `geo_file_maker(condition, feature_type, *args)` contain an acceptable  `feature_type` (i.e., `feature_type=` either  `"terraforming"`, `"plantings"`, `"nature-based engineering"`, or `"maintenance"`).
 
 - **`ERROR: Invalid reference map for [...] (skipping).`**
     - *Cause:*   Error raised by mapping routines when the reference map is not present in the mapping project template or the *Condition* project file (*.aprx*).
@@ -789,7 +789,7 @@ Warning messages
 	
 - **`WARNING: Could not find Lifespan Raster (...).`**
     - *Cause:*   Raised by the `ProjectMaker/s30_terrain_stabilization/`'s  or `ProjectMaker/s21_plantings_stabilization/`'s `main()` function when it cannot find lifespan Rasters.
-    - *Remedy:*  Go to the <a href="Lifespan/Design">LifespanDesign</a> tab for the selected *Condition*. Create lifespan maps for the goup layers plantings, bioengineering, and connectivity. <a href="Project Maker">ProjectMaker</a> absolutely requires `Grains / Boulders` (`lf_grains.tif`), and optionally requires `Streamwood` (`lf_wood.tif`) and `Bioengineering (other)` (`lf_bio.tif`).
+    - *Remedy:*  Go to the <a href="Lifespan/Design">LifespanDesign</a> tab for the selected *Condition*. Create lifespan maps for the goup layers plantings, nature-based engineering, and connectivity. <a href="Project Maker">ProjectMaker</a> absolutely requires `Grains / Boulders` (`lf_grains.tif`), and optionally requires `Streamwood` (`lf_wood.tif`) and `nature-based engineering (other)` (`lf_bio.tif`).
 
  - **`WARNING: Could not get flow depth Raster properties. Setting [...]`**
     - *Cause:*   The `crop_input_Raster(self, ...)` function (`SHArC/cHSI.py`) prints this warning message when it cannot read the Raster properties from the defined input flow depth Raster.
@@ -878,7 +878,7 @@ Warning messages
     - *Remedy:*  This warning message only occurs if the GUI application was changed or when the [*ModifyTerrain*][5] module is externally called with bad argument order. Review the argument order/assignments in the external call `var = mt.ModifyTerrain(condition=..., unit_system=..., ...)`.
 
  - **`WARNING: Merge operation failed (empty shapefiles?).`**
-    - *Cause:*   Raised by the `ProjectMaker/s30_terrain_stabilization/`'s `main()` function when the Bioengineering and Angular Boulder shaepfiles for stabilizing the terrain failed.
+    - *Cause:*   Raised by the `ProjectMaker/s30_terrain_stabilization/`'s `main()` function when the nature-based engineering and Angular Boulder shapefiles for stabilizing the terrain failed.
     - *Remedy:*  One or both stabilization shapefiles (`ProjectMaker/ProjectName/Geodata/Shapefiles/Terrain_stab.shp` or `.../Terrain_boulder_stab.shp`) may be empty. Check source data or consider to change the user-defined requried critical lifespan.
 
  - **`WARNING: No Lifespan / Design Raster found (...).`**

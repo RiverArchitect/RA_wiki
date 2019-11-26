@@ -11,7 +11,7 @@
   * [Details and parameters of pre-defined features](#feat)
     + [Angular boulders (rocks) and grain mobility](#rocks)
     + [Backwater](#backwtr)
-    + [Bioengineering](#bioeng)
+    + [Nature-based engineering](#bioeng)
     + [Berm Setback / Widen](#berms)
     + [Streamwood and Engineered Log Jams](#elj)
     + [Fine sediment](#finesed)
@@ -26,7 +26,7 @@
 ***
 # Introduction and Feature Groups<a name="featoverview"></a>
 
-The *River Architect* differentiates between feature layers that actively modify the terrain (terraforming features), vegetation plantings features as well as (soil-) bioengineering features that provide direct aid for habitat enhancement or stabilize terrain modifications, and features that maintain artificially created habitat or support longitudinal connectivity. Feature attributes can be modified in the thresholds workbook (`RiverArchitect/LifespanDesign/.templates/threshold_values.xlsx`), which can also be open from the GUI:
+The *River Architect* differentiates between feature layers that actively modify the terrain (terraforming features), vegetation plantings features as well as nature-based engineering features that provide direct aid for habitat enhancement or stabilize terrain modifications, and features that maintain artificially created habitat or support longitudinal connectivity. Feature attributes can be modified in the thresholds workbook (`RiverArchitect/LifespanDesign/.templates/threshold_values.xlsx`), which can also be open from the GUI:
 
 ![thresholds](https://github.com/RiverArchitect/Media/raw/master/images/threshold_values_illu.png)
 
@@ -45,10 +45,10 @@ Changes in this workbook should limit to cells with `INPUT`-type formatting and 
     -   White Alder (*Alnus Rhombifolia*, *Feature ID: whi*)
     -   Willows (*Salix Goodingii / laevigata / lasiolepis / alba*, *Feature ID: wil*)
 
--   **Other bioengineering features** have a direct effect on habitat suitability and stabilize terrain modifications (framework features). These features are considered:
+-   **Other nature-based engineering features** have a direct effect on habitat suitability and stabilize terrain modifications (framework features). These features are considered:
     -   Streamwood, engineered log jams (ELJ) and large woody material (LWM) placement including rootstocks (*Feature ID: elj*)
     -   Grains / Boulders (angular), representative for coarse material placement (*Feature ID: grains*)
-    -   Other soil-bioengineering for terrain (slope) stabilization comprises for instance brush layers and/or fascines (*Feature ID: bio*)
+    -   Other nature-based engineering for terrain (slope) stabilization comprises for instance brush layers and/or fascines (*Feature ID: bio*)
 
 -   **Connectivity features** enhance the stability of (artificial) river systems that result from the above feature applications:
     -   Sediment Replenishment for restoring sediment continuity (instream, *Feature ID: gravin*)
@@ -70,7 +70,7 @@ Moerover, lifespan and design map Rasters are saved in different layer folders, 
 
 - 	**TERRAFORMING** (`threshold_values.xlsx` Columns `E`-`I`): `.../RiverArchitect/LifespanDesign/Output/Rasters/CONDITION_lyr10/lf_fID.tif --ds_PAR_fID.tif`
 - 	**VEGETATION PLANTINGS** (`threshold_values.xlsx` Columns `J`-`M`): `.../RiverArchitect/LifespanDesign/Output/Rasters/CONDITION_lyr20/lf_fID.tif`
-- 	**BIOENGINEERING** (`threshold_values.xlsx` Columns `N`-`P`): `.../RiverArchitect/LifespanDesign/Output/Rasters/CONDITION_lyr20/lf_fID.tif --ds_PAR_fID.tif`
+- 	**NATURE-BASED ENGINEERING FEATURES** (`threshold_values.xlsx` Columns `N`-`P`): `.../RiverArchitect/LifespanDesign/Output/Rasters/CONDITION_lyr20/lf_fID.tif --ds_PAR_fID.tif`
 - 	**CONNECTIVITY** (`threshold_values.xlsx` Columns `Q`-`S`): `.../RiverArchitect/LifespanDesign/Output/Rasters/CONDITION_lyr30/lf_fID.tif --ds_PAR_fID.tif`
 
 ***
@@ -118,11 +118,11 @@ The [Lifespan & Design][3] tab enables the creation of:
 -	**Lifespan Maps** with output Raster name: `.../LifespanDesign/Output/Rasters/CONDITION_lyr10/lf_backwt.tif`; and
 -	**Design Maps** with output Raster name: `.../LifespanDesign/Output/Rasters/CONDITION_lyr10/ds_Dst_backwt.tif`.
 
-## Bioengineering (Other) <a name="bioeng"></a>
+## Nature-based engineering (Other) <a name="bioeng"></a>
 
-In the context of river engineering, soil-bioengineering applies living materials (plants) to stabilize terrain and enhance habitat. Alas, dry conditions in arid and semi-arid (Mediterranean) climate zones limits the possibilities of application. Therefore, *River Architect* additionally considers the placement of angular boulders (see [angular boulders](#rocks)). Recommended threshold values in the [`threshold_values.xlsx` workbook](#featoverview) are:
+In the context of river engineering, nature-based methods apply living materials (plants) to stabilize terrain and enhance habitat. Alas, dry conditions in arid and semi-arid (Mediterranean) climate zones limits the possibilities of application. Therefore, *River Architect* additionally considers the placement of angular boulders (see [angular boulders](#rocks)). Recommended threshold values in the [`threshold_values.xlsx` workbook](#featoverview) are:
 
--   Depth to groundwater `d2w` with minimum and maximum values as a function of vegetation plantings requirements or integration depth of vegetative bioengineering features. Thus, *River Architect* applies vegetative bioengineering such as fascines or geotextile between the **(min)** value in row 7 and the **(max)** value in row 8 of the [threshold value workbook](LifespanDesign#input-modify-threshold-values). Regions with at terrain slope above the threshold defined in row 20 and above the maximum Depth to the groundwater defined in row 8 get mineral bioengineering (such as rock paving or riprap) assigned according to the [stable grain size](#rocks). The differentiation is made because vegetative bioengineering features may dry out when the water table is too far away (vertically).
+-   Depth to groundwater `d2w` with minimum and maximum values as a function of vegetation plantings requirements or integration depth of nature-based engineering features. Thus, *River Architect* applies nature-based engineering features such as fascines or geotextile between the **(min)** value in row 7 and the **(max)** value in row 8 of the [threshold value workbook](LifespanDesign#input-modify-threshold-values). Regions with at terrain slope above the threshold defined in row 20 and above the maximum Depth to the groundwater defined in row 8 get mineral nature-based engineering (such as rock paving or riprap) assigned according to the [stable grain size](#rocks). The differentiation is made because nature-based engineering features may dry out when the water table is too far away (vertically).
 -   Terrain slope `S0` of 0.2 (20%).
 
 *River Architect* uses the `.../01_Conditions/CONDITION/dem.tif` to compute the percent-wise terrain slope `S0`, where modified terrain with slopes of more than the `S0` threshold is considered to require reinforcement.
@@ -130,8 +130,8 @@ In the context of river engineering, soil-bioengineering applies living material
 The [Lifespan & Design][3] tab enables the creation of :
 
 -	**Lifespan Maps** with output Raster names:
-	+ `.../LifespanDesign/Output/Rasters/CONDITION_lyr20/lf_bio_v_bio.tif` (vegetative bioengineering)
-	+ `.../LifespanDesign/Output/Rasters/CONDITION_lyr20/lf_bio_m_bio.tif` (bouldder-soil bioengineering)
+	+ `.../LifespanDesign/Output/Rasters/CONDITION_lyr20/lf_bio_v_bio.tif` (vegetative nature-based engineering)
+	+ `.../LifespanDesign/Output/Rasters/CONDITION_lyr20/lf_bio_m_bio.tif` (mineral, i.e., boulder, nature-based engineering)
 	
 These lifespan maps represent basically **Design Maps** that indicate the applicability of features. However, the units of these rasters are lifespans in years, which is necessary for the later on automated placement of most suitable features, where lifespans represent the driving parameter to identify the most suitable features.
 
@@ -380,7 +380,7 @@ Unless this problem is not solved, the *River Architect* can only indicate the a
 -   The intake (connection) bifurcation angle (between main and side channel axes) is between 40° and 50°.
 -	The side (or connecting) channel’s slope is smaller or equal to the main channel’s slope.
 -	The side (or connecting) channel’s length is slightly larger than the main channel (between their bifurcation and confluence).
--	The side (or connecting) channel banks are stabilized with plantings and other bioengineering features such as streamwood.
+-	The side (or connecting) channel banks are stabilized with plantings and other nature-based engineering features such as streamwood.
 
 For creating the polygon shapefile:
 1.  Open *ArcGIS Pro*
@@ -427,7 +427,7 @@ The workbook enables changing vegetation plantings species in columns `J` to `M`
 
 -   Terraforming features: Columns `"E"`, `"F"`, `"G"`, `"H"`, `"I"`.
 -   Plant features: Columns `"J"`, `"K"`, `"L"`, `"M"`.
--   Other Bioengineering features: Columns `"N"`, `"O"`, `"P"`.
+-   Other nature-based engineering features: Columns `"N"`, `"O"`, `"P"`.
 -   Connectivity features: Columns `"Q"`, `"R"`, `"S"`.
 
 Detailed instructions for the usage of `threshold_values.xlsx` is provided in the [*LifespanDesign*](LifespanDesign#interface-and-choice-of-features) module, where also more information on threshold values is provided.

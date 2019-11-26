@@ -25,6 +25,17 @@ To edit this list, please clone the Wiki ([see descriptions](DevGit)) and follow
 1. Couple with 2D numerical models
 
 
+### User requests and issues
+
+Bugs or development requests from user undergo the following steps: (1) Reception (**"Received"**), (2) **"Discussion"** of implementation (developers and users), (3) **"Implementation"**(developers), and (4) push changes (final state: **"Implemented"**). The following issues and requests were reported by users:
+<!--- Please only use the following Implementation progress notes: Received / Discussion / Implementation / Implemented -->
+<!--- Received requests are in the User Requests folder of our river.architect.program A gmail.com email account -->
+
+
+| Description | Source | Implementation progress |
+|-------------|--------|-------------------------|
+| Turn threshold values of features into threshold functions| Jason Wiener | Received | 
+
 
 # DETAILED PROBLEM DESCRIPTIONS
 ***

@@ -14,7 +14,7 @@ Project Maker
   * [Terraforming](#pmterraf)
   * [Vegetation plantings and supporting features](#pmplants)
   * [Terrain stabilization](#pmter)
-  * [Bioengineering features (other)](#pmbio2)
+  * [Nature-based engineering features (other)](#pmbio2)
   * [Other civil engineering works](#pmciv)
   * [Other costs and remarks](#pmcadd)
 - [Mapping of construction elements](#pmmaps)
@@ -27,7 +27,7 @@ Project Maker
 
 # Introduction to the Project Maker module<a name="pmintro"></a>
 
-The *ProjectMaker* module guides through the half-automated assessment of cost-relevant quantities and ecological project benefits. A "restoration plan" or project proposal for a restoration plan herein designates an isolated restoration measure that can be delineated with an own `ProjectArea.shp` shapefile. *version*s of a restoration plan may refer to [terraforming](River-design-features#featoverview) options or other planning [*Condition*s](Signposts#new-condition). A project proposal is prepared for (preliminarily) *version*s of a restoration plan including relevant [soil bioengineering restoration features](River-design-features#bioeng) (i.e., [vegetation plantings](River-design-features#plants), stabilizing features such as the placement of [angular boulders](River-design-features#rocks), and [*anchored* streamwood](River-design-features#elj)) and it evaluates cost-relevant quantities. A project cost table uses the cost-relevant quantities for a preliminary cost estimate. The habitat utility in terms of net gain in **S**easonal **H**abitat **Area** ([**SHArea**](SHArC#herunSHArea)) for target fish species determines the project return in *"US\$ per \[acre or m<sup>2</sup>\] of newly created SHArea"*. This Wiki page is organized as follows:
+The *ProjectMaker* module guides through the half-automated assessment of cost-relevant quantities and ecological project benefits. A "restoration plan" or project proposal for a restoration plan herein designates an isolated restoration measure that can be delineated with an own `ProjectArea.shp` shapefile. *version*s of a restoration plan may refer to [terraforming](River-design-features#featoverview) options or other planning [*Condition*s](Signposts#new-condition). A project proposal is prepared for (preliminarily) *version*s of a restoration plan including relevant [nature-based engineering features](River-design-features#bioeng) (i.e., [vegetation plantings](River-design-features#plants), stabilizing features such as the placement of [angular boulders](River-design-features#rocks), and [*anchored* streamwood](River-design-features#elj)) and it evaluates cost-relevant quantities. A project cost table uses the cost-relevant quantities for a preliminary cost estimate. The habitat utility in terms of net gain in **S**easonal **H**abitat **Area** ([**SHArea**](SHArC#herunSHArea)) for target fish species determines the project return in *"US\$ per \[acre or m<sup>2</sup>\] of newly created SHArea"*. This Wiki page is organized as follows:
 
  - [ProjectMaker GUI usage](#pmquick)
  - [Generate a project plan and run a cost-quantity assessment](#pmcq)
@@ -48,11 +48,11 @@ The *ProjectMaker* module guides through the half-automated assessment of cost-r
 > -   If terraforming applies:
 >     -   The *SiteName* restoration terraforming plan was verified with 2D hydrodynamic modeling
 >     -   The *River Architect*'s [*VolumeAssessment*](VolumeAssessment) module was applied to calculate excavation / fill volumes.
-> -   The [*LifespanDesign*][3] and [*MaxLifespan*][4] modules were executed for [plantings](River-design-features#plants) and [other bioengineering features](River-design-features#bioeng). Thus, the following directories should exist and contain plantings and other bioengineering rasters:
+> -   The [*LifespanDesign*][3] and [*MaxLifespan*][4] modules were executed for [plantings](River-design-features#plants) and [other nature-based engineering features](River-design-features#bioeng). Thus, the following directories should exist and contain plantings and other nature-based engineering feature rasters:
 >     -   [Plantings](River-design-features#plants):
 >         +  `RiverArchitect/LifespanDesign/Output/Rasters/CONDITION_lyr20/`
 >         +  `RiverArchitect/MaxLifespan/Output/Rasters/CONDITION_lyr20/`
->     -   [Other Bioengineering](River-design-features#bioeng):
+>     -   [Other nature-based engineering features](River-design-features#bioeng):
 >         + `RiverArchitect/LifespanDesign/Output/Rasters/CONDITION_lyr20/`
 >         + `RiverArchitect/MaxLifespan/Output/Rasters/CONDITION_lyr20/`
 > -   The [*SHArC*][6] module was applied to the pre-project (initial) condition and the "with implementation" ("as-built") condition.
@@ -165,7 +165,7 @@ Before the most reasonable vegetation plantings are implemented into the project
 
 **Define critical lifespans**<a name="pmactm"></a>
 Before plantings can be placed, *River Architect* wants to know the critical threshold for lifespans that a plant species needs have to be applicable (2.5 may be a reasonable estimate here). For example, if the field *Do not plant where expected lifespans are less than* = `2.5`, *River Architect* will only place plantings with an expected lifespan of 2.5 years or more.
-In addition, *River Architect* requires the definition of a critical lifespan of vegetation plantings, which require additional bioengineering support. For example, if the field *Stabilize plants where expected lifespans are less than* = `10.0`, *River Architect* will add supporting bioengineering features where the best performing plant species lifespan is less than 10.0 years.
+In addition, *River Architect* requires the definition of a critical lifespan of vegetation plantings, which require additional nature-based engineering support. For example, if the field *Stabilize plants where expected lifespans are less than* = `10.0`, *River Architect* will add supporting nature-based engineering features where the best performing plant species lifespan is less than 10.0 years.
 Note that the second value needs to be higher than the first value to reasonable results.
 
 **Place plantings**
@@ -174,33 +174,33 @@ After a successful run, *Delineate plantings* has written vegetation plantings a
 **Note: *Project Maker* places best plants in alphabetic order.** In the case of the pre-defined plant species, that means, first a pixel is tested for its suitability for *Box Elder*, then for *Cottonwood*, then *White Alder*, and then *Willow*s. If a pixel already got assigned a plant species, it will not be tested again for other plant species. For example, if a pixel got assigned *Box Elder*, it will not be considered for all other plant species.
 
 **Stabilize plantings<a name="pmbio1"></a>**
-Even though the vegetation plantings maximum lifespan maps identify the optimum [plant species](River-design-features#plants) according to the highest lifespans, the projected vegetation plantings may be associated with low lifespans. Therefore, supporting (stabilizing) features such as engineered log jams (here: single anchored logs or root wads) may be required. The GUI's `Stabilize plantings` button launches a python function that adds [stabilizing bioengineering features](River-design-features#bioeng) such as anchored wood logs to planting areas associated with the user-defined *minimum plantings lifespan*. The *Stabilize plantings* function uses the following priorities of stabilizing features:
+Even though the vegetation plantings maximum lifespan maps identify the optimum [plant species](River-design-features#plants) according to the highest lifespans, the projected vegetation plantings may be associated with low lifespans. Therefore, supporting (stabilizing) features such as engineered log jams (here: single anchored logs or root wads) may be required. The GUI's `Stabilize plantings` button launches a python function that adds [stabilizing nature-based engineering features](River-design-features#bioeng) such as anchored wood logs to planting areas associated with the user-defined *minimum plantings lifespan*. The *Stabilize plantings* function uses the following priorities of stabilizing features:
 
 1.  [Large wood logs](River-design-features#elj) (diameters defined in `RiverArchitect/LifespanDesign/.templates/`*threshold\_values.xlsx*) if their lifespan is higher than the *Critical  plantings lifespan*.
 
 2.  [Engineered (anchored) wood logs](River-design-features#elj), where maximum lifespan maps indicate convenient applicability.
 
-3.  [Vegetation-based bioengineering features](River-design-features#bioeng) (pre-defined in cost master workbook: brush layers; alternatively, fascines or geotextile can be linked from *costs!F30:F33* to *from\_geodata!C16\*...*, where the depth to the groundwater does not exceed the threshold values defined in `RiverArchitect/LifespanDesign/.templates/`*threshold\_values.xlsx*.
+3.  [Vegetative nature-based engineering features](River-design-features#bioeng) (pre-defined in cost master workbook: brush layers; alternatively, fascines or geotextile can be linked from *costs!F30:F33* to *from\_geodata!C16\*...*, where the depth to the groundwater does not exceed the threshold values defined in `RiverArchitect/LifespanDesign/.templates/`*threshold\_values.xlsx*.
 
-4.  [Mineral-based bioengineering features (rock paving)](River-design-features#rocks), where the depth to the groundwater table is insufficient for vegetative stabilization and where the terrain is steeper than the threshold values defined in `RiverArchitect/LifespanDesign/.templates/`*threshold\_values.xlsx*.
+4.  [Mineralic nature-based engineering features (rock paving)](River-design-features#rocks), where the depth to the groundwater table is insufficient for vegetative stabilization and where the terrain is steeper than the threshold values defined in `RiverArchitect/LifespanDesign/.templates/`*threshold\_values.xlsx*.
 
 5.  [Angular boulders](River-design-features#rocks) where high dimensionless bed shear stress predictions prohibit the utilization of any above feature.
 
-*Place best vegetation plantings* writes construction-relevant numbers for vegetation planting stabilization to the cost master workbook's *from\_geodata* spreadsheet. The *costs* spreadsheet automatically evaluates stabilizing feature quantities in the *Bioengineering (stabilization)* and *Bioengineering (other)* frames. Nevertheless, check the assigned cell links to the *from\_geodata* spreadsheet and adapt feature types if required. Moreover, *Stabilize plantings* creates a shapefile called (*Plant\_stab.shp*) in `ProjectName/Geodata/Shapefiles/`. **Check the cell links in the automatically opened cost master workbook's *costs* spreadsheet** (cell links to the *from\_geodata* spreadsheet). Finally, save and close the workbook.
+*Place best vegetation plantings* writes construction-relevant numbers for vegetation planting stabilization to the cost master workbook's *from\_geodata* spreadsheet. The *costs* spreadsheet automatically evaluates stabilizing feature quantities in the *nature-based engineering (stabilization)* and *nature-based engineering (other)* frames. Nevertheless, check the assigned cell links to the *from\_geodata* spreadsheet and adapt feature types if required. Moreover, *Stabilize plantings* creates a shapefile called (*Plant\_stab.shp*) in `ProjectName/Geodata/Shapefiles/`. **Check the cell links in the automatically opened cost master workbook's *costs* spreadsheet** (cell links to the *from\_geodata* spreadsheet). Finally, save and close the workbook.
 
 ## Stabilize terrain<a name="pmter"></a>
 
-The `Terrain Stabilization` frame enables the identification of areas that require additional support with bioengineering to yield a target lifespan that can be defined in the field *Critical lifespan*. For example, if new terraforms are intended to persist at least 20 years, set *Critical lifespan*=20.
-A click on the `Stabilize terrain` button launches the calculations, where bioengineering features are placed in the same hierarchical order as before. Besides, the terrain stabilization calculates a [stable grain size Raster](River-design-features#rocks) for the provided *Critical lifespan*. The control variables of *&tau;<sub>\*,cr</sub>* (default 0.047) and [Manning\'s *n*][manningsn] can be defined by clicking on the `Set stability drivers` button. To learn more about the stable grain size computation, please refer to the [parameter calculation](LifespanDesign#inpras) and [stable grain size Raster creation](River-design-features#rocks).
+The `Terrain Stabilization` frame enables the identification of areas that require additional support with nature-based engineering features to yield a target lifespan that can be defined in the field *Critical lifespan*. For example, if new terraforms are intended to persist at least 20 years, set *Critical lifespan*=20.
+A click on the `Stabilize terrain` button launches the calculations, where nature-based engineering features are placed in the same hierarchical order as before. Besides, the terrain stabilization calculates a [stable grain size Raster](River-design-features#rocks) for the provided *Critical lifespan*. The control variables of *&tau;<sub>\*,cr</sub>* (default 0.047) and [Manning\'s *n*][manningsn] can be defined by clicking on the `Set stability drivers` button. To learn more about the stable grain size computation, please refer to the [parameter calculation](LifespanDesign#inpras) and [stable grain size Raster creation](River-design-features#rocks).
 
 The `Terrain Stabilization` produces writes relevant surfaces to the *from\_geodata* spreadsheet in costs master file (`ProjectName_assessment_vii.xlsx`) and produces the following geofiles:
 
  - Raster with stable grain (boulder) sizes `ProjectMaker/ProjectName_vii/Geodata/Rasters/terrain_boulder_stab.tif`
- - Shapefile with relevant [bioengineering features](River-design-features#bioeng) (see above definitions) `ProjectMaker/ProjectName_vii/Geodata/Shapefiles/Terrain_stab.shp`
+ - Shapefile with relevant [nature-based engineering features](River-design-features#bioeng) (see above definitions) `ProjectMaker/ProjectName_vii/Geodata/Shapefiles/Terrain_stab.shp`
 
 **Check the cell links in the automatically opened cost master workbook's *costs* spreadsheet** (cell links to the *from\_geodata* spreadsheet). Finally, save and close the workbook.
 
-## Manual placement of Bioengineering features<a name="pmbio2"></a>
+## Manual placement of nature-based engineering features<a name="pmbio2"></a>
 
 Additional habitat can be created with [cover features](SHArC#hemakecovhsi) (i.e., engineered logs jams or root wads) at locations that result from an expert assessment. To implement cover features, open `ProjectName/Geodata/ProjectName/ProjectMaps.aprx` to do the following:
 
@@ -217,7 +217,7 @@ Additional habitat can be created with [cover features](SHArC#hemakecovhsi) (i.e
 
 5.  Save the edits and stop editing.
 
-6.  Write the number of drawn streamwood elements to the cost master workbook's (`ProjectName_assessment_vii`) *costs* spreadsheet (*Bioengineering* frame).
+6.  Write the number of drawn streamwood elements to the cost master workbook's (`ProjectName_assessment_vii`) *costs* spreadsheet (*nature-based engineering* frame).
 
 ## Other civil engineering works<a name="pmciv"></a>
 
