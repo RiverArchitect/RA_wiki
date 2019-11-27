@@ -40,7 +40,7 @@ The development of *River Architect* follows the *Zen of Python*, also known as 
 	Namespaces are one honking great idea -- let's do more of those!
 ```
 
-The *River Architect Wiki* for developers assumes a basic understanding of *Python3*, object-oriented programming, the *markdown* language and basics in *HTML*.
+The *River Architect Wiki* for developers assumes a basic understanding of *Python3*, object-oriented programming, the *markdown* language and basics in *HTML*. In order to ensure quality, we test and debug new code before pushing it, and we run spell checkers before updating the Wiki (albeit we cannot guarantee that the writing is 100 percent correct, we do our best). 
 
 
 # Add a module to *River Architect* <a name="addmod"></a>
@@ -52,7 +52,7 @@ Overview
 
 ***
 
-New modules or code modifications should be pushed to the `program` repository [[https://github.com/RiverArchitect/program]] ([read more about using `git`](DevGit)).
+New modules or code modifications should be pushed to the `program` repository [https://github.com/RiverArchitect/program](https://github.com/RiverArchitect/program) ([read more about using `git`](DevGit)).
 
 *River Architect* has currently five **master** tabs (or modules) and three of them have **slave**-tabs (sub-modules): [Lifespan](LifespanDesign), [Morphology](ModifyTerrain), and [Ecohydraulics](SHArC). The development of a new module or sub-module follows the same standards and varies only in the way how the tab is finally bound in the *River Architect* master GUI. For creating a new (sub) module, do the following:
 
