@@ -3,7 +3,7 @@ The to-do list for developers
 
 To edit this list, please clone the Wiki ([see descriptions](DevGit)) and follow the [Wiki writing instructions](DevWiki). More issues regarding the application of *River Architect* are listed in the [Troubslehooting Wiki](Troubleshooting#issues). Please update this [*Known issues* list ](Troubleshooting#issues) for users, too, once a problem is fixed.
 
-### Minor future tasks (max. one day of work each)
+### Minor future tasks (max. one day of work each) <a name="min"></a>
 
 - General
 	1. Change Error and Warning message logging from `logger.info()` to `logger.error()` and `logger.warning()` statements.
@@ -17,15 +17,18 @@ To edit this list, please clone the Wiki ([see descriptions](DevGit)) and follow
 
 	
 
-### Major future tasks for *River Architect* development
+### Major future tasks for *River Architect* development <a name="maj"></a>
 
-1. Add a *Load User Settings* options ([see below](#usrstgs))
-1. Resolve `arcpy` dependencies (move to *QGIS* and [`gdal`](https://gdal.org))
-1. Update and test [`River Builder`](RiverBuilder) implementation
-1. Couple with 2D numerical models
+- Add a *Load User Settings* options ([see below](#usrstgs))
+- Resolve `arcpy` dependencies (move to *QGIS* and [`gdal`](https://gdal.org))
+- Update and test [`River Builder`](RiverBuilder) implementation
+- Couple with 2D numerical models
+- Metadata:
+	1. Enable to append project metadata (including baseline, budget, socio-economic context and stakeholder)
+	1. Integrate metadata output in common formats (primary: [Ecological Metadata Language - EML](http://www.dcc.ac.uk/resources/metadata-standards/eml-ecological-metadata-language) format)
 
 
-### User requests and issues
+### User requests and issues <a name="usr"></a>
 
 Bugs or development requests from user undergo the following steps: (1) Reception (**"Received"**), (2) **"Discussion"** of implementation (developers and users), (3) **"Implementation"**(developers), and (4) push changes (final state: **"Implemented"**). The following issues and requests were reported by users:
 <!--- Please only use the following Implementation progress notes: Received / Discussion / Implementation / Implemented -->
@@ -34,7 +37,7 @@ Bugs or development requests from user undergo the following steps: (1) Receptio
 
 | Description | Source | Implementation progress |
 |-------------|--------|-------------------------|
-| Turn threshold values of features into threshold functions| Jason Wiener | Received | 
+| Turn threshold values of features into threshold functions| J. W. | Received | 
 
 
 # DETAILED PROBLEM DESCRIPTIONS
