@@ -841,6 +841,10 @@ Warning messages
         + If the feature is not intended to be applied anyway, ignore the warning message.
         + If the feature is intended to be applied, manual terrain modifications adapting the feature's threshold values may be necessary.
 
+ - **`WARNING: Failed to align input raster [...].`**
+    - *Cause:*   Raised by `ConditionCreator().fix_alignment` in `GetStarted/cConditionCreator.py` when it could not align the stated raster.
+    - *Remedy:*  Verify if the stated Raster contains invalid values (exists). Complex filenames that do not comply with the *River Architect* [filename convention](Signposts#terms) may also cause this error. Rename all files with the `Tools/rename_files.py` script (see inline code comments for instructions) to adapt all files to the *River Architect* [filename convention](Signposts#terms) and re-run `Align Rasters` (if required).
+
  - **`WARNING: Failed to arrange worksheets.`**
     - *Cause:*   Raised by `Write().write_volumes(self, ...)` in `.site_packages/riverpy/cReachManager.py` when it could not bring to the front the latest copy of the `template` sheet in the output (template) workbook (`VolumeAssessment/Output/CONDITION_volumes.xlsx` or `VolumeAssessment/.templates/volume_template.xlsx`), which contains the calculation results.
     - *Remedy:*  Traceback earlier error and warning messages. Ensure that no other program uses `VolumeAssessment/Output/CONDITION_volumes.xlsx` or `VolumeAssessment/.templates/volume_template.xlsx` and that both workbooks have not been accidentally deleted.
@@ -868,6 +872,10 @@ Warning messages
     - *Remedy:* 
         + Ensure that `ModifyTerrain/.templates/computation_extents.xlsx` contains valid reach descriptions ([reach preparation within the *ModifyTerrain* module](RiverReaches)).
         + Ensure that no other program uses `VolumeAssessment/Output/CONDITION_ volumes.xlsx` or `VolumeAssessment/.templates/volume_template.xlsx` and that both workbooks have not been accidentally deleted.
+	
+ - **`WARNING: Invalid alignment Raster name ([...]).`**
+    - *Cause:*   Raised by `ConditionCreator().fix_alignment(self, ...)` in `GetStarted/cConditionCreator.py` when it could not open the stated raster.
+    - *Remedy:*  Complex filenames that do not comply with the *River Architect* [filename convention](Signposts#nameconvention) may also cause this error. Rename all files with the `Tools/rename_files.py` script (see inline code comments for instructions) to adapt all Raster filenames to the *River Architect* [filename convention](Signposts#terms) and re-run `Align Rasters` (if required).
 
  - **`WARNING: Invalid type assignment -- setting reach names to IDs.`**
     - *Cause:*   Raised by `Read().get_reach_info(self, type)` in `.site_packages/riverpy/cReachManager.py` when The `type` argument is not`full_name* or`Id`. In this case, the [*ModifyTerrain*][5] module uses column `C` in `ModifyTerrain/.templates/computation_extents.xlsx` for reach names and IDs.
