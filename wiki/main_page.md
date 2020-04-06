@@ -109,7 +109,7 @@ River Architect Wiki
 
 ***
 
-***River Architect* is an <font color="blue">[open-access, peer-reviewed (Journal SoftwareX)](https://doi.org/10.1016/j.softx.2020.100438)</font> and Python3-based software for the GIS-based planning of habitat enhancing river design features regarding their lifespans, parametric characteristics, optimum placement in the terrain, and ecological benefits. The main graphical user interface (GUI) provides modules for generating lifespan and design maps, terrain modification (terraforming), assessment of digital elevation models (DEM), habitat assets including fish stranding risk, and project cost-benefits.**
+***River Architect* is an [<font color="blue">open-access, peer-reviewed (Journal SoftwareX)</font>](https://doi.org/10.1016/j.softx.2020.100438) and Python3-based software for the GIS-based planning of habitat enhancing river design features regarding their lifespans, parametric characteristics, optimum placement in the terrain, and ecological benefits. The main graphical user interface (GUI) provides modules for generating lifespan and design maps, terrain modification (terraforming), assessment of digital elevation models (DEM), habitat assets including fish stranding risk, and project cost-benefits.**
 
 *River Architect* invites to analyses and modifications of the longevity and ecological quality of riverscapes. Different planning bases ("conditions") can be easily created using an introductory module called **[GetStarted](Signposts#getstarted)**. **Lifespan**, **Morphology (Terraforming)** and **Ecohydraulic** assessments can then be created based on the *Conditions*, including the creation of project plans and cost tables with a **Project Maker** module.
 
