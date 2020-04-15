@@ -128,10 +128,10 @@ The main directory (`/RiverArchitect/`) contains the program launcher named `Sta
     -   `symbology`\ contains a standard symbology layer file (`.lyrx`) for partially logarithmic lifespan classification
     -   `river_template.aprx` is the standard *ArcGIS Pro* project file, where developers recommend to adapt background image (layer) connections.
 
--   **Module (folder): [`RiverArchitect/Connectivity`](Connectivity)** for [habitat connectivity analyses of restoration efforts](Connectivity).
-    - `Output` directory where Connectivity module outputs are saved.
-    - `connect_gui.py` is a standalone script that creates the graphical user interface (GUI) for running the [Habitat Connectivity](Connectivity) module.
-    - `cConnectivityAnalysis.py` provides methods for calculating connectivity metrics.
+-   **Module (folder): [`RiverArchitect/StrandingRisk`](StrandingRisk)** for [stranding risk analyses of restoration efforts](StrandingRisk).
+    - `Output` directory where Stranding Risk module outputs are saved.
+    - `connect_gui.py` is a standalone script that creates the graphical user interface (GUI) for running the [Stranding Risk](StrandingRisk) module.
+    - `cConnectivityAnalysis.py` provides methods for calculating stranding risk metrics.
     - `cGraph.py` contains graphic representation routines for habitat connectivity analyses.
 
 -   **Module (folder): [`RiverArchitect/GetStarted`](Signposts#getstarted)** prepare input *Conditions* from scratch or existing conditions.

@@ -51,19 +51,19 @@ Once the input is defined, clicking on the `CREATE CONDITION` button will create
 
 - `back.tif` is a background Raster that may be used for limiting lifespan analyses (<a href="LifespanDesign">LifespanDesign</a>) extents and all subsequent analyses. Moreover, the background Raster enables consistent mapping.
 
-- `dem.tif` is a DEM Raster indirectly required by the <a href="LifespanDesign">LifespanDesign</a>, <a href="ModifyTerrain">Modify Terrain</a>, <a href="Connectivity">Habitat Connectivity</a>, <a href="ProjectMaker">ProjectMaker</a> and <a href="MaxLifespan">Max Lifespan</a> modules.
+- `dem.tif` is a DEM Raster indirectly required by the <a href="LifespanDesign">LifespanDesign</a>, <a href="ModifyTerrain">Modify Terrain</a>, <a href="StrandingRisk">Stranding Risk</a>, <a href="ProjectMaker">ProjectMaker</a> and <a href="MaxLifespan">Max Lifespan</a> modules.
 
-- `dmean.tif` is a grain size Raster indirectly required by the <a href="LifespanDesign">LifespanDesign</a>, <a href="SHArC">SHArC</a>, <a href="Connectivity">Habitat Connectivity</a>, <a href="ProjectMaker">ProjectMaker</a> and <a href="MaxLifespan">Max Lifespan</a> modules.
+- `dmean.tif` is a grain size Raster indirectly required by the <a href="LifespanDesign">LifespanDesign</a>, <a href="SHArC">SHArC</a>, <a href="StrandingRisk">Stranding Risk</a>, <a href="ProjectMaker">ProjectMaker</a> and <a href="MaxLifespan">Max Lifespan</a> modules.
 
 - `fill.tif` is topographic change Raster indicating annual sediment deposition rates, which are required by the <a href="LifespanDesign">LifespanDesign</a>, and indirectly, the <a href="MaxLifespan">Max Lifespan</a> and <a href="ProjectMaker">ProjectMaker</a> modules.
 
-- `hQQQQQQ.tif` are flow depth rasters required by the <a href="LifespanDesign">LifespanDesign</a>, <a href="SHArC">SHArC</a>, <a href="Connectivity">Habitat Connectivity</a>, and (indirectly) the <a href="ProjectMaker">ProjectMaker</a> and <a href="MaxLifespan">Max Lifespan</a> modules. [Read more about file name conventions.](#terms)
+- `hQQQQQQ.tif` are flow depth rasters required by the <a href="LifespanDesign">LifespanDesign</a>, <a href="SHArC">SHArC</a>, <a href="StrandingRisk">Stranding Risk</a>, and (indirectly) the <a href="ProjectMaker">ProjectMaker</a> and <a href="MaxLifespan">Max Lifespan</a> modules. [Read more about file name conventions.](#terms)
 
-- `uQQQQQQ.tif` are flow velocity rasters required by the <a href="LifespanDesign">LifespanDesign</a>, <a href="SHArC">SHArC</a>, <a href="Connectivity">Habitat Connectivity</a>, and (indirectly) the <a href="ProjectMaker">ProjectMaker</a> and <a href="MaxLifespan">Max Lifespan</a> modules. [Read more about file name conventions.](#terms)
+- `uQQQQQQ.tif` are flow velocity rasters required by the <a href="LifespanDesign">LifespanDesign</a>, <a href="SHArC">SHArC</a>, <a href="StrandingRisk">Stranding Risk</a>, and (indirectly) the <a href="ProjectMaker">ProjectMaker</a> and <a href="MaxLifespan">Max Lifespan</a> modules. [Read more about file name conventions.](#terms)
 
 - `scour.tif` is topographic change Raster indicating annual terrain erosion rates, which are required by the <a href="LifespanDesign">LifespanDesign</a>, and indirectly, the <a href="MaxLifespan">Max Lifespan</a> and <a href="ProjectMaker">ProjectMaker</a> modules.
 
-- `vaQQQQQQ.tif` is flow velocity direction rasters required by the [Habitat Connectivity](Connectivity) module. [Read more about file name conventions.](#terms)
+- `vaQQQQQQ.tif` is flow velocity direction rasters required by the [Stranding Risk](StrandingRisk) module. [Read more about file name conventions.](#terms)
 
 The flow depth and velocity Rasters may require manual renaming to adapt to these Raster name conventions. A [*River Architect Tools* script](Tools#renamefiles) facilitates renaming multiple file names. Subsequently, populating the created *Condition* is strongly recommended
 

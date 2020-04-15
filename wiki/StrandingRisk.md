@@ -1,10 +1,10 @@
-Habitat Connectivity
+Stranding Risk Assessment
 ====================
 
 ***
 
-- [Introduction to Connectivity Module](#intro)
-- [Quick GUIde to Connectivity Assessment](#guide)
+- [Introduction to the Stranding Risk Module](#intro)
+- [Quick GUIde to Stranding Risk Assessment](#guide)
 - [Defining Travel Thresholds](#defining-travel-thresholds)
 - [Methodology](#methodology)
   * [Interpolating Hydraulic Rasters](#interpolating-hydraulic-rasters)
@@ -17,9 +17,9 @@ Habitat Connectivity
 
 ***
 
-# Introduction to Connectivity Module<a name="intro"></a>
+# Introduction to Stranding Risk Module<a name="intro"></a>
 
-The *Connectivity* module can be used to identify the following for a given flow reduction scenario: 
+The *Stranding Risk* module can be used to identify the following for a given flow reduction scenario: 
 - wetted areas that become disconnected from the river mainstem in the event of a flow reduction
 - the discharges at which specific areas disconnect
 - stranding risk associated with each disconnected area
@@ -27,37 +27,37 @@ The *Connectivity* module can be used to identify the following for a given flow
 
 These tools were developed to assess stranding risk for any given aquatic species and lifestage.
 
-# Quick GUIde to Connectivity Assessment<a name="guide"></a>
+# Quick GUIde to Stranding Risk Assessment<a name="guide"></a>
 
 ***
 
 ![mtgui](https://github.com/RiverArchitect/Media/raw/master/images/gui_start_connect.PNG)
 
-To begin using the Connectivity module, first select a hydraulic [Condition](Signposts#conditions). 
+To begin using the Stranding Risk module, first select a hydraulic [Condition](Signposts#conditions). 
 
 *Note*: In order to determine where velocity is a barrier to fish passage, the selected condition must include velocity angle rasters. Otherwise, velocity barriers will not be considered. In order to create the `disconnected_habitat` output raster, cHSI rasters must have already been calculated for the applied [Condition](Signposts#conditions)/[Physical Habitat](SHArC#hefish) using the [SHArC](SHArC) module. In order to create the `disc_freq` output raster, flows must have already been analyzed ([Make flow duration curves](Signposts#ana-flows)) for the applied [Condition](Signposts#conditions)/[Physical Habitat](SHArC#hefish).
 
-Next, select at least one [Physical Habitat](SHArC#hefish) (fish species/lifestage) from the dropdown menu. The Physical Habitat contains data specific to the fish species/lifestage. Physical Habitat data is used by the Connectivity module to determine if fish are able to traverse wetted areas by accounting for the organism's minimum swimming depth and maximum swimming speed (Physical Habitat data are also used by [SHArC](SHArC) to determine habitat suitability). These data can be viewed/edited via the drop-down menu: `Select Physical Habitat `  --> `DEFINE FISH SPECIES` (scroll to the "Travel Thresholds" section of the workbook).
+Next, select at least one [Physical Habitat](SHArC#hefish) (fish species/lifestage) from the dropdown menu. The Physical Habitat contains data specific to the fish species/lifestage. Physical Habitat data is used by the Stranding Risk module to determine if fish are able to traverse wetted areas by accounting for the organism's minimum swimming depth and maximum swimming speed (Physical Habitat data are also used by [SHArC](SHArC) to determine habitat suitability). These data can be viewed/edited via the drop-down menu: `Select Physical Habitat `  --> `DEFINE FISH SPECIES` (scroll to the "Travel Thresholds" section of the workbook).
 
-Once the desired condition and Physical Habitat(s) are selected, choose model discharges Q<sub>high</sub> and Q<sub>low</sub>. This defines the range of discharges over which to apply the connectivity analysis, simulating the changes in habitat connectivity for a flow reduction from Q<sub>high</sub> to Q<sub>low</sub>.
+Once the desired condition and Physical Habitat(s) are selected, choose model discharges Q<sub>high</sub> and Q<sub>low</sub>. This defines the range of discharges over which to apply the stranding risk analysis, simulating the changes in habitat connectivity for a flow reduction from Q<sub>high</sub> to Q<sub>low</sub>.
 
 Next, input a time period for the downramping. This is the amount of time (in minutes) over which the downramping is expected to occur. This parameter is used to estimate ramping rates as described in [Estimating Ramping Rates](#ramping-rates).
 
 Lastly, select an interpolation method. See [Interpolating Hydraulic Rasters](#interpolating-hydraulic-rasters) for more information.
 
-For further explanation of the methodology used in the analysis, see [Methodology](Connectivity#Methodology).
+For further explanation of the methodology used in the analysis, see [Methodology](StrandingRisk#Methodology).
 
-Outputs are stored in `Connectivity\Output\Condition_name\`. The outputs produced are:
+Outputs are stored in `StrandingRisk\Output\Condition_name\`. The outputs produced are:
 
-- interpolated rasters (`h_interp`, `u_interp`, `va_interp`): interpolated depth, velocity (magnitude), and velocity angle rasters. See [Interpolating Hydraulic Rasters](Connectivity#interpolating-hydraulic-rasters) for more information.'
+- interpolated rasters (`h_interp`, `u_interp`, `va_interp`): interpolated depth, velocity (magnitude), and velocity angle rasters. See [Interpolating Hydraulic Rasters](StrandingRisk#interpolating-hydraulic-rasters) for more information.'
 
-Outputs specific to the applied flow reduction are stored in the subdirectory `Connectivity\Output\Condition_name\flow_red_Qhigh_Qlow`. These outputs include:
+Outputs specific to the applied flow reduction are stored in the subdirectory `StrandingRisk\Output\Condition_name\flow_red_Qhigh_Qlow`. These outputs include:
 
-- `shortest_paths\`: directory containing a raster for each model discharge in the range Q<sub>low</sub>-Q<sub>high</sub>, indicating the minimum distance/least cost required to escape to the river mainstem at Q<sub>low</sub>, subject to constraints imposed by the travel thresholds for the selected Physical Habitat. See [Escape Route Calculations](Connectivity#escape-route-calculations) for more.
-- `disc_areas\`: directory containing a shapefile for each model discharge indicating wetted areas which are effectively disconnected at that discharge. See [Calculating Disconnected Habitat Area](Connectivity#calculating-disconnected-area) for more.
+- `shortest_paths\`: directory containing a raster for each model discharge in the range Q<sub>low</sub>-Q<sub>high</sub>, indicating the minimum distance/least cost required to escape to the river mainstem at Q<sub>low</sub>, subject to constraints imposed by the travel thresholds for the selected Physical Habitat. See [Escape Route Calculations](StrandingRisk#escape-route-calculations) for more.
+- `disc_areas\`: directory containing a shapefile for each model discharge indicating wetted areas which are effectively disconnected at that discharge. See [Calculating Disconnected Habitat Area](StrandingRisk#calculating-disconnected-area) for more.
 - `disconnected_area.xlsx`: a spreadsheet containing plotted data of discharge vs disconnected area.
-- `disconnected_habitat.tif`: a raster showing all wetted areas which become disconnected in the applied flow reduction scenario, weighted by the combined habitat suitability index (cHSI) at Q<sub>high</sub> (before the flow reduction occurs). See [Calculating Disconnected Habitat Area](Connectivity#calculating-disconnected-area) for more.
-- `Q_disconnect.tif`: a raster showing the highest model discharge for which areas are disconnected from the mainstem at Q<sub>low</sub>. Locations that are not disconnected at any modeled discharge are assigned a value of zero. Thus, this map indicates locations and discharges below which stranding risks may occur. See [Determining Q<sub>disconnect</sub>](Connectivity#determining-qdisconnect) for more.
+- `disconnected_habitat.tif`: a raster showing all wetted areas which become disconnected in the applied flow reduction scenario, weighted by the combined habitat suitability index (cHSI) at Q<sub>high</sub> (before the flow reduction occurs). See [Calculating Disconnected Habitat Area](StrandingRisk#calculating-disconnected-area) for more.
+- `Q_disconnect.tif`: a raster showing the highest model discharge for which areas are disconnected from the mainstem at Q<sub>low</sub>. Locations that are not disconnected at any modeled discharge are assigned a value of zero. Thus, this map indicates locations and discharges below which stranding risks may occur. See [Determining Q<sub>disconnect</sub>](StrandingRisk#determining-qdisconnect) for more.
 - `disc_freq.tif`: a raster showing the historical frequency for which each area becomes disconnected, in number of times per year, confined to the season of interest for the analyzed species/lifestage. See [Disconnection Frequencies](#disc-freq) for more.
 - `ramping_rate_time.tif`: a raster showing the estimated ramping rate before disconnection occurs. See [Estimating Ramping Rates](#ramping-rates) for more.
 
@@ -83,7 +83,7 @@ The analysis begins by performing an interpolation of the water surface elevatio
 - the WSE is interpolated across the DEM extent using an Inverse Distance Weighted (IDW) interpolation scheme on the 12 nearest neighbors.
 - The DEM is subtracted from the interpolated WSE raster to produce an interpolated depth raster. Only positive values are saved (negative values indicate an estimated depth to groundwater).
 - Interpolated velocity and velocity angle rasters are created, where velocity is set to zero in the newly interpolated areas.
-- Interpolated rasters are stored in `Connectivity\Condition_name\h_interp`, `Connectivity\Condition_name\u_interp`, `Connectivity\Condition_name\va_interp`. All interpolated rasters are saved with a corresponding .info.txt file which records the interpolation method and input rasters used in its creation.
+- Interpolated rasters are stored in `StrandingRisk\Condition_name\h_interp`, `StrandingRisk\Condition_name\u_interp`, `StrandingRisk\Condition_name\va_interp`. All interpolated rasters are saved with a corresponding .info.txt file which records the interpolation method and input rasters used in its creation.
 
 The available interpolation methods are:
 

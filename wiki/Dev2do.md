@@ -62,7 +62,7 @@ A user settings load function may use a text file to enable the following user d
 - Record what SHArea threshold user input (CHSI = ?)
 - For Q - Area Analysis - which flow duration curve was used?
 
-[Habitat Connectivity](Connectivity)
+[Stranding Risk](StrandingRisk)
 - Record what Q-high and Q_low input by user
 - Record which interpolation method was selected
 

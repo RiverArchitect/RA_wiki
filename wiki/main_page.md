@@ -73,10 +73,10 @@ River Architect Wiki
     </ul></li>
     <li><a href="SHArC#hefish">Predefined <strong>Fish</strong> (Physical Habitats)</a></li>
     <li><a href="aqua-modification#hecode">Edit Fish (Physical Habitats) template</a></li>
-    <li><a href="Connectivity">Habitat Connectivity</a>
+    <li><a href="StrandingRisk">Stranding Risk</a>
     <ul>
-      <li><a href="Connectivity#intro">Introduction</a></li>
-      <li><a href="Connectivity#guide">Quick GUIde</a></li>
+      <li><a href="StrandingRisk#intro">Introduction</a></li>
+      <li><a href="StrandingRisk#guide">Quick GUIde</a></li>
     </ul></li>
   </ul></li>
 
@@ -117,7 +117,7 @@ River Architect Wiki
 
 **Morphology (Terraforming)** includes routines to [**Modify Terrain**][5] for river restoration purposes. Currently, two terrain modification algorithms are implemented: (1) Threshold value-based terrain modifications in terms of [grading](River-design-features#grading) or [widening / broaden rivers](River-design-features#berms) for riparian forest establishment; and (2) [River Builder](RiverBuilder) for the creation of synthetic river valley. A **[Volume Assessment](VolumeAssessment)** module can compare an original (pre-project or pre-terraforming application) and a modified DEM (\"with implementation\" or post-feature application) to determine required earth movement (terraforming volumes) works.
 
-**Ecohydraulics** assessments include the evaluation of the ecohydraulic state and connectivity of riverscapes. The **[Habitat Area](SHArC)** (Seasonal Habitat Area Calculator) module applies user-defined flows (discharges) for the spatial evaluation of the habitat suitability index (*HSI*) in terms of Seasonal Habitat Area (SHArea). The hydraulic habitat suitability results from 2D hydrodynamic numerical model outputs of flow depth and velocity. Also, a  \"cover\" option can be used to assess ecohydraulic effects of cobble, boulder, vegetation, and streamwood. The **[Habitat Connectivity](Connectivity)** module provides insights into the connection of wetted areas on floodplains and how these may be improved to enhance the survivorship of fry / juvenile fish.
+**Ecohydraulics** assessments include the evaluation of the ecohydraulic state and connectivity of riverscapes. The **[Habitat Area](SHArC)** (Seasonal Habitat Area Calculator) module applies user-defined flows (discharges) for the spatial evaluation of the habitat suitability index (*HSI*) in terms of Seasonal Habitat Area (SHArea). The hydraulic habitat suitability results from 2D hydrodynamic numerical model outputs of flow depth and velocity. Also, a  \"cover\" option can be used to assess ecohydraulic effects of cobble, boulder, vegetation, and streamwood. The **[Stranding Risk](StrandingRisk)** module provides insights into the connection of wetted areas on floodplains and how these may be improved to enhance the survivorship of fry / juvenile fish.
 
 The [**Project Maker**][7] module creates preliminary construction plans and evaluates the costs for gain in usable habitat for target fish species and lifestages. A unit cost workbook provides relevant costs and the gain in usable habitat area results from the *SHArC* module.
 

@@ -213,14 +213,14 @@ Assuming a new master tab with the name ***NEW MODULE, optionally with *New Sub 
 -	`self.tab_names = ['Get Started', 'Lifespan', 'Morphology', 'Ecohydraulics', 'Project Maker', 'NEW MODULE']`
 -	For adding slave (sub) tabs with names `NEW SUB1` and `NEW SUB2`: 
 		+ `self.sub_tab_parents = ['Lifespan', 'Morphology', 'Ecohydraulics', 'NEW MODULE']`
-		+ `self.sub_tab_names = [['Lifespan Design', 'Max Lifespan'], ['Modify Terrain', 'Volume Assessment'], ['Habitat Area (SHArC)', 'Habitat Connectivity'], ['NEW SUB1', 'NEW SUB2', ... and so on]]`
+		+ `self.sub_tab_names = [['Lifespan Design', 'Max Lifespan'], ['Modify Terrain', 'Volume Assessment'], ['Habitat Area (SHArC)', 'Stranding Risk'], ['NEW SUB1', 'NEW SUB2', ... and so on]]`
 -	`self.tab_dir_names`
-		+ No sub tabs: `self.tab_dir_names= ['\\GetStarted\\', ['\\LifespanDesign\\', '\\MaxLifespan\\'], ['\\ModifyTerrain\\', '\\VolumeAssessment\\'], ['\\SHArC\\', '\\Connectivity\\'], '\\ProjectMaker\\', '\\NewModule\\']` 
-		+ With sub tabs located in `RiverArchitect/NewSubModule1/` and  `RiverArchitect/NewSubModule2/`, respectively: `self.tab_dir_names = ['\\GetStarted\\', ['\\LifespanDesign\\', '\\MaxLifespan\\'], ['\\ModifyTerrain\\', '\\VolumeAssessment\\'], ['\\SHArC\\', '\\Connectivity\\'], '\\ProjectMaker\\', ['\\NewSubModule1\\', '\\NewSubModule2\\']]`
+		+ No sub tabs: `self.tab_dir_names= ['\\GetStarted\\', ['\\LifespanDesign\\', '\\MaxLifespan\\'], ['\\ModifyTerrain\\', '\\VolumeAssessment\\'], ['\\SHArC\\', '\\StrandingRisk\\'], '\\ProjectMaker\\', '\\NewModule\\']` 
+		+ With sub tabs located in `RiverArchitect/NewSubModule1/` and  `RiverArchitect/NewSubModule2/`, respectively: `self.tab_dir_names = ['\\GetStarted\\', ['\\LifespanDesign\\', '\\MaxLifespan\\'], ['\\ModifyTerrain\\', '\\VolumeAssessment\\'], ['\\SHArC\\', '\\StrandingRisk\\'], '\\ProjectMaker\\', ['\\NewSubModule1\\', '\\NewSubModule2\\']]`
 -	`self.tab_list`
 		+ No sub tabs: `self.tab_list= [GetStarted.welcome_gui.MainGui(self.tab_container), ttk.Notebook(self.tab_container), ttk.Notebook(self.tab_container), ttk.Notebook(self.tab_container), ProjectMaker.project_maker_gui.MainGui(self.tab_container), NewModule.new_module_gui.MainGui(self.tab_container)]`
 		+ With sub tabs: `self.tab_list= [GetStarted.welcome_gui.MainGui(self.tab_container), ttk.Notebook(self.tab_container), ttk.Notebook(self.tab_container), ttk.Notebook(self.tab_container), ProjectMaker.project_maker_gui.MainGui(self.tab_container), ttk.Notebook(self.tab_container)]`
-- 	With sub tabs: `self.sub_tab_list = [[LifespanDesign.lifespan_design_gui.FaGui(self.tabs['Lifespan']), MaxLifespan.action_gui.ActionGui(self.tabs['Lifespan'])],  [ModifyTerrain.modify_terrain_gui.MainGui(self.tabs['Morphology']),  VolumeAssessment.volume_gui.MainGui(self.tabs['Morphology'])], [SHArC.sharc_gui.MainGui(self.tabs['Ecohydraulics']), Connectivity.connect_gui.MainGui(self.tabs['Ecohydraulics'])], [NewSubModule1.new_sub1_gui.MainGui(self.tabs['NEW SUB1']), NewSubModule2.new_sub2_gui.MainGui(self.tabs['NEW SUB2'])]]`
+- 	With sub tabs: `self.sub_tab_list = [[LifespanDesign.lifespan_design_gui.FaGui(self.tabs['Lifespan']), MaxLifespan.action_gui.ActionGui(self.tabs['Lifespan'])],  [ModifyTerrain.modify_terrain_gui.MainGui(self.tabs['Morphology']),  VolumeAssessment.volume_gui.MainGui(self.tabs['Morphology'])], [SHArC.sharc_gui.MainGui(self.tabs['Ecohydraulics']), StrandingRisk.connect_gui.MainGui(self.tabs['Ecohydraulics'])], [NewSubModule1.new_sub1_gui.MainGui(self.tabs['NEW SUB1']), NewSubModule2.new_sub2_gui.MainGui(self.tabs['NEW SUB2'])]]`
 
 
 ### Binding a New Sub-Module to an existing module
@@ -228,9 +228,9 @@ Assuming a new master tab with the name ***NEW MODULE, optionally with *New Sub 
 The following list indicates variables to be modified when a new sub-module (slave or sub-tab) is added to an existing module. The example assumes the creation of a sub-tab called `RiverCreator` to the `Morphology` module.
 
 -	Verify that the `Morphology` tab is mentioned in  `self.sub_tab_parents = ['Lifespan', 'Morphology', 'Ecohydraulics', 'NEW MODULE']`
--	Add `RIVER CREATOR` to the second nested list in `self.sub_tab_names = [['Lifespan Design', 'Max Lifespan'], ['Modify Terrain', 'Volume Assessment', 'RIVER CREATOR'], ['Habitat Area (SHArC)', 'Habitat Connectivity']]`; the second nested list must be chosen because `Morphology` is the second item in `self.sub_tab_parents`
--	Assuming that the new module is located in `RiverArchitect/RiverCreator`, modify `self.tab_dir_names = ['\\GetStarted\\', ['\\LifespanDesign\\', '\\MaxLifespan\\'], ['\\ModifyTerrain\\', '\\VolumeAssessment\\', '\\RiverCreator\\'], ['\\SHArC\\', '\\Connectivity\\'], '\\ProjectMaker\\', ['\\NewSubModule1\\', '\\NewSubModule2\\']]`
-- 	Withe the asumption that the new *River Creator* GUI is located in `RiverArchitect/RiverCreator/rc_gui.py`, modify `self.sub_tab_list = [[LifespanDesign.lifespan_design_gui.FaGui(self.tabs['Lifespan']), MaxLifespan.action_gui.ActionGui(self.tabs['Lifespan'])], [ModifyTerrain.modify_terrain_gui.MainGui(self.tabs['Morphology']), VolumeAssessment.volume_gui.MainGui(self.tabs['Morphology']),  RiverCreator.rc_gui.MainGui(self.tabs['River Creator'])], [SHArC.sharc_gui.MainGui(self.tabs['Ecohydraulics']), Connectivity.connect_gui.MainGui(self.tabs['Ecohydraulics'])]]`
+-	Add `RIVER CREATOR` to the second nested list in `self.sub_tab_names = [['Lifespan Design', 'Max Lifespan'], ['Modify Terrain', 'Volume Assessment', 'RIVER CREATOR'], ['Habitat Area (SHArC)', 'Stranding Risk']]`; the second nested list must be chosen because `Morphology` is the second item in `self.sub_tab_parents`
+-	Assuming that the new module is located in `RiverArchitect/RiverCreator`, modify `self.tab_dir_names = ['\\GetStarted\\', ['\\LifespanDesign\\', '\\MaxLifespan\\'], ['\\ModifyTerrain\\', '\\VolumeAssessment\\', '\\RiverCreator\\'], ['\\SHArC\\', '\\StrandingRisk\\'], '\\ProjectMaker\\', ['\\NewSubModule1\\', '\\NewSubModule2\\']]`
+- 	Withe the asumption that the new *River Creator* GUI is located in `RiverArchitect/RiverCreator/rc_gui.py`, modify `self.sub_tab_list = [[LifespanDesign.lifespan_design_gui.FaGui(self.tabs['Lifespan']), MaxLifespan.action_gui.ActionGui(self.tabs['Lifespan'])], [ModifyTerrain.modify_terrain_gui.MainGui(self.tabs['Morphology']), VolumeAssessment.volume_gui.MainGui(self.tabs['Morphology']),  RiverCreator.rc_gui.MainGui(self.tabs['River Creator'])], [SHArC.sharc_gui.MainGui(self.tabs['Ecohydraulics']), StrandingRisk.connect_gui.MainGui(self.tabs['Ecohydraulics'])]]`
 
 
 **Please do not forget to [update the wiki](DevWiki) and test new code!**
@@ -252,7 +252,7 @@ d-----        7/26/2019  11:39 AM                .site_packages
 d-----        7/26/2019  11:39 AM                00_Flows
 d-----        7/26/2019  11:39 AM                01_Conditions
 d-----        7/26/2019  11:39 AM                02_Maps
-d-----       11/22/2019  10:17 AM                Connectivity
+d-----       11/22/2019  10:17 AM                StrandingRisk
 d-----        7/26/2019  11:39 AM                docs
 d-----       11/19/2019  12:40 PM                GetStarted
 d-----        7/26/2019  11:39 AM                LifespanDesign
@@ -1803,7 +1803,7 @@ Mode                LastWriteTime         Length Name
 -a----        7/26/2019  11:39 AM           7666 LifespanRasterSymbology.lyrx
 
 
-RiverArchitect\program\Connectivity
+RiverArchitect\program\StrandingRisk
 Mode                LastWriteTime         Length Name
 ----                -------------         ------ ----
 d-----        8/20/2019  12:22 PM                .templates
@@ -1814,7 +1814,7 @@ d-----        8/20/2019  12:22 PM                .templates
 -a----        7/26/2019  11:39 AM             84 __init__.py
 
 
-RiverArchitect\program\Connectivity\.templates
+RiverArchitect\program\StrandingRisk\.templates
 Mode                LastWriteTime         Length Name
 ----                -------------         ------ ----
 -a----        8/20/2019  12:22 PM         191729 disconnected_area_template.xlsx
