@@ -30,7 +30,7 @@ The *Stranding Risk* module can be used to map areas susceptible to stranding an
 
 ***
 
-![mtgui](https://github.com/RiverArchitect/Media/raw/master/images/gui_start_stranding.PNG)
+<img src="https://github.com/RiverArchitect/Media/raw/master/images/gui_start_stranding.PNG" width=650>
 
 To begin using the Stranding Risk module, first select a hydraulic [Condition](Signposts#conditions). 
 
@@ -103,11 +103,14 @@ The "shortest escape route" output maps (stored in the `shortest_paths\` output 
 
 ### Applying Depth and Velocity Travel Criteria
 
-![connect_vel](https://github.com/RiverArchitect/Media/raw/master/images/connect_vel_condition.png)
+The applied depth and velocity thresholds parameterize the ability of the target fish to travel throughout the river corridor. The criteria to satisfy for travel from cell A to adjacent cell B are defined by three criteria:
+- Domain criterion: both cells A and B are wetted.
+- Depth criterion: depth at cell B is > d_{min}.
+- Velocity criterion: the fish can overcome the current at cell A to reach cell B traveling at v_f
 
-The depth threshold criteria is applied simply by checking if the current cell and neighboring cell are greater than the minimum swimming depth. If so, the depth threshold criteria is satisfied. Because velocity is a vector quantity, the direction of travel must be considered when applying the velocity threshold criteria.
+<img src="https://github.com/RiverArchitect/Media/raw/master/images/connect_vel_condition.png" width=500>
 
-From the center of each cell, the area is divided into 8 octants corresponding to the 8 neighboring cells, with each octant centered on the direction to its neighboring cell and spanning 45°. If it is possible to add the water velocity vector (𝑣<sub>𝑤</sub>) to a vector with the magnitude of the maximum swimming speed (𝑣<sub>𝑓</sub>) to yield a vector (𝑉) falling within an octant, then the velocity threshold criteria is satisfied for travel to the corresponding neighboring cell. A specific example is shown in this diagram where the resultant velocity vector 𝑉 points into the upper quadrant, thus the velocity threshold criteria is satisfied for travel to the upper neighbor. Octants are colored red/green based on whether the criteria is/is not satisfied for travel in that direction.
+From the center of each cell, the area is divided into 8 octants corresponding to the 8 neighboring cells, with each octant centered on the direction to its neighboring cell and spanning 45°. If it is possible to add the water velocity vector (𝑣<sub>𝑤</sub>) to a vector with the magnitude of the maximum swimming speed (𝑣<sub>𝑓</sub>) to yield a vector (𝑉) falling within an octant, then the velocity threshold criteria is satisfied for travel to the corresponding neighboring cell. A specific example is shown in this diagram where the resultant velocity vector 𝑉 points into the upper quadrant, thus the velocity threshold criteria is satisfied for travel to the upper neighbor. Octants are colored blue/red based on whether the criteria is/is not satisfied for travel in that direction.
 
 ***
 
@@ -115,7 +118,7 @@ Least cost path calculations are implemented in a computationally efficient way 
 
 ![connect_graph](https://github.com/RiverArchitect/Media/raw/master/images/connect_graph.png)
 
-Applying the depth and velocity thresholds at each cell yields a set of neighboring cells for which travel is possible. Each cell which can reach other cells or be reached is represented as a vertex of the graph. Reachability of neighboring vertices is represented by edges connecting the vertices, with an arrow symbol indicating the direction of possible travel (edges without arrows indicate travel is possible in both directions). For each edge, an associated cost of traveling along the edge is calculated, yielding a weighted digraph to represent possible fish travel and the associated costs. The least-cost path leading from each vertex to any of the vertices in the target area (corresponding to river mainstem at a lower discharge) is then computed and the path length/cost is stored as a value in the output raster at the location of the starting vertex. Here the target vertices are shown in gold and the least-cost path from point A is shown in green (where the cost function applied is Euclidean distance).
+Applying the travel criteria at each cell yields a set of neighboring cells for which travel is possible. Each cell which can reach other cells or be reached is represented as a vertex of the graph. Reachability of neighboring vertices is represented by edges connecting the vertices, with an arrow symbol indicating the direction of possible travel (edges without arrows indicate travel is possible in both directions). For each edge, an associated cost of traveling along the edge is calculated, yielding a weighted digraph to represent possible fish travel and the associated costs. The least-cost path leading from each vertex to any of the vertices in the target area (corresponding to river mainstem at a lower discharge) is then computed and the path length/cost is stored as a value in the output raster at the location of the starting vertex. Here the target vertices are shown in gold and the least-cost path from point A is shown in blue (where the cost function applied is Euclidean distance).
 
 ***
 
