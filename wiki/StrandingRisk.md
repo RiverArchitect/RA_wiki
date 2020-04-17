@@ -19,23 +19,22 @@ Stranding Risk Assessment
 
 # Introduction to Stranding Risk Module<a name="intro"></a>
 
-The *Stranding Risk* module can be used to identify the following for a given flow reduction scenario: 
-- wetted areas that become disconnected from the river mainstem in the event of a flow reduction
-- the discharges at which specific areas disconnect
-- stranding risk associated with each disconnected area
-- the degree to which wetted areas are connected before a complete disconnection occurs.
-
-These tools were developed to assess stranding risk for any given aquatic species and lifestage.
+The *Stranding Risk* module can be used to map areas susceptible to stranding and calculate stranding risk metrics for a given fish species, lifestage, and flow reduction scenario. Output rasters include: 
+- wetted areas that become disconnected from the river mainstem
+- discharge at which each area becomes disconnected
+- average frequency at which each area disconnects
+- habitat suitability of each area prior to disconnection
+- estimated ramping rate
 
 # Quick GUIde to Stranding Risk Assessment<a name="guide"></a>
 
 ***
 
-![mtgui](https://github.com/RiverArchitect/Media/raw/master/images/gui_start_connect.PNG)
+![mtgui](https://github.com/RiverArchitect/Media/raw/master/images/gui_start_stranding.PNG)
 
 To begin using the Stranding Risk module, first select a hydraulic [Condition](Signposts#conditions). 
 
-*Note*: In order to determine where velocity is a barrier to fish passage, the selected condition must include velocity angle rasters. Otherwise, velocity barriers will not be considered. In order to create the `disconnected_habitat` output raster, cHSI rasters must have already been calculated for the applied [Condition](Signposts#conditions)/[Physical Habitat](SHArC#hefish) using the [SHArC](SHArC) module. In order to create the `disc_freq` output raster, flows must have already been analyzed ([Make flow duration curves](Signposts#ana-flows)) for the applied [Condition](Signposts#conditions)/[Physical Habitat](SHArC#hefish).
+*Note*: In order to determine where velocity is a barrier to fish passage, the selected condition must include velocity angle rasters. Otherwise, velocity barriers will not be considered. In order to create the `disconnected_habitat` output raster, cHSI rasters must have already been calculated for the applied [Condition](Signposts#conditions) and [Physical Habitat](SHArC#hefish) using the [SHArC](SHArC) module. In order to create the `disc_freq` output raster, flows must have already been analyzed ([Make flow duration curves](Signposts#ana-flows)) for the applied [Condition](Signposts#conditions) and [Physical Habitat](SHArC#hefish).
 
 Next, select at least one [Physical Habitat](SHArC#hefish) (fish species/lifestage) from the dropdown menu. The Physical Habitat contains data specific to the fish species/lifestage. Physical Habitat data is used by the Stranding Risk module to determine if fish are able to traverse wetted areas by accounting for the organism's minimum swimming depth and maximum swimming speed (Physical Habitat data are also used by [SHArC](SHArC) to determine habitat suitability). These data can be viewed/edited via the drop-down menu: `Select Physical Habitat `  --> `DEFINE FISH SPECIES` (scroll to the "Travel Thresholds" section of the workbook).
 
@@ -47,7 +46,7 @@ Lastly, select an interpolation method. See [Interpolating Hydraulic Rasters](#i
 
 For further explanation of the methodology used in the analysis, see [Methodology](StrandingRisk#Methodology).
 
-Outputs are stored in `StrandingRisk\Output\Condition_name\`. The outputs produced are:
+Outputs are stored in `StrandingRisk\Output\Condition_name\`. These outputs include:
 
 - interpolated rasters (`h_interp`, `u_interp`, `va_interp`): interpolated depth, velocity (magnitude), and velocity angle rasters. See [Interpolating Hydraulic Rasters](StrandingRisk#interpolating-hydraulic-rasters) for more information.'
 
@@ -56,7 +55,7 @@ Outputs specific to the applied flow reduction are stored in the subdirectory `S
 - `shortest_paths\`: directory containing a raster for each model discharge in the range Q<sub>low</sub>-Q<sub>high</sub>, indicating the minimum distance/least cost required to escape to the river mainstem at Q<sub>low</sub>, subject to constraints imposed by the travel thresholds for the selected Physical Habitat. See [Escape Route Calculations](StrandingRisk#escape-route-calculations) for more.
 - `disc_areas\`: directory containing a shapefile for each model discharge indicating wetted areas which are effectively disconnected at that discharge. See [Calculating Disconnected Habitat Area](StrandingRisk#calculating-disconnected-area) for more.
 - `disconnected_area.xlsx`: a spreadsheet containing plotted data of discharge vs disconnected area.
-- `disconnected_habitat.tif`: a raster showing all wetted areas which become disconnected in the applied flow reduction scenario, weighted by the combined habitat suitability index (cHSI) at Q<sub>high</sub> (before the flow reduction occurs). See [Calculating Disconnected Habitat Area](StrandingRisk#calculating-disconnected-area) for more.
+- `disconnected_habitat_specieslifestage.tif`: a raster showing all wetted areas which become disconnected in the applied flow reduction scenario, weighted by the combined habitat suitability index (cHSI) at Q<sub>high</sub> (before the flow reduction occurs). See [Calculating Disconnected Habitat Area](StrandingRisk#calculating-disconnected-area) for more.
 - `Q_disconnect.tif`: a raster showing the highest model discharge for which areas are disconnected from the mainstem at Q<sub>low</sub>. Locations that are not disconnected at any modeled discharge are assigned a value of zero. Thus, this map indicates locations and discharges below which stranding risks may occur. See [Determining Q<sub>disconnect</sub>](StrandingRisk#determining-qdisconnect) for more.
 - `disc_freq.tif`: a raster showing the historical frequency for which each area becomes disconnected, in number of times per year, confined to the season of interest for the analyzed species/lifestage. See [Disconnection Frequencies](#disc-freq) for more.
 - `ramping_rate_time.tif`: a raster showing the estimated ramping rate before disconnection occurs. See [Estimating Ramping Rates](#ramping-rates) for more.
@@ -116,7 +115,7 @@ Least cost path calculations are implemented in a computationally efficient way 
 
 ![connect_graph](https://github.com/RiverArchitect/Media/raw/master/images/connect_graph.png)
 
-Applying the depth and velocity thresholds at each cell yields a set of neighboring cells for which travel is possible. Each cell which can reach other cells or be reached is represented as a vertex of the graph. Reachability of neighboring vertices is represented by edges connecting the vertices, with an arrow symbol indicating the direction of possible travel (edges without arrows indicate travel is possible in both directions). For each edge, an associated cost of traveling along the edge is calculated, thus yielding a weighted digraph to represent possible fish travel and the associated costs. The least-cost path leading from each vertex to any of the vertices in the target area (corresponding to river mainstem at a lower discharge) is then computed and the path length/cost is stored as a value in the output raster at the location of the starting vertex. Here the target vertices are shown in gold and the least-cost path from point A is shown in green (where the cost function applied is Euclidean distance).
+Applying the depth and velocity thresholds at each cell yields a set of neighboring cells for which travel is possible. Each cell which can reach other cells or be reached is represented as a vertex of the graph. Reachability of neighboring vertices is represented by edges connecting the vertices, with an arrow symbol indicating the direction of possible travel (edges without arrows indicate travel is possible in both directions). For each edge, an associated cost of traveling along the edge is calculated, yielding a weighted digraph to represent possible fish travel and the associated costs. The least-cost path leading from each vertex to any of the vertices in the target area (corresponding to river mainstem at a lower discharge) is then computed and the path length/cost is stored as a value in the output raster at the location of the starting vertex. Here the target vertices are shown in gold and the least-cost path from point A is shown in green (where the cost function applied is Euclidean distance).
 
 ***
 
@@ -138,13 +137,15 @@ The `Q_disconnect` map outputs provide estimates of the discharges at which wett
 
 Note that the default value of zero indicates pixels wetted at the highest discharge but not present within any of the disconnected area polygons. Other values indicate the highest modeled discharge for which the pixel is disconnected from the channel mainstem.
 
+![Q_disc_ex](https://github.com/RiverArchitect/Media/raw/master/images/Q_disc_example.png)
+
 ***
 
 ## Disconnection Frequencies <a name="disc-freq"></a>
 
-For each disconnected area, `Q_disconnect` can be combined with the hydrologic record in order to calculate the average number of disconnection events occurring per year. This is generated by calculating the total number of times mean daily flow drops below `Q_disconnect` during the season of interest for the applied species/lifestage (as defined in  `Fish.xlsx`, see [SHArC](SHArC) for more details) divided by the number of years on record.
+For each disconnected area, `Q_disconnect` can be combined with the hydrologic flow record in order to calculate the average number of potential stranding events occurring per year. This is generated by computing the total number of times mean daily flow drops below `Q_disconnect` during the season of interest for the applied species/lifestage ([Physical Habitat](SHArC#hefish)) and dividing by the number of years on record.
 
-A `disc_freq` output map will be produced provided that flows have already been analyzed ([Make flow duration curves](Signposts#ana-flows)) for the applied [Condition](Signposts#conditions)/[Physical Habitat](SHArC#hefish).
+A `disc_freq` output map will be produced provided that flows have already been analyzed ([Make flow duration curves](Signposts#ana-flows)) for the applied [Condition](Signposts#conditions) and [Physical Habitat](SHArC#hefish).
 
 ***
 
@@ -155,7 +156,7 @@ Ramping rates are estimated by applying the following assumptions:
 - the flow reduction scenario is characterized by a linearly downramping hydrograph from Q<sub>high</sub> to Q<sub>low</sub> over the input time period
 - Downstream attenuation of the hydrograph is not considered
 
-Ramping rates are estimated via linear approximation, using the difference in depths at the last two model discharges before disconnection occurs.
+Ramping rates are estimated via linear approximation, using the difference in depths between model discharges prior to disconnection.
 
 The ramping rate output raster is stored as `ramping_rate_###min.tif`, where `###` corresponds to the input time period over which the downramping occurs.
 
@@ -163,8 +164,12 @@ The ramping rate output raster is stored as `ramping_rate_###min.tif`, where `##
 
 # References
 
-Travel thresholds used to define Physical Habitats in `Fish.xlsx` were provided by the following sources:
+Travel thresholds used to define Physical Habitats in `Fish.xlsx` can be estimated from the following sources:
+
+[Bell, M. C. (1991). Fisheries Handbook of Engineering Requirements and Biological Criteria (3 ed.). Portland, Oregon.](https://www.fs.fed.us/biology/nsaec/fishxing/fplibrary/Bell_1991_Fisheries_handbook_of_engineering_requirements_and.pdf)
 
 [CDFG. (2012). Standard Operating Procedure for Critical Riffle Analysis for Fish Passage in California DFG-IFP-001, updated February 2013. California Department of Fish and Game, DFG-IFP-00(September), 1–25.](https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=150377)
+
+[Katopodis, C., & Gervais, R. (2016). Fish swimming performance database and analyses. DFO Can. Sci. Advis. Sec. Res. Doc. 2016/002.](https://waves-vagues.dfo-mpo.gc.ca/Library/362248.pdf)
 
 [U.S. Forest Service FishXing Data Table](http://www.fsl.orst.edu/geowater/FX3/help/SwimData/swimtable.htm) (various sources)
