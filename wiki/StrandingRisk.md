@@ -70,7 +70,7 @@ Whether or not areas are considered to be connected/navigable for a given fish s
 
 ***
 
-# Methodology
+# Methodology<a name="methods"></a>
 
 ***
 
@@ -90,7 +90,7 @@ The available interpolation methods are:
 - `Kriging`: Ordinary Kriging interpolation. This method also uses a weighted average of the 12 nearest neighbors, but weights are calculated using a semi-variogram, which describes the variance of the input data set as a function of the distance between points. A spherical functional form is also assumed for the fitted semi-variogram. Kriging is the most accurate interpolation method if certain assumptions are met regarding normality and stationarity of error terms. However, it is also the most computationally expensive method. This method was found to have comparable accuracy compared to IDW, but with significantly higher computational costs.
 - `Nearest Neighbor`: The simplest method, which sets the water surface elevation of each null cell to that of the nearest neighboring cell.
 
-## Escape Route Calculations
+## Escape Route Calculations<a name="calc-escape"></a>
 
 The "shortest escape route" output maps (stored in the `shortest_paths\` output directory) show the length/cost of the shortest/least-cost path from each pixel back into the mainstem of the river channel at Q<sub>low</sub>, accounting for both depth and velocity travel thresholds. In this context, the mainstem is defined as the largest continuous portion of interpolated wetted area deeper than the minimum swimming depth at Q<sub>low</sub>. Conceptually, the shortest escape route to the mainstem is found from each starting pixel as follows:
 
@@ -101,7 +101,7 @@ The "shortest escape route" output maps (stored in the `shortest_paths\` output 
 
 ***
 
-### Applying Depth and Velocity Travel Criteria
+### Applying Depth and Velocity Travel Criteria<a name="hu-criteria"></a>
 
 The applied depth and velocity thresholds parameterize the ability of the target fish to travel throughout the river corridor. The criteria to satisfy for travel from cell A to adjacent cell B are defined by three criteria:
 - Domain criterion: both cells A and B are wetted.
@@ -122,7 +122,7 @@ Applying the travel criteria at each cell yields a set of neighboring cells for 
 
 ***
 
-## Calculating Disconnected Habitat Area
+## Calculating Disconnected Habitat Area<a name="calc-habitat"></a>
 
 Even if there is wetted area connecting two locations, they may not be considered connected in the context of fish passage. This is because low water depths or high velocities may effectively act as "hydraulic barriers", limiting fish mobility. The applied Physical Habitat contains threshold values for the minimum swimming depth and maximum swimming speed. After escape routes are calculated for a given discharge, the resultant path length raster shows which areas are able to reach the river mainstem for the given hydraulic conditions and biological limitations. Wetted areas in the corresponding interpolated depth raster for which a least-cost path cannot be calculated are considered to be disconnected areas. These disconnected areas are then cropped within the wetted area at Q<sub>high</sub> (not interpolated), as floodplains outside the Q<sub>high</sub> wetted area are assumed to not be active for the simulated flow reduction. Resultant disconnected areas are saved to a shapefile for each discharge in the `disc_areas` output directory.
 
