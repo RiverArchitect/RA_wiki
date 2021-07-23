@@ -113,15 +113,15 @@ River Architect Wiki
 
 *River Architect* invites to analyses and modifications of the longevity and ecological quality of riverscapes. Different planning bases ("conditions") can be easily created using an introductory module called **[GetStarted](Signposts#getstarted)**. **Lifespan**, **Morphology (Terraforming)** and **Ecohydraulic** assessments can then be created based on the *Conditions*, including the creation of project plans and cost tables with a **Project Maker** module.
 
-**[Lifespan](LifespanDesign)** maps indicate the expected longevity of restoration features as a function of terrain change, morphological characteristics, and 2D hydrodynamic modeling results. **Design maps** are a side product of [lifespan and design mapping](LifespanDesign) and indicate required feature dimensions for stability, such as the minimum required size of angular boulders to avoid their mobilization during floods (more information in [Schwindt et al.2019][11]). **Best lifespan maps** result from the comparison of lifespan and design maps of multiple restoration features and assign features with the highest longevity to each pixel of a raster. Thus, the [**Max Lifespan**][4] module assess optimum features as a function of highest lifespans among comparable feature groups such as terraforming or vegetation planting species.
+**[Lifespan](LifespanDesign)** maps indicate the expected longevity of restoration features as a function of terrain change, morphological characteristics, and 2D hydrodynamic modeling results. **Design maps** are a side product of [lifespan and design mapping](LifespanDesign) and indicate required feature dimensions for stability, such as the minimum required size of angular boulders to avoid their mobilization during floods (more information in [Schwindt et al.2019][11]). **Best lifespan maps** result from the comparison of lifespan and design maps of multiple restoration features and assign features with the highest longevity to each pixel of a raster. Thus, the **[Max Lifespan](MaxLifespan)** module assess optimum features as a function of highest lifespans among comparable feature groups such as terraforming or vegetation planting species.
 
-**Morphology (Terraforming)** includes routines to [**Modify Terrain**][5] for river restoration purposes. Currently, two terrain modification algorithms are implemented: (1) Threshold value-based terrain modifications in terms of [grading](River-design-features#grading) or [widening / broaden rivers](River-design-features#berms) for riparian forest establishment; and (2) [River Builder](RiverBuilder) for the creation of synthetic river valley. A **[Volume Assessment](VolumeAssessment)** module can compare an original (pre-project or pre-terraforming application) and a modified DEM (\"with implementation\" or post-feature application) to determine required earth movement (terraforming volumes) works.
+**Morphology (Terraforming)** includes routines to **[Modify Terrain](ModifyTerrain)** for river restoration purposes. Currently, two terrain modification algorithms are implemented: (1) Threshold value-based terrain modifications in terms of [grading](River-design-features#grading) or [widening / broaden rivers](River-design-features#berms) for riparian forest establishment; and (2) [River Builder](RiverBuilder) for the creation of synthetic river valley. A **[Volume Assessment](VolumeAssessment)** module can compare an original (pre-project or pre-terraforming application) and a modified DEM (\"with implementation\" or post-feature application) to determine required earth movement (terraforming volumes) works.
 
 **Ecohydraulics** assessments include the evaluation of the ecohydraulic state and connectivity of riverscapes. The **[Habitat Area](SHArC)** (Seasonal Habitat Area Calculator) module applies user-defined flows (discharges) for the spatial evaluation of the habitat suitability index (*HSI*) in terms of Seasonal Habitat Area (SHArea). The hydraulic habitat suitability results from 2D hydrodynamic numerical model outputs of flow depth and velocity. Also, a  \"cover\" option can be used to assess ecohydraulic effects of cobble, boulder, vegetation, and streamwood. The **[Stranding Risk](StrandingRisk)** module provides insights into the connection of wetted areas on floodplains and how these may be improved to enhance the survivorship of fry / juvenile fish.
 
-The [**Project Maker**][7] module creates preliminary construction plans and evaluates the costs for gain in usable habitat for target fish species and lifestages. A unit cost workbook provides relevant costs and the gain in usable habitat area results from the *SHArC* module.
+The **[Project Maker](ProjectMaker)** module creates preliminary construction plans and evaluates the costs for gain in usable habitat for target fish species and lifestages. A unit cost workbook provides relevant costs and the gain in usable habitat area results from the *SHArC* module.
 
-A set of [**Tools**][8] provides *Python* console scripts that are under development and will be implemented in future versions of the *River Architect* GUI.
+A set of **[Tools](Tools)** provides *Python* console scripts that are under development and will be implemented in future versions of the *River Architect* GUI.
 
 *River Architect* represents a comprehensive tool for state-of-the-art planning of ecologic river modifications. The integrated application of *River Architect* to habitat enhancing project planning is illustrated in the following flowchart. 
 The modules and tool-scripts can also be individually applied for other purposes than suggested in the flowchart.
@@ -156,13 +156,13 @@ The procedure of project design following the flowchart involves the following s
 
     -   Morphological unit Raster (see [Wyrick and Pasternack (2014)][16]).
 
-5.  Apply the [*LifespanDesign*][3] module to [framework (terraforming) features](River-design-features#featoverview).
+5.  Apply the [*LifespanDesign*](LifespanDesign) module to [framework (terraforming) features](River-design-features#featoverview).
 
 6.  Lifespan and Design maps, as well as expert assessment, serve for the identification of relevant [framework (terraforming) features](River-design-features#featoverview).
 
 7.  Iterative terraforming (if relevant):
 
-    -   Use the [*ModifyTerrain*][5] module for creating synthetic river valley with [River Builder](RiverBuilder); or apply threshold value-based terrain [grading](River-design-features#grading) or [broadening of the river bed](River-design-features#berms). *Please note that both routines require post-processing with computer-aided design (translation into real-world coordinates and/or edge smoothing).*
+    -   Use the [*ModifyTerrain*](ModifyTerrain) module for creating synthetic river valley with [River Builder](RiverBuilder); or apply threshold value-based terrain [grading](River-design-features#grading) or [broadening of the river bed](River-design-features#berms). *Please note that both routines require post-processing with computer-aided design (translation into real-world coordinates and/or edge smoothing).*
 
     -   Re-compile the flow depth and velocity maps (re-run 2D model) with the modified DEM.
 
@@ -170,20 +170,20 @@ The procedure of project design following the flowchart involves the following s
 
     -   Use the *<a href="VolumeAssessment">VolumeAssessment</a>* module (Morphology tab) to compare pre- (initial) and post-project (modified) DEMs for determining required excavation and fill volumes.
 
-8.  Apply the [*LifespanDesign*][3] module to [vegetation plantings](River-design-features#plants) and [(other) bioengineering features](River-design-features#bioeng) based on the terraformed DEM (or the original / initial DEM if no terraforming applies).
+8.  Apply the [*LifespanDesign*](LifespanDesign) module to [vegetation plantings](River-design-features#plants) and [(other) bioengineering features](River-design-features#bioeng) based on the terraformed DEM (or the original / initial DEM if no terraforming applies).
 
-9.  Use the [*MaxLifespan*][4] module to identify best performing (highest lifespan) [vegetation plantings](River-design-features#plants) and [(other) bioengineering features](River-design-features#bioeng).
+9.  Use the [*MaxLifespan*](MaxLifespan) module to identify best performing (highest lifespan) [vegetation plantings](River-design-features#plants) and [(other) bioengineering features](River-design-features#bioeng).
 
 10. If the soils are too coarse (i.e., the capillarity is not high enough to enable plant root growth), apply the connectivity feature ["incorporate fine sediment in soils"](River-design-features#finesed).
 
-11. If gravel augmentation methods are applicable: Consecutively apply the [*LifespanDesign*][3] and [*MaxLifespan*][4] modules to [connectivity features](River-design-features#featoverview) to foster self-sustaining, artificially created ecomorphological patterns within the terraforming process.<br/>
-    If gravel is added in-stream, re-run the numerical model for the assessment of [gravel stability](River-design-features#rocks) with the [*LifespanDesign*][3] module and the combined habitat suitability with the [*SHArC*][6] module to compare the [**S**easonal **H**abitat **Area** (**SHArea**)](SHArC#herunSHArea) before and after enhancement of [Physical Habitats for target fish species (lifestages)](SHArC#hefish).
+11. If gravel augmentation methods are applicable: Consecutively apply the [*LifespanDesign*](LifespanDesign) and [*MaxLifespan*](MaxLifespan) modules to [connectivity features](River-design-features#featoverview) to foster self-sustaining, artificially created ecomorphological patterns within the terraforming process.<br/>
+    If gravel is added in-stream, re-run the numerical model for the assessment of [gravel stability](River-design-features#rocks) with the [*LifespanDesign*](LifespanDesign) module and the combined habitat suitability with the [*SHArC*][6] module to compare the [**S**easonal **H**abitat **Area** (**SHArea**)](SHArC#herunSHArea) before and after enhancement of [Physical Habitats for target fish species (lifestages)](SHArC#hefish).
 
 12. Use the [*SHArC*][6] to assess the *"existing"* (pre-project) and *"with implementation"* (post-project) habitat suitability in terms of annually usable habitat area (SHArea).
 
 13. Use the *<a href="ProjectMaker">ProjectMaker</a>* to calculate costs, the net gain in SHArea, and their ratio as a metric defining the project trade-off.
 
-The working principles of the [*LifespanDesign*][3], [*MaxLifespan*][4], [*ModifyTerrain*][5], *<a href="VolumeAssessment">VolumeAssessment</a>*, [*SHArC*][6], and [*ProjectMaker*][7] modules are explained on their own Wiki pages. The differentiation between [terraforming (framework)](River-design-features#featoverview), [vegetation plantings and other bioengineering](River-design-features#featoverview), and [connectivity features](River-design-features#featoverview) is described within the [LifespanDesign Wiki](River-design-features). The <a href="Installation">Installation</a> Wiki pages describe the propper installation, file organization and environment of *River Architect*.
+The working principles of the [*LifespanDesign*](LifespanDesign), [*MaxLifespan*](MaxLifespan), [*ModifyTerrain*](ModifyTerrain), *<a href="VolumeAssessment">VolumeAssessment</a>*, [*SHArC*][6], and [*ProjectMaker*][7] modules are explained on their own Wiki pages. The differentiation between [terraforming (framework)](River-design-features#featoverview), [vegetation plantings and other bioengineering](River-design-features#featoverview), and [connectivity features](River-design-features#featoverview) is described within the [LifespanDesign Wiki](River-design-features). The <a href="Installation">Installation</a> Wiki pages describe the propper installation, file organization and environment of *River Architect*.
 
 ***
 
