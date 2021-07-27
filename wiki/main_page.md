@@ -146,7 +146,7 @@ The procedure of project design following the flowchart involves the following s
 
     -   Flow depth and velocity for multiple discharges Rasters from 2D hydrodynamic modeling (see [Signposts](Signposts#conditions));
 
-    -   Substrate map (`dmean` for metric or `dmean_ft` for U.S. customary units); relevant methods are described in [Detert et al. (2018)][12]; [Stähly et al. (2017)][13]; and [Jackson et al. (2013)][14];
+    -   Substrate map (`dmean` for metric or `dmean_ft` for U.S. customary units); relevant methods are described in [Detert et al. (2018)][12]; [Stähly et al. (2017)][13]; and [Jackson et al. (2013)];
 
     -   Datasets that can be used to assess design feature stability, such as [side channel design criteria](River-design-features#sidechnl);
 
