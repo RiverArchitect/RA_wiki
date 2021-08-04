@@ -148,7 +148,7 @@ Relevant cover types can be selected by checking the according checkboxes, where
 
 -   Cobbles: A `dmean` (S.I. /metric units) or `dmean_ft` (U.S. customary units) Raster is required (see [Signposts](Signposts#input-file-preparation)). Cobble is defined, where the `dmean...` Raster indicates grain sizes between 0.064 m and 0.256 m.
 
--   Plants: A `plants.shp` polygon shapefile is required; the polygons delineating boulders need to have a `Short Integer`-type field called `cover` in the (`Attributes table`) and the `cover` field value of polygons is `1`.
+-   Plants: A `plants.shp` polygon shapefile is required; the polygons delineating plants need to have a `Short Integer`-type field called `cover` in the (`Attributes table`) and the `cover` field value of polygons is `1`.
 
 -   Wood: A `wood.shp` polygon shapefile is required; the polygons delineating boulders need to have a `Short Integer`-type field called `cover` in the (`Attributes table`) and the `cover` field value of polygons is `1`.
 
