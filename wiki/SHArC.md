@@ -150,7 +150,7 @@ Relevant cover types can be selected by checking the according checkboxes, where
 
 -   Plants: A `plants.shp` polygon shapefile is required; the polygons delineating plants need to have a `Short Integer`-type field called `cover` in the (`Attributes table`) and the `cover` field value of polygons is `1`.
 
--   Wood: A `wood.shp` polygon shapefile is required; the polygons delineating boulders need to have a `Short Integer`-type field called `cover` in the (`Attributes table`) and the `cover` field value of polygons is `1`.
+-   Wood: A `wood.shp` polygon shapefile is required; the polygons delineating woods need to have a `Short Integer`-type field called `cover` in the (`Attributes table`) and the `cover` field value of polygons is `1`.
 
 The geofiles are used with the habitat suitability (curve) definitions in the `Fish.xlsx` workbook (tab `fish`), which is located in `RiverArchitect/.site_packages/templates/`.<br/>
 *HINT:* The applicable cover types are limited to the terms "Substrate", "Boulders", "Cobbles", "Plants", and "Wood".
