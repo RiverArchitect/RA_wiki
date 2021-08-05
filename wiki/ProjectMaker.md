@@ -180,9 +180,9 @@ Even though the vegetation plantings maximum lifespan maps identify the optimum 
 
 2.  [Engineered (anchored) wood logs](River-design-features#elj), where maximum lifespan maps indicate convenient applicability.
 
-3.  [Vegetative nature-based engineering features](River-design-features#bioeng) (pre-defined in cost master workbook: brush layers; alternatively, fascines or geotextile can be linked from *costs!F30:F33* to *from\_geodata!C16\*...*, where the depth to the groundwater does not exceed the threshold values defined in `RiverArchitect/LifespanDesign/.templates/`*threshold\_values.xlsx*.
+3.  [Vegetative nature-based engineering features](River-design-features#bioeng) (pre-defined in cost master workbook: brush layers; alternatively, fascines or geotextile can be linked from *costs!F30:F33* to *from\_geodata!C16\*...*, where the depth to the water table does not exceed the threshold values defined in `RiverArchitect/LifespanDesign/.templates/`*threshold\_values.xlsx*.
 
-4.  [Mineralic nature-based engineering features (rock paving)](River-design-features#rocks), where the depth to the groundwater table is insufficient for vegetative stabilization and where the terrain is steeper than the threshold values defined in `RiverArchitect/LifespanDesign/.templates/`*threshold\_values.xlsx*.
+4.  [Mineralic nature-based engineering features (rock paving)](River-design-features#rocks), where the depth to the water table is insufficient for vegetative stabilization and where the terrain is steeper than the threshold values defined in `RiverArchitect/LifespanDesign/.templates/`*threshold\_values.xlsx*.
 
 5.  [Angular boulders](River-design-features#rocks) where high dimensionless bed shear stress predictions prohibit the utilization of any above feature.
 
