@@ -152,7 +152,7 @@ The procedure of project design following the flowchart involves the following s
 
     -   Topographic change Rasters (Topographic Change Detection or DEM differencing according to [Wyrick and Pasternack 2016][15]);
 
-    -   Depth to groundwater table Raster (`d2w`);
+    -   Depth to water table Raster (`d2w`);
 
     -   Morphological unit Raster (see [Wyrick and Pasternack (2014)][16]).
 
