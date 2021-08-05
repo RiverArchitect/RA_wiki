@@ -101,7 +101,7 @@ For making changes in the workbook, choose either one of the pre-defined river c
 
 ### Make Depth to Water Table Rasters<a name="d2w"></a>
 ***
-The depth to the groundwater is primarily required for identifying relevant regions for target indigenous [plant species](https://github.com/RiverArchitect/RA_wiki/River-design-features#plants). For this purpose, the following input Rasters are required.
+The depth to the water table is primarily required for identifying relevant regions for target indigenous [plant species](https://github.com/RiverArchitect/RA_wiki/River-design-features#plants). For this purpose, the following input Rasters are required.
 
  -  A terrain DEM (or DTM) is automatically assigned from the selected *Condition* folder.
  -  A low-level flow depth Raster (in arid regions) based on the assumption that the groundwater table in the vicinity of the river corresponds to at least this water level, which marks the moment of highest water stress for plants.
