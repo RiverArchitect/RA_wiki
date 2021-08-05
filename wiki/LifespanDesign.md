@@ -64,7 +64,7 @@ When defining threshold values in `threshold_values.xlsx` carefully study the fo
 
 1. **Dimensional hydraulic parameter** analysis:
    - **Flow depth** starting with the lowest discharge to the highest discharge Raster (`hQQQQQQ_QQQ.tif`). A threshold value for the flow depth above which a feature will fail can be defined in row 12 in `threshold_values.xlsx`.
-   - **Bed shear stress**  &tau;<sub>\b</sub> calculated as<br/>
+   - **Bed shear stress**  &tau;<sub>b</sub> calculated as<br/>
 	   `ras_tb` = \{\[`uQQQQQQ_QQQ` / (5.75 * Log<sub>10</sub>(12.2 · `hQQQQQQ_QQQ` / (2 · 2.2 · `dmean`)))\]<sup>2</sup>\} <br/>
 	   where
    	+ A threshold value for mobility according to the bed shear stress &tau;<sub>\b, cr</sub> can be defined in row 6 of `threshold_values.xlsx` (read more for example in [Lamb et al. 2008](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2007JF000831))
@@ -72,7 +72,7 @@ When defining threshold values in `threshold_values.xlsx` carefully study the fo
    	+ `uQQQQQQ_QQQ` (m/s or fps), `hQQQQQQ_QQQ` (m or ft), and `d84` = 2.2 · `dmean` (m or ft) are `arcpy.Raster()`s considering that the grain diameter *D<sub>84</sub>* can be approximated by *D<sub>84</sub>* = 2.2 · *D<sub>50</sub>* ([Rickenmann and Recking 2011](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2010WR009793))
    	+ *g* = gravitational acceleration (9.81 m/s<sup>2</sup>)
    	+ *s* = ratio of sediment grain and water density (2.68)
-   	+ Note that the &tau;<sub>\b</sub> analysis is **omitted if *SF* is defined**, which enables to run either a &tau;<sub>\b</sub> analysis OR a mobile grain analysis.
+   	+ Note that the &tau;<sub>b</sub> analysis is **omitted if *SF* is defined**, which enables to run either a &tau;<sub>b</sub> analysis OR a mobile grain analysis.
    - **Flow velocity** starting with the lowest discharge to the highest discharge Raster (`uQQQQQQ_QQQ.tif`). A threshold value for the velocity above which a feature will fail can be defined in row 13 in `threshold_values.xlsx`.
 
 1. **Dimensionless hydraulic parameter** analysis:
