@@ -438,8 +438,8 @@ Error messages
     - *Remedy:*  Ensure correct setup of `ModifyTerrain/.templates/computation_extents.xlsx` ([reach preparation within the *ModifyTerrain* module](RiverReaches)).
 
  - **`ERROR: Failed to read maximum depth to water value for [...].`**
-    - *Cause:*   Error raised by the `lower_dem_for_plants* function of the `ModifyTerrain` class in `ModifyTerrain/cModifyTerrain.py`) when the threshold workbook (`LifespanDesign/.templates/thresh old_values.xlsx`) is not accessible or does not contain values for *Depth to groundwater (min) / max*  contains invalid data.
-    - *Remedy:*  Ensure the correct setup of `LifespanDesign/.templates/threshold_values.xlsx` ([Modify Threshold Values within the *LifespanDesign* module](LifespanDesign#modthresh)). Note that *ModifyTerrain* starts reading depth to ground water values column by column, until it meets a non-numeric value.
+    - *Cause:*   Error raised by the `lower_dem_for_plants* function of the `ModifyTerrain` class in `ModifyTerrain/cModifyTerrain.py`) when the threshold workbook (`LifespanDesign/.templates/thresh old_values.xlsx`) is not accessible or does not contain values for *Depth to water table (min) / max*  contains invalid data.
+    - *Remedy:*  Ensure the correct setup of `LifespanDesign/.templates/threshold_values.xlsx` ([Modify Threshold Values within the *LifespanDesign* module](LifespanDesign#modthresh)). Note that *ModifyTerrain* starts reading depth to water table values column by column, until it meets a non-numeric value.
 
  - **`ERROR: Failed to save PDF map assembly.`**<a name="pdfexp"></a>
     - *Cause:*   The `make_pdf_maps(self, ...)` function of the `Mapper()` class (`.site_packages/riverpy/cMapper.py`) raises this error when the map assembly is corrupted.
