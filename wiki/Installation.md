@@ -141,7 +141,7 @@ The main directory (`/RiverArchitect/`) contains the program launcher named `Sta
     -   `cDetrendedDEM.py` provides routines for generating detrended DEM Rasters.
     -   `cMakeInp.py` provides routines for creating input files (*.inp*) for lifespan mapping.
     -   `cMorphUnit.py` provides routines for calculating instream morphological units ([Wyrick and Pasternack 2014][wyrick14]).
-    -   `cWaterLevel.py` provides routines for calculating depth to groundwater Rasters.
+    -   `cWaterLevel.py` provides routines for calculating depth to water table Rasters.
     -   `fSubCondition.py` contains routines for creating a spatial subset of an existing *Condition*.
     -   `popup_ ... .py` contain popup window classes guiding through the creation and population of *Conditions*.
     -   `welcome_gui.py` contains the `Get Started` tab source code.
