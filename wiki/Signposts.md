@@ -28,7 +28,7 @@ All other modules build on the data provided in `RiverArchitect/01_Conditions/` 
 The *Get Started*-tab buttons invite the user to create conditions from scratch, populate (new) conditions, and make spatial subsets. Every button opens up a new window with the following options:
 
 - Create New *Condition*: Create a new *Condition* from scratch
-- Populate *Condition*: Add Morphological Unit, Depth to Groundwater, and Detrended DEM Rasters to an existing (or newly created) *Condition*
+- Populate *Condition*: Add Morphological Unit, Depth to water table, and Detrended DEM Rasters to an existing (or newly created) *Condition*
 - Create a spatial subset of a *Condition*: Define a boundary Raster that delineates a spatial frame for creating a subset of an existing *Condition* (useful for comparing project alternatives at different sites).
 
 ## Create New Condition<a name="new-condition"></a>
@@ -69,10 +69,10 @@ The flow depth and velocity Rasters may require manual renaming to adapt to thes
 
 ## Populate Condition<a name="pop-condition"></a>
 ***
-*Condition* - wise Morphological Unit, Depth to Groundwater, and Detrended DEM Rasters add consistency to the analyses of all modules. The `Populate Condition` popup window invites the user to define a *Condition* to be populated, and subsequently to create the following Rasters:
+*Condition* - wise Morphological Unit, Depth to water table, and Detrended DEM Rasters add consistency to the analyses of all modules. The `Populate Condition` popup window invites the user to define a *Condition* to be populated, and subsequently to create the following Rasters:
 
 - Morphological Unit, 
-- Depth to Groundwater, and 
+- Depth to water table, and 
 - Detrended DEM.
 
 
@@ -106,7 +106,7 @@ The depth to the groundwater is primarily required for identifying relevant regi
  -  A terrain DEM (or DTM) is automatically assigned from the selected *Condition* folder.
  -  A low-level flow depth Raster (in arid regions) based on the assumption that the groundwater table in the vicinity of the river corresponds to at least this water level, which marks the moment of highest water stress for plants.
 
-RiverArchitect estimates the depth to groundwater by interpolating the given low flow water surface across the DEM extent. There are three options for the interpolation method used to calculate this surface:
+RiverArchitect estimates the depth to water table by interpolating the given low flow water surface across the DEM extent. There are three options for the interpolation method used to calculate this surface:
 
 - `IDW`: Inverse distance weighted interpolation. Each null cell in the low flow depth raster is assigned a weighted average of its 12 nearest neighbors. Each weight is inversely proportional to the second power of the distance between the interpolated cell and its neighbor. Thus, the closest neighbors to an interpolated cell receive the largest weights.
 - `Kriging`: Ordinary Kriging interpolation. This method also uses a weighted average of the 12 nearest neighbors, but weights are calculated using a semi-variogram, which describes the variance of the input data set as a function of the distance between points. A spherical functional form is also assumed for the fitted semi-variogram. Kriging is the most accurate interpolation method if certain assumptions are met regarding normality and stationarity of error terms. However, it is also the most computationally expensive method.
@@ -189,7 +189,7 @@ The resulting `input_definitions.inp` is stored in the directory `RiverArchitect
 | Line 12 | `h`	| Comma-separated list defining flow depth rasters corresponding to discharge return periods (Line 4); replace missing rasters by double quotation marks, for example, when `h` rasters of a return period list of six entries are not available for entries 2, 3 and 5, type `... = h001000, "", "", h004000, "", h006000 # ...`. Ensure that at least two `h` rasters are defined. The `00Q000` identifier relates to the underlying discharge in thousand cfs or m<sup>3</sup>/s (see [Geofile name conventions](#terms)).|
 | Line 13 | Grain size| One raster name defining the raster containing mean grain diameters (typically `dmean`; pay attention to raster units: use feet for U.S. customary and m for S.I.)|
 | Line 14 | `mu`  | One raster name delineating morphological units according to the definitions in Sec. \ref{sec:par}|
-| Line 15 | `d2w` | One raster name defining the depth to groundwater table|
+| Line 15 | `d2w` | One raster name defining the depth to water table|
 | Line 16 | `dem` | One raster name defining the digital elevation model|
 | Line 17 | `sidech` | One raster name delineating appropriate sites for side channels|
 | Line 18 | `wild` | One raster name for the spatial confinement of the feature analysis of 0/nodata (= off) and 1 (= on) values for any purpose (wildcard raster)|
@@ -247,7 +247,7 @@ The below listed Rasters are available in GeoTIFF format in `01_Conditions/2100_
 | `Topographic change` | `(in ft or m)` |
 | dodfill    |average annual deposition height  |
 | dodscour   |average annual scour depths       |
-| **`Depth to groundwater`** | **`(in ft or m)`** |
+| **`Depth to water table`** | **`(in ft or m)`** |
 | d2w          | referring to a baseflow of 15 m³/s (530 cfs) |
 | `Background`                    | `(black and white)` |
 | back | here: determines <a href="LifespanDesign">LifespanDesign</a>'s calculation extents |
@@ -264,7 +264,7 @@ The below listed Rasters are available in GeoTIFF format in `01_Conditions/2100_
 | `Wildcard`   | `(0/nodata=off and 1=on)` |
 | wild         | On/ off values for any purpose to confine analyses |
 
-More Rasters indicating morphological units (e.g., [Wyrick and Pasternack 2014][wyrick14]) or topographic change (e.g., [Carley et al. 2012][carley12]) as well as a detrended digital elevation model (DEM), surface grain size estimate and a depth to groundwater Raster are (optionally) required.
+More Rasters indicating morphological units (e.g., [Wyrick and Pasternack 2014][wyrick14]) or topographic change (e.g., [Carley et al. 2012][carley12]) as well as a detrended digital elevation model (DEM), surface grain size estimate and a depth to water table Raster are (optionally) required.
 
 Some parameters, such as the dimensionless bed shear stress or the mobile grain size, can be directly computed from the flow velocity, depth, and present grain size. Additional input Rasters could be used for every parameter to shorten calculation duration, but this approach required large storage capacity on the hard disk and it is less flexible regarding computation methods. Therefore, the *River Architect* uses its own routines for calculating parameters such as the dimensionless bed shear stress or mobile grain sizes.
 
