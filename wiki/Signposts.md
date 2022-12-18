@@ -51,15 +51,15 @@ Once the input is defined, clicking on the `CREATE CONDITION` button will create
 
 - `back.tif` is a background Raster that may be used for limiting lifespan analyses (<a href="LifespanDesign">LifespanDesign</a>) extents and all subsequent analyses. Moreover, the background Raster enables consistent mapping.
 
-- `dem.tif` is a DEM Raster indirectly required by the <a href="LifespanDesign">LifespanDesign</a>, <a href="ModifyTerrain">Modify Terrain</a>, <a href="StrandingRisk">Stranding Risk</a>, <a href="ProjectMaker">ProjectMaker</a> and <a href="MaxLifespan">Max Lifespan</a> modules.
+- `dem.tif` is a DEM Raster indirectly required by the <a href="LifespanDesign">LifespanDesign</a>, <a href="ModifyTerrain">Modify Terrain</a>, <a href="StrandingRisk">Stranding Risk</a>, <a href="RiparianSeedlingRecruitment">Riparian Seedling Recruitment</a>,  <a href="ProjectMaker">ProjectMaker</a> and <a href="MaxLifespan">Max Lifespan</a> modules.
 
-- `dmean.tif` is a grain size Raster indirectly required by the <a href="LifespanDesign">LifespanDesign</a>, <a href="SHArC">SHArC</a>, <a href="StrandingRisk">Stranding Risk</a>, <a href="ProjectMaker">ProjectMaker</a> and <a href="MaxLifespan">Max Lifespan</a> modules.
+- `dmean.tif` is a grain size Raster indirectly required by the <a href="LifespanDesign">LifespanDesign</a>, <a href="SHArC">SHArC</a>, <a href="StrandingRisk">Stranding Risk</a>,  <a href="RiparianSeedlingRecruitment">Riparian Seedling Recruitment</a>, <a href="ProjectMaker">ProjectMaker</a> and <a href="MaxLifespan">Max Lifespan</a> modules.
 
 - `fill.tif` is topographic change Raster indicating annual sediment deposition rates, which are required by the <a href="LifespanDesign">LifespanDesign</a>, and indirectly, the <a href="MaxLifespan">Max Lifespan</a> and <a href="ProjectMaker">ProjectMaker</a> modules.
 
-- `hQQQQQQ.tif` are flow depth rasters required by the <a href="LifespanDesign">LifespanDesign</a>, <a href="SHArC">SHArC</a>, <a href="StrandingRisk">Stranding Risk</a>, and (indirectly) the <a href="ProjectMaker">ProjectMaker</a> and <a href="MaxLifespan">Max Lifespan</a> modules. [Read more about file name conventions.](#terms)
+- `hQQQQQQ.tif` are flow depth rasters required by the <a href="LifespanDesign">LifespanDesign</a>, <a href="SHArC">SHArC</a>, <a href="StrandingRisk">Stranding Risk</a>,  <a href="RiparianSeedlingRecruitment">Riparian Seedling Recruitment</a>, and (indirectly) the <a href="ProjectMaker">ProjectMaker</a> and <a href="MaxLifespan">Max Lifespan</a> modules. [Read more about file name conventions.](#terms)
 
-- `uQQQQQQ.tif` are flow velocity rasters required by the <a href="LifespanDesign">LifespanDesign</a>, <a href="SHArC">SHArC</a>, <a href="StrandingRisk">Stranding Risk</a>, and (indirectly) the <a href="ProjectMaker">ProjectMaker</a> and <a href="MaxLifespan">Max Lifespan</a> modules. [Read more about file name conventions.](#terms)
+- `uQQQQQQ.tif` are flow velocity rasters required by the <a href="LifespanDesign">LifespanDesign</a>, <a href="SHArC">SHArC</a>, <a href="StrandingRisk">Stranding Risk</a>,  <a href="RiparianSeedlingRecruitment">Riparian Seedling Recruitment</a>, and (indirectly) the <a href="ProjectMaker">ProjectMaker</a> and <a href="MaxLifespan">Max Lifespan</a> modules. [Read more about file name conventions.](#terms)
 
 - `scour.tif` is topographic change Raster indicating annual terrain erosion rates, which are required by the <a href="LifespanDesign">LifespanDesign</a>, and indirectly, the <a href="MaxLifespan">Max Lifespan</a> and <a href="ProjectMaker">ProjectMaker</a> modules.
 
@@ -120,7 +120,7 @@ Automation of [grading](River-design-features#grading) or the relevance of [wide
 
  -  A terrain DEM (or DTM) is automatically assigned from the selected *Condition* folder.
  -  A flow depth Raster (in arid regions) marks the level for relative elevations. Designers may have different reasons for choosing the relevant flow depth Raster (low flows for habitat enhancement or high flows for flood protection), and therefore, no recommendation is made here.
- 
+
 Please note that step-like artifacts may occur in the detrended DEM. The steps result from variations in the Thalweg elevation of the DEM that attenuate with the selection of flow depth Rasters of higher discharges. Users can decide to select a low-flow depth Raster to be on the safe side for delineating vegetation plantings or a high-flow depth Raster to reduce step-like artifacts in the detrended DEM.
 
 ## Create a spatial subset of a Condition<a name="sub-condition"></a>
