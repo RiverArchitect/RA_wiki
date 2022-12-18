@@ -187,7 +187,7 @@ The recession rate criteria is determined by how quickly the cottonwood seedling
 
 The mortality coefficient (M) was developed to account for seedlings’ ability to survive lethal rates of stage decline if the drop in stage is for only a few days ([Braatne et al. 2007](https://onlinelibrary.wiley.com/doi/10.1002/rra.978); [Burke et al. 2009](https://www.sciencedirect.com/science/article/pii/S0301479708002715)). The mortality coefficient is defined as:
 $$
-M = \frac{(\text{% lethal days} \times 3)\,+\,(\text{% stressful days} \times 1)}{3}
+M = \frac{(\% \,\text{lethal days} \times 3)\,+\,(\% \,\text{stressful days} \times 1)}{3}
 $$
 
 
