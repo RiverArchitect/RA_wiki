@@ -3,9 +3,9 @@ Riparian Seedling Recruitment Assessment
 
 
 
-- [Introduction to the Riparian Seeling Recruitment Module](#introduction)
-- [Quick GUIde to Riparian Seedling Recruitment Assessment](#rrquick)
-- [Defining Recruitment Criteria](#species_rc)
+- [Introduction to the Riparian Seeling Recruitment Module](#intro)
+- [Quick GUIde to Riparian Seedling Recruitment Assessment](#rsrquick)
+- [Defining Criteria](#species-rc)
   - [Modifying `recruitment_criteria.xlsx`](#modify_rc)
 - [Methodology](#methods)
   - [Analysis Period](#analysis-period)
@@ -24,7 +24,7 @@ Riparian Seedling Recruitment Assessment
 
 ***
 
-# Introduction to Riparian Seedling Recruitment Module<a name="introduction"></a>
+# Introduction to Riparian Seedling Recruitment Module<a name="intro"></a>
 
 The Riparian Seedling Recruitment module can be used to map areas of seedling recruitment potentials and calculate recruitment potential metrics for a given Cottonwood species and flow record. The Riparian Seedling Recruitment module is an application based on the recruitment box model as described by [Mahoney & Rood (1998)][https://doi.org/10.1007/BF03161678]. The conceptual model describes how site hydrology, seed dispersal, and drought tolerance are associated with successful cottonwood seedling recruitment.
 
@@ -70,7 +70,7 @@ How [Existing Vegetation](#existing-veg) and [Grading Limits](#grading-limits) c
 
 *Note:* You will only need hydraulic rasters to cover the range of flows you are going to be analyzing. Determine the highest and lowest flows during the analysis period to ensure that there are no errors when the tool runs. See [Analysis Period](#analysis-period) in [Methodology](#methods) for a description of this temporal period. 
 
-Next, select at the [Species](#species_rc) from the drop down menu, which contains data specific to the species of interest for analyzing seedling recruitment. [Species](#species_rc) data is used by the Riparian Seedling Recruitment module to determine what the threshold values associated with physical processes that cause stress or mortality for seedlings during establishment and survival. These data can be viewed/edited via the `Modify recruitment criteria` button, which opens the `recruitment_criteria.xlsx`. See [Defining Recruitment Criteria](#species_rc) for more information on how to modify the worksheet and the implications of doing so. 
+Next, select at the [Species](#species-rc) from the drop down menu, which contains data specific to the species of interest for analyzing seedling recruitment. [Species](#species-rc) data is used by the Riparian Seedling Recruitment module to determine what the threshold values associated with physical processes that cause stress or mortality for seedlings during establishment and survival. These data can be viewed/edited via the `Modify recruitment criteria` button, which opens the `recruitment_criteria.xlsx`. See [Defining Criteria](#species-rc) for more information on how to modify the worksheet and the implications of doing so. 
 
 Next, upload the flow data that is available for the site being analyzed (daily mean flow record). The template (`flow_series_example_data.xlsx`) in the `00_Flows\InputFlowSeries` folder should be used to ensure that the correct format is provided for the module calculations.
 
@@ -102,7 +102,7 @@ Outputs associated specific to the year-of-interest analyzed are stored in `Ripa
 
 ***
 
-# Defining Recruitment Criteria <a name="species_rc"></a>
+# Defining Criteria <a name="species-rc"></a>
 
 ***
 
