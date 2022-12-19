@@ -114,7 +114,7 @@ Outputs associated specific to the year-of-interest analyzed are stored in `Ripa
 
 ***
 
-## Modifying `recruitment_criteria.xlxs`
+## Modifying `recruitment_criteria.xlxs`<a name="modify-rc"></a>
 
 The worksheet is not hard coded, but values are referenced by the descriptions of the criteria so it is important to not change the text under the column header 'DO NOT EDIT BELOW.' Species will be selected by their 'Common name' and the 'TEMPLATE' column may be used to add a new set of criteria for the species you choose to analyze. 
 
@@ -126,7 +126,7 @@ The worksheet is not hard coded, but values are referenced by the descriptions o
 
 ***
 
-## Analysis Period
+## Analysis Period<a name="analysis-period"></a>
 
 Each process or lifestage event has an associated temporal period during which the event must occur as the timing is crucial due to limitations such as seed dispersal and viability and seedling root growth. Five temporal periods span the physical processes and lifestage events considered to evaluate seedling recruitment: 
 
@@ -142,7 +142,7 @@ The five temporal periods are not completely distinct; two or more processes can
 
 The recruitment box boundaries are set by the timing of seed dispersal and the favorable elevations where successful seedling recruitment is likely [Mahoney & Rood (1998)](https://doi.org/10.1007/BF03161678). The thresholds set by the hydrologic components and seed release can be visualized as a bounding box on a hydrograph (see figure above). The top boundary of the box is the upper elevation at which seedlings will not survive after the stage declines due to desiccation. The bottom boundary of the box is the lower elevation at which seedlings will not survive prolonged inundation or will be uprooted and/or buried. Seedling establishment includes the seed release period and the length of seed viability. The left boundary of the box is the beginning of the seed release and the right boundary is the end of the seed release period plus the length of seed viability. 
 
-## Interpolating Water Surface Elevation Rasters
+## Interpolating Hydraulic Rasters<a name="interpolating-hydraulic-rasters"></a>
 
 Water surface elevation (WSE) and depth rasters are common outputs of 2D-hydraulic models. If only depth rasters are available as inputs, the WSE rasters are calculated through a simple addition of the water depth and topographic elevation. Interpolation of the WSE rasters across the topographic extents of a given site generates a water level elevation (WLE) raster. The methods for calculating WLE rasters was developed for the [Stranding Risk](StrandingRisk) module [Larrieu et al., 2021](https://doi.org/10.1002/eco.2268). The default spatial interpolation method used in the Riparian Seedling Recruitment module is inverse distance weighted (IDW) interpolation. Further explanation of IDW and the other available interpolation methods (Kriging and Nearest Neighbor) can be found in the Stranding Risk section on [Interpolating Hydraulic Rasters](StrandingRisk#interpolating-hydraulic-rasters). The WLE rasters for each corresponding hydraulic raster input is saved in the respective ‘condition’ folder to be used in future analysis (e.g. a different selected year or species).
 
@@ -158,13 +158,13 @@ The WLE value with the DEM allows for inundation and recession rate to be determ
 
 Potential germination is only considered during the seed dispersal period if the cell has gone dry to represent the risk of seeds being washed away from a given cell if it is inundated. The last day in the seed dispersal period where a cell has gone dry is when recession rate, prolonged inundation, and scour tracking begins to simulate the process of a viable seed finding a suitable site and germinating. This results in the variable seed dispersal period end and start dates (on a cell-by-cell basis) for the bed preparation, inundation survival, and scour survival periods 
 
-## Analysis Crop Area
+## Analysis Crop Area<a name="crop-area"></a>
 
  A unique feature of this approach is that the spatial domain for all physical process analysis is set by the wetted area extents of the highest and lowest flows during the seed dispersal area giving us a wetted areas that went dry during the seed dispersal period where germination was possible. The crop represents the area that limits the analysis for all physical processes and total recruitment potential calculations (`wa_sd_ras.tif`). If the option to exclude well established vegetation is desired, the crop rasters will be saved as `crop_area_minus_veg.tif`. See [Optional: Existing Vegatation](#existing-vegetation) for more. 
 
 If a recruitment band elevation method is preferred, upper and lower band elevations should be provided in the `recruitment_criteria.xlsx` as this will override the default methodology to use the wetted area extent during seed dispersal to define the crop area. 
 
-## Bed Preparation Assessment
+## Bed Preparation Assessment<a name="bed-preparation"></a>
 
 The dimensionless bed shear stress (&tau;<sub>\*</sub>) was calculated with the following equation, which is consistent with the [Lifespans](Lifespans) module:
 $$
@@ -182,7 +182,7 @@ The bed preparation analysis creates a set of dimensionless bed shear stress (BS
 
 The peak flow during the bed preparation period (*Q<sub>max</sub>*) is then determined and compared to both sets of mobilized flow rasters. A value of 0 is assigned to cells where the peak bed preparation flow does not exceed either of the mobilized flow rasters to represent that the area is “unprepared.” A value of 0.5 or 1 is assigned to cells where the peak bed preparation flow exceeds the partially or fully mobilized flow rasters, respectively. The final product is the bed preparation raster, `bed_prep_ras.tif`.
 
-## Desiccation Survival Assessment
+## Desiccation Survival Assessment<a name="ds-assessment"></a>
 
 Cottonwood seedlings are not drought tolerant and will become stressed if recession rates exceed the seedling ability to grow roots deep enough to keep up with recession, especially in dry climates. Recession rate is calculated by comparing the interpolated WLE rasters to the ground surface elevation on a cell-by-cell basis for each day. Recession rate calculations require a mean daily flow record to capture the daily stress that a seedling will experience. A 3-day moving average was calculated to evaluate recession rate as this captures the lag associated with infiltration and drainage of water ([Braatne et al. 2007](https://onlinelibrary.wiley.com/doi/10.1002/rra.978); [Burke et al. 2009](https://www.sciencedirect.com/science/article/pii/S0301479708002715); [Kalischuk et al., 2001](https://doi.org/10.1016/S0378-1127(00)00359-5); [Rood and Mahoney, 2000](https://www.researchgate.net/publication/279572771_Revised_instream_flow_regulation_enables_cottonwood_recruitment_along_the_St_Mary_River_Alberta_Canada)). The daily recession rate for a given cell is calculated with a 4-day moving window that retains the last three days WLE values (*WLE<sub>-3</sub>, WLE<sub>-2</sub>, WLE<sub>-1</sub>, WLE*). The following equation is used to calculate the 3-day average recession rate for a given day: 
 
@@ -199,35 +199,35 @@ $$
 
 where % lethal days and % stressful days is the number of days that the 3-day moving average of the recession rate is considered lethal or stressful. A mortality coefficient value between 20 and 30 is considered stressful and greater than 30 is considered lethal. The desiccation survival period ends at the beginning of baseflow conditions, which is a hard-coded date assigned in the `recruitment_criteria.xlsx`. Four rasters area created for the desiccation survival period: total favorable days, total stressful days, total lethal days, and mortality coefficient.
 
-## Inundation Survival Assessment
+## Inundation Survival Assessment<a name="inundation-survival"></a>
 
 Inundation is tracked on a daily, cell-by-cell basis- same as recession rate. A cell is considered “inundated” if the water level elevation exceeds the ground surface (WLE > DEM) as to represent potential partial to complete shoot submergence. Inundation tracking counts the consecutive days that inundation is experienced at a cell by overwriting the day count at a given cell with each day that continuous inundation is experienced (inundated yesterday & inundated today). At the end of the inundation analysis period, the maximum consecutive inundation days raster is saved and used to calculate the inundation survival raster given the inundation criteria threshold values. Two rasters are created for the inundation survival analysis period:  `max_inund_days.tif` and `inundation_surv_ras.tif` 
 
-## Scour Survival Assessment
+## Scour Survival Assessment<a name="scour-survival"></a>
 
 Scour is analyzed during the same period that inundation is and uses the same methodology that is used to determine bed preparation as a way of determining if a newly established seedling will experience scour induced uprooting.  See [Bed Preparation](#bed-preparation) for more. The site being undisturbed is favorable for seedling survival during the scour and survival period in contrast to sediment mobilization being favorable for the bed preparation period. The scour analysis uses the preliminary rasters from the bed preparation analysis and creates a final scour survival raster (`scour_surv_ras.tif`).
 
-## Physical Process Parameters Metrics
+## Physical Process Parameters Metrics<a name="process-parameters"></a>
 
 Each physical process will affect the likelihood of germination and survival, so the development of the Riparian Seedling Recruitment module required the translation of concept to code in order to represent the performance in relation to criteria thresholds as a metric. Using the resulting spatial raster data the represents the hydrophysical processes associated with successful seedling recruitment, a prediction of where areas of high recruitment potential will occur across a site can be made. Each of the physical processes is assigned a value of 0, 0.5, or 1 based on lethal, stressful, or favorable conditions, respectively (see table below).
 
 ![RSR parameter values](https://github.com/RiverArchitect/Media/raw/master/images/RSR_parameter_values.png)
 
-## Combined Recruitment Potential Metric
+## Combined Recruitment Potential Metric<a name="combined-rp-metric"></a>
 
 The calculation to determine the combined recruitment potential is a simple multiplication of each physical process metric with equal weighting. If any of the physical processes does not occur during the relevant analysis period or has lethal consequences, the value assigned to the physical process is zero resulting in the combined value is equal to zero (see table below). If no stressful or partial values are present during the recruitment analysis period, the combined value is equal to one.
 
 ![RSR combined rp values](https://github.com/RiverArchitect/Media/raw/master/images/RSR_combined_rp_values.png)
 
-## Optional: Recruitment Band Criteria
+## Optional: Recruitment Band Criteria<a name="recruitment-band"></a>
 
 There is an option to include recruitment band criteria to be considered when creating the crop raster for analysis. Providing elevations in the `recruitment_criteria.xlsx` will override the default [Analysis Area Crop](#crop-area), so  recruitment band elevations should only be provided if this is the preferred methodology. 
 
-## Optional: Existing Vegetation
+## Optional: Existing Vegetation<a name="ex-veg"></a>
 
 There is an option to upload a raster of existing vegetation canopy cover to exclude this area from the [Bed Preparation Assessment](#bed-prep). The algorithm will recognize any cell with an assigned value to be a location to be removed from the analysis. 
 
-## Optional: Grading Limits 
+## Optional: Grading Limits<a name="grading-limits"></a>
 
 There is an option to upload a raster of the grading area extents to consider how bed preparation will be modified if an area has recently been disturbed by grading activity. Grain size is taken into account by including a threshold grain size value that captures substrate that is too large to be a suitable site for germination, which can be modified in the . The graded area where the grain size is less than the threshold criteria is assigned a value of 1 as it assumed that the grading would remove vegetation and create a suitable site for germination that mimics the bed preparation process. 
 
