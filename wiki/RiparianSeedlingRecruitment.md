@@ -138,7 +138,9 @@ Each process or lifestage event has an associated temporal period during which t
 
 The five temporal periods are not completely distinct; two or more processes can operate concurrently, so overlap exists among the periods (see figure below).
 
-![RSR hydrograph periods](https://github.com/RiverArchitect/Media/raw/master/images/RSR_hydrograph_periods.png)
+<p align="center">
+  <img src="https://github.com/RiverArchitect/Media/raw/master/images/RSR_hydrograph_periods.png" />
+</p>
 
 The recruitment box boundaries are set by the timing of seed dispersal and the favorable elevations where successful seedling recruitment is likely [Mahoney & Rood (1998)](https://doi.org/10.1007/BF03161678). The thresholds set by the hydrologic components and seed release can be visualized as a bounding box on a hydrograph (see figure above). The top boundary of the box is the upper elevation at which seedlings will not survive after the stage declines due to desiccation. The bottom boundary of the box is the lower elevation at which seedlings will not survive prolonged inundation or will be uprooted and/or buried. Seedling establishment includes the seed release period and the length of seed viability. The left boundary of the box is the beginning of the seed release and the right boundary is the end of the seed release period plus the length of seed viability. 
 
@@ -152,7 +154,11 @@ The linear interpolation between the spatially interpolated (modeled) WLE raster
 $$
 \widetilde{WLE} = WLE_1 + \frac{WLE_2-WLE_1}{Q_2-Q_1}(\widetilde{Q}-Q_1)
 $$
-![RSR WLE interpolation](https://github.com/RiverArchitect/Media/raw/master/images/RSR_WLE_interpolation.png)
+<p align="center">
+  <img src="https://github.com/RiverArchitect/Media/raw/master/images/RSR_WLE_interpolation.png" />
+</p>
+
+
 
 The WLE value with the DEM allows for inundation and recession rate to be determined. Inundation (water level above the ground surface) is tracked from the beginning of the seed dispersal period. When WLE value < DEM value, the elevation of the WLE is the elevation of the groundwater surface. The algorithm assumes that the groundwater surface elevation can be determined by the calculated WLE, a derivative of channel WSE. This assumption is made in rivers with coarse substrate where it would be expected that little capillary capacity is present [Mahoney & Rood (1998)](https://doi.org/10.1007/BF03161678). The assumption that the groundwater surface is not raised by capillary fringe is a conservative decision that also allows the used to consider adjusting site-specific recession rate criteria.
 
@@ -211,13 +217,17 @@ Scour is analyzed during the same period that inundation is and uses the same me
 
 Each physical process will affect the likelihood of germination and survival, so the development of the Riparian Seedling Recruitment module required the translation of concept to code in order to represent the performance in relation to criteria thresholds as a metric. Using the resulting spatial raster data the represents the hydrophysical processes associated with successful seedling recruitment, a prediction of where areas of high recruitment potential will occur across a site can be made. Each of the physical processes is assigned a value of 0, 0.5, or 1 based on lethal, stressful, or favorable conditions, respectively (see table below).
 
-![RSR parameter values](https://github.com/RiverArchitect/Media/raw/master/images/RSR_parameter_values.png)
+<p align="center">
+  <img src="https://github.com/RiverArchitect/Media/raw/master/images/RSR_parameter_values.png" width=700/>
+</p>
 
 ## Combined Recruitment Potential Metric<a name="combined-rp-metric"></a>
 
 The calculation to determine the combined recruitment potential is a simple multiplication of each physical process metric with equal weighting. If any of the physical processes does not occur during the relevant analysis period or has lethal consequences, the value assigned to the physical process is zero resulting in the combined value is equal to zero (see table below). If no stressful or partial values are present during the recruitment analysis period, the combined value is equal to one.
 
-![RSR combined rp values](https://github.com/RiverArchitect/Media/raw/master/images/RSR_combined_rp_values.png)
+<p align="center">
+  <img src="https://github.com/RiverArchitect/Media/raw/master/images/RSR_combined_rp_values.png" width=500/>
+</p>
 
 ## Optional: Recruitment Band Criteria<a name="recruitment-band"></a>
 
