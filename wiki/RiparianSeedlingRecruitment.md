@@ -151,9 +151,12 @@ Water surface elevation (WSE) and depth rasters are common outputs of 2D-hydraul
 The Riparian Seedling Recruitment module allows users to analyze mean daily flow records without the need to model every flow in the record. A second interpolation takes place to calculate WLE array for the unmodeled flows (see figure below). The algorithm uses linear interpolation to calculate the unmodeled WLE raster using two WLE rasters calculated from modeled hydraulic raster inputs. These interpolated WLE arrays are not saved as rasters to conserve memory but used as intermediate arrays to calculate the seed dispersal wetted area, recession rate, and inundation calculations. 
 
 The linear interpolation between the spatially interpolated (modeled) WLE rasters for a given WLE associated with a flow from the daily mean flow record is calculated with the following equation:
-$$
-\widetilde{WLE} = WLE_1 + \frac{WLE_2-WLE_1}{Q_2-Q_1}(\widetilde{Q}-Q_1)
-$$
+
+<p align="center">
+  <img src="https://github.com/RiverArchitect/Media/raw/master/
+images/RSR_interpolated_wle_eq.PNG" width=400/>
+</p>
+
 <p align="center">
   <img src="https://github.com/RiverArchitect/Media/raw/master/images/RSR_WLE_interpolation.png" />
 </p>
@@ -173,9 +176,11 @@ If a recruitment band elevation method is preferred, upper and lower band elevat
 ## Bed Preparation Assessment<a name="bed-preparation"></a>
 
 The dimensionless bed shear stress (&tau;<sub>\*</sub>) was calculated with the following equation, which is consistent with the [Lifespans](Lifespans) module:
-$$
-\tau_{*} = \frac{\rho_w \times \left(u\,/\,\left(5.75 \times Log_{10}\left(\frac{12.2 \times h}{2 \times 2.2 \times d_{mean}}\right)\right)\right)}{\rho_w \times \,g \,(s - 1)}
-$$
+
+<p align="center">
+  <img src="https://github.com/RiverArchitect/Media/raw/master/
+images/RSR_dimensionless_bss_eq.PNG" width=500/>
+</p>
 
 
 - A threshold value for mobility according to the critical dimensionless bed shear stress τ<sub>*cr</sub> can be defined the `recruitment_criteria.xlsx` (read more for example in [Lamb et al. 2008](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2007JF000831))
@@ -190,17 +195,21 @@ The peak flow during the bed preparation period (*Q<sub>max</sub>*) is then dete
 
 ## Desiccation Survival Assessment<a name="ds-assessment"></a>
 
-Cottonwood seedlings are not drought tolerant and will become stressed if recession rates exceed the seedling ability to grow roots deep enough to keep up with recession, especially in dry climates. Recession rate is calculated by comparing the interpolated WLE rasters to the ground surface elevation on a cell-by-cell basis for each day. Recession rate calculations require a mean daily flow record to capture the daily stress that a seedling will experience. A 3-day moving average was calculated to evaluate recession rate as this captures the lag associated with infiltration and drainage of water ([Braatne et al. 2007](https://onlinelibrary.wiley.com/doi/10.1002/rra.978); [Burke et al. 2009](https://www.sciencedirect.com/science/article/pii/S0301479708002715); [Kalischuk et al., 2001](https://doi.org/10.1016/S0378-1127(00)00359-5); [Rood and Mahoney, 2000](https://www.researchgate.net/publication/279572771_Revised_instream_flow_regulation_enables_cottonwood_recruitment_along_the_St_Mary_River_Alberta_Canada)). The daily recession rate for a given cell is calculated with a 4-day moving window that retains the last three days WLE values (*WLE<sub>-3</sub>, WLE<sub>-2</sub>, WLE<sub>-1</sub>, WLE*). The following equation is used to calculate the 3-day average recession rate for a given day: 
+Cottonwood seedlings are not drought tolerant and will become stressed if recession rates exceed the seedling ability to grow roots deep enough to keep up with recession, especially in dry climates. Recession rate is calculated by comparing the interpolated WLE rasters to the ground surface elevation on a cell-by-cell basis for each day. Recession rate calculations require a mean daily flow record to capture the daily stress that a seedling will experience. A 3-day moving average was calculated to evaluate recession rate as this captures the lag associated with infiltration and drainage of water ([Braatne et al. 2007](https://onlinelibrary.wiley.com/doi/10.1002/rra.978); [Burke et al. 2009](https://www.sciencedirect.com/science/article/pii/S0301479708002715); [Kalischuk et al., 2001](https://doi.org/10.1016/S0378-1127(00)00359-5); [Rood and Mahoney, 2000](https://www.researchgate.net/publication/279572771_Revised_instream_flow_regulation_enables_cottonwood_recruitment_along_the_St_Mary_River_Alberta_Canada)). The daily recession rate for a given cell is calculated with a 4-day moving window that retains the last three days WLE values (*WLE<sub>-3</sub>, WLE<sub>-2</sub>, WLE<sub>-1</sub>, WLE*). The following equation is used to calculate the 3-day average recession rate for a given day:  
 
-$$
-\text{3-Day Average} = \frac{(WLE - WLE_{-3})}{3}
-$$
+<p align="center">
+  <img src="https://github.com/RiverArchitect/Media/raw/master/
+images/RSR_3-day_avg_eq.PNG" width=350/>
+</p>
+
 The recession rate criteria is determined by how quickly the cottonwood seedlings are able to grow roots. If the groundwater elevation recedes faster than the roots can grow to keep up with the recession the seedlings will become water stressed. Recession rate tracking begins at germination (during seed dispersal) to September 15, the beginning of baseflow.
 
 The mortality coefficient (M) was developed to account for seedlings’ ability to survive lethal rates of stage decline if the drop in stage is for only a few days ([Braatne et al. 2007](https://onlinelibrary.wiley.com/doi/10.1002/rra.978); [Burke et al. 2009](https://www.sciencedirect.com/science/article/pii/S0301479708002715)). The mortality coefficient is defined as:
-$$
-M = \frac{(\% \,\text{lethal days} \times 3)\,+\,(\% \,\text{stressful days} \times 1)}{3}
-$$
+
+<p align="center">
+  <img src="https://github.com/RiverArchitect/Media/raw/master/
+images/RSR_mortality_coeff_eq.PNG" width=350/>
+</p>
 
 
 where % lethal days and % stressful days is the number of days that the 3-day moving average of the recession rate is considered lethal or stressful. A mortality coefficient value between 20 and 30 is considered stressful and greater than 30 is considered lethal. The desiccation survival period ends at the beginning of baseflow conditions, which is a hard-coded date assigned in the `recruitment_criteria.xlsx`. Four rasters area created for the desiccation survival period: total favorable days, total stressful days, total lethal days, and mortality coefficient.
