@@ -12,7 +12,7 @@ Riparian Seedling Recruitment Assessment
 - [Introduction to the Riparian Seeling Recruitment Module](#intro)
 - [Quick GUIde to Riparian Seedling Recruitment Assessment](#rsrquick)
 - [Defining Criteria](#species-rc)
-  - [Modifying `recruitment_criteria.xlsx`](#modify_rc)
+  - [Modifying `recruitment_criteria.xlsx`](#modify-rc)
 - [Methodology](#methods)
   - [Analysis Period](#analysis-period)
   - [Interpolating Hydraulic Rasters](#interpolating-hydraulic-rasters) 
@@ -52,7 +52,7 @@ The Riparian Recruitment module evaluates the survival of Cottonwood seedlings t
 
 ![RSR_conceptual_model](https://github.com/RiverArchitect/Media/raw/master/images/RSR_schematic.PNG)
 
-# Quick GUIde to Riparian Recruitment Assessment<a name="rrquick"></a>
+# Quick GUIde to Riparian Recruitment Assessment<a name="rsrquick"></a>
 
 ***
 
