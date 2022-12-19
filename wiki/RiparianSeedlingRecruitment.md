@@ -1,3 +1,9 @@
+---
+usemathjax: true
+---
+
+
+
 Riparian Seedling Recruitment Assessment
 ====================
 
@@ -26,9 +32,11 @@ Riparian Seedling Recruitment Assessment
 
 # Introduction to Riparian Seedling Recruitment Module<a name="intro"></a>
 
-The Riparian Seedling Recruitment module can be used to map areas of seedling recruitment potentials and calculate recruitment potential metrics for a given Cottonwood species and flow record. The Riparian Seedling Recruitment module is an application based on the recruitment box model as described by [Mahoney & Rood (1998)][https://doi.org/10.1007/BF03161678]. The conceptual model describes how site hydrology, seed dispersal, and drought tolerance are associated with successful cottonwood seedling recruitment.
+The Riparian Seedling Recruitment module can be used to map areas of seedling recruitment potentials and calculate recruitment potential metrics for a given Cottonwood species and flow record. The Riparian Seedling Recruitment module is an application based on the recruitment box model as described by [Mahoney & Rood (1998)](https://doi.org/10.1007/BF03161678). The conceptual model describes how site hydrology, seed dispersal, and drought tolerance are associated with successful cottonwood seedling recruitment.
 
-![RSR_conceptual_model](https://github.com/RiverArchitect/Media/raw/master/images/RSR_conceptual_model.png)
+<p align="center">
+  <img src="https://github.com/RiverArchitect/Media/raw/master/images/RSR_conceptual_model.png" width=600 />
+</p>
 
 The Riparian Seedling Recruitment sub-module evaluates five physical mechanisms with consideration of timing: 
 
@@ -48,9 +56,9 @@ The Riparian Recruitment module evaluates the survival of Cottonwood seedlings t
 
 ***
 
-![gui_start_recruitment](https://github.com/RiverArchitect/Media/raw/master/images/gui_start_recruitment.PNG)
-
-
+<p align="center">
+  <img src="https://github.com/RiverArchitect/Media/raw/master/images/gui_start_recruitment.PNG" width=600 />
+</p>
 
 To begin using the Riparian Seedling Recruitment module, first select a hydraulic [Condition](Signposts#conditions). 
 
@@ -110,7 +118,9 @@ Outputs associated specific to the year-of-interest analyzed are stored in `Ripa
 
 The worksheet is not hard coded, but values are referenced by the descriptions of the criteria so it is important to not change the text under the column header 'DO NOT EDIT BELOW.' Species will be selected by their 'Common name' and the 'TEMPLATE' column may be used to add a new set of criteria for the species you choose to analyze. 
 
-![recruitment_criteria_xlsx](https://github.com/RiverArchitect/Media/raw/master/images/recruitment_criteria_xlsx.png)
+<p align="center">
+  <img src="https://github.com/RiverArchitect/Media/raw/master/images/recruitment_criteria_xlsx.png" width=600 />
+</p>
 
 # Methodology<a name="methods"></a>
 
@@ -134,7 +144,7 @@ The five temporal periods are not completely distinct; two or more processes can
 
 ![RSR hydrograph periods](https://github.com/RiverArchitect/Media/raw/master/images/RSR_hydrograph_periods.png)
 
-The recruitment box boundaries are set by the timing of seed dispersal and the favorable elevations where successful seedling recruitment is likely [Mahoney & Rood (1998)][https://doi.org/10.1007/BF03161678]. The thresholds set by the hydrologic components and seed release can be visualized as a bounding box on a hydrograph (see figure above). The top boundary of the box is the upper elevation at which seedlings will not survive after the stage declines due to desiccation. The bottom boundary of the box is the lower elevation at which seedlings will not survive prolonged inundation or will be uprooted and/or buried. Seedling establishment includes the seed release period and the length of seed viability. The left boundary of the box is the beginning of the seed release and the right boundary is the end of the seed release period plus the length of seed viability. 
+The recruitment box boundaries are set by the timing of seed dispersal and the favorable elevations where successful seedling recruitment is likely [Mahoney & Rood (1998)](https://doi.org/10.1007/BF03161678). The thresholds set by the hydrologic components and seed release can be visualized as a bounding box on a hydrograph (see figure above). The top boundary of the box is the upper elevation at which seedlings will not survive after the stage declines due to desiccation. The bottom boundary of the box is the lower elevation at which seedlings will not survive prolonged inundation or will be uprooted and/or buried. Seedling establishment includes the seed release period and the length of seed viability. The left boundary of the box is the beginning of the seed release and the right boundary is the end of the seed release period plus the length of seed viability. 
 
 ## Interpolating Water Surface Elevation Rasters
 
@@ -148,7 +158,7 @@ $$
 $$
 ![RSR WLE interpolation](https://github.com/RiverArchitect/Media/raw/master/images/RSR_WLE_interpolation.png)
 
-The WLE value with the DEM allows for inundation and recession rate to be determined. Inundation (water level above the ground surface) is tracked from the beginning of the seed dispersal period. When WLE value < DEM value, the elevation of the WLE is the elevation of the groundwater surface. The algorithm assumes that the groundwater surface elevation can be determined by the calculated WLE, a derivative of channel WSE. This assumption is made in rivers with coarse substrate where it would be expected that little capillary capacity is present [Mahoney & Rood (1998)][https://doi.org/10.1007/BF03161678]. The assumption that the groundwater surface is not raised by capillary fringe is a conservative decision that also allows the used to consider adjusting site-specific recession rate criteria.
+The WLE value with the DEM allows for inundation and recession rate to be determined. Inundation (water level above the ground surface) is tracked from the beginning of the seed dispersal period. When WLE value < DEM value, the elevation of the WLE is the elevation of the groundwater surface. The algorithm assumes that the groundwater surface elevation can be determined by the calculated WLE, a derivative of channel WSE. This assumption is made in rivers with coarse substrate where it would be expected that little capillary capacity is present [Mahoney & Rood (1998)](https://doi.org/10.1007/BF03161678). The assumption that the groundwater surface is not raised by capillary fringe is a conservative decision that also allows the used to consider adjusting site-specific recession rate criteria.
 
 Potential germination is only considered during the seed dispersal period if the cell has gone dry to represent the risk of seeds being washed away from a given cell if it is inundated. The last day in the seed dispersal period where a cell has gone dry is when recession rate, prolonged inundation, and scour tracking begins to simulate the process of a viable seed finding a suitable site and germinating. This results in the variable seed dispersal period end and start dates (on a cell-by-cell basis) for the bed preparation, inundation survival, and scour survival periods 
 
