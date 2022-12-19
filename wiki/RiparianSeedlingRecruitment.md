@@ -130,15 +130,11 @@ The worksheet is not hard coded, but values are referenced by the descriptions o
 
 Each process or lifestage event has an associated temporal period during which the event must occur as the timing is crucial due to limitations such as seed dispersal and viability and seedling root growth. Five temporal periods span the physical processes and lifestage events considered to evaluate seedling recruitment: 
 
-·    Bed Preparation Period (BPP)
-
-·    Seed Dispersal Period (SDP)
-
-·    Desiccation Survival Period (DSP)
-
-·    Inundation Survival Period (ISP)
-
-·    Scour Survival Period (SSP)
+- Bed Preparation Period (BPP)
+- Seed Dispersal Period (SDP)
+- Desiccation Survival Period (DSP)
+- Inundation Survival Period (ISP)
+- Scour Survival Period (SSP)
 
 The five temporal periods are not completely distinct; two or more processes can operate concurrently, so overlap exists among the periods (see figure below).
 
