@@ -173,7 +173,7 @@ The dimensionless bed shear stress (&tau;<sub>\*</sub>) was calculated with the 
 
 <p align="center">
   <img src="https://github.com/RiverArchitect/Media/raw/master/
-images/RSR_dimensionless_bss_eq.PNG" width=500/>
+images/RSR_dimensionless_bss_eq.PNG" width=400/>
 </p>
 
 
