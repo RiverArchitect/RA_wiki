@@ -58,7 +58,7 @@ To begin using the Riparian Seedling Recruitment module, first select a hydrauli
 
 The Riparian Seedling Recruitment module requires the following files to be included in the [Condition](Signposts#conditions) folder: 
 
-- DEM raster (*Note:* the file must be named '`dem.tif`')
+- DEM raster (*Note:* the file must be named `dem.tif`)
 - Hydraulic rasters (velocity and depth or water surface elevation) for the range of flows. (*Note:* the file naming convention `hQQQQQQ.tif`,  `uQQQQQQ.tif` must be used) 
 - Grain size raster (*Note*: must be named either `dmean_ft.tif` for U.S. customary in feet  or `dmean.tif` for SI metric in meters)
 
