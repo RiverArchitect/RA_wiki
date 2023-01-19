@@ -89,7 +89,8 @@ Outputs are stored in `RiparianRecruitment\Output\Condition_name` :
 Outputs associated specific to the year-of-interest analyzed are stored in `RiparianRecruitment\Output\Condition_name\year-of-interest ` : 
 
 - `wa_sd_ras.tif` : a raster showing the wetted area during seed dispersal period 
-- `crop_area_minus_veg.tif` : a raster showing the wetted area during seed dispersal period with the area that has established area not anticipated to be removed by flood events excluded, which is used to crop the analysis area. See [Analysis Crop Area](#crop-area) for more.
+- `rec_elev_band.tif` :  a raster showing the area between the recruitment band elevation criteria
+- `crop_area_minus_veg.tif` : a raster showing the wetted area during seed dispersal period or the recruitment band  area with the area that has established area not anticipated to be removed by flood events excluded, which is used to crop the analysis area. See [Analysis Crop Area](#crop-area) for more.
 - `bed_prep_ras.tif` : a raster showing the performance of the [Bed Preparation Assessment](#bed-preparation) with values of 0 (unprepared), 0.5 (partially prepared), and 1 (fully prepared). 
 - `rr_fav_days.tif` : a raster showing the number of days with a favorable recession rate during the desiccation survival period.
 - `rr_stress_days.tif` : a raster showing the number of days with a stressful recession rate during the desiccation survival period.
