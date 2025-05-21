@@ -74,12 +74,17 @@ The flow depth and velocity Rasters may require manual renaming to adapt to thes
 
 ## Populate Condition<a name="pop-condition"></a>
 ***
-*Condition* - wise Morphological Unit, Depth to water table, and Detrended DEM Rasters add consistency to the analyses of all modules. The `Populate Condition` popup window invites the user to define a *Condition* to be populated, and subsequently to create the following Rasters:
+This set of actions allows you to create various raster data files that can be products in and of themselves or they can be prerequistes for subsequent analysis. Currently, there are 4 products one can obtain from this window. First, you can create bed shear stress rasters in both dimensional units and as nondimensional Shields stress. Second you can crate a "Depth to water table" raster. Third, you can create a detrended DEM. Note: there are many ways to detrend a DEM, so never assume that anyone is doing it any particular way- always check on the concept for how it is done! Finally, you can create a riverbed morphological unit raster.
 
-- Morphological Unit, 
-- Depth to water table, and 
-- Detrended DEM.
+To get started, the `Populate Condition` popup window invites the user to define a *Condition* to be populated by clicking on one of the available *conditions* the user has already created.
 
+Next, you have to click the “Validate” button. This serves to verify the presence and correctness of essential input data required for subsequent analyses. Specifically, it checks for the existence of a Digital Elevation Model (DEM) file named dem.tif within the selected condition folder. f the dem.tif file is missing or improperly named, the validation process will fail, and the GUI will not proceed with loading the condition. This safeguard ensures that all necessary data is in place before further processing.
+
+At this point, you're ready to start populating the condition withany of the 4 optional datasets. Remenber, this may or may not be required, depending on what River Architect module you are going to use.
+
+### Bed Shear Stress Rasters<a name="mu"></a>
+***
+This button does not currently appear funcitonal! We are working to fix it!
 
 ### Make Morphological Unit Rasters<a name="mu"></a>
 ***
