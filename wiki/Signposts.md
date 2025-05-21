@@ -32,7 +32,7 @@ The *Get Started*-tab buttons invite the user to create conditions from scratch,
 - Create a spatial subset of a *Condition*: Define a boundary Raster that delineates a spatial frame for creating a subset of an existing *Condition* (useful for comparing project alternatives at different sites).
 
 ## Create New Condition<a name="new-condition"></a>
-The creation of a new *Condition* requires that a 2D hydrodynamic model was previously run to obtain spatially explicit flow depth and velocity data. Moreover, grain size data (spatially explicit )and a digital terrain elevation model need to be available.
+The creation of a new *Condition* requires that a 2D hydrodynamic model was previously run to obtain spatially explicit flow depth and velocity data. All input files must be pre-formated by the user according to the naming convention used, per list below. Moreover, grain size data (spatially explicit )and a digital terrain elevation model are required inputs at this time, even if you are not analyzing them in your needs.
 A new popup window inquires following inputs for generating a new *Condition* from scratch:
 
 - A name for the new *Condition*
@@ -57,15 +57,15 @@ Once the input is defined, clicking on the `CREATE CONDITION` button will create
 
 - `fill.tif` is topographic change Raster indicating annual sediment deposition rates, which are required by the <a href="LifespanDesign">LifespanDesign</a>, and indirectly, the <a href="MaxLifespan">Max Lifespan</a> and <a href="ProjectMaker">ProjectMaker</a> modules.
 
-- `hQQQQQQ.tif` are flow depth rasters required by the <a href="LifespanDesign">LifespanDesign</a>, <a href="SHArC">SHArC</a>, <a href="StrandingRisk">Stranding Risk</a>,  <a href="RiparianSeedlingRecruitment">Riparian Seedling Recruitment</a>, and (indirectly) the <a href="ProjectMaker">ProjectMaker</a> and <a href="MaxLifespan">Max Lifespan</a> modules. [Read more about file name conventions.](#terms)
+- `hQQQQQQ_QQQ.tif` are flow depth rasters required by the <a href="LifespanDesign">LifespanDesign</a>, <a href="SHArC">SHArC</a>, <a href="StrandingRisk">Stranding Risk</a>,  <a href="RiparianSeedlingRecruitment">Riparian Seedling Recruitment</a>, and (indirectly) the <a href="ProjectMaker">ProjectMaker</a> and <a href="MaxLifespan">Max Lifespan</a> modules. [Read more about file name conventions.](#terms)
 
-- `uQQQQQQ.tif` are flow velocity rasters required by the <a href="LifespanDesign">LifespanDesign</a>, <a href="SHArC">SHArC</a>, <a href="StrandingRisk">Stranding Risk</a>,  <a href="RiparianSeedlingRecruitment">Riparian Seedling Recruitment</a>, and (indirectly) the <a href="ProjectMaker">ProjectMaker</a> and <a href="MaxLifespan">Max Lifespan</a> modules. [Read more about file name conventions.](#terms)
+- `uQQQQQQ_QQQ.tif` are flow velocity rasters required by the <a href="LifespanDesign">LifespanDesign</a>, <a href="SHArC">SHArC</a>, <a href="StrandingRisk">Stranding Risk</a>,  <a href="RiparianSeedlingRecruitment">Riparian Seedling Recruitment</a>, and (indirectly) the <a href="ProjectMaker">ProjectMaker</a> and <a href="MaxLifespan">Max Lifespan</a> modules. [Read more about file name conventions.](#terms)
 
 - `scour.tif` is topographic change Raster indicating annual terrain erosion rates, which are required by the <a href="LifespanDesign">LifespanDesign</a>, and indirectly, the <a href="MaxLifespan">Max Lifespan</a> and <a href="ProjectMaker">ProjectMaker</a> modules.
 
-- `vaQQQQQQ.tif` is flow velocity direction rasters required by the [Stranding Risk](StrandingRisk) module. [Read more about file name conventions.](#terms)
+- `vaQQQQQQ_QQQ.tif` is flow velocity direction rasters required by the [Stranding Risk](StrandingRisk) module. [Read more about file name conventions.](#terms)
 
-The flow depth and velocity Rasters may require manual renaming to adapt to these Raster name conventions. A [*River Architect Tools* script](Tools#renamefiles) facilitates renaming multiple file names. Subsequently, populating the created *Condition* is strongly recommended
+The flow depth and velocity Rasters may require manual renaming to adapt to these Raster name conventions. In the convention, "u" is for velocity, "h" is for depth, and "va" is for velocity direction. For all of those, "QQQQQQ_QQQ" is a representation of the digits available to specify dicharge. "Q" is a number 0-9 and "_" is the substitute in a file name for a decimal place. That means that the program can handle discharge values as low as 0.001 and as high as 999999.999. LEGACY CONTENT: A [*River Architect Tools* script](Tools#renamefiles) facilitates renaming multiple file names to the older format of QQQQQQ. Subsequently, populating the created *Condition* is strongly recommended
 
 ## Populate Condition<a name="pop-condition"></a>
 ***
@@ -140,7 +140,7 @@ If a Raster is selected:
 The boundary files are of particular interest within the <a href="ProjectMaker">ProjectMaker</a> and <a href="SHArC">SHArC</a> modules.
 
 ## Analyze Flows<a name="ana-flows"></a>
-The sustainability (lifespan) and ecohydraulic analyses require hydraulic data related to discharges (flows) and the return period. The *Analyze Discharge* pop-up window guides through the creation of flow-metadata files that link hydraulic Raster names with flows and return periods for a *Condition*. *Analyze Discharge* looks for flow depth and velocity Rasters in a selected *Condition*, extracts the flow quantity, and creates a template workbook in the *Condition* folder. For this purpose, hydraulic (flow depth and velocity) Rasters must be named according to the [Geofile name convetions](#terms) (i.e., flow depth Rasters = "hQQQQQQ.tif" and flow velocity Rasters = "uQQQQQQ.tif").
+The sustainability (lifespan) and ecohydraulic analyses require hydraulic data related to discharges (flows) and the return period. The *Analyze Discharge* pop-up window guides through the creation of flow-metadata files that link hydraulic Raster names with flows and return periods for a *Condition*. *Analyze Discharge* looks for flow depth and velocity Rasters in a selected *Condition*, extracts the flow quantity, and creates a template workbook in the *Condition* folder. For this purpose, hydraulic (flow depth and velocity) Rasters must be named according to the [Geofile name convetions](#terms) (i.e., flow depth Rasters = "hQQQQQQ_QQQ.tif" and flow velocity Rasters = "uQQQQQQ_QQQ.tif"). QQQQQQ_QQQ is discharge where "_" is the substitute in a file name for a decimal place.
 
 ![raq](https://github.com/RiverArchitect/Media/raw/master/images/gui_start_flows.PNG)
 
@@ -221,7 +221,7 @@ Caution should be taken when using the built-in alignment routine, as input data
 
 # Geofile (Raster) conventions<a name="terms"></a>
 ***
-The input Rasters need to be in **GeoTIFF** (*.tif*) format, notably, a `raster_name.tif` file. _Note that River Architect is designed to also handle Esri's GRID format, but the primary raster file type should be GeoTIFF_. Depth Raster names must start with `h` and velocity Raster names must start with `u`, followed by a six-digit discharge `QQQQQQ`, which is independent of the unit system. For example, a flow depth Raster associated with a discharge of 55 m³/s needs to be called `h000055.tif` and a velocity Raster associated with a discharge of 11000 m³/s needs to be called `u011000.tif`. Likewise, a flow depth Raster associated with a discharge of 55 cfs needs to be called `h000055.tif`. The Raster names ignore discharge value digits after the decimal point. Moreover, every flow depth Raster requires a matching velocity Raster and vice versa (e.g., `h000055.tif` requires a Raster called `u000055.tif`).<br/>
+The input Rasters need to be in **GeoTIFF** (*.tif*) format, notably, a `raster_name.tif` file. _Note that River Architect is designed to also handle Esri's GRID format, but the primary raster file type should be GeoTIFF_. Depth Raster names must start with `h` and velocity Raster names must start with `u`, followed by a nine-digit discharge `QQQQQQ_QQQ`, which is independent of the unit system. For example, a flow depth Raster associated with a discharge of 55.237 m³/s needs to be called `h000055_237.tif` and a velocity Raster associated with a discharge of 11000.982 m³/s needs to be called `u011000_982.tif`. Moreover, every flow depth Raster requires a matching velocity Raster and vice versa (e.g., for 55 cfs, a depth Raster `h000055.tif` requires a velocity Raster called `u000055.tif`).<br/>
 **Note: `back.tif` may be used to limit calculation extents.**
 
 
@@ -230,7 +230,7 @@ The input Rasters need to be in **GeoTIFF** (*.tif*) format, notably, a `raster_
 Relevant Raster names for calculation are defined in an input file ([`.inp`](#inpfile)) of the [*LifespanDesign*][3] module (input section see for details and definitions). Please note that *.inp* files for lifespan mapping are different from the input (*.txt*) files required for [River Builder](RiverBuilder).
 Sample data representing a patch of a Californian gravel-cobble bed river in 2100 can be downloaded [here](https://github.com/RiverArchitect/SampleData/archive/master.zip). The input file of the sample case is located in `01_Conditions/2100_sample/input_definitions.inp` file. The sample case includes a set of Rasters for flow scenarios corresponding to return periods of < 1.0 (ignored in the input file), 1.0,  ... , 2.0, 5.0, 10.0, 15.0, 20.0, 30.0, 40.0, and 50.0 years, as well as a couple of annual discharges for habitat assessments. The according flows are defined in `01_Conditions/2100_sample/flow_definitions.xlsx`, with pre-compiled flow duration curves for whetted area (`alhy`), Chinook salmon juveniles (`chju`), fry (`chfr`), and spawning (`chju`) lifestages that are stored in `00_Flows/2100_sample/flow_duration_FILI.xlsx` (see above [flow definitions](#ana-flows)).
 
-The below listed Rasters are available in GeoTIFF format in `01_Conditions/2100_sample/` for the sample case `condition` = `2100_sample`. *Italic font* indicates *optional* Rasters, which are, however, recommended to use because they significantly increase the pertinence of lifespan maps; Rasters written in **`CAPITALIZED ROUGE FONT`** font are **`required`** for *River Architect* to work. The Raster names correspond to the above-described naming conventions.
+LEGACY CONTENT. This is broken as of 2022, because of hte changein discharge format. To use this content, you need to update the file format for depth and velocioty rasters to the QQQQQQ_QQQ format. The below listed Rasters are available in GeoTIFF format in `01_Conditions/2100_sample/` for the sample case `condition` = `2100_sample`. *Italic font* indicates *optional* Rasters, which are, however, recommended to use because they significantly increase the pertinence of lifespan maps; Rasters written in **`CAPITALIZED ROUGE FONT`** font are **`required`** for *River Architect* to work. The Raster names correspond to the above-described naming conventions.
 
 | **PARAMETER** | (UNITS) |
 |---------------|:--------|
