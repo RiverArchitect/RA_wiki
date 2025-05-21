@@ -33,6 +33,9 @@ The *Get Started*-tab buttons invite the user to create conditions from scratch,
 
 ## Create New Condition<a name="new-condition"></a>
 The creation of a new *Condition* requires that a 2D hydrodynamic model was previously run to obtain spatially explicit flow depth and velocity data. All input files must be pre-formated by the user according to the naming convention used, per list below. Moreover, grain size data (spatially explicit )and a digital terrain elevation model are required inputs at this time, even if you are not analyzing them in your needs.
+
+Beginner tip: If your folder with the input files has all the files in it with no subfolder file structure, then you have specify a "raster string" to help River Architect know which files are velocity rasters and which are dpeth rasters. A better approach is to put all the depth rasters into their own subfolder, and then the same for velocity before you make the condiiton.
+
 A new popup window inquires following inputs for generating a new *Condition* from scratch:
 
 - A name for the new *Condition*
