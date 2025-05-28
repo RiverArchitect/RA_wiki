@@ -65,7 +65,7 @@ When defining threshold values in `threshold_values.xlsx` carefully study the fo
 1. **Dimensional hydraulic parameter** analysis:
    - **Flow depth** starting with the lowest discharge to the highest discharge Raster (`hQQQQQQ_QQQ.tif`). A threshold value for the flow depth above which a feature will fail can be defined in row 12 in `threshold_values.xlsx`.
    - **Bed shear stress**  &tau;<sub>b</sub> calculated as<br/>
-	   `ras_tb` = \{&rho;<sub>w</sub> · \{\[`uQQQQQQ_QQQ` / (5.75 * Log<sub>10</sub>(12.2 · `hQQQQQQ_QQQ` / (2 · 2.2 · `dmean`)))\]<sup>2</sup>\} <br/>
+	   `ras_tb` = \{&rho;<sub>w</sub> · \[`uQQQQQQ_QQQ` / (5.75 * Log<sub>10</sub>(12.2 · `hQQQQQQ_QQQ` / (2 · 2.2 · `dmean`)))\]<sup>2</sup>\} <br/>
 	   where
    	+ A threshold value for mobility according to the bed shear stress &tau;<sub>\b, cr</sub> can be defined in row 6 of `threshold_values.xlsx` (read more for example in [Lamb et al. 2008](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2007JF000831))
    	+ &rho;<sub>w</sub> = water density (1000 kg / m<sup>3</sup>) 
