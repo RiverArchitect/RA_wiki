@@ -17,7 +17,9 @@ Get Started and Signposts
 
 # Get Started<a name="getstarted"></a><a name="conditions"></a>
 
-*River Architect*'s first tab invites the user for the creation of *Conditions*.
+Before getting started, it is essential to make sure all your input files are in the same coordinate system and units system, and then to tell *River Architect* which units you are using. In the upper left of the GUI there is a menu option for "units". Click that and make sure the wor "current" is next to the unit system you want to use, either US Customary or SI units.
+
+*River Architect*'s first tab invites the user to create a *Conditions*.
 
 ![ragui](https://github.com/RiverArchitect/Media/raw/master/images/gui_start.PNG)
 
