@@ -70,14 +70,12 @@ When defining threshold values in `threshold_values.xlsx` carefully study the fo
    	+ A threshold value for mobility according to the bed shear stress &tau;<sub>\b, cr</sub> can be defined in row 6 of `threshold_values.xlsx` (read more for example in [Lamb et al. 2008](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2007JF000831))
    	+ &rho;<sub>w</sub> = water density (1000 kg / m<sup>3</sup>) 
    	+ `uQQQQQQ_QQQ` (m/s or fps), `hQQQQQQ_QQQ` (m or ft), and `d84` = 2.2 · `dmean` (m or ft) are `arcpy.Raster()`s considering that the grain diameter *D<sub>84</sub>* can be approximated by *D<sub>84</sub>* = 2.2 · *D<sub>50</sub>* ([Rickenmann and Recking 2011](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2010WR009793))
-   	+ *g* = gravitational acceleration (9.81 m/s<sup>2</sup>)
-   	+ *s* = ratio of sediment grain and water density (2.68)
    	+ Note that the &tau;<sub>b</sub> analysis is **omitted if *SF* is defined**, which enables to run either a &tau;<sub>b</sub> analysis OR a mobile grain analysis.
    - **Flow velocity** starting with the lowest discharge to the highest discharge Raster (`uQQQQQQ_QQQ.tif`). A threshold value for the velocity above which a feature will fail can be defined in row 13 in `threshold_values.xlsx`.
 
 1. **Dimensionless hydraulic parameter** analysis:
-   - **Dimensionless bed shear stress**  &tau;<sub>\*</sub> calculated as<br/>
-	   `ras_taux` = \ `ras_tb` / \[&rho;<sub>w</sub> · *g* (*s* - 1) · `dmean`\] <br/>
+   - **Dimensionless bed shear stress (aka Shields stres)**  &tau;<sub>\*</sub> calculated as<br/>
+	   `ras_taux` = `ras_tb` / \[&rho;<sub>w</sub> · *g* (*s* - 1) · `dmean`\] <br/>
 	   where
    	+ A threshold value for mobility according to the critical dimensionless bed shear stress &tau;<sub>\*, cr</sub> can be defined in row 7 of `threshold_values.xlsx` (read more for example in [Lamb et al. 2008](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2007JF000831))
    	+ &rho;<sub>w</sub> = water density (1000 kg / m<sup>3</sup>) 
